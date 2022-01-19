@@ -3,25 +3,57 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		973245E42797BAD800CE549D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973245E32797BAD800CE549D /* AppDelegate.swift */; };
 		973245E62797BAD800CE549D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973245E52797BAD800CE549D /* SceneDelegate.swift */; };
-		973245E82797BAD800CE549D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973245E72797BAD800CE549D /* ViewController.swift */; };
+		973245E82797BAD800CE549D /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973245E72797BAD800CE549D /* HomePageViewController.swift */; };
 		973245ED2797BADA00CE549D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 973245EC2797BADA00CE549D /* Assets.xcassets */; };
 		973245F02797BADA00CE549D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 973245EE2797BADA00CE549D /* LaunchScreen.storyboard */; };
+		973245FA2797BC1F00CE549D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973245F92797BC1F00CE549D /* Model.swift */; };
+		973245FE2797BC7B00CE549D /* WannaKnowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973245FD2797BC7B00CE549D /* WannaKnowViewController.swift */; };
+		973246002797BCBF00CE549D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973245FF2797BCBF00CE549D /* SignUpViewController.swift */; };
+		973246022797BD2900CE549D /* BulletinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246012797BD2900CE549D /* BulletinViewController.swift */; };
+		973246042797BD5700CE549D /* WannaKnowListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246032797BD5700CE549D /* WannaKnowListViewController.swift */; };
+		973246062797C5F200CE549D /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246052797C5F200CE549D /* CalenderViewController.swift */; };
+		973246082797C60C00CE549D /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246072797C60C00CE549D /* ContentViewController.swift */; };
+		9732460A2797C65100CE549D /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246092797C65100CE549D /* HomePageView.swift */; };
+		9732460C2797C66000CE549D /* BulletinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9732460B2797C66000CE549D /* BulletinView.swift */; };
+		9732460E2797C67300CE549D /* WannaKnowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9732460D2797C67300CE549D /* WannaKnowView.swift */; };
+		973246102797C68200CE549D /* WannaKnowListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9732460F2797C68200CE549D /* WannaKnowListView.swift */; };
+		973246122797C69000CE549D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246112797C69000CE549D /* ContentView.swift */; };
+		973246142797C69E00CE549D /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246132797C69E00CE549D /* SignUpView.swift */; };
+		973246162797C6A800CE549D /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246152797C6A800CE549D /* CalenderView.swift */; };
+		973246192797C76F00CE549D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 973246182797C76F00CE549D /* SnapKit */; };
+		9732461C2797C79000CE549D /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 9732461B2797C79000CE549D /* SideMenu */; };
+		9732461F2797C82600CE549D /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = 9732461E2797C82600CE549D /* Parchment */; };
+		973246222797C83E00CE549D /* JTAppleCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 973246212797C83E00CE549D /* JTAppleCalendar */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		973245E02797BAD800CE549D /* 想知道嗎論壇APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "想知道嗎論壇APP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		973245E32797BAD800CE549D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		973245E52797BAD800CE549D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		973245E72797BAD800CE549D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		973245E72797BAD800CE549D /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		973245EC2797BADA00CE549D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		973245EF2797BADA00CE549D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		973245F12797BADA00CE549D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		973245F92797BC1F00CE549D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		973245FD2797BC7B00CE549D /* WannaKnowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowViewController.swift; sourceTree = "<group>"; };
+		973245FF2797BCBF00CE549D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		973246012797BD2900CE549D /* BulletinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinViewController.swift; sourceTree = "<group>"; };
+		973246032797BD5700CE549D /* WannaKnowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowListViewController.swift; sourceTree = "<group>"; };
+		973246052797C5F200CE549D /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
+		973246072797C60C00CE549D /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		973246092797C65100CE549D /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		9732460B2797C66000CE549D /* BulletinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinView.swift; sourceTree = "<group>"; };
+		9732460D2797C67300CE549D /* WannaKnowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowView.swift; sourceTree = "<group>"; };
+		9732460F2797C68200CE549D /* WannaKnowListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowListView.swift; sourceTree = "<group>"; };
+		973246112797C69000CE549D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		973246132797C69E00CE549D /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		973246152797C6A800CE549D /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +61,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9732461F2797C82600CE549D /* Parchment in Frameworks */,
+				973246222797C83E00CE549D /* JTAppleCalendar in Frameworks */,
+				9732461C2797C79000CE549D /* SideMenu in Frameworks */,
+				973246192797C76F00CE549D /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,14 +90,60 @@
 		973245E22797BAD800CE549D /* 想知道嗎論壇APP */ = {
 			isa = PBXGroup;
 			children = (
-				973245E32797BAD800CE549D /* AppDelegate.swift */,
 				973245E52797BAD800CE549D /* SceneDelegate.swift */,
-				973245E72797BAD800CE549D /* ViewController.swift */,
+				973245E32797BAD800CE549D /* AppDelegate.swift */,
+				973245FB2797BC2200CE549D /* Model */,
+				973245F82797BBFE00CE549D /* View */,
+				973245F72797BBF500CE549D /* ViewController */,
 				973245EC2797BADA00CE549D /* Assets.xcassets */,
+				973245FC2797BC3600CE549D /* TableViewCell */,
 				973245EE2797BADA00CE549D /* LaunchScreen.storyboard */,
 				973245F12797BADA00CE549D /* Info.plist */,
 			);
 			path = "想知道嗎論壇APP";
+			sourceTree = "<group>";
+		};
+		973245F72797BBF500CE549D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				973245E72797BAD800CE549D /* HomePageViewController.swift */,
+				973246012797BD2900CE549D /* BulletinViewController.swift */,
+				973246032797BD5700CE549D /* WannaKnowListViewController.swift */,
+				973245FD2797BC7B00CE549D /* WannaKnowViewController.swift */,
+				973246072797C60C00CE549D /* ContentViewController.swift */,
+				973245FF2797BCBF00CE549D /* SignUpViewController.swift */,
+				973246052797C5F200CE549D /* CalenderViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		973245F82797BBFE00CE549D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				973246092797C65100CE549D /* HomePageView.swift */,
+				9732460B2797C66000CE549D /* BulletinView.swift */,
+				9732460D2797C67300CE549D /* WannaKnowView.swift */,
+				9732460F2797C68200CE549D /* WannaKnowListView.swift */,
+				973246112797C69000CE549D /* ContentView.swift */,
+				973246132797C69E00CE549D /* SignUpView.swift */,
+				973246152797C6A800CE549D /* CalenderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		973245FB2797BC2200CE549D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				973245F92797BC1F00CE549D /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		973245FC2797BC3600CE549D /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +162,12 @@
 			dependencies = (
 			);
 			name = "想知道嗎論壇APP";
+			packageProductDependencies = (
+				973246182797C76F00CE549D /* SnapKit */,
+				9732461B2797C79000CE549D /* SideMenu */,
+				9732461E2797C82600CE549D /* Parchment */,
+				973246212797C83E00CE549D /* JTAppleCalendar */,
+			);
 			productName = "想知道嗎論壇APP";
 			productReference = 973245E02797BAD800CE549D /* 想知道嗎論壇APP.app */;
 			productType = "com.apple.product-type.application";
@@ -107,6 +195,12 @@
 				Base,
 			);
 			mainGroup = 973245D72797BAD800CE549D;
+			packageReferences = (
+				973246172797C76F00CE549D /* XCRemoteSwiftPackageReference "SnapKit" */,
+				9732461A2797C79000CE549D /* XCRemoteSwiftPackageReference "SideMenu" */,
+				9732461D2797C82600CE549D /* XCRemoteSwiftPackageReference "Parchment" */,
+				973246202797C83E00CE549D /* XCRemoteSwiftPackageReference "JTAppleCalendar" */,
+			);
 			productRefGroup = 973245E12797BAD800CE549D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -133,9 +227,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				973245E82797BAD800CE549D /* ViewController.swift in Sources */,
+				973246082797C60C00CE549D /* ContentViewController.swift in Sources */,
+				973246102797C68200CE549D /* WannaKnowListView.swift in Sources */,
+				973246002797BCBF00CE549D /* SignUpViewController.swift in Sources */,
+				973246162797C6A800CE549D /* CalenderView.swift in Sources */,
+				973246042797BD5700CE549D /* WannaKnowListViewController.swift in Sources */,
+				9732460C2797C66000CE549D /* BulletinView.swift in Sources */,
+				973245FE2797BC7B00CE549D /* WannaKnowViewController.swift in Sources */,
+				973245E82797BAD800CE549D /* HomePageViewController.swift in Sources */,
 				973245E42797BAD800CE549D /* AppDelegate.swift in Sources */,
 				973245E62797BAD800CE549D /* SceneDelegate.swift in Sources */,
+				973246062797C5F200CE549D /* CalenderViewController.swift in Sources */,
+				973245FA2797BC1F00CE549D /* Model.swift in Sources */,
+				973246122797C69000CE549D /* ContentView.swift in Sources */,
+				973246142797C69E00CE549D /* SignUpView.swift in Sources */,
+				9732460E2797C67300CE549D /* WannaKnowView.swift in Sources */,
+				9732460A2797C65100CE549D /* HomePageView.swift in Sources */,
+				973246022797BD2900CE549D /* BulletinViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +435,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		973246172797C76F00CE549D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		9732461A2797C79000CE549D /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
+		9732461D2797C82600CE549D /* XCRemoteSwiftPackageReference "Parchment" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rechsteiner/Parchment";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+		973246202797C83E00CE549D /* XCRemoteSwiftPackageReference "JTAppleCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/patchthecode/JTAppleCalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		973246182797C76F00CE549D /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 973246172797C76F00CE549D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		9732461B2797C79000CE549D /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9732461A2797C79000CE549D /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
+		9732461E2797C82600CE549D /* Parchment */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9732461D2797C82600CE549D /* XCRemoteSwiftPackageReference "Parchment" */;
+			productName = Parchment;
+		};
+		973246212797C83E00CE549D /* JTAppleCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 973246202797C83E00CE549D /* XCRemoteSwiftPackageReference "JTAppleCalendar" */;
+			productName = JTAppleCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 973245D82797BAD800CE549D /* Project object */;
 }
