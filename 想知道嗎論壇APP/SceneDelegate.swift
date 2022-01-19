@@ -6,14 +6,18 @@
 //
 
 import UIKit
+import SideMenu
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let setWindow = (scene as? UIWindowScene) else { return }
+        self.window = UIWindow(windowScene: setWindow)
+        let sideMenu = SideMenuNavigationController(rootViewController: HomePageViewController())
+        self.window?.rootViewController = sideMenu
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

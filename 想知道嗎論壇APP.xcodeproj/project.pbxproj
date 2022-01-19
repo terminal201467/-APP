@@ -30,6 +30,7 @@
 		9732461C2797C79000CE549D /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 9732461B2797C79000CE549D /* SideMenu */; };
 		9732461F2797C82600CE549D /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = 9732461E2797C82600CE549D /* Parchment */; };
 		973246222797C83E00CE549D /* JTAppleCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 973246212797C83E00CE549D /* JTAppleCalendar */; };
+		973246242797F3CB00CE549D /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246232797F3CA00CE549D /* MenuTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		973246112797C69000CE549D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		973246132797C69E00CE549D /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		973246152797C6A800CE549D /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
+		973246232797F3CA00CE549D /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +97,9 @@
 				973245FB2797BC2200CE549D /* Model */,
 				973245F82797BBFE00CE549D /* View */,
 				973245F72797BBF500CE549D /* ViewController */,
-				973245EC2797BADA00CE549D /* Assets.xcassets */,
 				973245FC2797BC3600CE549D /* TableViewCell */,
 				973245EE2797BADA00CE549D /* LaunchScreen.storyboard */,
+				973245EC2797BADA00CE549D /* Assets.xcassets */,
 				973245F12797BADA00CE549D /* Info.plist */,
 			);
 			path = "想知道嗎論壇APP";
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				973245E72797BAD800CE549D /* HomePageViewController.swift */,
+				973246232797F3CA00CE549D /* MenuTableViewController.swift */,
 				973246012797BD2900CE549D /* BulletinViewController.swift */,
 				973246032797BD5700CE549D /* WannaKnowListViewController.swift */,
 				973245FD2797BC7B00CE549D /* WannaKnowViewController.swift */,
@@ -239,6 +242,7 @@
 				973245E62797BAD800CE549D /* SceneDelegate.swift in Sources */,
 				973246062797C5F200CE549D /* CalenderViewController.swift in Sources */,
 				973245FA2797BC1F00CE549D /* Model.swift in Sources */,
+				973246242797F3CB00CE549D /* MenuTableViewController.swift in Sources */,
 				973246122797C69000CE549D /* ContentView.swift in Sources */,
 				973246142797C69E00CE549D /* SignUpView.swift in Sources */,
 				9732460E2797C67300CE549D /* WannaKnowView.swift in Sources */,
