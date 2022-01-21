@@ -1,54 +1,46 @@
 //
-//  MenuTableViewTableViewController.swift
+//  BulletinViewController.swift
 //  想知道嗎論壇APP
 //
-//  Created by Jhen Mu on 2022/1/19.
+//  Created by Jhen Mu on 2022/1/21.
 //
 
 import UIKit
 
-class MenuTableViewController: UITableViewController {
-    
-    
-    //MARK:-LifeCycle
+class BulletinTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTableView()
-        view.backgroundColor = .gray
-    }
-    
-    private func setTableView(){
-        self.tableView.register(HomePageSideMenuCell.self, forCellReuseIdentifier: HomePageSideMenuCell.reuseIdentifier)
-        self.tableView.rowHeight = 50
-        self.tableView.allowsSelection = true
-        self.tableView.backgroundColor = .green
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return SideMenuName.allCases.count
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
+    }
+
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:HomePageSideMenuCell.reuseIdentifier, for: indexPath) as! HomePageSideMenuCell
-        cell.logoMark.image = UIImage(named: SideMenuName.allCases[indexPath.row].logoName)
-        cell.controllerName.text = SideMenuName.allCases[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cells = SideMenuName.allCases[indexPath.row]
-        switch cells {
-        case .xiangZhiDaoMa:
-            let wannaKnowViewController = WannaKnowViewController()
-            present(wannaKnowViewController, animated: true, completion: nil)
-        case .chiTa:
-            print("其他項目")
-        }
-    }
-    
+    */
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

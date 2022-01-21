@@ -7,32 +7,46 @@
 
 import UIKit
 import SideMenu
+import SnapKit
+import Parchment
 
 class HomePageViewController: UIViewController {
     
     //MARK:-Properties
-    let searchViewController = UISearchController(searchResultsController: nil)
+    private let sideMenu = SideMenuNavigationController(rootViewController: MenuTableViewController())
+    
+    private let homePageView = HomePageView()
+    
+    private let pageViewController = PagingViewController()
+    
+    private let viewControllers:[UIViewController] = { () -> [UIViewController] in
+        let bulletinViewController = BulletinTableViewController()
+        let xiangZhiDaoMaViewController = BulletinTableViewController()
+        let chiaoWanViewController = ChiaoWanViewController()
+        return [bulletinViewController,xiangZhiDaoMaViewController,chiaoWanViewController]
+    }()
     
     //MARK:-LifeCyCle
     override func loadView() {
         super.loadView()
+        view = homePageView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
         setSideMenu()
-//        setNavigationBar()
-//        setSearchController()
+        setSearchBar()
+        setPageViewController()
     }
     
-    //MARK:-Methods
+    //MARK:-setSideMenu
     private func setSideMenu(){
-        SideMenuManager.PresentDirection.left
-        SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: (self.navigationController?.view)!)
-//        SideMenuManager.default.leftMenuNavigationController = MenuTableViewController
+        sideMenu.leftSide = true
+        SideMenuManager.default.rightMenuNavigationController = sideMenu
+        SideMenuManager.default.addPanGestureToPresent(toView: view)
     }
-    
+    //MARK:-setNavigationBar
     private func setNavigationBar(){
         let leftSideMenuButton = UIBarButtonItem(image: UIImage(named: "line.3.horizontal"),
                                                  style: .plain,
@@ -40,21 +54,50 @@ class HomePageViewController: UIViewController {
                                                  action: #selector(sideMenuButtonMethod))
         
         self.navigationItem.leftBarButtonItem = leftSideMenuButton
-        self.navigationController?.navigationBar.tintColor = .black
     }
     
     @objc func sideMenuButtonMethod(){
-        present(self, animated: true, completion: nil)
+        present(sideMenu, animated: true, completion: nil)
     }
     
-    private func setSearchController(){
-        self.navigationItem.searchController = searchViewController
+    //MARK:-setSearchBar
+    private func setSearchBar(){
+        homePageView.searchBar.delegate = self
     }
     
+    //MARK:-setPageViewController
+    private func setPageViewController(){
+        pageViewController.delegate = self
+        pageViewController.dataSource = self
+        add(pageViewController)
+        pageViewController.view.snp.makeConstraints { make in
+            make.top.right.left.bottom.equalTo(homePageView.menuPageContainer)
+        }
+    }
 }
 
 extension HomePageViewController:SideMenuNavigationControllerDelegate{
     
     
+}
+
+extension HomePageViewController:UISearchBarDelegate{
+    
+    
+}
+
+//MARK:PagingViewControllerDelegate
+extension HomePageViewController:PagingViewControllerDelegate,PagingViewControllerDataSource{
+    func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
+        return viewControllers.count
+    }
+    
+    func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
+        return PagingIndexItem(index: index, title: MenuPageName.allCases[index].title)
+    }
+    
+    func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
+        return viewControllers[index]
+    }
 }
 
