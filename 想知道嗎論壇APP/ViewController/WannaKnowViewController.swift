@@ -6,24 +6,48 @@
 //
 
 import UIKit
+import SideMenu
 
 class WannaKnowViewController: UIViewController {
+    
+    //MARK:-Properties
+    private let sideMenu = SideMenuNavigationController(rootViewController: MenuTableViewController())
+    
+    private let wannaKnowView = WannaKnowView()
+    
+    //MARK:-LifeCycle
+    override func loadView() {
+        super.loadView()
+        view = wannaKnowView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setSegmented()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK:-setNavigationBar
+    private func setNavigationBar(){
+        let leftSideMenuButton = UIBarButtonItem(image: UIImage(named: "line.3.horizontal"),
+                                                 style: .plain,
+                                                 target:self,
+                                                 action: #selector(sideMenuButtonMethod))
+        
+        self.navigationItem.leftBarButtonItem = leftSideMenuButton
     }
-    */
-
+    
+    @objc func sideMenuButtonMethod(){
+        present(sideMenu, animated: true, completion: nil)
+    }
+    
+    private func setSegmented(){
+        wannaKnowView.segmentedControl.addTarget(self, action: #selector(changePage), for: .touchDown)
+    }
+    
+    @objc func changePage(){
+        
+    }
+    
 }
+
+

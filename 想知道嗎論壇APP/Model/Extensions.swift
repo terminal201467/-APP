@@ -16,10 +16,10 @@ extension UIViewController {
     }
 }
 
-extension UIView{
-    func autoLayout(_ view:UIView){
-        view.snp.makeConstraints { make in
-            make.right.left.top.bottom.equalToSuperview()
-        }
-    }
-}
+//extension UIView{
+//    func autoLayout(_ view:UIView){
+//        view.snp.makeConstraints { make in
+//            make.right.left.top.bottom.equalToSuperview()
+//        }
+//    }
+//}

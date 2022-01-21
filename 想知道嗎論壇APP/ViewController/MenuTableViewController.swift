@@ -9,7 +9,6 @@ import UIKit
 
 class MenuTableViewController: UITableViewController {
     
-    
     //MARK:-LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()

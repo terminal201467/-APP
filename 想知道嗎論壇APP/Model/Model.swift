@@ -34,6 +34,15 @@ enum MenuPageName:Int,CaseIterable{
     }
 }
 
+enum SegmentedTitle:Int,CaseIterable{
+    case article = 0,calender
+    var title:String{
+        switch self {
+        case .article:  return "文章"
+        case .calender: return "日曆"
+        }
+    }
+}
 
 enum ColorManage:Int,CaseIterable{
     case darkGreen = 0, green, lightGreen, whitegreen, darkGray, brown, black, white
