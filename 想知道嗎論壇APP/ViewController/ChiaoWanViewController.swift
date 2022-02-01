@@ -21,7 +21,6 @@ class ChiaoWanViewController: UIViewController{
         super.viewDidLoad()
         setTableView()
         setTextField()
-
     }
     
     private func setTableView(){
@@ -32,7 +31,6 @@ class ChiaoWanViewController: UIViewController{
     private func setTextField(){
         chiaoWanView.textField.delegate = self
     }
-
 }
 
 extension ChiaoWanViewController:UITableViewDelegate,UITableViewDataSource{

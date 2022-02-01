@@ -8,17 +8,19 @@
 import UIKit
 import SnapKit
 
-class HomePageSideMenuCell: UITableViewCell {
+class SideMenuCell: UITableViewCell {
     
     static let reuseIdentifier = "HomePageSideMenuCell"
     
     let logoMark:UIImageView = {
         let logoMark = UIImageView()
+        logoMark.contentMode = .scaleAspectFit
         return logoMark
     }()
     
     let controllerName:UILabel = {
        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize:20)
         label.textColor = .black
         return label
     }()
@@ -45,8 +47,8 @@ class HomePageSideMenuCell: UITableViewCell {
     
     private func autoLayout(){
         stackView.snp.makeConstraints { make in
-            make.left.equalTo(70)
-            make.right.equalTo(-70)
+            make.left.equalTo(20)
+            make.right.equalTo(-20)
             make.top.equalTo(snp_topMargin)
             make.bottom.equalTo(snp_bottomMargin)
         }

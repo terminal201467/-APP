@@ -17,14 +17,12 @@ class MenuTableViewController: UITableViewController {
     }
     
     private func setTableView(){
-        self.tableView.register(HomePageSideMenuCell.self, forCellReuseIdentifier: HomePageSideMenuCell.reuseIdentifier)
-        self.tableView.rowHeight = 50
+        self.tableView.register(SideMenuCell.self, forCellReuseIdentifier: SideMenuCell.reuseIdentifier)
+        self.tableView.rowHeight = 70
         self.tableView.sectionIndexColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
         self.tableView.allowsSelection = true
         self.tableView.backgroundColor = .green
     }
-    
-
 
     // MARK: - Table view data source
 
@@ -34,7 +32,7 @@ class MenuTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:HomePageSideMenuCell.reuseIdentifier, for: indexPath) as! HomePageSideMenuCell
+        let cell = tableView.dequeueReusableCell(withIdentifier:SideMenuCell.reuseIdentifier, for: indexPath) as! SideMenuCell
         cell.logoMark.image = UIImage(named: SideMenuName.allCases[indexPath.row].logoName)
         cell.controllerName.text = SideMenuName.allCases[indexPath.row].title
         return cell
@@ -43,7 +41,6 @@ class MenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let sideMenuCases = SideMenuName.allCases[indexPath.row]
-        
         
     }
 }

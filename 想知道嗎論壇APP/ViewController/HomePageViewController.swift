@@ -90,7 +90,10 @@ class HomePageViewController: UIViewController {
     }
 
     @objc func dismissKeyBoard() {
-            self.view.endEditing(true)
+        self.view.endEditing(true)
+        if self.view.frame.origin.y < 0{
+            self.view.frame.origin.y = 0
+        }
     }
     
 }
@@ -108,7 +111,6 @@ extension HomePageViewController:UISearchBarDelegate{
         searchBar.resignFirstResponder()
         return true
     }
-    
 }
 
 //MARK:PagingViewControllerDelegate

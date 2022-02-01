@@ -18,10 +18,11 @@ class ChiaoWanView: UIView {
         return tableView
     }()
     
-    let applyButton:UIButton = {
-       let button = UIButton()
-//        button.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
-        button.layer.cornerRadius = 20
+    private let signInButton:UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named:"signInButton"), for: .normal)
+        button.tintColor = #colorLiteral(red: 0.468264699, green: 0.3851454258, blue: 0.3606632352, alpha: 1)
+        button.contentMode = .scaleAspectFit
         return button
     }()
     
@@ -29,6 +30,7 @@ class ChiaoWanView: UIView {
        let textField = UITextField()
         textField.backgroundColor = .white
         textField.placeholder = "想知道..."
+        textField.tintColor = .gray
         textField.keyboardAppearance = .light
         textField.layer.cornerRadius = 18
         textField.layer.borderWidth = 3
@@ -36,7 +38,7 @@ class ChiaoWanView: UIView {
         return textField
     }()
     
-    let sendButton:UIButton = {
+    private let sendButton:UIButton = {
        let sendButton = UIButton()
         sendButton.layer.cornerRadius = 18
         sendButton.layer.backgroundColor = #colorLiteral(red: 0.4743221402, green: 0.7362652421, blue: 0.5361232162, alpha: 1)
@@ -44,12 +46,21 @@ class ChiaoWanView: UIView {
         return sendButton
     }()
     
-    lazy var textFieldContainerStackView:UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [textField,sendButton])
+    private lazy var stackView:UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [signInButton,textField])
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
         stackView.alignment = .fill
-        stackView.spacing = 5
+        stackView.spacing = 0
+        return stackView
+    }()
+    
+    lazy var textFieldContainerStackView:UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [stackView,sendButton])
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -74,8 +85,8 @@ class ChiaoWanView: UIView {
         
         textFieldContainerStackView.snp.makeConstraints { make in
             make.top.equalTo(tableView.snp_bottomMargin)
-            make.left.equalTo(30)
-            make.right.equalTo(-30)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
             make.height.equalTo(35)
             make.bottom.equalTo(-40)
         }
