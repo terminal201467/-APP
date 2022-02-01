@@ -52,7 +52,7 @@ class WannaKnowView: UIView {
         }
         
         collectionButtonContainer.snp.makeConstraints { make in
-            make.top.equalTo(segmentedControl.snp_bottomMargin)
+            make.top.equalTo(segmentedControl.snp_bottom)
             make.right.equalToSuperview()
             make.left.equalToSuperview()
             make.height.equalTo(60)

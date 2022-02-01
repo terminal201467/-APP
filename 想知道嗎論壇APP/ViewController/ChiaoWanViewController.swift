@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChiaoWanViewController: UIViewController {
+class ChiaoWanViewController: UIViewController{
     
     let chiaoWanView = ChiaoWanView()
     
@@ -20,12 +20,17 @@ class ChiaoWanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+        setTextField()
 
     }
     
     private func setTableView(){
         chiaoWanView.tableView.delegate = self
         chiaoWanView.tableView.dataSource = self
+    }
+    
+    private func setTextField(){
+        chiaoWanView.textField.delegate = self
     }
 
 }
@@ -39,4 +44,21 @@ extension ChiaoWanViewController:UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         return cell
     }
+}
+
+extension ChiaoWanViewController:UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if self.view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= 310
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if self.view.frame.origin.y < 0{
+            self.view.frame.origin.y = 0
+        }
+        return true
+    }
+    
 }

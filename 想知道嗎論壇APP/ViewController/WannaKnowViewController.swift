@@ -32,7 +32,6 @@ class WannaKnowViewController: UIViewController {
                                                  style: .plain,
                                                  target:self,
                                                  action: #selector(sideMenuButtonMethod))
-        
         self.navigationItem.leftBarButtonItem = leftSideMenuButton
     }
     

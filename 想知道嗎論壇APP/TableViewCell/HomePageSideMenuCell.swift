@@ -27,7 +27,7 @@ class HomePageSideMenuCell: UITableViewCell {
        let stackView = UIStackView(arrangedSubviews: [logoMark,controllerName])
         stackView.axis = .horizontal
         stackView.distribution = .fillProportionally
-        stackView.alignment = .fill
+        stackView.alignment = .center
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -45,7 +45,10 @@ class HomePageSideMenuCell: UITableViewCell {
     
     private func autoLayout(){
         stackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.left.equalTo(70)
+            make.right.equalTo(-70)
+            make.top.equalTo(snp_topMargin)
+            make.bottom.equalTo(snp_bottomMargin)
         }
     }
 }

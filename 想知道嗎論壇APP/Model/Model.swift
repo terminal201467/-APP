@@ -8,17 +8,15 @@
 import Foundation
 
 enum SideMenuName:Int,CaseIterable{
-    case xiangZhiDaoMa = 0,chiTa
+    case xiangZhiDaoMa = 0
     var title:String{
         switch self {
         case .xiangZhiDaoMa: return "想知道嗎"
-        case .chiTa:         return "其他"
         }
     }
     var logoName:String{
         switch self {
         case .xiangZhiDaoMa: return "sun.min.fill"
-        case .chiTa:         return "sparkles"
         }
     }
 }

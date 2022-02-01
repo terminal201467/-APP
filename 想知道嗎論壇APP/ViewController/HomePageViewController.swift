@@ -38,12 +38,14 @@ class HomePageViewController: UIViewController {
         setSideMenu()
         setSearchBar()
         setPageViewController()
+        setKeyboardSetting()
+        
     }
     
     //MARK:-setSideMenu
     private func setSideMenu(){
         sideMenu.leftSide = true
-        SideMenuManager.default.rightMenuNavigationController = sideMenu
+        SideMenuManager.default.leftMenuNavigationController = sideMenu
         SideMenuManager.default.addPanGestureToPresent(toView: view)
     }
     //MARK:-setNavigationBar
@@ -74,6 +76,16 @@ class HomePageViewController: UIViewController {
             make.top.right.left.bottom.equalTo(homePageView.menuPageContainer)
         }
     }
+    
+    private func setKeyboardSetting(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
+        self.homePageView.banner.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyBoard() {
+            self.view.endEditing(true)
+    }
+    
 }
 
 extension HomePageViewController:SideMenuNavigationControllerDelegate{

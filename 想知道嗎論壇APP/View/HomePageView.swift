@@ -26,7 +26,7 @@ class HomePageView: UIView {
     
     let menuPageContainer:UIView = {
        let view = UIView()
-        view.backgroundColor = .brown
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -51,7 +51,7 @@ class HomePageView: UIView {
         }
         
         banner.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp_bottomMargin)
+            make.top.equalTo(searchBar.snp_bottom)
             make.right.equalToSuperview()
             make.left.equalToSuperview()
             make.height.equalTo(100)
