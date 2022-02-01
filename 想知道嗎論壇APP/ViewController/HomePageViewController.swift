@@ -50,12 +50,15 @@ class HomePageViewController: UIViewController {
     }
     //MARK:-setNavigationBar
     private func setNavigationBar(){
+        self.navigationItem.titleView = NavigationTitleView()
         let leftSideMenuButton = UIBarButtonItem(image: UIImage(named: "line.3.horizontal"),
                                                  style: .plain,
                                                  target:self,
                                                  action: #selector(sideMenuButtonMethod))
-        
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationItem.leftBarButtonItem = leftSideMenuButton
+        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
     }
     
     @objc func sideMenuButtonMethod(){
@@ -71,6 +74,10 @@ class HomePageViewController: UIViewController {
     private func setPageViewController(){
         pageViewController.delegate = self
         pageViewController.dataSource = self
+        pageViewController.selectedBackgroundColor = #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
+        pageViewController.selectedTextColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        pageViewController.indicatorColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
+        pageViewController.menuBackgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         add(pageViewController)
         pageViewController.view.snp.makeConstraints { make in
             make.top.right.left.bottom.equalTo(homePageView.menuPageContainer)
@@ -94,7 +101,13 @@ extension HomePageViewController:SideMenuNavigationControllerDelegate{
 }
 
 extension HomePageViewController:UISearchBarDelegate{
-    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
+    }
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.resignFirstResponder()
+        return true
+    }
     
 }
 

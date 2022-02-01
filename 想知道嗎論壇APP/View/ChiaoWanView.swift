@@ -32,14 +32,14 @@ class ChiaoWanView: UIView {
         textField.keyboardAppearance = .light
         textField.layer.cornerRadius = 18
         textField.layer.borderWidth = 3
-        textField.layer.borderColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        textField.layer.borderColor = #colorLiteral(red: 0.4743221402, green: 0.7362652421, blue: 0.5361232162, alpha: 1)
         return textField
     }()
     
     let sendButton:UIButton = {
        let sendButton = UIButton()
         sendButton.layer.cornerRadius = 18
-        sendButton.layer.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        sendButton.layer.backgroundColor = #colorLiteral(red: 0.4743221402, green: 0.7362652421, blue: 0.5361232162, alpha: 1)
         sendButton.setTitle("送出", for: .normal)
         return sendButton
     }()

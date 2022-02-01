@@ -13,12 +13,13 @@ class MenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
     }
     
     private func setTableView(){
         self.tableView.register(HomePageSideMenuCell.self, forCellReuseIdentifier: HomePageSideMenuCell.reuseIdentifier)
         self.tableView.rowHeight = 50
+        self.tableView.sectionIndexColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
         self.tableView.allowsSelection = true
         self.tableView.backgroundColor = .green
     }

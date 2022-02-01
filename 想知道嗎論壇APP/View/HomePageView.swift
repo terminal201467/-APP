@@ -13,13 +13,16 @@ class HomePageView: UIView {
     
     let searchBar:UISearchBar = {
        let searchBar = UISearchBar()
+        searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+        searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        searchBar.searchTextField.layer.cornerRadius = 50
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         return searchBar
     }()
     
     let banner:UIView = {
        let imageView = UIView()
-        imageView.backgroundColor = .green
+        imageView.backgroundColor = #colorLiteral(red: 0.468264699, green: 0.3851454258, blue: 0.3606632352, alpha: 1)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

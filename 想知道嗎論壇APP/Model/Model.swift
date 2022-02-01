@@ -42,20 +42,28 @@ enum SegmentedTitle:Int,CaseIterable{
     }
 }
 
-enum ColorManage:Int,CaseIterable{
-    case darkGreen = 0, green, lightGreen, whitegreen, darkGray, brown, black, white
-    var color:String{
-        switch self {
-        case .darkGreen:  return "#66A374"
-        case .green:      return "#79BC89"
-        case .lightGreen: return "#7DD0A4"
-        case .whitegreen: return "#96EABD"
-        case .darkGray:   return "#5B5B5B"
-        case .brown:      return "#77625C"
-        case .black:      return "#000000"
-        case .white:      return "#FFFFFF"
-        }
-    }
-}
+//enum Colors:Int,CaseIterable{
+//    case HaoXiangDarkGreen = 0, HaoXiangGreen, HaoXiangLightGreen, HaoXiangWhiteGreen, HaoXiangDarkGray, HaoXiangBrown, HaoXiangBlack, HaoXiangWhite
+//    var color: Any{
+//        switch self {
+//        ///#66A374
+//        case .HaoXiangDarkGreen:  return #colorLiteral(red: 0.3814475536, green: 0.6404736638, blue: 0.4620088935, alpha: 1)
+//        ///#79BC89
+//        case .HaoXiangGreen:      return #colorLiteral(red: 0.4743221402, green: 0.7362652421, blue: 0.5361232162, alpha: 1)
+//        ///#7DD0A4
+//        case .HaoXiangLightGreen: return #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
+//        ///#96EABD
+//        case .HaoXiangWhiteGreen: return #colorLiteral(red: 0.5876620412, green: 0.9183974862, blue: 0.7402922511, alpha: 1)
+//        ///#5B5B5B
+//        case .HaoXiangDarkGray:   return #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+//        ///#77625C
+//        case .HaoXiangBrown:      return #colorLiteral(red: 0.468264699, green: 0.3851454258, blue: 0.3606632352, alpha: 1)
+//        ///#000000
+//        case .HaoXiangBlack:      return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+//        ///#FFFFFF
+//        case .HaoXiangWhite:      return #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
+//        }
+//    }
+//}
 
 
