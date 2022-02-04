@@ -40,18 +40,17 @@ class MenuTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("點選：\(indexPath.row)")
-        
         
         tableView.deselectRow(at: indexPath, animated: true)
         let sideMenuCases = SideMenuName.allCases[indexPath.row]
         switch sideMenuCases {
         case .xiangZhiDaoMa:
             print("想知道嗎？")
-            let wannaKnowVC = WannaKnowViewController()
-            present(wannaKnowVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(WannaKnowViewController(), animated: true)
         }
-        
     }
+    
+
 }

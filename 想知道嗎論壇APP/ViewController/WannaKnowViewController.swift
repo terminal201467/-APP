@@ -16,7 +16,14 @@ class WannaKnowViewController: UIViewController {
     
     private let wannaKnowView = WannaKnowView()
     
-    private let pageViewController = PageViewController()
+    private let pageViewController = PagingViewController()
+    
+    private let viewControllers:[UIViewController] = {
+       let contentViewController = ContentViewController()
+       let hotViewController = ContentViewController()
+        let followViewController = ContentViewController()
+        return [contentViewController,hotViewController,followViewController]
+    }()
     
     //MARK:-LifeCycle
     override func loadView() {
@@ -30,7 +37,7 @@ class WannaKnowViewController: UIViewController {
         setSideMenu()
         setNavigationBar()
         setSegmented()
-//        setPageView()
+        setPagingViewController()
     }
     
     //MARK:-setSideMenu
@@ -66,31 +73,31 @@ class WannaKnowViewController: UIViewController {
         
     }
     
-//    private func setPageView(){
-//        pageViewController.delegate = self
-//        pageViewController.dataSource = self
-//    }
-    
+    private func setPagingViewController(){
+        pageViewController.delegate = self
+        pageViewController.dataSource = self
+        pageViewController.selectedBackgroundColor = #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
+        pageViewController.selectedTextColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        pageViewController.indicatorColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
+        pageViewController.menuBackgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        add(pageViewController)
+        pageViewController.view.snp.makeConstraints { make in
+            make.right.left.top.bottom.equalTo(wannaKnowView.menuContainer)
+        }
+    }
 }
 
-//extension WannaKnowViewController:PageViewControllerDelegate,PageViewControllerDataSource{
-//    func pageViewController(_ pageViewController: PageViewController, willStartScrollingFrom startingViewController: UIViewController, destinationViewController: UIViewController) {
-//        <#code#>
-//    }
-//
-//    func pageViewController(_ pageViewController: PageViewController, isScrollingFrom startingViewController: UIViewController, destinationViewController: UIViewController?, progress: CGFloat) {
-//        <#code#>
-//    }
-//
-//    func pageViewController(_ pageViewController: PageViewController, didFinishScrollingFrom startingViewController: UIViewController, destinationViewController: UIViewController, transitionSuccessful: Bool) {
-//        <#code#>
-//    }
-//
-//    func pageViewController(_ pageViewController: PageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-//        <#code#>
-//    }
-//
-//    func pageViewController(_ pageViewController: PageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-//        <#code#>
-//    }
-//}
+extension WannaKnowViewController:PagingViewControllerDelegate,PagingViewControllerDataSource{
+    func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
+        return viewControllers.count
+    }
+    
+    func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
+        return viewControllers[index]
+    }
+    
+    func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
+        return PagingIndexItem(index: index, title: ArticlePages.allCases[index].text)
+    }
+
+}

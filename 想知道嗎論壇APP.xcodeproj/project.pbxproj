@@ -136,8 +136,8 @@
 				97324629279A3FDA00CE549D /* BulletinTableViewController.swift */,
 				9732462D279A506200CE549D /* ChiaoWanViewController.swift */,
 				973245FD2797BC7B00CE549D /* WannaKnowViewController.swift */,
-				973246072797C60C00CE549D /* ContentViewController.swift */,
 				973245FF2797BCBF00CE549D /* SignUpViewController.swift */,
+				973246072797C60C00CE549D /* ContentViewController.swift */,
 				973246052797C5F200CE549D /* CalenderViewController.swift */,
 			);
 			path = ViewController;
