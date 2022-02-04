@@ -9,18 +9,26 @@ import UIKit
 
 class WannaKnowView: UIView {
     
+    let searchBar:UISearchBar = {
+       let searchBar = UISearchBar()
+        searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        return searchBar
+    }()
+    
     let segmentedControl:UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(items:["文章","日曆"])
+        let segmentedControl = UISegmentedControl(items:SegmentedTitle.allCases.map{$0.title})
         segmentedControl.tintColor = .blue
-        segmentedControl.backgroundColor = .gray
+        segmentedControl.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font:UIFont.systemFont(ofSize: 16)], for: .normal)
+        segmentedControl.selectedSegmentTintColor = #colorLiteral(red: 0.4743221402, green: 0.7362652421, blue: 0.5361232162, alpha: 1)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         return segmentedControl
     }()
     
-    let collectionButtonContainer:UIView = {
+    private let collectionButtonContainer:UIView = {
        let view = UIView()
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -46,13 +54,13 @@ class WannaKnowView: UIView {
     
     private func autoLayout(){
         segmentedControl.snp.makeConstraints { make in
-            make.top.equalTo(layoutMarginsGuide)
-            make.right.equalToSuperview()
-            make.left.equalToSuperview()
+            make.top.equalTo(15)
+            make.right.equalTo(-15)
+            make.left.equalTo(15)
         }
         
         collectionButtonContainer.snp.makeConstraints { make in
-            make.top.equalTo(segmentedControl.snp_bottom)
+            make.top.equalTo(segmentedControl.snp_bottom).offset(15)
             make.right.equalToSuperview()
             make.left.equalToSuperview()
             make.height.equalTo(60)

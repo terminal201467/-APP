@@ -91,11 +91,10 @@ class HomePageViewController: UIViewController {
 
     @objc func dismissKeyBoard() {
         self.view.endEditing(true)
-        if self.view.frame.origin.y < 0{
-            self.view.frame.origin.y = 0
+        if viewControllers[2].view.frame.origin.y < 0{
+            viewControllers[2].view.frame.origin.y = 0
         }
     }
-    
 }
 
 extension HomePageViewController:SideMenuNavigationControllerDelegate{

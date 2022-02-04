@@ -17,6 +17,7 @@ class HomePageView: UIView {
         searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         searchBar.searchTextField.layer.cornerRadius = 50
         searchBar.searchTextField.keyboardAppearance = .light
+        searchBar.isTranslucent = false
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         return searchBar
     }()

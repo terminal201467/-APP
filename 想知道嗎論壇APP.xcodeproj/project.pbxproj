@@ -39,6 +39,9 @@
 		9792945327A9532700EA60B4 /* PageViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945227A9532700EA60B4 /* PageViewControllerCell.swift */; };
 		9792945527A9665F00EA60B4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945427A9665F00EA60B4 /* Model.swift */; };
 		9792945727A969F800EA60B4 /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945627A969F800EA60B4 /* Footer.swift */; };
+		9792945927AA740B00EA60B4 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945827AA740B00EA60B4 /* CustomButtons.swift */; };
+		9792945B27AC0B8000EA60B4 /* EditingTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945A27AC0B8000EA60B4 /* EditingTextFieldViewController.swift */; };
+		9792945D27AC0C0200EA60B4 /* EditingTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945C27AC0C0200EA60B4 /* EditingTextFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,9 @@
 		9792945227A9532700EA60B4 /* PageViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllerCell.swift; sourceTree = "<group>"; };
 		9792945427A9665F00EA60B4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9792945627A969F800EA60B4 /* Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
+		9792945827AA740B00EA60B4 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
+		9792945A27AC0B8000EA60B4 /* EditingTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTextFieldViewController.swift; sourceTree = "<group>"; };
+		9792945C27AC0C0200EA60B4 /* EditingTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTextFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,9 @@
 				9792945427A9665F00EA60B4 /* Model.swift */,
 				973246272799534000CE549D /* Extensions.swift */,
 				9792945027A9463200EA60B4 /* NavigationTitleView.swift */,
+				9792945827AA740B00EA60B4 /* CustomButtons.swift */,
+				9792945A27AC0B8000EA60B4 /* EditingTextFieldViewController.swift */,
+				9792945C27AC0C0200EA60B4 /* EditingTextFieldView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -256,15 +265,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				973246082797C60C00CE549D /* ContentViewController.swift in Sources */,
+				9792945B27AC0B8000EA60B4 /* EditingTextFieldViewController.swift in Sources */,
 				973246102797C68200CE549D /* WannaKnowListView.swift in Sources */,
 				973246002797BCBF00CE549D /* SignUpViewController.swift in Sources */,
 				973246162797C6A800CE549D /* CalenderView.swift in Sources */,
+				9792945D27AC0C0200EA60B4 /* EditingTextFieldView.swift in Sources */,
 				9792945727A969F800EA60B4 /* Footer.swift in Sources */,
 				9732460C2797C66000CE549D /* BulletinView.swift in Sources */,
 				9792945127A9463200EA60B4 /* NavigationTitleView.swift in Sources */,
 				973245FE2797BC7B00CE549D /* WannaKnowViewController.swift in Sources */,
 				973245E82797BAD800CE549D /* HomePageViewController.swift in Sources */,
 				973245E42797BAD800CE549D /* AppDelegate.swift in Sources */,
+				9792945927AA740B00EA60B4 /* CustomButtons.swift in Sources */,
 				97324630279A509500CE549D /* ChiaoWanView.swift in Sources */,
 				9732462E279A506200CE549D /* ChiaoWanViewController.swift in Sources */,
 				973246262798EA3F00CE549D /* SideMenuCell.swift in Sources */,
@@ -419,6 +431,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QRA5DG5SAD;
 				INFOPLIST_FILE = "想知道嗎論壇APP/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -437,6 +450,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QRA5DG5SAD;
 				INFOPLIST_FILE = "想知道嗎論壇APP/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

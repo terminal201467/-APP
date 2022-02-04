@@ -16,18 +16,17 @@ class MenuTableViewController: UITableViewController {
         view.backgroundColor = #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
     }
     
+    
+    
     private func setTableView(){
         self.tableView.register(SideMenuCell.self, forCellReuseIdentifier: SideMenuCell.reuseIdentifier)
         self.tableView.rowHeight = 70
-        self.tableView.sectionIndexColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
         self.tableView.allowsSelection = true
-        self.tableView.backgroundColor = .green
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return SideMenuName.allCases.count
     }
 
@@ -35,12 +34,24 @@ class MenuTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier:SideMenuCell.reuseIdentifier, for: indexPath) as! SideMenuCell
         cell.logoMark.image = UIImage(named: SideMenuName.allCases[indexPath.row].logoName)
         cell.controllerName.text = SideMenuName.allCases[indexPath.row].title
+        let greenView = UIView()
+        greenView.backgroundColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
+        cell.selectedBackgroundView = greenView
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        print("點選：\(indexPath.row)")
+        
+        
         tableView.deselectRow(at: indexPath, animated: true)
         let sideMenuCases = SideMenuName.allCases[indexPath.row]
+        switch sideMenuCases {
+        case .xiangZhiDaoMa:
+            print("想知道嗎？")
+            let wannaKnowVC = WannaKnowViewController()
+            present(wannaKnowVC, animated: true, completion: nil)
+        }
         
     }
 }

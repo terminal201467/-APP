@@ -8,7 +8,7 @@
 import Foundation
 
 enum SideMenuName:Int,CaseIterable{
-    case xiangZhiDaoMa = 0
+    case xiangZhiDaoMa = 1
     var title:String{
         switch self {
         case .xiangZhiDaoMa: return "想知道嗎"
@@ -57,4 +57,27 @@ enum CellLogo:Int,CaseIterable{
     
 }
 
+enum ArticlePages:Int,CaseIterable{
+    case news = 0,hot,follow
+    var text:String{
+        switch self {
+        case .news:   return "最新"
+        case .hot:    return "熱門"
+        case .follow: return "追蹤"
+        }
+    }
+}
+
+enum ArticleKind:Int,CaseIterable{
+    case projectExperiance = 0,learnMemo,skillResearch,workLife,lifeChannel
+    var text:String{
+        switch self {
+        case .projectExperiance: return "專案經驗"
+        case .learnMemo:         return "學習小心得"
+        case .skillResearch:     return "技術剖析"
+        case .workLife:          return "職場工作"
+        case .lifeChannel:       return "生活頻道"
+        }
+    }
+}
 
