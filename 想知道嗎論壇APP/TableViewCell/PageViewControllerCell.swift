@@ -30,7 +30,6 @@ class PageViewControllerCell: UITableViewCell {
        let button = UIButton()
         button.setImage(UIImage(named: CellLogo.thumb.logo), for: .normal)
         button.setImage(UIImage(named: CellLogo.thumbFill.logo), for: .selected)
-        button.imageView?.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         return button
     }()
     

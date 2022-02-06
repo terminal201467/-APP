@@ -26,25 +26,16 @@ class WannaKnowView: UIView {
         return segmentedControl
     }()
     
-    private let collectionButtonContainer:UIView = {
-       let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    let menuContainer:UIView = {
+    let contentCalenderContainerView:UIView = {
        let view = UIView()
         view.backgroundColor = .cyan
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(segmentedControl)
-        addSubview(collectionButtonContainer)
-        addSubview(menuContainer)
+        addSubview(contentCalenderContainerView)
         autoLayout()
     }
     
@@ -59,19 +50,10 @@ class WannaKnowView: UIView {
             make.left.equalTo(15)
         }
         
-        collectionButtonContainer.snp.makeConstraints { make in
-            make.top.equalTo(segmentedControl.snp_bottom).offset(15)
-            make.right.equalToSuperview()
-            make.left.equalToSuperview()
-            make.height.equalTo(60)
-        }
-        
-        menuContainer.snp.makeConstraints { make in
-            make.top.equalTo(collectionButtonContainer.snp_bottomMargin)
-            make.right.equalToSuperview()
-            make.left.equalToSuperview()
+        contentCalenderContainerView.snp.makeConstraints { make in
+            make.top.equalTo(segmentedControl.snp.bottom).offset(15)
+            make.right.left.equalToSuperview()
             make.bottom.equalToSuperview()
         }
     }
-    
 }

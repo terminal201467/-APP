@@ -16,15 +16,12 @@ class WannaKnowViewController: UIViewController {
     
     private let wannaKnowView = WannaKnowView()
     
-    private let pageViewController = PagingViewController()
+    private let segmentedControllers = [ContentViewController(),CalenderViewController()]
     
-    private let viewControllers:[UIViewController] = {
-       let contentViewController = ContentViewController()
-       let hotViewController = ContentViewController()
-        let followViewController = ContentViewController()
-        return [contentViewController,hotViewController,followViewController]
-    }()
+    private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
+    private var selectIndex:Int = 0
+
     //MARK:-LifeCycle
     override func loadView() {
         super.loadView()
@@ -37,7 +34,17 @@ class WannaKnowViewController: UIViewController {
         setSideMenu()
         setNavigationBar()
         setSegmented()
-        setPagingViewController()
+        setPageViewController()
+    }
+    
+    private func setPageViewController(){
+        add(pageViewController)
+        pageViewController.view.snp.makeConstraints { make in
+            make.right.left.top.bottom.equalTo(wannaKnowView.contentCalenderContainerView)
+        }
+        pageViewController.setViewControllers([segmentedControllers[0]], direction: .forward, animated: true, completion: nil)
+        pageViewController.delegate = self
+        pageViewController.dataSource = self
     }
     
     //MARK:-setSideMenu
@@ -50,7 +57,6 @@ class WannaKnowViewController: UIViewController {
     //MARK:-setNavigationBar
     private func setNavigationBar(){
         self.navigationItem.titleView = wannaKnowView.searchBar
-        
         let leftSideMenuButton = UIBarButtonItem(image: UIImage(named: "line.3.horizontal"),
                                                  style: .plain,
                                                  target:self,
@@ -66,38 +72,35 @@ class WannaKnowViewController: UIViewController {
     }
     
     private func setSegmented(){
-        wannaKnowView.segmentedControl.addTarget(self, action: #selector(changePage), for: .touchDown)
+        wannaKnowView.segmentedControl.addTarget(self, action: #selector(changePage), for: .valueChanged)
     }
-    
+
     @objc func changePage(){
-        
-    }
-    
-    private func setPagingViewController(){
-        pageViewController.delegate = self
-        pageViewController.dataSource = self
-        pageViewController.selectedBackgroundColor = #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
-        pageViewController.selectedTextColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        pageViewController.indicatorColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
-        pageViewController.menuBackgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        add(pageViewController)
-        pageViewController.view.snp.makeConstraints { make in
-            make.right.left.top.bottom.equalTo(wannaKnowView.menuContainer)
-        }
+        print("index:\(wannaKnowView.segmentedControl.selectedSegmentIndex)")
+        print("title:\(wannaKnowView.segmentedControl.titleForSegment(at: wannaKnowView.segmentedControl.selectedSegmentIndex))")
+        pageViewController.setViewControllers([segmentedControllers[wannaKnowView.segmentedControl.selectedSegmentIndex]], direction: .forward, animated: true, completion: nil)
     }
 }
 
-extension WannaKnowViewController:PagingViewControllerDelegate,PagingViewControllerDataSource{
-    func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
-        return viewControllers.count
+extension WannaKnowViewController:UIPageViewControllerDelegate,UIPageViewControllerDataSource{
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        selectIndex = viewController.view.tag
+        wannaKnowView.segmentedControl.selectedSegmentIndex = selectIndex
+        let pageIndex = viewController.view.tag - 1
+        print("頁面：\(pageIndex)")
+        if pageIndex < 0 {
+            return nil
+        }
+        return segmentedControllers[pageIndex]
     }
     
-    func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
-        return viewControllers[index]
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        selectIndex = viewController.view.tag
+        wannaKnowView.segmentedControl.selectedSegmentIndex = selectIndex
+        let pageIndex = viewController.view.tag + 1
+        if pageIndex > 1 {
+            return nil
+        }
+        return segmentedControllers[pageIndex]
     }
-    
-    func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
-        return PagingIndexItem(index: index, title: ArticlePages.allCases[index].text)
-    }
-
 }

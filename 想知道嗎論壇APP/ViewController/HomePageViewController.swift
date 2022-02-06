@@ -17,7 +17,7 @@ class HomePageViewController: UIViewController {
     
     private let homePageView = HomePageView()
     
-    private let pageViewController = PagingViewController()
+    private let pagingViewController = PagingViewController()
     
     private let viewControllers:[UIViewController] = { () -> [UIViewController] in
         let bulletinViewController = BulletinTableViewController()
@@ -72,14 +72,14 @@ class HomePageViewController: UIViewController {
     
     //MARK:-setPageViewController
     private func setPageViewController(){
-        pageViewController.delegate = self
-        pageViewController.dataSource = self
-        pageViewController.selectedBackgroundColor = #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
-        pageViewController.selectedTextColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        pageViewController.indicatorColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
-        pageViewController.menuBackgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        add(pageViewController)
-        pageViewController.view.snp.makeConstraints { make in
+        pagingViewController.delegate = self
+        pagingViewController.dataSource = self
+        pagingViewController.selectedBackgroundColor = #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
+        pagingViewController.selectedTextColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        pagingViewController.indicatorColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
+        pagingViewController.menuBackgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        add(pagingViewController)
+        pagingViewController.view.snp.makeConstraints { make in
             make.top.right.left.bottom.equalTo(homePageView.menuPageContainer)
         }
     }
