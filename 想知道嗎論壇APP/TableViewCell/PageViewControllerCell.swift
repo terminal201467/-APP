@@ -21,15 +21,13 @@ class PageViewControllerCell: UITableViewCell {
     private let collectionButton:UIButton = {
        let button = UIButton()
         button.setImage(UIImage(named: CellLogo.bookmark.logo), for: .normal)
-        button.setImage(UIImage(named: CellLogo.bookMarkFill.logo), for: .selected)
         button.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         return button
     }()
     
     private let likeButton:UIButton = {
        let button = UIButton()
-        button.setImage(UIImage(named: CellLogo.thumb.logo), for: .normal)
-        button.setImage(UIImage(named: CellLogo.thumbFill.logo), for: .selected)
+        button.setImage(UIImage(named: CellLogo.like.logo), for: .normal)
         return button
     }()
     

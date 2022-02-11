@@ -45,7 +45,7 @@ class WannaKnowView: UIView {
     
     private func autoLayout(){
         segmentedControl.snp.makeConstraints { make in
-            make.top.equalTo(15)
+            make.top.equalTo(safeAreaLayoutGuide).offset(15)
             make.right.equalTo(-15)
             make.left.equalTo(15)
         }

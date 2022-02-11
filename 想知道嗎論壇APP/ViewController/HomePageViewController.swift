@@ -19,6 +19,8 @@ class HomePageViewController: UIViewController {
     
     private let pagingViewController = PagingViewController()
     
+    private let searchViewController = UISearchController(searchResultsController: nil)
+    
     private let viewControllers:[UIViewController] = { () -> [UIViewController] in
         let bulletinViewController = BulletinTableViewController()
         let xiangZhiDaoMaViewController = BulletinTableViewController()
@@ -36,7 +38,6 @@ class HomePageViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         setSideMenu()
-        setSearchBar()
         setPageViewController()
         setKeyboardSetting()
         
@@ -50,25 +51,29 @@ class HomePageViewController: UIViewController {
     }
     //MARK:-setNavigationBar
     private func setNavigationBar(){
-        self.navigationItem.titleView = NavigationTitleView()
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+        
+        navigationItem.titleView = NavigationTitleView()
+        navigationItem.searchController = searchViewController
+        navigationItem.searchController?.searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+        navigationItem.searchController?.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        navigationItem.searchController?.isActive = true
+        
         let leftSideMenuButton = UIBarButtonItem(image: UIImage(named: "line.3.horizontal"),
                                                  style: .plain,
                                                  target:self,
                                                  action: #selector(sideMenuButtonMethod))
-        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationItem.leftBarButtonItem = leftSideMenuButton
-        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
+        navigationItem.leftBarButtonItem = leftSideMenuButton
+        navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
     }
     
     @objc func sideMenuButtonMethod(){
         present(sideMenu, animated: true, completion: nil)
     }
     
-    //MARK:-setSearchBar
-    private func setSearchBar(){
-        homePageView.searchBar.delegate = self
-    }
     
     //MARK:-setPageViewController
     private func setPageViewController(){

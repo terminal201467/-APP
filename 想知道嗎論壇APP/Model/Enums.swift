@@ -43,15 +43,14 @@ enum SegmentedTitle:Int,CaseIterable{
 }
 
 enum CellLogo:Int,CaseIterable{
-    case thumb = 0,thumbFill,bookmark,bookMarkFill,message,messageFill
+    case like = 0,bookmark,message,personLogo,link
     var logo:String{
         switch self {
-        case .thumb:         return "hand.thumbsup"
-        case .thumbFill:     return "hand.thumbsup.fill"
+        case .like:         return "hand.thumbsup"
         case .bookmark:      return "bookmark"
-        case .bookMarkFill:  return "bookmark.fill"
         case .message:       return "message"
-        case .messageFill:   return "message.fill"
+        case .personLogo:    return "person"
+        case .link:          return "link"
         }
     }
     

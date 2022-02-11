@@ -18,6 +18,8 @@ class WannaKnowViewController: UIViewController {
     
     private let segmentedControllers = [ContentViewController(),CalenderViewController()]
     
+    private let searchViewController = UISearchController(searchResultsController: nil)
+    
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
     private var selectIndex:Int = 0
@@ -56,7 +58,9 @@ class WannaKnowViewController: UIViewController {
     
     //MARK:-setNavigationBar
     private func setNavigationBar(){
-        self.navigationItem.titleView = wannaKnowView.searchBar
+        self.navigationItem.titleView = NavigationTitleView()
+        self.navigationController?.navigationItem.searchController = searchViewController
+        navigationItem.titleView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backToHomePage)))
         let leftSideMenuButton = UIBarButtonItem(image: UIImage(named: "line.3.horizontal"),
                                                  style: .plain,
                                                  target:self,
@@ -65,10 +69,15 @@ class WannaKnowViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationItem.leftBarButtonItem = leftSideMenuButton
+
     }
     
     @objc func sideMenuButtonMethod(){
         present(sideMenu, animated: true, completion: nil)
+    }
+    
+    @objc func backToHomePage(){
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     private func setSegmented(){

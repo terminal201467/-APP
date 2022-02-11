@@ -8,13 +8,29 @@
 import UIKit
 
 class WannaKnowListView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    let tableView:UITableView = {
+        let tableView = UITableView()
+        tableView.register(ContentCell.self, forCellReuseIdentifier: ContentCell.reuseIdentifier)
+        tableView.separatorStyle = .singleLine
+        tableView.allowsSelection = true
+        tableView.estimatedRowHeight = 300
+        return tableView
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(tableView)
+        autoLayout()
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func autoLayout(){
+        tableView.snp.makeConstraints { make in
+            make.right.left.top.bottom.equalToSuperview()
+        }
+    }
 }

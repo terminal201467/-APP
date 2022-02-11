@@ -35,7 +35,6 @@ class NavigationTitleView: UIView {
         return stackView
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(navigationTitle)
