@@ -12,7 +12,13 @@ class WannaKnowDetailViewController: UIViewController {
     //MARK:-Properties
     let wannaKnowDetailView = WannaKnowDetailView()
     
-    var detailArray:[WannaKnowListData] = []
+    let wannaKnowHeader = WannaKnowDetailHeader()
+    
+    var detailArray:[WannaKnowListData] = []{
+        didSet{
+            wannaKnowDetailView.tableView.reloadData()
+        }
+    }
     
     //MARK:-LifeCycle
     override func loadView() {
@@ -23,6 +29,11 @@ class WannaKnowDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        detailArray.removeAll()
     }
     
     private func setTableView(){
@@ -38,10 +49,15 @@ extension WannaKnowDetailViewController:UITableViewDelegate,UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: WannaKnowDetailCell.reuseIdentifier, for: indexPath) as! WannaKnowDetailCell
-        
+        let chatArray = detailArray.map{$0.chatMessage.map{$0}![indexPath.row]}
+        cell.configuration(data: chatArray[indexPath.row])
         return cell
     }
     
-    
-    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: WannaKnowDetailHeader.reuseIdentifier) as! WannaKnowDetailHeader
+        header.configuration(data: detailArray[section])
+        return header
+    }
+
 }

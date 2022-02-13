@@ -12,13 +12,17 @@ class WannaKnowDetailView: UIView {
     let tableView:UITableView = {
         let tableView = UITableView()
         tableView.register(WannaKnowDetailCell.self, forCellReuseIdentifier: WannaKnowDetailCell.reuseIdentifier)
+        tableView.register(WannaKnowDetailHeader.self, forHeaderFooterViewReuseIdentifier: WannaKnowDetailHeader.reuseIdentifier)
         tableView.separatorStyle = .singleLine
+        tableView.sectionHeaderHeight = 300
+        tableView.rowHeight = 135
         tableView.allowsSelection = false
         return tableView
     }()
     
     let textFieldContainer:UIView = {
         let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         return view
     }()
     

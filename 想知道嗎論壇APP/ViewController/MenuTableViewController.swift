@@ -16,8 +16,6 @@ class MenuTableViewController: UITableViewController {
         view.backgroundColor = #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
     }
     
-    
-    
     private func setTableView(){
         self.tableView.register(SideMenuCell.self, forCellReuseIdentifier: SideMenuCell.reuseIdentifier)
         self.tableView.rowHeight = 70

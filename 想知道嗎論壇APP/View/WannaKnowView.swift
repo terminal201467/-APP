@@ -11,7 +11,12 @@ class WannaKnowView: UIView {
     
     let searchBar:UISearchBar = {
        let searchBar = UISearchBar()
+        searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        searchBar.searchTextField.layer.cornerRadius = 50
+        searchBar.searchTextField.keyboardAppearance = .light
+        searchBar.isTranslucent = false
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
         return searchBar
     }()
     
@@ -34,6 +39,7 @@ class WannaKnowView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubview(searchBar)
         addSubview(segmentedControl)
         addSubview(contentCalenderContainerView)
         autoLayout()
@@ -44,8 +50,13 @@ class WannaKnowView: UIView {
     }
     
     private func autoLayout(){
+        searchBar.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.right.left.equalToSuperview()
+        }
+        
         segmentedControl.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(15)
+            make.top.equalTo(searchBar.snp.bottom).offset(15)
             make.right.equalTo(-15)
             make.left.equalTo(15)
         }

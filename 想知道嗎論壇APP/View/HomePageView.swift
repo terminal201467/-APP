@@ -11,16 +11,16 @@ class HomePageView: UIView {
     
     //MARK:-Properties
     
-//    let searchBar:UISearchBar = {
-//       let searchBar = UISearchBar()
-//        searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
-//        searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//        searchBar.searchTextField.layer.cornerRadius = 50
-//        searchBar.searchTextField.keyboardAppearance = .light
-//        searchBar.isTranslucent = false
-//        searchBar.translatesAutoresizingMaskIntoConstraints = false
-//        return searchBar
-//    }()
+    let searchBar:UISearchBar = {
+       let searchBar = UISearchBar()
+        searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+        searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        searchBar.searchTextField.layer.cornerRadius = 50
+        searchBar.searchTextField.keyboardAppearance = .light
+        searchBar.isTranslucent = false
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        return searchBar
+    }()
     
     let banner:UIView = {
        let imageView = UIView()
@@ -38,7 +38,7 @@ class HomePageView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        addSubview(searchBar)
+        addSubview(searchBar)
         addSubview(banner)
         addSubview(menuPageContainer)
         autoLayout()
@@ -49,14 +49,14 @@ class HomePageView: UIView {
     }
     
     private func autoLayout(){
-//        searchBar.snp.makeConstraints { make in
-//            make.top.equalTo(layoutMarginsGuide)
-//            make.right.equalToSuperview()
-//            make.left.equalToSuperview()
-//        }
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(layoutMarginsGuide)
+            make.right.equalToSuperview()
+            make.left.equalToSuperview()
+        }
         
         banner.snp.makeConstraints { make in
-            make.top.equalTo(layoutMarginsGuide)
+            make.top.equalTo(searchBar.snp.bottom)
             make.right.equalToSuperview()
             make.left.equalToSuperview()
             make.height.equalTo(100)

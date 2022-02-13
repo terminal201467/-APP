@@ -70,7 +70,7 @@ class ContentCell: UITableViewCell {
     
     private let collectionButton:UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: CellLogo.bookmark.logo), for: .normal)
+        button.setImage(UIImage(named: CellLogo.collection.logo), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         return button
     }()

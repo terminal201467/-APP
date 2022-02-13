@@ -40,7 +40,7 @@ class HomePageViewController: UIViewController {
         setSideMenu()
         setPageViewController()
         setKeyboardSetting()
-        
+        setSearchBar()
     }
     
     //MARK:-setSideMenu
@@ -57,7 +57,7 @@ class HomePageViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         
         navigationItem.titleView = NavigationTitleView()
-        navigationItem.searchController = searchViewController
+//        navigationItem.searchController = searchViewController
         navigationItem.searchController?.searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         navigationItem.searchController?.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationItem.searchController?.isActive = true
@@ -66,6 +66,8 @@ class HomePageViewController: UIViewController {
                                                  style: .plain,
                                                  target:self,
                                                  action: #selector(sideMenuButtonMethod))
+        
+        
         navigationItem.leftBarButtonItem = leftSideMenuButton
         navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
     }
@@ -87,6 +89,10 @@ class HomePageViewController: UIViewController {
         pagingViewController.view.snp.makeConstraints { make in
             make.top.right.left.bottom.equalTo(homePageView.menuPageContainer)
         }
+    }
+    
+    private func setSearchBar(){
+        homePageView.searchBar.delegate = self
     }
     
     private func setKeyboardSetting(){

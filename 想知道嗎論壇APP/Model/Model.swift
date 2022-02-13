@@ -22,13 +22,19 @@ struct WannaKnowListData {
     var buttonArray:[String]
     var likeCount:String
     var commentCount:String
-    var chatMessage:ChatMessage?
+    var chatMessage:[ChatMessage]?
     
     struct ChatMessage{
         var commentPerson:String
         var commentStair:Int
+        var commentStairString:String{
+            return String(commentStair)
+        }
         var commentMessage:String
         var commentDate:String
         var likeCount:Int
+        var likeCountString:String{
+            String(likeCount)
+        }
     }
 }

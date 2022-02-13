@@ -45,7 +45,7 @@
 		97A2518227AD445F002D5B5E /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518127AD445F002D5B5E /* ContentCell.swift */; };
 		97A2518427AD4479002D5B5E /* WannaKnowDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518327AD4479002D5B5E /* WannaKnowDetailCell.swift */; };
 		97A2518627AFFFAF002D5B5E /* WannaKnowListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518527AFFFAF002D5B5E /* WannaKnowListViewController.swift */; };
-		97A2519027B4B4FB002D5B5E /* WannaKnowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518F27B4B4FB002D5B5E /* WannaKnowHeader.swift */; };
+		97A2519027B4B4FB002D5B5E /* WannaKnowDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518F27B4B4FB002D5B5E /* WannaKnowDetailHeader.swift */; };
 		97A2519227B4DBBA002D5B5E /* WannaKnowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2519127B4DBBA002D5B5E /* WannaKnowDetailViewController.swift */; };
 		97A2519427B4DEF7002D5B5E /* WannaKnowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2519327B4DEF7002D5B5E /* WannaKnowDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -87,7 +87,7 @@
 		97A2518127AD445F002D5B5E /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		97A2518327AD4479002D5B5E /* WannaKnowDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailCell.swift; sourceTree = "<group>"; };
 		97A2518527AFFFAF002D5B5E /* WannaKnowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowListViewController.swift; sourceTree = "<group>"; };
-		97A2518F27B4B4FB002D5B5E /* WannaKnowHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowHeader.swift; sourceTree = "<group>"; };
+		97A2518F27B4B4FB002D5B5E /* WannaKnowDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailHeader.swift; sourceTree = "<group>"; };
 		97A2519127B4DBBA002D5B5E /* WannaKnowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailViewController.swift; sourceTree = "<group>"; };
 		97A2519327B4DEF7002D5B5E /* WannaKnowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,7 +194,7 @@
 				9792945227A9532700EA60B4 /* PageViewControllerCell.swift */,
 				97A2518127AD445F002D5B5E /* ContentCell.swift */,
 				97A2518327AD4479002D5B5E /* WannaKnowDetailCell.swift */,
-				97A2518F27B4B4FB002D5B5E /* WannaKnowHeader.swift */,
+				97A2518F27B4B4FB002D5B5E /* WannaKnowDetailHeader.swift */,
 				9792945627A969F800EA60B4 /* Footer.swift */,
 			);
 			path = TableViewCell;
@@ -295,7 +295,7 @@
 				9732460C2797C66000CE549D /* BulletinView.swift in Sources */,
 				9792945127A9463200EA60B4 /* NavigationTitleView.swift in Sources */,
 				973245FE2797BC7B00CE549D /* WannaKnowViewController.swift in Sources */,
-				97A2519027B4B4FB002D5B5E /* WannaKnowHeader.swift in Sources */,
+				97A2519027B4B4FB002D5B5E /* WannaKnowDetailHeader.swift in Sources */,
 				973245E82797BAD800CE549D /* HomePageViewController.swift in Sources */,
 				973245E42797BAD800CE549D /* AppDelegate.swift in Sources */,
 				9792945927AA740B00EA60B4 /* CustomButtons.swift in Sources */,

@@ -20,7 +20,7 @@ class PageViewControllerCell: UITableViewCell {
     
     private let collectionButton:UIButton = {
        let button = UIButton()
-        button.setImage(UIImage(named: CellLogo.bookmark.logo), for: .normal)
+        button.setImage(UIImage(named: CellLogo.collection.logo), for: .normal)
         button.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         return button
     }()

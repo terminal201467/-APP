@@ -7,17 +7,21 @@
 
 import UIKit
 
-class WannaKnowHeader: UITableViewHeaderFooterView {
+class WannaKnowDetailHeader: UITableViewHeaderFooterView {
     
     static let reuseIdentifier:String = "WannaKnowHeader"
     
     private let title:UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.numberOfLines = 2
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         return label
     }()
     
     private let personPhoto:UIImageView = {
         let imageView = UIImageView(image: UIImage(named: CellLogo.personLogo.logo))
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -28,7 +32,11 @@ class WannaKnowHeader: UITableViewHeaderFooterView {
     
     private let hostPosition:UILabel = {
         let label = UILabel()
-        label.text = "樓主"
+        label.layer.cornerRadius = 10
+        label.bounds.size = CGSize(width: 100, height: 40)
+        label.layer.backgroundColor = #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
+        label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        label.text = "  樓主  "
         return label
     }()
     
@@ -49,23 +57,28 @@ class WannaKnowHeader: UITableViewHeaderFooterView {
     
     private let contentLabel:UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.numberOfLines = 5
         return label
     }()
     
     private let collectionButton:UIButton = {
         let button = UIButton()
-        button.setTitle("", for: .normal)
+        button.setImage(UIImage(named: CellLogo.collection.logo), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
     
     private let linkButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: CellLogo.link.logo), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
     
     let linkLabel:UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18)
         label.text = "附件"
         return label
     }()
@@ -73,6 +86,7 @@ class WannaKnowHeader: UITableViewHeaderFooterView {
     private let likeButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: CellLogo.like.logo), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
     
@@ -84,6 +98,7 @@ class WannaKnowHeader: UITableViewHeaderFooterView {
     private let commemtButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: CellLogo.message.logo), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
     
@@ -97,13 +112,21 @@ class WannaKnowHeader: UITableViewHeaderFooterView {
         stackView.distribution = .fillEqually
         stackView.alignment = .center
         stackView.axis = .horizontal
-        stackView.spacing = 3
+        stackView.spacing = 5
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        
+        contentView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        contentView.addSubview(idendityStackView)
+        contentView.addSubview(title)
+        contentView.addSubview(date)
+        contentView.addSubview(contentLabel)
+        contentView.addSubview(collectionButton)
+        contentView.addSubview(buttonStackView)
+        autoLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -114,37 +137,43 @@ class WannaKnowHeader: UITableViewHeaderFooterView {
         idendityStackView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(15)
             make.top.equalToSuperview().offset(15)
-            
+            make.width.equalTo(70)
         }
         
         title.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(15)
-            make.top.equalToSuperview().offset(15)
+            make.top.equalTo(idendityStackView)
+            make.left.equalTo(idendityStackView.snp.right).offset(15)
+            make.right.equalToSuperview().offset(-15)
+            make.width.equalTo(80)
         }
         
         date.snp.makeConstraints { make in
-            make.right.equalTo(title)
-            make.bottom.equalTo(idendityStackView.snp.bottom).offset(15)
+            make.right.equalToSuperview().offset(-15)
+            make.bottom.equalTo(idendityStackView.snp.bottom).offset(-5)
         }
         
         contentLabel.snp.makeConstraints { make in
-            make.top.equalTo(idendityStackView).offset(10)
-            make.left.equalTo(idendityStackView)
-            make.right.equalTo(date.snp.right)
+            make.top.equalTo(idendityStackView.snp.bottom).offset(15)
+            make.left.equalTo(idendityStackView.snp.left).offset(10)
+            make.right.equalToSuperview().offset(-15)
         }
         
         collectionButton.snp.makeConstraints { make in
-            make.left.equalTo(idendityStackView)
-            make.top.equalTo(contentLabel.snp.bottom).offset(10)
+            make.left.equalTo(idendityStackView.snp.left).offset(5)
+            make.bottom.equalToSuperview().offset(-15)
+            make.height.equalTo(30)
+            make.width.equalTo(25)
         }
         
         buttonStackView.snp.makeConstraints { make in
             make.right.equalTo(date.snp.right)
             make.bottom.equalTo(collectionButton.snp.bottom)
+            make.height.equalTo(30)
+            make.width.equalTo(210)
         }
     }
     
-    private func configuration(data:WannaKnowListData){
+    public func configuration(data:WannaKnowListData){
         title.text = data.titleText
         personName.text = data.personName
         date.text = data.date
