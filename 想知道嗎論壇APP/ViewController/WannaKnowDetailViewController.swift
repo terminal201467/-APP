@@ -40,6 +40,7 @@ class WannaKnowDetailViewController: UIViewController {
         wannaKnowDetailView.tableView.delegate = self
         wannaKnowDetailView.tableView.dataSource = self
     }
+
 }
 
 extension WannaKnowDetailViewController:UITableViewDelegate,UITableViewDataSource{

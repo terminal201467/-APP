@@ -109,7 +109,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
     
     lazy var buttonStackView:UIStackView = {
         let stackView = UIStackView(arrangedSubviews:[linkButton,linkLabel,likeButton,likeCount,commemtButton,commentCount])
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
         stackView.alignment = .center
         stackView.axis = .horizontal
         stackView.spacing = 5
@@ -150,6 +150,22 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
         date.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-15)
             make.bottom.equalTo(idendityStackView.snp.bottom).offset(-5)
+        }
+        
+        linkLabel.snp.makeConstraints { make in
+            make.width.equalTo(40)
+        }
+        
+        likeCount.snp.makeConstraints { make in
+            make.width.equalTo(30)
+        }
+        
+        commemtButton.snp.makeConstraints { make in
+            make.width.equalTo(30)
+        }
+        
+        commentCount.snp.makeConstraints { make in
+            make.width.equalTo(30)
         }
         
         contentLabel.snp.makeConstraints { make in

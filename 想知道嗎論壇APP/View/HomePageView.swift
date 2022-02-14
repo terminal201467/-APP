@@ -22,8 +22,9 @@ class HomePageView: UIView {
         return searchBar
     }()
     
-    let banner:UIView = {
-       let imageView = UIView()
+    let banner:UIImageView = {
+       let imageView = UIImageView()
+        imageView.image = UIImage(named: "banner")
         imageView.backgroundColor = #colorLiteral(red: 0.468264699, green: 0.3851454258, blue: 0.3606632352, alpha: 1)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -59,7 +60,7 @@ class HomePageView: UIView {
             make.top.equalTo(searchBar.snp.bottom)
             make.right.equalToSuperview()
             make.left.equalToSuperview()
-            make.height.equalTo(100)
+            make.height.equalTo(120)
         }
         
         menuPageContainer.snp.makeConstraints { make in
