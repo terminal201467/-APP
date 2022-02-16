@@ -182,7 +182,6 @@
 				973245F92797BC1F00CE549D /* Enums.swift */,
 				9792945427A9665F00EA60B4 /* Model.swift */,
 				973246272799534000CE549D /* Extensions.swift */,
-				9792945027A9463200EA60B4 /* NavigationTitleView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -206,6 +205,7 @@
 				9792945A27AC0B8000EA60B4 /* EditingTextFieldViewController.swift */,
 				9792945C27AC0C0200EA60B4 /* EditingTextFieldView.swift */,
 				97A251AF27BBA20B002D5B5E /* CollectionButtons.swift */,
+				9792945027A9463200EA60B4 /* NavigationTitleView.swift */,
 			);
 			path = CustomObject;
 			sourceTree = "<group>";

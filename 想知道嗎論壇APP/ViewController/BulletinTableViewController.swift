@@ -11,8 +11,7 @@ import UIKit
 
 class BulletinTableViewController: UITableViewController {
     
-    public var data:[HomePageData] = [HomePageData(title: "扮豬吃老虎", count:10, date: "2022-10-22"),
-                               HomePageData(title: "狼若回頭，不是報恩，就是報仇", count: 20, date: "2022-11-23")]
+    var data:[HomePageData] = [HomePageData(title: "狼若回頭", count: 2, date: "2022-01-11")]
     
     //MARK:-LifeCycle
     override func viewDidLoad() {
@@ -36,7 +35,6 @@ class BulletinTableViewController: UITableViewController {
         return data.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:PageViewControllerCell.reuseIdentifier, for: indexPath) as! PageViewControllerCell
         cell.configuration(data: data[indexPath.row])

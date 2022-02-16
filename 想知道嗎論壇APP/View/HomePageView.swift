@@ -50,17 +50,16 @@ class HomePageView: UIView {
     }
     
     private func autoLayout(){
-        searchBar.snp.makeConstraints { make in
-            make.top.equalTo(layoutMarginsGuide)
-            make.right.equalToSuperview()
-            make.left.equalToSuperview()
-        }
+//        searchBar.snp.makeConstraints { make in
+//            make.top.equalTo(layoutMarginsGuide)
+//            make.right.equalToSuperview()
+//            make.left.equalToSuperview()
+//        }
         
         banner.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom)
-            make.right.equalToSuperview()
-            make.left.equalToSuperview()
-            make.height.equalTo(120)
+            make.top.equalTo(layoutMarginsGuide)
+            make.right.left.equalToSuperview()
+            make.height.equalTo(160)
         }
         
         menuPageContainer.snp.makeConstraints { make in

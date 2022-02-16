@@ -9,7 +9,7 @@ import UIKit
 
 class ContentView: UIView {
 
-    private let collectionButtonContainer:UIView = {
+    let collectionButtonContainer:UIView = {
        let view = UIView()
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +43,7 @@ class ContentView: UIView {
         }
         
         menuContainer.snp.makeConstraints { make in
-            make.top.equalTo(collectionButtonContainer.snp_bottomMargin)
+            make.top.equalTo(collectionButtonContainer.snp.bottom)
             make.right.equalToSuperview()
             make.left.equalToSuperview()
             make.bottom.equalToSuperview()

@@ -13,14 +13,14 @@ class CollectionCell:UICollectionViewCell{
     
     let button:UIButton = {
         let button = UIButton()
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 15
         button.layer.backgroundColor = #colorLiteral(red: 0.4743221402, green: 0.7362652421, blue: 0.5361232162, alpha: 1)
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(button)
+        contentView.addSubview(button)
         autoLayout()
     }
     
@@ -37,74 +37,64 @@ class CollectionCell:UICollectionViewCell{
 }
 
 
-class CollectionButtons: UICollectionViewController {
+class CollectionButtons: UICollectionViewController{
+    //MARK:-Properties
     
-    let articleKind = ArticleKind.allCases
-
+    let flowLayout = UICollectionViewFlowLayout()
+    
+    let ariticles = ArticleKind.allCases
+    
+    //MARK:-LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionView()
+        setCollectionViewFlow()
     }
     
     //MARK:-setCollectionView
-    func setCollectionView(){
-        self.collectionView!.register(CollectionCell.self, forCellWithReuseIdentifier: CollectionCell.reuseIdentifier)
-        collectionView.allowsSelection = true
-        
+    private func setCollectionViewFlow(){
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.minimumLineSpacing = 5
+        flowLayout.itemSize = .init(width: 100, height: 30)
+    }
+    
+    private func setCollectionView(){
+        collectionView.setCollectionViewLayout(flowLayout, animated: true)
+        collectionView.register(CollectionCell.self, forCellWithReuseIdentifier: CollectionCell.reuseIdentifier)
+        collectionView.allowsSelection = false
+        collectionView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        collectionView.showsHorizontalScrollIndicator = false
     }
 
-    // MARK: UICollectionViewDataSource
+    // MARK:-UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return ariticles.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionCell.reuseIdentifier, for: indexPath) as! CollectionCell
-//        switch articleKind.self {
-//        case .projectExperiance:
-//            cell.button.setTitle(ArticleKind.projectExperiance.text, for: .normal)
-//        case .learnMemo:
-//            cell.button.setTitle(ArticleKind.learnMemo.text, for: .normal)
-//        case .skillResearch:
-//            cell.button.setTitle(ArticleKind.skillResearch.text, for: .normal)
-//        case .lifeChannel:
-//            cell.button.setTitle(ArticleKind.lifeChannel.text, for: .normal)
-//        case .workLife:
-//            cell.button.setTitle(ArticleKind.workLife.text, for: .normal)
-//        }
+        let articleKinds = ariticles[indexPath.row]
+        switch articleKinds.self {
+        case .learnMemo:
+            cell.button.setTitle(ArticleKind.learnMemo.text, for: .normal)
+        case .lifeChannel:
+            cell.button.setTitle(ArticleKind.lifeChannel.text, for: .normal)
+        case .projectExperiance:
+            cell.button.setTitle(ArticleKind.projectExperiance.text, for: .normal)
+        case .skillResearch:
+            cell.button.setTitle(ArticleKind.skillResearch.text, for: .normal)
+        case .workLife:
+            cell.button.setTitle(ArticleKind.workLife.text, for: .normal)
+        }
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
-    */
+
+//    override func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
+//        <#code#>
+//    }
+    
+    //MARK:-setCollectionView
+    
 
 }

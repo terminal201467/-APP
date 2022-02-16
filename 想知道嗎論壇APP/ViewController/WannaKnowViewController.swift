@@ -44,6 +44,7 @@ class WannaKnowViewController: UIViewController {
         pageViewController.view.snp.makeConstraints { make in
             make.right.left.top.bottom.equalTo(wannaKnowView.contentCalenderContainerView)
         }
+        
         pageViewController.setViewControllers([segmentedControllers[0]], direction: .forward, animated: true, completion: nil)
         pageViewController.delegate = self
         pageViewController.dataSource = self
@@ -65,15 +66,21 @@ class WannaKnowViewController: UIViewController {
                                                  style: .plain,
                                                  target:self,
                                                  action: #selector(sideMenuButtonMethod))
+        let rightSideMenuButton = UIBarButtonItem(image:UIImage(named: "magnifyingglass"), style: .plain, target: self, action: #selector(search))
+        
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationItem.leftBarButtonItem = leftSideMenuButton
-
+        self.navigationItem.rightBarButtonItem = rightSideMenuButton
     }
     
     @objc func sideMenuButtonMethod(){
         present(sideMenu, animated: true, completion: nil)
+    }
+    
+    @objc func search(){
+        
     }
     
     @objc func backToHomePage(){

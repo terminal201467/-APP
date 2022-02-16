@@ -11,8 +11,9 @@ import SnapKit
 class ChiaoWanViewController: UIViewController{
     
     //MARK:-Properties
-    var chiaoWanArray:[HomePageData] = [HomePageData(title: "扮豬吃老虎", count:10, date: "2022-10-22"),
-                                        HomePageData(title: "狼若回頭，不是報恩，就是報仇", count: 20, date: "2022-11-23")]
+    var chiaoWanArray:[HomePageData] = [
+        HomePageData(title: "三小嘟三小", count: 3, date: "2021-02-13")
+    ]
     
     let chiaoWanView = ChiaoWanView()
     

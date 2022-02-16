@@ -49,7 +49,7 @@ class NavigationTitleView: UIView {
         navigationTitle.snp.makeConstraints { make in
             make.top.equalTo(5)
             make.bottom.equalTo(-5)
-            make.right.equalTo(-120)
+            make.right.equalTo(-80)
             make.left.equalTo(60)
         }
     }

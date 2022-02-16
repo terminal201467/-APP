@@ -23,8 +23,11 @@ class HomePageViewController: UIViewController {
     
     private let viewControllers:[UIViewController] = { () -> [UIViewController] in
         let bulletinViewController = BulletinTableViewController()
+        
         let xiangZhiDaoMaViewController = BulletinTableViewController()
+        
         let chiaoWanViewController = ChiaoWanViewController()
+        
         return [bulletinViewController,xiangZhiDaoMaViewController,chiaoWanViewController]
     }()
     
@@ -41,15 +44,6 @@ class HomePageViewController: UIViewController {
         setPageViewController()
         setKeyboardSetting()
         setSearchBar()
-        
-        WannaKnowAPI.shared.getCurrentData(callBy: .year(2019)) { result in
-            switch result{
-            case.success(let wannaKnowData):
-                print(wannaKnowData)
-            case .failure(let error):
-                print(error)
-            }
-        }
     }
     
     //MARK:-setSideMenu
@@ -75,8 +69,10 @@ class HomePageViewController: UIViewController {
                                                  target:self,
                                                  action: #selector(sideMenuButtonMethod))
         
+        let rightButton = UIBarButtonItem(image: UIImage(named: "magnifyingglass"), style: .plain, target: self, action: #selector(search))
         
         navigationItem.leftBarButtonItem = leftSideMenuButton
+        navigationItem.rightBarButtonItem = rightButton
         navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
     }
     
@@ -84,6 +80,10 @@ class HomePageViewController: UIViewController {
         present(sideMenu, animated: true, completion: nil)
     }
     
+    @objc func search(){
+        //need to push the searchBar
+        
+    }
     
     //MARK:-setPageViewController
     private func setPageViewController(){
@@ -102,6 +102,7 @@ class HomePageViewController: UIViewController {
     private func setSearchBar(){
         homePageView.searchBar.delegate = self
     }
+
     
     private func setKeyboardSetting(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))

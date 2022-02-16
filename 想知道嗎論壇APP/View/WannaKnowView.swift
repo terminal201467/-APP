@@ -50,13 +50,13 @@ class WannaKnowView: UIView {
     }
     
     private func autoLayout(){
-        searchBar.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.right.left.equalToSuperview()
-        }
+//        searchBar.snp.makeConstraints { make in
+//            make.top.equalToSuperview()
+//            make.right.left.equalToSuperview()
+//        }
         
         segmentedControl.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom).offset(15)
+            make.top.equalToSuperview().offset(15)
             make.right.equalTo(-15)
             make.left.equalTo(15)
         }

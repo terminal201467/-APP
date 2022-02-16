@@ -22,7 +22,9 @@ class ContentViewController: UIViewController {
         return [contentViewController,hotViewController,followViewController]
     }()
     
-    let contentView = ContentView()
+    private let contentView = ContentView()
+    
+    private let collectionButtons = CollectionButtons(collectionViewLayout: UICollectionViewFlowLayout())
     
     //MARK:-LifeCycle
     override func loadView() {
@@ -32,7 +34,14 @@ class ContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setPagingViewController()
-        
+        setCollectionButtons()
+    }
+    
+    private func setCollectionButtons(){
+        add(collectionButtons)
+        collectionButtons.view.snp.makeConstraints { make in
+            make.top.bottom.right.left.equalTo(contentView.collectionButtonContainer)
+        }
     }
     
     private func setPagingViewController(){
