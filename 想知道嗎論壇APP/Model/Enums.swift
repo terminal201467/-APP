@@ -80,3 +80,10 @@ enum ArticleKind:Int,CaseIterable{
     }
 }
 
+
+enum InternetError:Error{
+    case invalidURL
+    case requestFailed
+    case invalidData
+    case invalidResponse
+}

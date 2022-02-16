@@ -23,7 +23,7 @@ struct WannaKnowListData {
     var likeCount:String
     var commentCount:String
     var chatMessage:[ChatMessage]?
-    
+
     struct ChatMessage{
         var commentPerson:String
         var commentStair:Int
@@ -38,3 +38,23 @@ struct WannaKnowListData {
         }
     }
 }
+
+
+struct WannaKnowData:Codable {
+    var wanna_know_id:String?
+    var category:String?
+    var title:String?
+    var description:String?
+    var speaker:String?
+    var date:String?
+    var year:Int?
+    var live:String?
+    var tags:String?
+    var like:Int?
+    var attachment:String?
+    var update_time:String?
+}
+
+
+
+

@@ -18,7 +18,6 @@
 		973246062797C5F200CE549D /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246052797C5F200CE549D /* CalenderViewController.swift */; };
 		973246082797C60C00CE549D /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246072797C60C00CE549D /* ContentViewController.swift */; };
 		9732460A2797C65100CE549D /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246092797C65100CE549D /* HomePageView.swift */; };
-		9732460C2797C66000CE549D /* BulletinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9732460B2797C66000CE549D /* BulletinView.swift */; };
 		9732460E2797C67300CE549D /* WannaKnowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9732460D2797C67300CE549D /* WannaKnowView.swift */; };
 		973246102797C68200CE549D /* WannaKnowListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9732460F2797C68200CE549D /* WannaKnowListView.swift */; };
 		973246122797C69000CE549D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246112797C69000CE549D /* ContentView.swift */; };
@@ -39,7 +38,6 @@
 		9792945327A9532700EA60B4 /* PageViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945227A9532700EA60B4 /* PageViewControllerCell.swift */; };
 		9792945527A9665F00EA60B4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945427A9665F00EA60B4 /* Model.swift */; };
 		9792945727A969F800EA60B4 /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945627A969F800EA60B4 /* Footer.swift */; };
-		9792945927AA740B00EA60B4 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945827AA740B00EA60B4 /* CustomButtons.swift */; };
 		9792945B27AC0B8000EA60B4 /* EditingTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945A27AC0B8000EA60B4 /* EditingTextFieldViewController.swift */; };
 		9792945D27AC0C0200EA60B4 /* EditingTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945C27AC0C0200EA60B4 /* EditingTextFieldView.swift */; };
 		97A2518227AD445F002D5B5E /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518127AD445F002D5B5E /* ContentCell.swift */; };
@@ -48,6 +46,9 @@
 		97A2519027B4B4FB002D5B5E /* WannaKnowDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518F27B4B4FB002D5B5E /* WannaKnowDetailHeader.swift */; };
 		97A2519227B4DBBA002D5B5E /* WannaKnowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2519127B4DBBA002D5B5E /* WannaKnowDetailViewController.swift */; };
 		97A2519427B4DEF7002D5B5E /* WannaKnowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2519327B4DEF7002D5B5E /* WannaKnowDetailView.swift */; };
+		97A251B027BBA20B002D5B5E /* CollectionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251AF27BBA20B002D5B5E /* CollectionButtons.swift */; };
+		97A251B327BC94FF002D5B5E /* WannaKnowAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251B227BC94FF002D5B5E /* WannaKnowAPI.swift */; };
+		97A251B527BC99FD002D5B5E /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251B427BC99FD002D5B5E /* DataBase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,7 +65,6 @@
 		973246052797C5F200CE549D /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		973246072797C60C00CE549D /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		973246092797C65100CE549D /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
-		9732460B2797C66000CE549D /* BulletinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinView.swift; sourceTree = "<group>"; };
 		9732460D2797C67300CE549D /* WannaKnowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowView.swift; sourceTree = "<group>"; };
 		9732460F2797C68200CE549D /* WannaKnowListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowListView.swift; sourceTree = "<group>"; };
 		973246112797C69000CE549D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,7 +81,6 @@
 		9792945227A9532700EA60B4 /* PageViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllerCell.swift; sourceTree = "<group>"; };
 		9792945427A9665F00EA60B4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9792945627A969F800EA60B4 /* Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
-		9792945827AA740B00EA60B4 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		9792945A27AC0B8000EA60B4 /* EditingTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTextFieldViewController.swift; sourceTree = "<group>"; };
 		9792945C27AC0C0200EA60B4 /* EditingTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTextFieldView.swift; sourceTree = "<group>"; };
 		97A2518127AD445F002D5B5E /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
@@ -90,6 +89,9 @@
 		97A2518F27B4B4FB002D5B5E /* WannaKnowDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailHeader.swift; sourceTree = "<group>"; };
 		97A2519127B4DBBA002D5B5E /* WannaKnowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailViewController.swift; sourceTree = "<group>"; };
 		97A2519327B4DEF7002D5B5E /* WannaKnowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailView.swift; sourceTree = "<group>"; };
+		97A251AF27BBA20B002D5B5E /* CollectionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionButtons.swift; sourceTree = "<group>"; };
+		97A251B227BC94FF002D5B5E /* WannaKnowAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowAPI.swift; sourceTree = "<group>"; };
+		97A251B427BC99FD002D5B5E /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,8 @@
 			children = (
 				973245E52797BAD800CE549D /* SceneDelegate.swift */,
 				973245E32797BAD800CE549D /* AppDelegate.swift */,
+				97A251B127BC94DB002D5B5E /* WannaKnowAPI */,
+				97A251AE27BB96A6002D5B5E /* CustomObject */,
 				973245FB2797BC2200CE549D /* Model */,
 				973245F82797BBFE00CE549D /* View */,
 				973245F72797BBF500CE549D /* ViewController */,
@@ -161,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				973246092797C65100CE549D /* HomePageView.swift */,
-				9732460B2797C66000CE549D /* BulletinView.swift */,
 				9732462F279A509500CE549D /* ChiaoWanView.swift */,
 				9732460D2797C67300CE549D /* WannaKnowView.swift */,
 				9732460F2797C68200CE549D /* WannaKnowListView.swift */,
@@ -180,9 +183,6 @@
 				9792945427A9665F00EA60B4 /* Model.swift */,
 				973246272799534000CE549D /* Extensions.swift */,
 				9792945027A9463200EA60B4 /* NavigationTitleView.swift */,
-				9792945827AA740B00EA60B4 /* CustomButtons.swift */,
-				9792945A27AC0B8000EA60B4 /* EditingTextFieldViewController.swift */,
-				9792945C27AC0C0200EA60B4 /* EditingTextFieldView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,6 +198,25 @@
 				9792945627A969F800EA60B4 /* Footer.swift */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		97A251AE27BB96A6002D5B5E /* CustomObject */ = {
+			isa = PBXGroup;
+			children = (
+				9792945A27AC0B8000EA60B4 /* EditingTextFieldViewController.swift */,
+				9792945C27AC0C0200EA60B4 /* EditingTextFieldView.swift */,
+				97A251AF27BBA20B002D5B5E /* CollectionButtons.swift */,
+			);
+			path = CustomObject;
+			sourceTree = "<group>";
+		};
+		97A251B127BC94DB002D5B5E /* WannaKnowAPI */ = {
+			isa = PBXGroup;
+			children = (
+				97A251B227BC94FF002D5B5E /* WannaKnowAPI.swift */,
+				97A251B427BC99FD002D5B5E /* DataBase.swift */,
+			);
+			path = WannaKnowAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				973246082797C60C00CE549D /* ContentViewController.swift in Sources */,
+				97A251B327BC94FF002D5B5E /* WannaKnowAPI.swift in Sources */,
 				9792945B27AC0B8000EA60B4 /* EditingTextFieldViewController.swift in Sources */,
 				973246102797C68200CE549D /* WannaKnowListView.swift in Sources */,
 				973246002797BCBF00CE549D /* SignUpViewController.swift in Sources */,
@@ -292,13 +312,11 @@
 				97A2518227AD445F002D5B5E /* ContentCell.swift in Sources */,
 				9792945D27AC0C0200EA60B4 /* EditingTextFieldView.swift in Sources */,
 				9792945727A969F800EA60B4 /* Footer.swift in Sources */,
-				9732460C2797C66000CE549D /* BulletinView.swift in Sources */,
 				9792945127A9463200EA60B4 /* NavigationTitleView.swift in Sources */,
 				973245FE2797BC7B00CE549D /* WannaKnowViewController.swift in Sources */,
 				97A2519027B4B4FB002D5B5E /* WannaKnowDetailHeader.swift in Sources */,
 				973245E82797BAD800CE549D /* HomePageViewController.swift in Sources */,
 				973245E42797BAD800CE549D /* AppDelegate.swift in Sources */,
-				9792945927AA740B00EA60B4 /* CustomButtons.swift in Sources */,
 				97324630279A509500CE549D /* ChiaoWanView.swift in Sources */,
 				97A2519427B4DEF7002D5B5E /* WannaKnowDetailView.swift in Sources */,
 				9732462E279A506200CE549D /* ChiaoWanViewController.swift in Sources */,
@@ -308,6 +326,8 @@
 				973246062797C5F200CE549D /* CalenderViewController.swift in Sources */,
 				9792945527A9665F00EA60B4 /* Model.swift in Sources */,
 				973245FA2797BC1F00CE549D /* Enums.swift in Sources */,
+				97A251B527BC99FD002D5B5E /* DataBase.swift in Sources */,
+				97A251B027BBA20B002D5B5E /* CollectionButtons.swift in Sources */,
 				973246242797F3CB00CE549D /* MenuTableViewController.swift in Sources */,
 				973246122797C69000CE549D /* ContentView.swift in Sources */,
 				973246282799534000CE549D /* Extensions.swift in Sources */,
