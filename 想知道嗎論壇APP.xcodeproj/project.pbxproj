@@ -34,7 +34,7 @@
 		9732462E279A506200CE549D /* ChiaoWanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9732462D279A506200CE549D /* ChiaoWanViewController.swift */; };
 		97324630279A509500CE549D /* ChiaoWanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9732462F279A509500CE549D /* ChiaoWanView.swift */; };
 		9792944F27A9091F00EA60B4 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9792944E27A9091F00EA60B4 /* Colors.xcassets */; };
-		9792945127A9463200EA60B4 /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945027A9463200EA60B4 /* NavigationTitleView.swift */; };
+		9792945127A9463200EA60B4 /* NavigationBarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945027A9463200EA60B4 /* NavigationBarTitle.swift */; };
 		9792945327A9532700EA60B4 /* PageViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945227A9532700EA60B4 /* PageViewControllerCell.swift */; };
 		9792945527A9665F00EA60B4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945427A9665F00EA60B4 /* Model.swift */; };
 		9792945727A969F800EA60B4 /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945627A969F800EA60B4 /* Footer.swift */; };
@@ -46,9 +46,15 @@
 		97A2519027B4B4FB002D5B5E /* WannaKnowDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518F27B4B4FB002D5B5E /* WannaKnowDetailHeader.swift */; };
 		97A2519227B4DBBA002D5B5E /* WannaKnowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2519127B4DBBA002D5B5E /* WannaKnowDetailViewController.swift */; };
 		97A2519427B4DEF7002D5B5E /* WannaKnowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2519327B4DEF7002D5B5E /* WannaKnowDetailView.swift */; };
-		97A251B027BBA20B002D5B5E /* CollectionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251AF27BBA20B002D5B5E /* CollectionButtons.swift */; };
+		97A251B027BBA20B002D5B5E /* ThemeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251AF27BBA20B002D5B5E /* ThemeButtons.swift */; };
 		97A251B327BC94FF002D5B5E /* WannaKnowAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251B227BC94FF002D5B5E /* WannaKnowAPI.swift */; };
 		97A251B527BC99FD002D5B5E /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251B427BC99FD002D5B5E /* DataBase.swift */; };
+		97A251B927BE1EFA002D5B5E /* TagButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251B827BE1EFA002D5B5E /* TagButtons.swift */; };
+		97A251BF27BE286B002D5B5E /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251BE27BE286B002D5B5E /* ThemeCell.swift */; };
+		97A251C127BF3EBE002D5B5E /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251C027BF3EBE002D5B5E /* TagCell.swift */; };
+		97A251C327BF90EA002D5B5E /* LineUpButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251C227BF90EA002D5B5E /* LineUpButtons.swift */; };
+		97A251C527BF9134002D5B5E /* LineUpButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251C427BF9134002D5B5E /* LineUpButtonsCell.swift */; };
+		97A251C827C5E60A002D5B5E /* CalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251C727C5E60A002D5B5E /* CalenderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,7 +83,7 @@
 		9732462D279A506200CE549D /* ChiaoWanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiaoWanViewController.swift; sourceTree = "<group>"; };
 		9732462F279A509500CE549D /* ChiaoWanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiaoWanView.swift; sourceTree = "<group>"; };
 		9792944E27A9091F00EA60B4 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		9792945027A9463200EA60B4 /* NavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
+		9792945027A9463200EA60B4 /* NavigationBarTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTitle.swift; sourceTree = "<group>"; };
 		9792945227A9532700EA60B4 /* PageViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllerCell.swift; sourceTree = "<group>"; };
 		9792945427A9665F00EA60B4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9792945627A969F800EA60B4 /* Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
@@ -89,9 +95,15 @@
 		97A2518F27B4B4FB002D5B5E /* WannaKnowDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailHeader.swift; sourceTree = "<group>"; };
 		97A2519127B4DBBA002D5B5E /* WannaKnowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailViewController.swift; sourceTree = "<group>"; };
 		97A2519327B4DEF7002D5B5E /* WannaKnowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailView.swift; sourceTree = "<group>"; };
-		97A251AF27BBA20B002D5B5E /* CollectionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionButtons.swift; sourceTree = "<group>"; };
+		97A251AF27BBA20B002D5B5E /* ThemeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButtons.swift; sourceTree = "<group>"; };
 		97A251B227BC94FF002D5B5E /* WannaKnowAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowAPI.swift; sourceTree = "<group>"; };
 		97A251B427BC99FD002D5B5E /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
+		97A251B827BE1EFA002D5B5E /* TagButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButtons.swift; sourceTree = "<group>"; };
+		97A251BE27BE286B002D5B5E /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
+		97A251C027BF3EBE002D5B5E /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		97A251C227BF90EA002D5B5E /* LineUpButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineUpButtons.swift; sourceTree = "<group>"; };
+		97A251C427BF9134002D5B5E /* LineUpButtonsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineUpButtonsCell.swift; sourceTree = "<group>"; };
+		97A251C727C5E60A002D5B5E /* CalenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,9 +148,11 @@
 				973245F82797BBFE00CE549D /* View */,
 				973245F72797BBF500CE549D /* ViewController */,
 				973245FC2797BC3600CE549D /* TableViewCell */,
-				973245EE2797BADA00CE549D /* LaunchScreen.storyboard */,
+				97A251BB27BE2797002D5B5E /* CollectionViewCell */,
 				973245EC2797BADA00CE549D /* Assets.xcassets */,
+				97A251C627C5E5CF002D5B5E /* CalendarCell */,
 				9792944E27A9091F00EA60B4 /* Colors.xcassets */,
+				973245EE2797BADA00CE549D /* LaunchScreen.storyboard */,
 				973245F12797BADA00CE549D /* Info.plist */,
 			);
 			path = "想知道嗎論壇APP";
@@ -204,8 +218,10 @@
 			children = (
 				9792945A27AC0B8000EA60B4 /* EditingTextFieldViewController.swift */,
 				9792945C27AC0C0200EA60B4 /* EditingTextFieldView.swift */,
-				97A251AF27BBA20B002D5B5E /* CollectionButtons.swift */,
-				9792945027A9463200EA60B4 /* NavigationTitleView.swift */,
+				9792945027A9463200EA60B4 /* NavigationBarTitle.swift */,
+				97A251AF27BBA20B002D5B5E /* ThemeButtons.swift */,
+				97A251B827BE1EFA002D5B5E /* TagButtons.swift */,
+				97A251C227BF90EA002D5B5E /* LineUpButtons.swift */,
 			);
 			path = CustomObject;
 			sourceTree = "<group>";
@@ -217,6 +233,24 @@
 				97A251B427BC99FD002D5B5E /* DataBase.swift */,
 			);
 			path = WannaKnowAPI;
+			sourceTree = "<group>";
+		};
+		97A251BB27BE2797002D5B5E /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				97A251BE27BE286B002D5B5E /* ThemeCell.swift */,
+				97A251C027BF3EBE002D5B5E /* TagCell.swift */,
+				97A251C427BF9134002D5B5E /* LineUpButtonsCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		97A251C627C5E5CF002D5B5E /* CalendarCell */ = {
+			isa = PBXGroup;
+			children = (
+				97A251C727C5E60A002D5B5E /* CalenderCell.swift */,
+			);
+			path = CalendarCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				973246082797C60C00CE549D /* ContentViewController.swift in Sources */,
+				97A251C827C5E60A002D5B5E /* CalenderCell.swift in Sources */,
 				97A251B327BC94FF002D5B5E /* WannaKnowAPI.swift in Sources */,
 				9792945B27AC0B8000EA60B4 /* EditingTextFieldViewController.swift in Sources */,
 				973246102797C68200CE549D /* WannaKnowListView.swift in Sources */,
@@ -311,8 +346,10 @@
 				97A2518427AD4479002D5B5E /* WannaKnowDetailCell.swift in Sources */,
 				97A2518227AD445F002D5B5E /* ContentCell.swift in Sources */,
 				9792945D27AC0C0200EA60B4 /* EditingTextFieldView.swift in Sources */,
+				97A251C327BF90EA002D5B5E /* LineUpButtons.swift in Sources */,
+				97A251B927BE1EFA002D5B5E /* TagButtons.swift in Sources */,
 				9792945727A969F800EA60B4 /* Footer.swift in Sources */,
-				9792945127A9463200EA60B4 /* NavigationTitleView.swift in Sources */,
+				9792945127A9463200EA60B4 /* NavigationBarTitle.swift in Sources */,
 				973245FE2797BC7B00CE549D /* WannaKnowViewController.swift in Sources */,
 				97A2519027B4B4FB002D5B5E /* WannaKnowDetailHeader.swift in Sources */,
 				973245E82797BAD800CE549D /* HomePageViewController.swift in Sources */,
@@ -321,16 +358,19 @@
 				97A2519427B4DEF7002D5B5E /* WannaKnowDetailView.swift in Sources */,
 				9732462E279A506200CE549D /* ChiaoWanViewController.swift in Sources */,
 				973246262798EA3F00CE549D /* SideMenuCell.swift in Sources */,
+				97A251C527BF9134002D5B5E /* LineUpButtonsCell.swift in Sources */,
 				9792945327A9532700EA60B4 /* PageViewControllerCell.swift in Sources */,
 				973245E62797BAD800CE549D /* SceneDelegate.swift in Sources */,
 				973246062797C5F200CE549D /* CalenderViewController.swift in Sources */,
 				9792945527A9665F00EA60B4 /* Model.swift in Sources */,
 				973245FA2797BC1F00CE549D /* Enums.swift in Sources */,
 				97A251B527BC99FD002D5B5E /* DataBase.swift in Sources */,
-				97A251B027BBA20B002D5B5E /* CollectionButtons.swift in Sources */,
+				97A251B027BBA20B002D5B5E /* ThemeButtons.swift in Sources */,
 				973246242797F3CB00CE549D /* MenuTableViewController.swift in Sources */,
 				973246122797C69000CE549D /* ContentView.swift in Sources */,
+				97A251BF27BE286B002D5B5E /* ThemeCell.swift in Sources */,
 				973246282799534000CE549D /* Extensions.swift in Sources */,
+				97A251C127BF3EBE002D5B5E /* TagCell.swift in Sources */,
 				973246142797C69E00CE549D /* SignUpView.swift in Sources */,
 				9732462A279A3FDA00CE549D /* BulletinTableViewController.swift in Sources */,
 				97A2518627AFFFAF002D5B5E /* WannaKnowListViewController.swift in Sources */,

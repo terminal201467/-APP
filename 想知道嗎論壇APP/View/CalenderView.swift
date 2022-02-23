@@ -6,15 +6,33 @@
 //
 
 import UIKit
+import JTAppleCalendar
 
 class CalenderView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    let calendarView:JTACMonthView = {
+        let calendarView = JTACMonthView()
+//        calendarView.register(, forCellWithReuseIdentifier: <#T##String#>)
+        calendarView.allowsMultipleSelection = true
+        calendarView.allowsRangedSelection = true
+        return calendarView
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(calendarView)
+        autoLayout()
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func autoLayout(){
+        calendarView.snp.makeConstraints { make in
+            make.top.right.left.bottom.equalToSuperview()
+        }
+        
+    }
+    
 }

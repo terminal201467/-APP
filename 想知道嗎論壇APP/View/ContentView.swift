@@ -9,7 +9,7 @@ import UIKit
 
 class ContentView: UIView {
 
-    let collectionButtonContainer:UIView = {
+    let ThemeButtonContainer:UIView = {
        let view = UIView()
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +25,7 @@ class ContentView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(collectionButtonContainer)
+        addSubview(ThemeButtonContainer)
         addSubview(menuContainer)
         autoLayout()
     }
@@ -35,7 +35,7 @@ class ContentView: UIView {
     }
     
     private func autoLayout(){
-        collectionButtonContainer.snp.makeConstraints { make in
+        ThemeButtonContainer.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.right.equalToSuperview()
             make.left.equalToSuperview()
@@ -43,7 +43,7 @@ class ContentView: UIView {
         }
         
         menuContainer.snp.makeConstraints { make in
-            make.top.equalTo(collectionButtonContainer.snp.bottom)
+            make.top.equalTo(ThemeButtonContainer.snp.bottom)
             make.right.equalToSuperview()
             make.left.equalToSuperview()
             make.bottom.equalToSuperview()

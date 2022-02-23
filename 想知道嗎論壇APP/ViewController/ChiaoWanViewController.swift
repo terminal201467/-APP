@@ -23,7 +23,6 @@ class ChiaoWanViewController: UIViewController{
     override func loadView() {
         super.loadView()
         view = chiaoWanView
-        
     }
 
     override func viewDidLoad() {
@@ -41,6 +40,7 @@ class ChiaoWanViewController: UIViewController{
     private func setTextField(){
         editingViewController.editingTextFieldView.textField.delegate = self
     }
+    
     private func setChildView(){
         add(editingViewController)
         editingViewController.view.snp.makeConstraints { make in
@@ -77,5 +77,4 @@ extension ChiaoWanViewController:UITextFieldDelegate{
         }
         return true
     }
-    
 }

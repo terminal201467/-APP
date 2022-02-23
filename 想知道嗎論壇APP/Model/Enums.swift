@@ -109,3 +109,14 @@ enum CallMethod{
         }
     }
 }
+
+enum ItemRanges:Int,CaseIterable{
+    case untilfirst = 0,untilSecond,untilThird
+    var range:ClosedRange<Int>{
+        switch self{
+        case .untilfirst: return 0...1
+        case .untilSecond: return 0...2
+        case .untilThird: return 0...3
+        }
+    }
+}

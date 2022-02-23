@@ -16,6 +16,7 @@ class WannaKnowView: UIView {
         searchBar.searchTextField.layer.cornerRadius = 50
         searchBar.searchTextField.keyboardAppearance = .light
         searchBar.isTranslucent = false
+        searchBar.isHidden = true
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         return searchBar
     }()
@@ -39,8 +40,8 @@ class WannaKnowView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(searchBar)
         addSubview(segmentedControl)
+        addSubview(searchBar)
         addSubview(contentCalenderContainerView)
         autoLayout()
     }
@@ -50,10 +51,10 @@ class WannaKnowView: UIView {
     }
     
     private func autoLayout(){
-//        searchBar.snp.makeConstraints { make in
-//            make.top.equalToSuperview()
-//            make.right.left.equalToSuperview()
-//        }
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.right.left.equalToSuperview()
+        }
         
         segmentedControl.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(15)

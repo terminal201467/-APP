@@ -62,6 +62,33 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
         return label
     }()
     
+
+    private let likeButton:UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: CellLogo.like.logo), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        return button
+    }()
+    
+    private let likeCount:UILabel = {
+       let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20)
+        return label
+    }()
+    
+    private let commentButton:UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: CellLogo.message.logo), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        return button
+    }()
+    
+    private let commentCount:UILabel = {
+       let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20)
+        return label
+    }()
+    
     private let collectionButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: CellLogo.collection.logo), for: .normal)
@@ -76,39 +103,15 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
         return button
     }()
     
-    let linkLabel:UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18)
-        label.text = "附件"
-        return label
-    }()
-    
-    private let likeButton:UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: CellLogo.like.logo), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        return button
-    }()
-    
-    private let likeCount:UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
-    private let commemtButton:UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: CellLogo.message.logo), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        return button
-    }()
-    
-    private let commentCount:UILabel = {
-        let label = UILabel()
+    private let linkLabel:UILabel = {
+       let label = UILabel()
+        label.text = "連結"
+        label.font = UIFont.systemFont(ofSize: 15)
         return label
     }()
     
     lazy var buttonStackView:UIStackView = {
-        let stackView = UIStackView(arrangedSubviews:[linkButton,linkLabel,likeButton,likeCount,commemtButton,commentCount])
+        let stackView = UIStackView(arrangedSubviews:[likeButton,likeCount,commentButton,commentCount,collectionButton,linkButton,linkLabel])
         stackView.distribution = .fillProportionally
         stackView.alignment = .center
         stackView.axis = .horizontal
@@ -124,6 +127,12 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
         contentView.addSubview(title)
         contentView.addSubview(date)
         contentView.addSubview(contentLabel)
+        contentView.addSubview(linkLabel)
+        contentView.addSubview(linkButton)
+        contentView.addSubview(likeButton)
+        contentView.addSubview(likeCount)
+        contentView.addSubview(commentButton)
+        contentView.addSubview(commentCount)
         contentView.addSubview(collectionButton)
         contentView.addSubview(buttonStackView)
         autoLayout()
@@ -152,20 +161,34 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
             make.bottom.equalTo(idendityStackView.snp.bottom).offset(-5)
         }
         
-        linkLabel.snp.makeConstraints { make in
-            make.width.equalTo(40)
-        }
-        
         likeCount.snp.makeConstraints { make in
             make.width.equalTo(30)
+            make.height.equalTo(30)
         }
         
-        commemtButton.snp.makeConstraints { make in
+        commentButton.snp.makeConstraints { make in
             make.width.equalTo(30)
+            make.height.equalTo(30)
         }
         
         commentCount.snp.makeConstraints { make in
             make.width.equalTo(30)
+            make.height.equalTo(30)
+        }
+        
+        collectionButton.snp.makeConstraints { make in
+            make.width.equalTo(50)
+            make.height.equalTo(30)
+        }
+        
+        likeButton.snp.makeConstraints { make in
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+        }
+        
+        linkLabel.snp.makeConstraints { make in
+            make.width.equalTo(30)
+            make.height.equalTo(30)
         }
         
         contentLabel.snp.makeConstraints { make in
@@ -174,18 +197,16 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
             make.right.equalToSuperview().offset(-15)
         }
         
-        collectionButton.snp.makeConstraints { make in
-            make.left.equalTo(idendityStackView.snp.left).offset(5)
-            make.bottom.equalToSuperview().offset(-15)
+        linkLabel.snp.makeConstraints { make in
             make.height.equalTo(30)
-            make.width.equalTo(25)
+            make.width.equalTo(50)
         }
         
         buttonStackView.snp.makeConstraints { make in
             make.right.equalTo(date.snp.right)
-            make.bottom.equalTo(collectionButton.snp.bottom)
+            make.bottom.equalToSuperview().offset(-15)
             make.height.equalTo(30)
-            make.width.equalTo(210)
+            make.width.equalTo(250)
         }
     }
     

@@ -11,6 +11,8 @@ import Parchment
 
 class WannaKnowViewController: UIViewController {
     
+
+    
     //MARK:-Properties
     private let sideMenu = SideMenuNavigationController(rootViewController: MenuTableViewController())
     
@@ -59,9 +61,10 @@ class WannaKnowViewController: UIViewController {
     
     //MARK:-setNavigationBar
     private func setNavigationBar(){
-        self.navigationItem.titleView = NavigationTitleView()
+        self.navigationItem.titleView = NavigationBarTitle()
         self.navigationController?.navigationItem.searchController = searchViewController
         navigationItem.titleView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backToHomePage)))
+        
         let leftSideMenuButton = UIBarButtonItem(image: UIImage(named: "line.3.horizontal"),
                                                  style: .plain,
                                                  target:self,
@@ -80,7 +83,8 @@ class WannaKnowViewController: UIViewController {
     }
     
     @objc func search(){
-        
+        wannaKnowView.searchBar.isHidden.toggle()
+
     }
     
     @objc func backToHomePage(){

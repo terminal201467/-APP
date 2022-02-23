@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NavigationTitleView: UIView {
+class NavigationBarTitle: UIView {
 
     private let logo:UIImageView = {
        let imageView = UIImageView()
