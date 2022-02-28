@@ -29,6 +29,9 @@ class WannaKnowDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+        setTextField()
+        notifiTheKeyboardWillShow()
+        notifiTheKeyboardWillHide()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -36,9 +39,41 @@ class WannaKnowDetailViewController: UIViewController {
         detailArray.removeAll()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     private func setTableView(){
         wannaKnowDetailView.tableView.delegate = self
         wannaKnowDetailView.tableView.dataSource = self
+    }
+    
+    private func setTextField(){
+        wannaKnowDetailView.textField.delegate = self
+    }
+    
+    //MARK:-KeyBoardShow
+    func notifiTheKeyboardWillShow(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification){
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue{
+            if view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    //MARK:-KeyBoardHide
+    func notifiTheKeyboardWillHide(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification){
+        if view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
 
 }
@@ -61,4 +96,11 @@ extension WannaKnowDetailViewController:UITableViewDelegate,UITableViewDataSourc
         return header
     }
 
+}
+
+extension WannaKnowDetailViewController:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

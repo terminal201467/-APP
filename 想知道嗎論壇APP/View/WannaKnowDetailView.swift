@@ -25,6 +25,8 @@ class WannaKnowDetailView: UIView {
         textField.backgroundColor = .white
         textField.placeholder = "輸入文字..."
         textField.position(from: textField.beginningOfDocument, offset: 5)
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        textField.leftViewMode = .always
         textField.tintColor = .gray
         textField.keyboardAppearance = .light
         textField.layer.cornerRadius = 22

@@ -17,7 +17,6 @@ class ChiaoWanViewController: UIViewController{
     
     let chiaoWanView = ChiaoWanView()
     
-    
     //MARK:-LifeCycle
     override func loadView() {
         super.loadView()
@@ -28,6 +27,37 @@ class ChiaoWanViewController: UIViewController{
         super.viewDidLoad()
         setTableView()
         setTextField()
+        notifiTheKeyboardWillShow()
+        notifiTheKeyboardWillHide()
+    }
+    
+    //MARK:-Method
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    //MARK:-KeyBoardShow
+    func notifiTheKeyboardWillShow(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification){
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue{
+            if view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    //MARK:-KeyBoardHide
+    func notifiTheKeyboardWillHide(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification){
+        if view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     private func setTableView(){
@@ -53,20 +83,9 @@ extension ChiaoWanViewController:UITableViewDelegate,UITableViewDataSource{
 }
 
 extension ChiaoWanViewController:UITextFieldDelegate{
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("1")
-        if self.view.frame.origin.y == 0 {
-            self.view.frame.origin.y -= view.frame.height * 0.5
-        }
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("2")
         textField.resignFirstResponder()
-        if self.view.frame.origin.y < 0{
-            self.view.frame.origin.y = 0
-        }
         return true
     }
     

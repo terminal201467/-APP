@@ -42,7 +42,7 @@ class HomePageViewController: UIViewController {
         setNavigationBar()
         setSideMenu()
         setPageViewController()
-        setKeyboardSetting()
+//        setKeyboardDissmiss()
         setSearchBar()
         
         WannaKnowAPI.shared.getCurrentData(callBy: .year("2019")) { result in
@@ -114,22 +114,17 @@ class HomePageViewController: UIViewController {
         homePageView.searchBar.delegate = self
     }
 
-    
-    private func setKeyboardSetting(){
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
-        self.homePageView.banner.addGestureRecognizer(tap)
-    }
-
-    @objc func dismissKeyBoard() {
-        self.view.endEditing(true)
-        if viewControllers[2].view.frame.origin.y < 0{
-            viewControllers[2].view.frame.origin.y = 0
-        }
-    }
-}
-
-extension HomePageViewController:SideMenuNavigationControllerDelegate{
-    
+//    private func setKeyboardDissmiss(){
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
+//        self.homePageView.banner.addGestureRecognizer(tap)
+//    }
+//
+//    @objc func dismissKeyBoard() {
+//        viewControllers[2].view.endEditing(true)
+//        if viewControllers[2].view.frame.origin.y != 0{
+//            viewControllers[2].view.frame.origin.y = 0
+//        }
+//    }
 }
 
 extension HomePageViewController:UISearchBarDelegate{

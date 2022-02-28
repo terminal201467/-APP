@@ -25,7 +25,6 @@ class ThemeButtons: UICollectionViewController{
     private func setCollectionViewFlow(){
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 10
-//        flowLayout.estimatedItemSize = .init(width: 120, height: 30)
         flowLayout.itemSize = .init(width: 110, height: 30)
     }
     
