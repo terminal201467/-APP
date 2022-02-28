@@ -10,12 +10,12 @@ import UIKit
 class EditingTextFieldViewController: UIViewController {
     
     //MARK:-Properties
-    let editingTextFieldView = EditingTextFieldView()
+//    let editingTextFieldView = EditingTextFieldView()
     
     //MARK:-LifeCycle
     override func loadView() {
         super.loadView()
-        view = editingTextFieldView
+//        view = editingTextFieldView
     }
 
     override func viewDidLoad() {

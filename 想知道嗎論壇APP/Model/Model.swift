@@ -13,7 +13,6 @@ struct HomePageData{
     var date:String
 }
 
-
 struct WannaKnowListData {
     var titleText:String
     var personName:String
@@ -39,22 +38,38 @@ struct WannaKnowListData {
     }
 }
 
-
-struct WannaKnowData:Codable {
-    var wanna_know_id:String?
-    var category:String?
-    var title:String?
-    var description:String?
-    var speaker:String?
-    var date:String?
-    var year:Int?
-    var live:String?
-    var tags:String?
-    var like:Int?
-    var attachment:String?
-    var update_time:String?
+struct WannaKnowData:Decodable {
+    var current_page:String?
+    var total_page:String?
+    var per_page:String?
+    var total_item:String?
+    var data:[Data]
+    
+    struct Data:Decodable {
+        var wanna_know_id:String
+        var category:String
+        var title: String
+        var description:String
+        var speaker: String
+        var date: String
+        var year: String
+        var live: String
+        var tags: [String?]
+        var like: String
+        var attachment: String
+        var update_time: String
+        var comment_amount:String
+    }
 }
 
+struct Comments:Decodable{
+    var wanna_know_id:String
+    var messenger:String
+    var comment_id:String
+    var content:String
+    var like:String
+    var content_time:String
+}
 
 
 

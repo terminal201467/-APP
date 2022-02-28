@@ -16,7 +16,7 @@ class WannaKnowAPI{
     private let baseURL = "https://script.google.com/macros/s/AKfycbzPLRjMxBrvgLJhlHXSHxCw1LxQkIfTV045d8_UfkPo6jcWoZPerLsVJsQYMbJAylqs/exec"
     
     //MARK:-Methods
-    private func buildReqeust(callBy:[CallMethod])->URLRequest{
+    private func buildReqeust(callBy:[WannaKnowCallMethod])->URLRequest{
         var components = URLComponents(string: baseURL)
         var query:[String:Any] = [:]
         callBy.map{$0.parameter.map{query[$0.key] = $0.value}}
@@ -24,7 +24,7 @@ class WannaKnowAPI{
         return URLRequest(url: components!.url!, timeoutInterval: 10)
     }
     
-    public func getCurrentData(callBy:CallMethod...,completion: @escaping(Result<[WannaKnowData],Error>)->Void){
+    public func getCurrentData(callBy:WannaKnowCallMethod...,completion: @escaping(Result<[WannaKnowData],Error>)->Void){
         let request = buildReqeust(callBy:callBy)
         print(request)
         URLSession.shared.dataTask(with: request) { data, _, error in
@@ -43,5 +43,31 @@ class WannaKnowAPI{
                 completion(.failure(InternetError.requestFailed))
             }
         }.resume()
+    }
+}
+extension WannaKnowAPI{
+    enum WannaKnowCallMethod{
+        case tags(String)
+        case category(String)
+        case page(String)
+        case per_page(String)
+        case year(String)
+        case orderby(String)
+        var parameter:[String:Any]{
+            switch self {
+            case .tags(let tags):
+                return ["tags":tags]
+            case .category(let category):
+                return ["category":category]
+            case .page(let page):
+                return ["page":page]
+            case .per_page(let per_page):
+                return ["per_page":per_page]
+            case .year(let year):
+                return ["year":year]
+            case .orderby(let orderby):
+                return ["orderby":orderby]
+            }
+        }
     }
 }

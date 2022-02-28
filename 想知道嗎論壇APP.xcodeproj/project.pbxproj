@@ -38,8 +38,6 @@
 		9792945327A9532700EA60B4 /* PageViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945227A9532700EA60B4 /* PageViewControllerCell.swift */; };
 		9792945527A9665F00EA60B4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945427A9665F00EA60B4 /* Model.swift */; };
 		9792945727A969F800EA60B4 /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945627A969F800EA60B4 /* Footer.swift */; };
-		9792945B27AC0B8000EA60B4 /* EditingTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945A27AC0B8000EA60B4 /* EditingTextFieldViewController.swift */; };
-		9792945D27AC0C0200EA60B4 /* EditingTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945C27AC0C0200EA60B4 /* EditingTextFieldView.swift */; };
 		97A2518227AD445F002D5B5E /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518127AD445F002D5B5E /* ContentCell.swift */; };
 		97A2518427AD4479002D5B5E /* WannaKnowDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518327AD4479002D5B5E /* WannaKnowDetailCell.swift */; };
 		97A2518627AFFFAF002D5B5E /* WannaKnowListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518527AFFFAF002D5B5E /* WannaKnowListViewController.swift */; };
@@ -52,9 +50,10 @@
 		97A251B927BE1EFA002D5B5E /* TagButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251B827BE1EFA002D5B5E /* TagButtons.swift */; };
 		97A251BF27BE286B002D5B5E /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251BE27BE286B002D5B5E /* ThemeCell.swift */; };
 		97A251C127BF3EBE002D5B5E /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251C027BF3EBE002D5B5E /* TagCell.swift */; };
-		97A251C327BF90EA002D5B5E /* LineUpButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251C227BF90EA002D5B5E /* LineUpButtons.swift */; };
 		97A251C527BF9134002D5B5E /* LineUpButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251C427BF9134002D5B5E /* LineUpButtonsCell.swift */; };
 		97A251C827C5E60A002D5B5E /* CalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251C727C5E60A002D5B5E /* CalenderCell.swift */; };
+		97A251CC27C72219002D5B5E /* BulletinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251CB27C72219002D5B5E /* BulletinView.swift */; };
+		97A2521327C87340002D5B5E /* CommentsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2521227C87340002D5B5E /* CommentsAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,8 +86,6 @@
 		9792945227A9532700EA60B4 /* PageViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllerCell.swift; sourceTree = "<group>"; };
 		9792945427A9665F00EA60B4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9792945627A969F800EA60B4 /* Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
-		9792945A27AC0B8000EA60B4 /* EditingTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTextFieldViewController.swift; sourceTree = "<group>"; };
-		9792945C27AC0C0200EA60B4 /* EditingTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTextFieldView.swift; sourceTree = "<group>"; };
 		97A2518127AD445F002D5B5E /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		97A2518327AD4479002D5B5E /* WannaKnowDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailCell.swift; sourceTree = "<group>"; };
 		97A2518527AFFFAF002D5B5E /* WannaKnowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowListViewController.swift; sourceTree = "<group>"; };
@@ -101,9 +98,10 @@
 		97A251B827BE1EFA002D5B5E /* TagButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButtons.swift; sourceTree = "<group>"; };
 		97A251BE27BE286B002D5B5E /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 		97A251C027BF3EBE002D5B5E /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
-		97A251C227BF90EA002D5B5E /* LineUpButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineUpButtons.swift; sourceTree = "<group>"; };
 		97A251C427BF9134002D5B5E /* LineUpButtonsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineUpButtonsCell.swift; sourceTree = "<group>"; };
 		97A251C727C5E60A002D5B5E /* CalenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCell.swift; sourceTree = "<group>"; };
+		97A251CB27C72219002D5B5E /* BulletinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinView.swift; sourceTree = "<group>"; };
+		97A2521227C87340002D5B5E /* CommentsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,9 +147,9 @@
 				973245F72797BBF500CE549D /* ViewController */,
 				973245FC2797BC3600CE549D /* TableViewCell */,
 				97A251BB27BE2797002D5B5E /* CollectionViewCell */,
-				973245EC2797BADA00CE549D /* Assets.xcassets */,
 				97A251C627C5E5CF002D5B5E /* CalendarCell */,
 				9792944E27A9091F00EA60B4 /* Colors.xcassets */,
+				973245EC2797BADA00CE549D /* Assets.xcassets */,
 				973245EE2797BADA00CE549D /* LaunchScreen.storyboard */,
 				973245F12797BADA00CE549D /* Info.plist */,
 			);
@@ -180,6 +178,7 @@
 			children = (
 				973246092797C65100CE549D /* HomePageView.swift */,
 				9732462F279A509500CE549D /* ChiaoWanView.swift */,
+				97A251CB27C72219002D5B5E /* BulletinView.swift */,
 				9732460D2797C67300CE549D /* WannaKnowView.swift */,
 				9732460F2797C68200CE549D /* WannaKnowListView.swift */,
 				973246112797C69000CE549D /* ContentView.swift */,
@@ -216,12 +215,9 @@
 		97A251AE27BB96A6002D5B5E /* CustomObject */ = {
 			isa = PBXGroup;
 			children = (
-				9792945A27AC0B8000EA60B4 /* EditingTextFieldViewController.swift */,
-				9792945C27AC0C0200EA60B4 /* EditingTextFieldView.swift */,
 				9792945027A9463200EA60B4 /* NavigationBarTitle.swift */,
 				97A251AF27BBA20B002D5B5E /* ThemeButtons.swift */,
 				97A251B827BE1EFA002D5B5E /* TagButtons.swift */,
-				97A251C227BF90EA002D5B5E /* LineUpButtons.swift */,
 			);
 			path = CustomObject;
 			sourceTree = "<group>";
@@ -230,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				97A251B227BC94FF002D5B5E /* WannaKnowAPI.swift */,
+				97A2521227C87340002D5B5E /* CommentsAPI.swift */,
 				97A251B427BC99FD002D5B5E /* DataBase.swift */,
 			);
 			path = WannaKnowAPI;
@@ -338,15 +335,14 @@
 				973246082797C60C00CE549D /* ContentViewController.swift in Sources */,
 				97A251C827C5E60A002D5B5E /* CalenderCell.swift in Sources */,
 				97A251B327BC94FF002D5B5E /* WannaKnowAPI.swift in Sources */,
-				9792945B27AC0B8000EA60B4 /* EditingTextFieldViewController.swift in Sources */,
+				97A2521327C87340002D5B5E /* CommentsAPI.swift in Sources */,
 				973246102797C68200CE549D /* WannaKnowListView.swift in Sources */,
+				97A251CC27C72219002D5B5E /* BulletinView.swift in Sources */,
 				973246002797BCBF00CE549D /* SignUpViewController.swift in Sources */,
 				973246162797C6A800CE549D /* CalenderView.swift in Sources */,
 				97A2519227B4DBBA002D5B5E /* WannaKnowDetailViewController.swift in Sources */,
 				97A2518427AD4479002D5B5E /* WannaKnowDetailCell.swift in Sources */,
 				97A2518227AD445F002D5B5E /* ContentCell.swift in Sources */,
-				9792945D27AC0C0200EA60B4 /* EditingTextFieldView.swift in Sources */,
-				97A251C327BF90EA002D5B5E /* LineUpButtons.swift in Sources */,
 				97A251B927BE1EFA002D5B5E /* TagButtons.swift in Sources */,
 				9792945727A969F800EA60B4 /* Footer.swift in Sources */,
 				9792945127A9463200EA60B4 /* NavigationBarTitle.swift in Sources */,

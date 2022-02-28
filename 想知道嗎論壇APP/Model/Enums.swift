@@ -88,27 +88,6 @@ enum InternetError:Error{
     case invalidResponse
 }
 
-enum CallMethod{
-    case page(Int)
-    case hot(Bool)
-    case category(String)
-    case tag(String)
-    case year(Int)
-    var parameter:[String:Any]{
-        switch self {
-        case .page(let page):
-            return ["page":page]
-        case .hot(let hot):
-            return ["hot":hot]
-        case .category(let category):
-            return ["category":category]
-        case .tag(let tag):
-            return ["tag":tag]
-        case .year(let year):
-            return ["year":year]
-        }
-    }
-}
 
 enum ItemRanges:Int,CaseIterable{
     case untilfirst = 0,untilSecond,untilThird

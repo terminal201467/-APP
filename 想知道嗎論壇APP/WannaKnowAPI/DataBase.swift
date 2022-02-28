@@ -10,15 +10,8 @@ import Foundation
 
 class DataBase{
     
-    var data:[WannaKnowData] = []
-    
-    func getData(callby method:CallMethod){
-        WannaKnowAPI.shared.getCurrentData(callBy: method) { result in
-            
-            
-        }
+
         
-    }
     
     
 }

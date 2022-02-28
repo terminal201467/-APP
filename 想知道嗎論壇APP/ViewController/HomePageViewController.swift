@@ -22,9 +22,9 @@ class HomePageViewController: UIViewController {
     private let searchViewController = UISearchController(searchResultsController: nil)
     
     private let viewControllers:[UIViewController] = { () -> [UIViewController] in
-        let bulletinViewController = BulletinTableViewController()
+        let bulletinViewController = BulletinViewController()
         
-        let xiangZhiDaoMaViewController = BulletinTableViewController()
+        let xiangZhiDaoMaViewController = BulletinViewController()
         
         let chiaoWanViewController = ChiaoWanViewController()
         
@@ -44,6 +44,15 @@ class HomePageViewController: UIViewController {
         setPageViewController()
         setKeyboardSetting()
         setSearchBar()
+        
+        WannaKnowAPI.shared.getCurrentData(callBy: .year("2019")) { result in
+            switch result{
+            case .success(let wannaKnowData):
+                print(wannaKnowData.description)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     //MARK:-setSideMenu
@@ -75,9 +84,6 @@ class HomePageViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = leftSideMenuButton
         navigationItem.rightBarButtonItem = rightButton
-//        navigationItem.searchController = searchViewController
-        
-//        navigationItem.searchController.
         navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
     }
     

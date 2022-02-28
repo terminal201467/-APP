@@ -17,7 +17,6 @@ class ChiaoWanViewController: UIViewController{
     
     let chiaoWanView = ChiaoWanView()
     
-    let editingViewController = EditingTextFieldViewController()
     
     //MARK:-LifeCycle
     override func loadView() {
@@ -28,7 +27,6 @@ class ChiaoWanViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
-        setChildView()
         setTextField()
     }
     
@@ -38,14 +36,7 @@ class ChiaoWanViewController: UIViewController{
     }
     
     private func setTextField(){
-        editingViewController.editingTextFieldView.textField.delegate = self
-    }
-    
-    private func setChildView(){
-        add(editingViewController)
-        editingViewController.view.snp.makeConstraints { make in
-            make.right.left.top.bottom.equalTo(chiaoWanView.editingTextFieldContainerView)
-        }
+        chiaoWanView.textField.delegate = self
     }
 }
 
@@ -62,6 +53,7 @@ extension ChiaoWanViewController:UITableViewDelegate,UITableViewDataSource{
 }
 
 extension ChiaoWanViewController:UITextFieldDelegate{
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         print("1")
         if self.view.frame.origin.y == 0 {
@@ -77,4 +69,5 @@ extension ChiaoWanViewController:UITextFieldDelegate{
         }
         return true
     }
+    
 }

@@ -16,28 +16,3 @@ extension UIViewController {
     }
 }
 
-extension Array {
-    func oneFourSplit()->[[Element]]{
-        let topCell = self[0]
-        let bottomCell = self[1...4]
-        return [Array(arrayLiteral: topCell), Array(bottomCell)]
-    }
-    
-    func twoThreeSplit() -> [[Element]] {
-        let topCell = self[0...2]
-        let bottomCell = self[3...4]
-        return [Array(topCell), Array(bottomCell)]
-    }
-    
-    func threeTwoSplit()-> [[Element]]{
-        let topCell = self[0...1]
-        let bottomCell = self[2...4]
-        return [Array(topCell), Array(bottomCell)]
-    }
-    
-    func fourOneSplit()->[[Element]]{
-        let topCell = self[0...3]
-        let bottomCell = self[4]
-        return [Array(topCell),Array(arrayLiteral: bottomCell)]
-    }
-}
