@@ -54,6 +54,8 @@
 		97A251C827C5E60A002D5B5E /* CalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251C727C5E60A002D5B5E /* CalenderCell.swift */; };
 		97A251CC27C72219002D5B5E /* BulletinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251CB27C72219002D5B5E /* BulletinView.swift */; };
 		97A2521327C87340002D5B5E /* CommentsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2521227C87340002D5B5E /* CommentsAPI.swift */; };
+		97A2523C27CDD142002D5B5E /* CalenderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2523B27CDD142002D5B5E /* CalenderHeader.swift */; };
+		97A2523E27CDF4B6002D5B5E /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2523D27CDF4B6002D5B5E /* EventTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +104,8 @@
 		97A251C727C5E60A002D5B5E /* CalenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCell.swift; sourceTree = "<group>"; };
 		97A251CB27C72219002D5B5E /* BulletinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinView.swift; sourceTree = "<group>"; };
 		97A2521227C87340002D5B5E /* CommentsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsAPI.swift; sourceTree = "<group>"; };
+		97A2523B27CDD142002D5B5E /* CalenderHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderHeader.swift; sourceTree = "<group>"; };
+		97A2523D27CDF4B6002D5B5E /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +210,7 @@
 				9792945227A9532700EA60B4 /* PageViewControllerCell.swift */,
 				97A2518127AD445F002D5B5E /* ContentCell.swift */,
 				97A2518327AD4479002D5B5E /* WannaKnowDetailCell.swift */,
+				97A2523D27CDF4B6002D5B5E /* EventTableViewCell.swift */,
 				97A2518F27B4B4FB002D5B5E /* WannaKnowDetailHeader.swift */,
 				9792945627A969F800EA60B4 /* Footer.swift */,
 			);
@@ -246,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				97A251C727C5E60A002D5B5E /* CalenderCell.swift */,
+				97A2523B27CDD142002D5B5E /* CalenderHeader.swift */,
 			);
 			path = CalendarCell;
 			sourceTree = "<group>";
@@ -343,12 +349,14 @@
 				97A2519227B4DBBA002D5B5E /* WannaKnowDetailViewController.swift in Sources */,
 				97A2518427AD4479002D5B5E /* WannaKnowDetailCell.swift in Sources */,
 				97A2518227AD445F002D5B5E /* ContentCell.swift in Sources */,
+				97A2523C27CDD142002D5B5E /* CalenderHeader.swift in Sources */,
 				97A251B927BE1EFA002D5B5E /* TagButtons.swift in Sources */,
 				9792945727A969F800EA60B4 /* Footer.swift in Sources */,
 				9792945127A9463200EA60B4 /* NavigationBarTitle.swift in Sources */,
 				973245FE2797BC7B00CE549D /* WannaKnowViewController.swift in Sources */,
 				97A2519027B4B4FB002D5B5E /* WannaKnowDetailHeader.swift in Sources */,
 				973245E82797BAD800CE549D /* HomePageViewController.swift in Sources */,
+				97A2523E27CDF4B6002D5B5E /* EventTableViewCell.swift in Sources */,
 				973245E42797BAD800CE549D /* AppDelegate.swift in Sources */,
 				97324630279A509500CE549D /* ChiaoWanView.swift in Sources */,
 				97A2519427B4DEF7002D5B5E /* WannaKnowDetailView.swift in Sources */,

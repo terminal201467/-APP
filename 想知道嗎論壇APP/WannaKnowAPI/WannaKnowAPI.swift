@@ -35,7 +35,6 @@ class WannaKnowAPI{
                 do{
                     let decode = try JSONDecoder().decode([WannaKnowData].self, from: data)
                     completion(.success(decode))
-                    print(data)
                 }catch{
                     completion(.failure(error))
                 }

@@ -42,10 +42,9 @@ class HomePageViewController: UIViewController {
         setNavigationBar()
         setSideMenu()
         setPageViewController()
-//        setKeyboardDissmiss()
         setSearchBar()
         
-        WannaKnowAPI.shared.getCurrentData(callBy: .year("2019")) { result in
+        WannaKnowAPI.shared.getCurrentData(callBy: .year("2018")) { result in
             switch result{
             case .success(let wannaKnowData):
                 print(wannaKnowData.description)
