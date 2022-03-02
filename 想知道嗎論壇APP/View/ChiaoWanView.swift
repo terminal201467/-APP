@@ -79,12 +79,7 @@ class ChiaoWanView: UIView {
             make.right.left.equalToSuperview()
             make.bottom.equalTo(backGroundView.snp.top)
         }
-        
-        backGroundView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-            make.right.left.equalToSuperview()
-            make.height.equalTo(80)
-        }
+    
         
         signInButton.snp.makeConstraints { make in
             make.left.equalTo(backGroundView.snp.left).offset(15)
@@ -106,6 +101,12 @@ class ChiaoWanView: UIView {
             make.right.equalTo(-15)
             make.left.equalTo(textField.snp.right).offset(5)
             make.top.equalTo(backGroundView.snp.top).offset(15)
+        }
+        
+        backGroundView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.right.left.equalToSuperview()
+            make.height.equalTo(80)
         }
     }
 

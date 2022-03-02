@@ -16,6 +16,7 @@ class WannaKnowDetailView: UIView {
         tableView.separatorStyle = .singleLine
         tableView.sectionHeaderHeight = 300
         tableView.rowHeight = 135
+        tableView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         tableView.allowsSelection = false
         return tableView
     }()
@@ -43,20 +44,18 @@ class WannaKnowDetailView: UIView {
         return sendButton
     }()
     
-    lazy var textFieldContainer:UIStackView = {
-       let stackView = UIStackView(arrangedSubviews: [textField,sendButton])
-        stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
-        stackView.alignment = .center
-        stackView.spacing = 3
-        stackView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        return stackView
+    let backGroundView:UIView = {
+       let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(tableView)
-        addSubview(textFieldContainer)
+        addSubview(backGroundView)
+        addSubview(textField)
+        addSubview(sendButton)
         autoLayout()
     }
     
@@ -68,26 +67,28 @@ class WannaKnowDetailView: UIView {
         tableView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.right.left.equalToSuperview()
-            make.bottom.equalTo(textFieldContainer.snp.top)
+            make.bottom.equalTo(backGroundView.snp.top)
         }
         
         textField.snp.makeConstraints { make in
-            make.left.equalTo(15)
             make.height.equalTo(40)
-            make.width.equalToSuperview().multipliedBy(0.65)
+            make.top.equalTo(backGroundView).offset(15)
+            make.left.equalToSuperview().offset(15)
+            make.top.equalTo(backGroundView.snp.top).offset(15)
         }
         
         sendButton.snp.makeConstraints { make in
+            make.height.equalTo(40)
+            make.width.equalTo(80)
             make.right.equalTo(-15)
-            make.left.equalTo(textField.snp.right).offset(10)
-            make.height.equalTo(textField.snp.height)
+            make.left.equalTo(textField.snp.right).offset(5)
+            make.top.equalTo(backGroundView.snp.top).offset(15)
         }
         
-        textFieldContainer.snp.makeConstraints { make in
+        backGroundView.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.height.equalTo(70)
+            make.right.left.equalToSuperview()
+            make.height.equalTo(80)
         }
     }
 }

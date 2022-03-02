@@ -19,7 +19,10 @@ struct CalenderData {
     var dateLabel:String
     var speakerName:String
     var speechTitle:String
-    
+    var dateInfo:String{
+        let info = [recentDate,"・",weekDate,",",dateLabel]
+        return info.joined()
+    }
 }
 
 struct WannaKnowListData {

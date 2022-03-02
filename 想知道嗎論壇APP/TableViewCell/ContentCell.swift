@@ -13,6 +13,7 @@ class ContentCell: UITableViewCell {
     
     private let title:UILabel = {
         let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 25)
         return label
     }()
@@ -25,18 +26,21 @@ class ContentCell: UITableViewCell {
     
     private let personName:UILabel = {
         let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 15)
         return label
     }()
     
     private let dateLabel:UILabel = {
        let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 18)
         return label
     }()
     
     private let contentLabel:UILabel = {
        let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 20)
         label.numberOfLines = 3
         return label
@@ -51,6 +55,7 @@ class ContentCell: UITableViewCell {
     
     private let likeCount:UILabel = {
        let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 20)
         return label
     }()
@@ -64,6 +69,7 @@ class ContentCell: UITableViewCell {
     
     private let commentCount:UILabel = {
        let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 20)
         return label
     }()
@@ -98,6 +104,7 @@ class ContentCell: UITableViewCell {
     
     private let linkLabel:UILabel = {
        let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.text = "連結"
         label.font = UIFont.systemFont(ofSize: 15)
         return label
@@ -114,6 +121,7 @@ class ContentCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         addSubview(title)
         addSubview(personPhoto)
         addSubview(personName)

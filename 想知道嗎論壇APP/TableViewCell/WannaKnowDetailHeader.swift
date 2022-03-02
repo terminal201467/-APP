@@ -27,6 +27,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
     
     private let personName:UILabel = {
         let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         return label
     }()
     
@@ -52,11 +53,13 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
     
     private let date:UILabel = {
         let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         return label
     }()
     
     private let contentLabel:UILabel = {
         let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 18)
         label.numberOfLines = 5
         return label
@@ -72,6 +75,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
     
     private let likeCount:UILabel = {
        let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 20)
         return label
     }()
@@ -85,6 +89,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
     
     private let commentCount:UILabel = {
        let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 20)
         return label
     }()
@@ -106,6 +111,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
     private let linkLabel:UILabel = {
        let label = UILabel()
         label.text = "連結"
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 15)
         return label
     }()
@@ -186,7 +192,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
             make.height.equalTo(30)
         }
         
-        linkLabel.snp.makeConstraints { make in
+        linkButton.snp.makeConstraints { make in
             make.width.equalTo(30)
             make.height.equalTo(30)
         }
@@ -206,7 +212,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
             make.right.equalTo(date.snp.right)
             make.bottom.equalToSuperview().offset(-15)
             make.height.equalTo(30)
-            make.width.equalTo(250)
+            make.width.equalTo(265)
         }
     }
     

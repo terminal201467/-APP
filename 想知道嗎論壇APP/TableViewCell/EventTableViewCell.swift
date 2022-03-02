@@ -11,23 +11,10 @@ class EventTableViewCell: UITableViewCell {
     
     static let reusebleIdentifier = "EventCell"
     
-    let recentDate:UILabel = {
+    let dateInfo:UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 16)
-        return label
-    }()
-    
-    let weekDate:UILabel = {
-        let label = UILabel()
-        label.textColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
-        label.font = UIFont.systemFont(ofSize: 16)
-        return label
-    }()
-    
-    let dateLabel:UILabel = {
-        let label = UILabel()
-        label.textColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         return label
     }()
     
@@ -45,19 +32,11 @@ class EventTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var dateInfo:UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [recentDate,weekDate,dateLabel])
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        stackView.spacing = 2
-        return stackView
-    }()
     
     lazy var eventsInfo:UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [speechTitle,speakerName])
         stackView.layer.cornerRadius = 8
-        stackView.layer.backgroundColor = #colorLiteral(red: 0.4743221402, green: 0.7362652421, blue: 0.5361232162, alpha: 1)
+        stackView.layer.backgroundColor = #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -91,6 +70,7 @@ class EventTableViewCell: UITableViewCell {
         speechTitle.snp.makeConstraints { make in
             make.left.equalTo(15)
         }
+        
         speakerName.snp.makeConstraints { make in
             make.left.equalTo(15)
             
@@ -98,9 +78,7 @@ class EventTableViewCell: UITableViewCell {
     }
     
     public func configuration(calenderData:CalenderData){
-        recentDate.text = calenderData.recentDate
-        weekDate.text = calenderData.weekDate
-        dateLabel.text = calenderData.dateLabel
+        dateInfo.text = calenderData.dateInfo
         speakerName.text = calenderData.speakerName
         speechTitle.text = calenderData.speechTitle
     }

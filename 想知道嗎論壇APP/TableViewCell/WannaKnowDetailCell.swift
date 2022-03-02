@@ -19,6 +19,7 @@ class WannaKnowDetailCell:UITableViewCell {
     
     private let personName:UILabel = {
         let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = .systemFont(ofSize: 15)
         return label
     }()
@@ -44,6 +45,7 @@ class WannaKnowDetailCell:UITableViewCell {
     
     private let contentLabel:UILabel = {
         let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = .systemFont(ofSize: 20)
         label.numberOfLines = 5
         return label
@@ -51,6 +53,7 @@ class WannaKnowDetailCell:UITableViewCell {
     
     private let dateLabel:UILabel = {
         let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = .systemFont(ofSize: 15)
         return label
     }()
@@ -64,6 +67,7 @@ class WannaKnowDetailCell:UITableViewCell {
     
     private let likeCount:UILabel = {
         let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = .systemFont(ofSize: 15)
         return label
     }()
@@ -71,6 +75,7 @@ class WannaKnowDetailCell:UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         contentView.addSubview(personInfoStackView)
         contentView.addSubview(contentLabel)
         contentView.addSubview(dateLabel)

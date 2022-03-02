@@ -10,13 +10,15 @@ import JTAppleCalendar
 
 class CalenderView: UIView {
 
-    let calendarView:JTACMonthView = {
+    let calendar:JTACMonthView = {
         let calendarView = JTACMonthView()
         calendarView.register(CalenderCell.self, forCellWithReuseIdentifier: CalenderCell.reuseIdentifier)
         calendarView.register(CalenderHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CalenderHeader.reuseIdentifier)
         calendarView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         calendarView.allowsMultipleSelection = true
         calendarView.showsHorizontalScrollIndicator = false
+        calendarView.rangeSelectionMode = .continuous
+        calendarView.allowsRangedSelection = true
         calendarView.scrollDirection = .horizontal
         calendarView.scrollingMode = .stopAtEachCalendarFrame
         calendarView.allowsRangedSelection = true
@@ -45,7 +47,7 @@ class CalenderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(calendarView)
+        addSubview(calendar)
         addSubview(tableView)
         addSubview(signInButton)
         autoLayout()
@@ -56,13 +58,13 @@ class CalenderView: UIView {
     }
     
     private func autoLayout(){
-        calendarView.snp.makeConstraints { make in
+        calendar.snp.makeConstraints { make in
             make.top.right.left.equalToSuperview()
             make.height.equalToSuperview().dividedBy(2)
         }
         
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(calendarView.snp.bottom)
+            make.top.equalTo(calendar.snp.bottom)
             make.right.left.equalToSuperview()
             make.bottom.equalToSuperview()
         }

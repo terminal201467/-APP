@@ -75,7 +75,6 @@ class WannaKnowDetailViewController: UIViewController {
             self.view.frame.origin.y = 0
         }
     }
-
 }
 
 extension WannaKnowDetailViewController:UITableViewDelegate,UITableViewDataSource{

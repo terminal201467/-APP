@@ -14,12 +14,14 @@ class WannaKnowListView: UIView {
         tableView.register(ContentCell.self, forCellReuseIdentifier: ContentCell.reuseIdentifier)
         tableView.separatorStyle = .singleLine
         tableView.allowsSelection = true
+        tableView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         tableView.estimatedRowHeight = 300
         return tableView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         addSubview(tableView)
         autoLayout()
     }
