@@ -44,12 +44,12 @@ class HomePageViewController: UIViewController {
         setPageViewController()
         setSearchBar()
         
-        WannaKnowAPI.shared.getCurrentData(callBy: .year("2019"),.per_page("10")) { result in
-            switch result{
-            case .success(let data): print(data)
-            case .failure(let error): print(error.localizedDescription)
-            }
-        }
+//        WannaKnowAPI.shared.getCurrentData(callBy: .year("2019"),.per_page("10")) { result in
+//            switch result{
+//            case .success(let data): print(data)
+//            case .failure(let error): print(error.localizedDescription)
+//            }
+//        }
         
     }
     

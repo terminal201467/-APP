@@ -42,7 +42,6 @@ class WannaKnowDataBase{
         return wannaKnowData[indexPath.section].data[indexPath.row]
     }
     
-    
     //MARK:-CollectionViewTag
     public func numberOfRowsInCollectionViewSection(_ section:Int)->Int{
         return wannaKnowData.map{$0.data.map{$0.tags}}.count

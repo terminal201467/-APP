@@ -20,7 +20,7 @@ class CommentsAPI{
         return URLRequest(url: (components?.url)!, timeoutInterval: 10)
     }
     
-    func getCommentsAPI(callBy ID:String,completion:@escaping(Result<WannaKnowData,Error>)->Void){
+    func getCommentsAPI(callBy ID:String,completion:@escaping(Result<CommentsData,Error>)->Void){
         let request = buildRequest(callBy: ID)
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error{
@@ -28,7 +28,7 @@ class CommentsAPI{
             }
             if let data = data{
                 do{
-                    let decode = try JSONDecoder().decode(WannaKnowData.self, from: data)
+                    let decode = try JSONDecoder().decode(CommentsData.self, from: data)
                     completion(.success(decode))
                 }catch{
                     completion(.failure(InternetError.invalidResponse))

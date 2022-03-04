@@ -20,7 +20,7 @@ class WannaKnowDetailViewController: UIViewController {
         }
     }
     
-    var comments:[CommentsData] = [CommentsData(wanna_know_id: "小", messenger: "prprprprpr", comment_id: "pkpkkpkpk", content: "terminalw", like: "15", content_time: "2020-03-23")]
+    let commentDataBase = CommentsDataBase(parameter: self.detail?.wanna_know_id)
     
     //MARK:-LifeCycle
     override func loadView() {

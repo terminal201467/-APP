@@ -33,7 +33,6 @@ class WannaKnowListViewController: UIViewController{
                 self.wannaKnowListView.tableView.reloadData()
             }
         }
-        
         wannaAPIDataBase.onError = { error in
             print(error.localizedDescription)
         }

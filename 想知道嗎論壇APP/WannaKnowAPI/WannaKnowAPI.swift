@@ -45,7 +45,7 @@ class WannaKnowAPI{
         }.resume()
     }
     
-    public func getCalendarData(callBy:WannaKnowCallMethod...,completion:@escaping(Result<[Data],Error>)->Void){
+    public func getCalendarData(callBy:WannaKnowCallMethod...,completion:@escaping(Result<[YearData],Error>)->Void){
         let request = buildReqeust(callBy: callBy)
         print(request)
         URLSession.shared.dataTask(with: request) { data, _, error in
@@ -54,7 +54,7 @@ class WannaKnowAPI{
             }
             if let data = data{
                 do{
-                    let decode = try JSONDecoder().decode([Data].self, from: data)
+                    let decode = try JSONDecoder().decode([YearData].self, from: data)
                     print(decode)
                     completion(.success(decode))
                 }catch{
