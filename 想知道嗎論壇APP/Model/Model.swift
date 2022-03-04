@@ -25,56 +25,47 @@ struct CalenderData {
     }
 }
 
-struct WannaKnowListData {
-    var titleText:String
-    var personName:String
-    var date:String
-    var content:String
-    var buttonArray:[String]
-    var likeCount:String
-    var commentCount:String
-    var chatMessage:[ChatMessage]?
-
-    struct ChatMessage{
-        var commentPerson:String
-        var commentStair:Int
-        var commentStairString:String{
-            return String(commentStair)
-        }
-        var commentMessage:String
-        var commentDate:String
-        var likeCount:Int
-        var likeCountString:String{
-            String(likeCount)
-        }
-    }
-}
-
 struct WannaKnowData:Decodable{
-    var current_page:String?
-    var total_page:String?
-    var per_page:String?
-    var total_item:String?
-    var data:[Data?]
+    var current_page:String
+    var total_page:String
+    var per_page:String
+    var total_item:String
+    var data:[Data]
     
     struct Data:Decodable{
-        var wanna_know_id:String?
-        var category:String?
-        var title: String?
-        var description:String?
-        var speaker: String?
-        var date: String?
-        var year: String?
-        var live: String?
+        var wanna_know_id:String
+        var category:String
+        var title: String
+        var description:String
+        var speaker: String
+        var date: String
+        var year: String
+        var live: String
         var tags: [String?]
-        var like: String?
-        var attachment: String?
-        var update_time: String?
-        var comment_amount: String?
+        var like: String
+        var attachment: String
+        var update_time: String
+        var comment_amount: String
     }
 }
 
-struct Comments:Decodable{
+struct YearData:Decodable{
+    var wanna_know_id:String
+    var category:String
+    var title: String
+    var description:String
+    var speaker: String
+    var date: String
+    var year: String
+    var live: String
+    var tags: [String?]
+    var like: String
+    var attachment: String
+    var update_time: String
+    var comment_amount: String
+}
+
+struct CommentsData:Decodable{
     var wanna_know_id:String
     var messenger:String
     var comment_id:String

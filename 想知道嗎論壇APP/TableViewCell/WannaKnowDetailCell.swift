@@ -118,12 +118,11 @@ class WannaKnowDetailCell:UITableViewCell {
         }
     }
     
-    public func configuration(data:WannaKnowListData.ChatMessage){
-        personName.text = data.commentPerson
-        contentLabel.text = data.commentMessage
-        dateLabel.text = data.commentDate
-        likeCount.text = data.likeCountString
-        stairLabel.text = "  第\(data.commentStairString)樓  "
-        likeCount.text = data.likeCountString
+    public func configuration(data:CommentsData){
+        personName.text = data.wanna_know_id
+        contentLabel.text = data.content
+        dateLabel.text = data.content_time
+        likeCount.text = data.like
+        stairLabel.text = "一樓"
     }
 }

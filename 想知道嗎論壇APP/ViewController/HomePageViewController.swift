@@ -44,14 +44,13 @@ class HomePageViewController: UIViewController {
         setPageViewController()
         setSearchBar()
         
-        WannaKnowAPI.shared.getCurrentData(callBy: .year("2018")) { result in
+        WannaKnowAPI.shared.getCurrentData(callBy: .year("2019"),.per_page("10")) { result in
             switch result{
-            case .success(let wannaKnowData):
-                print(wannaKnowData.description)
-            case .failure(let error):
-                print(error.localizedDescription)
+            case .success(let data): print(data)
+            case .failure(let error): print(error.localizedDescription)
             }
         }
+        
     }
     
     //MARK:-setSideMenu

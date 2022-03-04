@@ -11,7 +11,7 @@ class CommentsAPI{
     
     static let shared = CommentsAPI()
     
-    private let baseURL = "https://script.google.com/macros/s/AKfycbwNKoMxg2VJP4dXk4iAGRxsnUIEySV7r3WOm7gWHb7rbiZW2t3DAEmlCWW1QfHFj_Fu3Q/exec"
+    private let baseURL = "https://script.google.com/macros/s/AKfycbyL_N-SK7iwC5Cwydj8gL1zQJxtK9Qf5wsc3HnjZFC-yo1wFKcHO9vyh_dQSh1H7s2I/exec"
     
     private func buildRequest(callBy ID:String)->URLRequest{
         var components = URLComponents(string: baseURL)
@@ -20,7 +20,7 @@ class CommentsAPI{
         return URLRequest(url: (components?.url)!, timeoutInterval: 10)
     }
     
-    func getCommentsAPI(callBy ID:String,completion:@escaping(Result<[WannaKnowData],Error>)->Void){
+    func getCommentsAPI(callBy ID:String,completion:@escaping(Result<WannaKnowData,Error>)->Void){
         let request = buildRequest(callBy: ID)
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error{
@@ -28,8 +28,8 @@ class CommentsAPI{
             }
             if let data = data{
                 do{
-                    let data = try JSONDecoder().decode([WannaKnowData].self, from: data)
-                    completion(.success(data))
+                    let decode = try JSONDecoder().decode(WannaKnowData.self, from: data)
+                    completion(.success(decode))
                 }catch{
                     completion(.failure(InternetError.invalidResponse))
                 }

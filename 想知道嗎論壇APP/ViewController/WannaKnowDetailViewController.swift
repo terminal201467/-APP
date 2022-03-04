@@ -14,11 +14,13 @@ class WannaKnowDetailViewController: UIViewController {
     
     let wannaKnowHeader = WannaKnowDetailHeader()
     
-    var detailArray:[WannaKnowListData] = []{
+    var detail:WannaKnowData.Data?{
         didSet{
             wannaKnowDetailView.tableView.reloadData()
         }
     }
+    
+    var comments:[CommentsData] = [CommentsData(wanna_know_id: "小", messenger: "prprprprpr", comment_id: "pkpkkpkpk", content: "terminalw", like: "15", content_time: "2020-03-23")]
     
     //MARK:-LifeCycle
     override func loadView() {
@@ -36,7 +38,7 @@ class WannaKnowDetailViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        detailArray.removeAll()
+        detail = nil
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -79,22 +81,20 @@ class WannaKnowDetailViewController: UIViewController {
 
 extension WannaKnowDetailViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        detailArray.count
+        comments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: WannaKnowDetailCell.reuseIdentifier, for: indexPath) as! WannaKnowDetailCell
-        let chatArray = detailArray.map{$0.chatMessage.map{$0}![indexPath.row]}
-        cell.configuration(data: chatArray[indexPath.row])
+        cell.configuration(data: comments[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: WannaKnowDetailHeader.reuseIdentifier) as! WannaKnowDetailHeader
-        header.configuration(data: detailArray[section])
+        header.configuration(data: detail!)
         return header
     }
-
 }
 
 extension WannaKnowDetailViewController:UITextFieldDelegate{

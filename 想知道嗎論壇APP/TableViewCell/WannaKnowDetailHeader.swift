@@ -25,7 +25,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
         return imageView
     }()
     
-    private let personName:UILabel = {
+    private let speaker:UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         return label
@@ -43,7 +43,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
     
     //MARK:the stackView of the person identifier
     lazy var idendityStackView:UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [personPhoto,personName,hostPosition])
+        let stackView = UIStackView(arrangedSubviews: [personPhoto,speaker,hostPosition])
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .center
@@ -57,14 +57,13 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
         return label
     }()
     
-    private let contentLabel:UILabel = {
+    private let descriptionLabel:UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 18)
         label.numberOfLines = 5
         return label
     }()
-    
 
     private let likeButton:UIButton = {
         let button = UIButton()
@@ -73,7 +72,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
         return button
     }()
     
-    private let likeCount:UILabel = {
+    private let like:UILabel = {
        let label = UILabel()
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 20)
@@ -87,7 +86,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
         return button
     }()
     
-    private let commentCount:UILabel = {
+    private let commentAmount:UILabel = {
        let label = UILabel()
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 20)
@@ -117,7 +116,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
     }()
     
     lazy var buttonStackView:UIStackView = {
-        let stackView = UIStackView(arrangedSubviews:[likeButton,likeCount,commentButton,commentCount,collectionButton,linkButton,linkLabel])
+        let stackView = UIStackView(arrangedSubviews:[likeButton,like,commentButton,commentAmount,collectionButton,linkButton,linkLabel])
         stackView.distribution = .fillProportionally
         stackView.alignment = .center
         stackView.axis = .horizontal
@@ -132,13 +131,13 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
         contentView.addSubview(idendityStackView)
         contentView.addSubview(title)
         contentView.addSubview(date)
-        contentView.addSubview(contentLabel)
+        contentView.addSubview(descriptionLabel)
         contentView.addSubview(linkLabel)
         contentView.addSubview(linkButton)
         contentView.addSubview(likeButton)
-        contentView.addSubview(likeCount)
+        contentView.addSubview(like)
         contentView.addSubview(commentButton)
-        contentView.addSubview(commentCount)
+        contentView.addSubview(commentAmount)
         contentView.addSubview(collectionButton)
         contentView.addSubview(buttonStackView)
         autoLayout()
@@ -167,7 +166,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
             make.bottom.equalTo(idendityStackView.snp.bottom).offset(-5)
         }
         
-        likeCount.snp.makeConstraints { make in
+        like.snp.makeConstraints { make in
             make.width.equalTo(30)
             make.height.equalTo(30)
         }
@@ -177,7 +176,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
             make.height.equalTo(30)
         }
         
-        commentCount.snp.makeConstraints { make in
+        commentAmount.snp.makeConstraints { make in
             make.width.equalTo(30)
             make.height.equalTo(30)
         }
@@ -197,7 +196,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
             make.height.equalTo(30)
         }
         
-        contentLabel.snp.makeConstraints { make in
+        descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(idendityStackView.snp.bottom).offset(15)
             make.left.equalTo(idendityStackView.snp.left).offset(10)
             make.right.equalToSuperview().offset(-15)
@@ -216,12 +215,12 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
         }
     }
     
-    public func configuration(data:WannaKnowListData){
-        title.text = data.titleText
-        personName.text = data.personName
+    public func configuration(data:WannaKnowData.Data){
+        title.text = data.title
+        speaker.text = data.speaker
         date.text = data.date
-        contentLabel.text = data.content
-        likeCount.text = data.likeCount
-        commentCount.text = data.commentCount
+        descriptionLabel.text = data.description
+        like.text = data.like
+        commentAmount.text = data.comment_amount
     }
 }

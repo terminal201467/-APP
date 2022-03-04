@@ -24,21 +24,21 @@ class ContentCell: UITableViewCell {
         return imageView
     }()
     
-    private let personName:UILabel = {
+    private let speaker:UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 15)
         return label
     }()
     
-    private let dateLabel:UILabel = {
+    private let date:UILabel = {
        let label = UILabel()
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 18)
         return label
     }()
     
-    private let contentLabel:UILabel = {
+    private let descriptionLabel:UILabel = {
        let label = UILabel()
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 20)
@@ -67,7 +67,7 @@ class ContentCell: UITableViewCell {
         return button
     }()
     
-    private let commentCount:UILabel = {
+    private let comment_amount:UILabel = {
        let label = UILabel()
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 20)
@@ -111,7 +111,7 @@ class ContentCell: UITableViewCell {
     }()
     
     lazy var buttonStackView:UIStackView = {
-       let stackView = UIStackView(arrangedSubviews: [likeButton,likeCount,commentButton,commentCount,collectionButton,linkButton,linkLabel])
+       let stackView = UIStackView(arrangedSubviews: [likeButton,likeCount,commentButton,comment_amount,collectionButton,linkButton,linkLabel])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .center
@@ -124,9 +124,9 @@ class ContentCell: UITableViewCell {
         backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         addSubview(title)
         addSubview(personPhoto)
-        addSubview(personName)
-        addSubview(dateLabel)
-        addSubview(contentLabel)
+        addSubview(speaker)
+        addSubview(date)
+        addSubview(descriptionLabel)
         addSubview(tagCollectionButtons)
         addSubview(linkButton)
         addSubview(linkLabel)
@@ -151,26 +151,26 @@ class ContentCell: UITableViewCell {
             make.height.equalTo(25)
         }
         
-        personName.snp.makeConstraints { make in
+        speaker.snp.makeConstraints { make in
             make.top.equalTo(personPhoto.snp.top)
             make.left.equalTo(personPhoto.snp.right)
             make.height.equalTo(personPhoto.snp.height)
         }
         
-        dateLabel.snp.makeConstraints { make in
+        date.snp.makeConstraints { make in
             make.top.equalTo(personPhoto.snp.top)
             make.bottom.equalTo(personPhoto.snp.bottom)
             make.right.equalToSuperview().offset(-15)
         }
         
-        contentLabel.snp.makeConstraints { make in
+        descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(personPhoto.snp.bottom).offset(10)
             make.left.equalTo(title.snp.left)
             make.right.equalToSuperview().offset(-10)
         }
         
         tagCollectionButtons.snp.makeConstraints { make in
-            make.top.equalTo(contentLabel.snp.bottom).offset(15)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(15)
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
             make.height.greaterThanOrEqualTo(80)
@@ -181,7 +181,7 @@ class ContentCell: UITableViewCell {
             make.width.equalTo(20)
         }
         
-        commentCount.snp.makeConstraints { make in
+        comment_amount.snp.makeConstraints { make in
             make.height.equalTo(20)
             make.width.equalTo(20)
         }
@@ -192,7 +192,7 @@ class ContentCell: UITableViewCell {
         }
         
         buttonStackView.snp.makeConstraints { make in
-            make.right.equalTo(dateLabel.snp.right)
+            make.right.equalTo(date.snp.right)
             make.top.equalTo(tagCollectionButtons.snp.bottom).offset(15)
             make.bottom.equalToSuperview().offset(-15)
             make.height.equalTo(30)
@@ -200,12 +200,12 @@ class ContentCell: UITableViewCell {
         }
     }
     
-    public func configuration(data:WannaKnowListData){
-        title.text = data.titleText
-        personName.text = data.personName
-        dateLabel.text = data.date
-        contentLabel.text = data.content
-        likeCount.text = data.likeCount
-        commentCount.text = data.commentCount
+    public func configuration(data:WannaKnowData.Data){
+        title.text = data.title
+        speaker.text = data.speaker
+        date.text = data.date
+        descriptionLabel.text = data.description
+        likeCount.text = data.like
+        comment_amount.text = data.comment_amount
     }
 }
