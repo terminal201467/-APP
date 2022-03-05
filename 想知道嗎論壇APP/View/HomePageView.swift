@@ -11,16 +11,11 @@ class HomePageView: UIView {
     
     //MARK:-Properties
     
-    let searchBar:UISearchBar = {
-       let searchBar = UISearchBar()
-        searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
-        searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        searchBar.searchTextField.layer.cornerRadius = 50
-        searchBar.searchTextField.keyboardAppearance = .light
-        searchBar.isTranslucent = true
-        searchBar.isHidden = true
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        return searchBar
+    let searchBarContainer:UIView = {
+       let view = UIView()
+        view.isHidden = true
+        view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        return view
     }()
     
     let banner:UIImageView = {
@@ -41,7 +36,7 @@ class HomePageView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(banner)
-        addSubview(searchBar)
+        addSubview(searchBarContainer)
         addSubview(menuPageContainer)
         autoLayout()
     }
@@ -51,10 +46,10 @@ class HomePageView: UIView {
     }
     
     private func autoLayout(){
-        searchBar.snp.makeConstraints { make in
+        searchBarContainer.snp.makeConstraints { make in
             make.top.equalTo(layoutMarginsGuide)
-            make.right.equalToSuperview()
-            make.left.equalToSuperview()
+            make.right.left.equalToSuperview()
+            make.height.equalTo(50)
         }
         
         banner.snp.makeConstraints { make in

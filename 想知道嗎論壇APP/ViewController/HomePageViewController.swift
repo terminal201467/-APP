@@ -40,17 +40,9 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
+        setSearchViewController()
         setSideMenu()
         setPageViewController()
-        setSearchBar()
-        
-//        WannaKnowAPI.shared.getCurrentData(callBy: .year("2019"),.per_page("10")) { result in
-//            switch result{
-//            case .success(let data): print(data)
-//            case .failure(let error): print(error.localizedDescription)
-//            }
-//        }
-        
     }
     
     //MARK:-setSideMenu
@@ -61,7 +53,6 @@ class HomePageViewController: UIViewController {
     }
     //MARK:-setNavigationBar
     private func setNavigationBar(){
-        searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -84,13 +75,24 @@ class HomePageViewController: UIViewController {
         navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
     }
     
+    func setSearchViewController(){
+        homePageView.searchBarContainer.addSubview(searchViewController.searchBar)
+        searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        searchViewController.hidesNavigationBarDuringPresentation = false
+        searchViewController.obscuresBackgroundDuringPresentation = false
+        searchViewController.searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+        searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        searchViewController.searchBar.searchTextField.layer.cornerRadius = 50
+        searchViewController.searchBar.searchTextField.keyboardAppearance = .light
+        searchViewController.searchBar.isTranslucent = false
+    }
+    
     @objc func sideMenuButtonMethod(){
         present(sideMenu, animated: true, completion: nil)
     }
     
     @objc func search(){
-        homePageView.searchBar.isHidden.toggle()
-//        searchViewController.hidesNavigationBarDuringPresentation.toggle()
+        homePageView.searchBarContainer.isHidden.toggle()
     }
     
     //MARK:-setPageViewController
@@ -106,10 +108,7 @@ class HomePageViewController: UIViewController {
             make.top.right.left.bottom.equalTo(homePageView.menuPageContainer)
         }
     }
-    
-    private func setSearchBar(){
-        homePageView.searchBar.delegate = self
-    }
+}
 
 //    private func setKeyboardDissmiss(){
 //        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
@@ -122,17 +121,17 @@ class HomePageViewController: UIViewController {
 //            viewControllers[2].view.frame.origin.y = 0
 //        }
 //    }
-}
+//}
 
-extension HomePageViewController:UISearchBarDelegate{
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        
-    }
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.resignFirstResponder()
-        return true
-    }
-}
+//extension HomePageViewController:UISearchBarDelegate{
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//
+//    }
+//    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+//        searchBar.resignFirstResponder()
+//        return true
+//    }
+//}
 
 //MARK:PagingViewControllerDelegate
 extension HomePageViewController:PagingViewControllerDelegate,PagingViewControllerDataSource{
@@ -148,4 +147,3 @@ extension HomePageViewController:PagingViewControllerDelegate,PagingViewControll
         return viewControllers[index]
     }
 }
-

@@ -22,7 +22,7 @@ class CommentsDataBase{
     }
     
     var valueChange:(()->Void)?
-
+    
     var onError:((Error)->Void)?
     
     //MARK:-Methods

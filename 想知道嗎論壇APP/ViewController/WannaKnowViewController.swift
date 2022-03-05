@@ -10,17 +10,15 @@ import SideMenu
 import Parchment
 
 class WannaKnowViewController: UIViewController {
-    
 
-    
     //MARK:-Properties
     private let sideMenu = SideMenuNavigationController(rootViewController: MenuTableViewController())
     
     private let wannaKnowView = WannaKnowView()
     
-    private let segmentedControllers = [ContentViewController(),CalenderViewController()]
-    
     private let searchViewController = UISearchController(searchResultsController: nil)
+    
+    private let segmentedControllers = [ContentViewController(),CalenderViewController()]
     
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
@@ -35,10 +33,12 @@ class WannaKnowViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setSideMenu()
         setNavigationBar()
+        setSearchViewController()
+        setSideMenu()
         setSegmented()
         setPageViewController()
+        
     }
     
     private func setPageViewController(){
@@ -62,7 +62,6 @@ class WannaKnowViewController: UIViewController {
     //MARK:-setNavigationBar
     private func setNavigationBar(){
         self.navigationItem.titleView = NavigationBarTitle()
-        self.navigationController?.navigationItem.searchController = searchViewController
         navigationItem.titleView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backToHomePage)))
         
         let leftSideMenuButton = UIBarButtonItem(image: UIImage(named: "line.3.horizontal"),
@@ -83,8 +82,7 @@ class WannaKnowViewController: UIViewController {
     }
     
     @objc func search(){
-        wannaKnowView.searchBar.isHidden.toggle()
-
+        wannaKnowView.searchBarContainer.isHidden.toggle()
     }
     
     @objc func backToHomePage(){
@@ -99,6 +97,18 @@ class WannaKnowViewController: UIViewController {
         print("index:\(wannaKnowView.segmentedControl.selectedSegmentIndex)")
         print("title:\(wannaKnowView.segmentedControl.titleForSegment(at: wannaKnowView.segmentedControl.selectedSegmentIndex))")
         pageViewController.setViewControllers([segmentedControllers[wannaKnowView.segmentedControl.selectedSegmentIndex]], direction: .forward, animated: true, completion: nil)
+    }
+    
+    func setSearchViewController(){
+        wannaKnowView.searchBarContainer.addSubview(searchViewController.searchBar)
+        searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        searchViewController.hidesNavigationBarDuringPresentation = false
+        searchViewController.obscuresBackgroundDuringPresentation = false
+        searchViewController.searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+        searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        searchViewController.searchBar.searchTextField.layer.cornerRadius = 50
+        searchViewController.searchBar.searchTextField.keyboardAppearance = .light
+        searchViewController.searchBar.isTranslucent = false
     }
 }
 
