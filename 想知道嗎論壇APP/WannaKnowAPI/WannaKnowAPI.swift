@@ -24,7 +24,7 @@ class WannaKnowAPI{
         return URLRequest(url: components!.url!, timeoutInterval: 10)
     }
     
-    public func getCurrentData(callBy:WannaKnowCallMethod...,completion: @escaping(Result<WannaKnowData,Error>)->Void){
+    public func getWannaKnowData(callBy:WannaKnowCallMethod...,completion: @escaping(Result<WannaKnowData,Error>)->Void){
         let request = buildReqeust(callBy:callBy)
         print(request)
         URLSession.shared.dataTask(with: request) { data, _, error in
@@ -45,7 +45,7 @@ class WannaKnowAPI{
         }.resume()
     }
     
-    public func getCalendarData(callBy:WannaKnowCallMethod...,completion:@escaping(Result<[YearData],Error>)->Void){
+    public func getYearData(callBy:WannaKnowCallMethod...,completion:@escaping(Result<[YearData],Error>)->Void){
         let request = buildReqeust(callBy: callBy)
         print(request)
         URLSession.shared.dataTask(with: request) { data, _, error in

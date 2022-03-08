@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct ResultData {
+    var relateContent:String
+    var totalContent:Int
+}
+
 struct HomePageData{
     var title:String
     var count:Int

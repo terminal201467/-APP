@@ -30,7 +30,7 @@ class CalendarDataBase {
     
     //MARK:-Method
     public func loadData(){
-        WannaKnowAPI.shared.getCalendarData(callBy: .year(year)) { result in
+        WannaKnowAPI.shared.getYearData(callBy: .year(year)) { result in
             switch result{
             case .success(let data):  self.detailData = data
             case .failure(let error): print(error.localizedDescription)

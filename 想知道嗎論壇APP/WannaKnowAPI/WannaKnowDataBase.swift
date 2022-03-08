@@ -20,8 +20,17 @@ class WannaKnowDataBase{
         }
     }
     
+    public func loadData(){
+        WannaKnowAPI.shared.getWannaKnowData(callBy: .per_page("10")) { result in
+            switch result{
+            case .success(let data):  self.wannaKnowData.append(data)
+            case .failure(let error): print(error.localizedDescription)
+            }
+        }
+    }
+    
     public func loadDataByUpdateTime(){
-        WannaKnowAPI.shared.getCurrentData(callBy: .orderby("update_time")) { result in
+        WannaKnowAPI.shared.getWannaKnowData(callBy: .orderby("update_time")) { result in
             switch result{
             case .success(let data):  self.wannaKnowData.append(data)
             case .failure(let error): print(error.localizedDescription)

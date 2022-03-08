@@ -10,16 +10,18 @@ import SideMenu
 import SnapKit
 import Parchment
 
-class HomePageViewController: UIViewController {
-    
+class HomePageViewController: UIViewController{
+
     //MARK:-Properties
-    private let sideMenu = SideMenuNavigationController(rootViewController: MenuTableViewController())
-    
     private let homePageView = HomePageView()
+    
+    private let sideMenu = SideMenuNavigationController(rootViewController: MenuTableViewController())
     
     private let pagingViewController = PagingViewController()
     
-    private let searchViewController = UISearchController(searchResultsController: nil)
+    var resultController:ResultTableViewController!
+    
+    var searchViewController:UISearchController?
     
     private let viewControllers:[UIViewController] = { () -> [UIViewController] in
         let bulletinViewController = BulletinViewController()
@@ -30,6 +32,8 @@ class HomePageViewController: UIViewController {
         
         return [bulletinViewController,xiangZhiDaoMaViewController,chiaoWanViewController]
     }()
+    
+//    let calendarDataBase = CalendarDataBase.init(parameter: "2018")
     
     //MARK:-LifeCyCle
     override func loadView() {
@@ -43,6 +47,7 @@ class HomePageViewController: UIViewController {
         setSearchViewController()
         setSideMenu()
         setPageViewController()
+        calendarDataBase.loadData()
     }
     
     //MARK:-setSideMenu
@@ -69,22 +74,25 @@ class HomePageViewController: UIViewController {
                                                  action: #selector(sideMenuButtonMethod))
         
         let rightButton = UIBarButtonItem(image: UIImage(named: "magnifyingglass"), style: .plain, target: self, action: #selector(search))
-        
         navigationItem.leftBarButtonItem = leftSideMenuButton
         navigationItem.rightBarButtonItem = rightButton
         navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
     }
     
     func setSearchViewController(){
-        homePageView.searchBarContainer.addSubview(searchViewController.searchBar)
-        searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        searchViewController.hidesNavigationBarDuringPresentation = false
-        searchViewController.obscuresBackgroundDuringPresentation = false
-        searchViewController.searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
-        searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        searchViewController.searchBar.searchTextField.layer.cornerRadius = 50
-        searchViewController.searchBar.searchTextField.keyboardAppearance = .light
-        searchViewController.searchBar.isTranslucent = false
+        searchViewController = UISearchController(searchResultsController: resultController)
+        homePageView.searchBarContainer.addSubview(searchViewController!.searchBar)
+        searchViewController?.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        searchViewController?.hidesNavigationBarDuringPresentation = false
+        searchViewController?.obscuresBackgroundDuringPresentation = false
+        searchViewController?.searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+        searchViewController?.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        searchViewController?.searchBar.searchTextField.layer.cornerRadius = 50
+        searchViewController?.searchBar.searchTextField.keyboardAppearance = .light
+        searchViewController?.searchBar.isTranslucent = false
+        searchViewController?.showsSearchResultsController = true
+        searchViewController?.searchResultsUpdater = resultController
+//        searchViewController?.searchBar.delegate = self
     }
     
     @objc func sideMenuButtonMethod(){
@@ -120,16 +128,6 @@ class HomePageViewController: UIViewController {
 //        if viewControllers[2].view.frame.origin.y != 0{
 //            viewControllers[2].view.frame.origin.y = 0
 //        }
-//    }
-//}
-
-//extension HomePageViewController:UISearchBarDelegate{
-//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//
-//    }
-//    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-//        searchBar.resignFirstResponder()
-//        return true
 //    }
 //}
 
