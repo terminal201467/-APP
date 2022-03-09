@@ -48,7 +48,7 @@
 		97A2519027B4B4FB002D5B5E /* WannaKnowDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518F27B4B4FB002D5B5E /* WannaKnowDetailHeader.swift */; };
 		97A2519227B4DBBA002D5B5E /* WannaKnowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2519127B4DBBA002D5B5E /* WannaKnowDetailViewController.swift */; };
 		97A2519427B4DEF7002D5B5E /* WannaKnowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2519327B4DEF7002D5B5E /* WannaKnowDetailView.swift */; };
-		97A251B027BBA20B002D5B5E /* ThemeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251AF27BBA20B002D5B5E /* ThemeButtons.swift */; };
+		97A251B027BBA20B002D5B5E /* CategoryButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251AF27BBA20B002D5B5E /* CategoryButtons.swift */; };
 		97A251B327BC94FF002D5B5E /* WannaKnowAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251B227BC94FF002D5B5E /* WannaKnowAPI.swift */; };
 		97A251B527BC99FD002D5B5E /* WannaKnowDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251B427BC99FD002D5B5E /* WannaKnowDataBase.swift */; };
 		97A251B927BE1EFA002D5B5E /* TagButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251B827BE1EFA002D5B5E /* TagButtons.swift */; };
@@ -103,7 +103,7 @@
 		97A2518F27B4B4FB002D5B5E /* WannaKnowDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailHeader.swift; sourceTree = "<group>"; };
 		97A2519127B4DBBA002D5B5E /* WannaKnowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailViewController.swift; sourceTree = "<group>"; };
 		97A2519327B4DEF7002D5B5E /* WannaKnowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailView.swift; sourceTree = "<group>"; };
-		97A251AF27BBA20B002D5B5E /* ThemeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButtons.swift; sourceTree = "<group>"; };
+		97A251AF27BBA20B002D5B5E /* CategoryButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtons.swift; sourceTree = "<group>"; };
 		97A251B227BC94FF002D5B5E /* WannaKnowAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowAPI.swift; sourceTree = "<group>"; };
 		97A251B427BC99FD002D5B5E /* WannaKnowDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDataBase.swift; sourceTree = "<group>"; };
 		97A251B827BE1EFA002D5B5E /* TagButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButtons.swift; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				9792945027A9463200EA60B4 /* NavigationBarTitle.swift */,
-				97A251AF27BBA20B002D5B5E /* ThemeButtons.swift */,
+				97A251AF27BBA20B002D5B5E /* CategoryButtons.swift */,
 				97A251B827BE1EFA002D5B5E /* TagButtons.swift */,
 			);
 			path = CustomObject;
@@ -387,7 +387,7 @@
 				973245FA2797BC1F00CE549D /* Enums.swift in Sources */,
 				97A251B527BC99FD002D5B5E /* WannaKnowDataBase.swift in Sources */,
 				976E406F27D342180036F4D7 /* ResultTableViewController.swift in Sources */,
-				97A251B027BBA20B002D5B5E /* ThemeButtons.swift in Sources */,
+				97A251B027BBA20B002D5B5E /* CategoryButtons.swift in Sources */,
 				976E406B27D1BDCF0036F4D7 /* CommentsDataBase.swift in Sources */,
 				973246242797F3CB00CE549D /* MenuTableViewController.swift in Sources */,
 				973246122797C69000CE549D /* ContentView.swift in Sources */,

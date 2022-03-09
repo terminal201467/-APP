@@ -12,7 +12,6 @@ class WannaKnowView: UIView {
     let searchBarContainer:UIView = {
         let view = UIView()
         view.isHidden = true
-        view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         return view
     }()
     
@@ -29,7 +28,6 @@ class WannaKnowView: UIView {
     
     let contentCalenderContainerView:UIView = {
        let view = UIView()
-        view.backgroundColor = .cyan
         return view
     }()
     

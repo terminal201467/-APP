@@ -41,6 +41,7 @@ class ContentCell: UITableViewCell {
     private let descriptionLabel:UILabel = {
        let label = UILabel()
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.backgroundColor = nil
         label.font = UIFont.systemFont(ofSize: 20)
         label.numberOfLines = 3
         return label
@@ -91,7 +92,7 @@ class ContentCell: UITableViewCell {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(TagCell.self, forCellWithReuseIdentifier: TagCell.reuseIdentifier)
         collectionView.allowsSelection = true
-        collectionView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        collectionView.backgroundColor = nil
         return collectionView
     }()
     
@@ -121,7 +122,6 @@ class ContentCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         addSubview(title)
         addSubview(personPhoto)
         addSubview(speaker)

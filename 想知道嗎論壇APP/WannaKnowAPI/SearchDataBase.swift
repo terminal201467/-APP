@@ -11,8 +11,8 @@ import Foundation
 class SearchDataBase{
     
     //MARK:-Intializer
-    init(searchBy tag:String){
-        self.tag = tag
+    init(searchBy category:String){
+        self.category = category
     }
     
     //MARK:-Closures
@@ -23,7 +23,7 @@ class SearchDataBase{
     
     //MARK:-Properties
     
-    var tag:String
+    var category:String
     
     private var data:[WannaKnowData.Data] = []{
         didSet{
@@ -44,7 +44,7 @@ class SearchDataBase{
     }
     
     public func loadTagData(){
-        WannaKnowAPI.shared.getWannaKnowData(callBy: .tags(tag)) { result in
+        WannaKnowAPI.shared.getWannaKnowData(callBy: .tags(category)) { result in
             switch result{
             case .success(let data):  self.data = data.data
             case .failure(let error): print(error.localizedDescription)

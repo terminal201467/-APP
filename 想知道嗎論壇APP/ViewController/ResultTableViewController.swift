@@ -11,9 +11,11 @@ class ResultTableViewController:UITableViewController {
     
     //MARK:-Properties
 
-    var tag:String = ""
+    var category:String = ""
     
     var searchDataBase:SearchDataBase!
+    
+    let detailController = WannaKnowDetailViewController()
 
     //MARK:-LifeCycle
     
@@ -24,7 +26,6 @@ class ResultTableViewController:UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
         setTag()
         setTableView()
         print("resultViewController Loaded!")
@@ -37,7 +38,7 @@ class ResultTableViewController:UITableViewController {
     }
     
     private func setTag(){
-        searchDataBase = SearchDataBase.init(searchBy: tag)
+        searchDataBase = SearchDataBase.init(searchBy: category)
         searchDataBase.valueChanged = {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -46,7 +47,7 @@ class ResultTableViewController:UITableViewController {
         searchDataBase.onError = { error in
             print(error.localizedDescription)
         }
-        if tag == ""{
+        if category == ""{
             searchDataBase.loadAllData()
         }else{
             searchDataBase.loadTagData()
@@ -65,9 +66,11 @@ class ResultTableViewController:UITableViewController {
         cell.configuration(data: searchDataBase.getData(at: indexPath))
         return cell
     }
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return SearchResultHeader()
-//    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        detailController.detail = searchDataBase.getData(at: indexPath)
+        present(detailController, animated: true)
+    }
 }
 
 extension ResultTableViewController:UISearchResultsUpdating{

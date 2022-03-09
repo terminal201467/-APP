@@ -24,7 +24,7 @@ class ContentViewController: UIViewController {
     
     private let contentView = ContentView()
     
-    private let collectionButtons = ThemeButtons(collectionViewLayout: UICollectionViewFlowLayout())
+    public let categoryButton = CategoryButtons(collectionViewLayout: UICollectionViewFlowLayout())
     
     //MARK:-LifeCycle
     override func loadView() {
@@ -38,8 +38,8 @@ class ContentViewController: UIViewController {
     }
     
     private func setCollectionButtons(){
-        add(collectionButtons)
-        collectionButtons.view.snp.makeConstraints { make in
+        add(categoryButton)
+        categoryButton.view.snp.makeConstraints { make in
             make.top.right.left.bottom.equalTo(contentView.ThemeButtonContainer)
         }
     }

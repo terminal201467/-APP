@@ -91,7 +91,7 @@ class HomePageViewController: UIViewController{
         searchViewController?.showsSearchResultsController = true
         searchViewController?.searchResultsUpdater = resultController
         searchViewController?.automaticallyShowsSearchResultsController = true
-//        searchViewController?.searchBar.delegate = self
+        searchViewController?.obscuresBackgroundDuringPresentation = true
     }
     
     @objc func sideMenuButtonMethod(){

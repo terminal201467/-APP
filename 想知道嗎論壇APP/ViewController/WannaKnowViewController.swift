@@ -16,9 +16,16 @@ class WannaKnowViewController: UIViewController {
     
     private let wannaKnowView = WannaKnowView()
     
-    private let searchViewController = UISearchController(searchResultsController: nil)
+    private let resultController = ResultTableViewController()
     
-    private let segmentedControllers = [ContentViewController(),CalenderViewController()]
+    private var searchViewController:UISearchController!
+    
+    private var segmentedControllers:[UIViewController] = {
+        let contentViewController = ContentViewController()
+        contentViewController.categoryButton.delegate = self
+        let calendarViewController = CalenderViewController()
+        return [contentViewController,calendarViewController]
+    }()
     
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
@@ -38,6 +45,10 @@ class WannaKnowViewController: UIViewController {
         setSideMenu()
         setSegmented()
         setPageViewController()
+    }
+    
+    func setCategory(){
+        resultController.category = segmentedControllers[0].
         
     }
     
@@ -94,12 +105,11 @@ class WannaKnowViewController: UIViewController {
     }
 
     @objc func changePage(){
-        print("index:\(wannaKnowView.segmentedControl.selectedSegmentIndex)")
-        print("title:\(wannaKnowView.segmentedControl.titleForSegment(at: wannaKnowView.segmentedControl.selectedSegmentIndex))")
         pageViewController.setViewControllers([segmentedControllers[wannaKnowView.segmentedControl.selectedSegmentIndex]], direction: .forward, animated: true, completion: nil)
     }
     
     func setSearchViewController(){
+        searchViewController = UISearchController(searchResultsController: resultController)
         wannaKnowView.searchBarContainer.addSubview(searchViewController.searchBar)
         searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         searchViewController.hidesNavigationBarDuringPresentation = false
@@ -109,6 +119,9 @@ class WannaKnowViewController: UIViewController {
         searchViewController.searchBar.searchTextField.layer.cornerRadius = 50
         searchViewController.searchBar.searchTextField.keyboardAppearance = .light
         searchViewController.searchBar.isTranslucent = false
+        searchViewController.searchResultsUpdater = resultController
+        searchViewController.automaticallyShowsSearchResultsController = true
+        searchViewController.obscuresBackgroundDuringPresentation = true
     }
 }
 
@@ -133,4 +146,12 @@ extension WannaKnowViewController:UIPageViewControllerDelegate,UIPageViewControl
         }
         return segmentedControllers[pageIndex]
     }
+}
+
+extension WannaKnowViewController:CategoryValueDelegate{
+    func categoryValue(pass by: String) {
+        <#code#>
+    }
+    
+    
 }
