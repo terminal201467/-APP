@@ -111,6 +111,10 @@ class ContentCell: UITableViewCell {
         return label
     }()
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        self.backgroundColor = UIColor.clear
+    }
+    
     lazy var buttonStackView:UIStackView = {
        let stackView = UIStackView(arrangedSubviews: [likeButton,likeCount,commentButton,comment_amount,collectionButton,linkButton,linkLabel])
         stackView.axis = .horizontal
