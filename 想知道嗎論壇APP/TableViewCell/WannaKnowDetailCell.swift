@@ -29,8 +29,8 @@ class WannaKnowDetailCell:UITableViewCell {
         label.font = .systemFont(ofSize: 15)
         label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         label.layer.cornerRadius = 10
-        label.bounds.size = CGSize(width: 20, height: 15)
         label.layer.backgroundColor = #colorLiteral(red: 0.4743221402, green: 0.7362652421, blue: 0.5361232162, alpha: 1)
+        label.textAlignment = NSTextAlignment.center
         return label
     }()
     
@@ -105,12 +105,18 @@ class WannaKnowDetailCell:UITableViewCell {
             make.bottom.equalToSuperview().offset(-15)
         }
         
+        stairLabel.snp.makeConstraints { make in
+            make.height.equalTo(20)
+            make.width.equalTo(50)
+        }
+        
         likeButton.snp.makeConstraints { make in
             make.bottom.equalTo(dateLabel.snp.bottom)
             make.right.equalTo(likeCount.snp.left).offset(-10)
             make.height.equalTo(20)
             make.width.equalTo(20)
         }
+        
         
         likeCount.snp.makeConstraints { make in
             make.bottom.equalTo(dateLabel.snp.bottom)

@@ -220,9 +220,9 @@
 				973246252798EA3F00CE549D /* SideMenuCell.swift */,
 				9792945227A9532700EA60B4 /* PageViewControllerCell.swift */,
 				97A2518127AD445F002D5B5E /* ContentCell.swift */,
-				97A2518327AD4479002D5B5E /* WannaKnowDetailCell.swift */,
 				97A2523D27CDF4B6002D5B5E /* EventTableViewCell.swift */,
 				97A2518F27B4B4FB002D5B5E /* WannaKnowDetailHeader.swift */,
+				97A2518327AD4479002D5B5E /* WannaKnowDetailCell.swift */,
 				976E407027D3635E0036F4D7 /* SearchResultHeader.swift */,
 				9792945627A969F800EA60B4 /* Footer.swift */,
 			);

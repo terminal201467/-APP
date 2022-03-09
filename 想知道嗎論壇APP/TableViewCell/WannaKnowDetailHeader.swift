@@ -34,10 +34,10 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
     private let hostPosition:UILabel = {
         let label = UILabel()
         label.layer.cornerRadius = 10
-        label.bounds.size = CGSize(width: 100, height: 40)
-        label.layer.backgroundColor = #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
+        label.layer.backgroundColor = #colorLiteral(red: 0.4743221402, green: 0.7362652421, blue: 0.5361232162, alpha: 1)
         label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        label.text = "  樓主  "
+        label.text = "樓主"
+        label.textAlignment = NSTextAlignment.center
         return label
     }()
     
@@ -107,6 +107,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
         return button
     }()
     
+    
     private let linkLabel:UILabel = {
        let label = UILabel()
         label.text = "連結"
@@ -164,6 +165,11 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
         date.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-15)
             make.bottom.equalTo(idendityStackView.snp.bottom).offset(-5)
+        }
+        
+        hostPosition.snp.makeConstraints { make in
+            make.height.equalTo(20)
+            make.width.equalTo(50)
         }
         
         like.snp.makeConstraints { make in

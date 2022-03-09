@@ -7,18 +7,13 @@
 
 import UIKit
 
-protocol CategoryValueDelegate:AnyObject {
-    func categoryValue(pass by:String)
-}
-
 class CategoryButtons: UICollectionViewController{
     //MARK:-Properties
-    
     private let flowLayout = UICollectionViewFlowLayout()
     
     private let ariticles = ArticleKind.allCases
     
-    weak var delegate:CategoryValueDelegate!
+    var category = ""
     
     //MARK:-LifeCycle
     override func viewDidLoad() {
@@ -37,29 +32,31 @@ class CategoryButtons: UICollectionViewController{
     private func setCollectionView(){
         collectionView.setCollectionViewLayout(flowLayout, animated: true)
         collectionView.register(ThemeCell.self, forCellWithReuseIdentifier: ThemeCell.reuseIdentifier)
-        collectionView.allowsSelection = false
+        collectionView.allowsSelection = true
         collectionView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         collectionView.showsHorizontalScrollIndicator = false
     }
     
     @objc func learnMore(){
-        delegate.categoryValue(pass:ArticleKind.learnMemo.text)
+        category = ArticleKind.learnMemo.text
+        //getAPIByParameter學習小心得
+        
     }
     
     @objc func lifeChannel(){
-        delegate.categoryValue(pass:ArticleKind.lifeChannel.text)
+        category = ArticleKind.lifeChannel.text
     }
     
     @objc func projectExperience(){
-        delegate.categoryValue(pass:ArticleKind.projectExperiance.text)
+        category = ArticleKind.projectExperiance.text
     }
     
     @objc func skillResearch(){
-        delegate.categoryValue(pass: ArticleKind.skillResearch.text)
+        category = ArticleKind.skillResearch.text
     }
     
     @objc func workLife(){
-        delegate.categoryValue(pass: ArticleKind.workLife.text)
+        category = ArticleKind.workLife.text
     }
 
     // MARK:-UICollectionViewDataSource
@@ -71,22 +68,23 @@ class CategoryButtons: UICollectionViewController{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThemeCell.reuseIdentifier, for: indexPath) as! ThemeCell
         let articleKinds = ariticles[indexPath.row]
         switch articleKinds.self {
-        case .learnMemo:
-            cell.button.setTitle(ArticleKind.learnMemo.text, for: .normal)
-            cell.button.target(forAction: #selector(learnMore), withSender: self)
-        case .lifeChannel:
-            cell.button.setTitle(ArticleKind.lifeChannel.text, for: .normal)
-            cell.button.target(forAction: #selector(lifeChannel), withSender: self)
         case .projectExperiance:
             cell.button.setTitle(ArticleKind.projectExperiance.text, for: .normal)
-            cell.button.target(forAction: #selector(projectExperience), withSender: self)
+            cell.button.addTarget(self, action: #selector(projectExperience), for: .touchDown)
+        case .learnMemo:
+            cell.button.setTitle(ArticleKind.learnMemo.text, for: .normal)
+            cell.button.addTarget(self, action: #selector(learnMore), for: .touchDown)
         case .skillResearch:
             cell.button.setTitle(ArticleKind.skillResearch.text, for: .normal)
-            cell.button.target(forAction: #selector(skillResearch), withSender: self)
+            cell.button.addTarget(self, action: #selector(skillResearch), for: .touchDown)
         case .workLife:
             cell.button.setTitle(ArticleKind.workLife.text, for: .normal)
-            cell.button.target(forAction: #selector(workLife), withSender: self)
+            cell.button.addTarget(self, action: #selector(workLife), for: .touchDown)
+        case .lifeChannel:
+            cell.button.setTitle(ArticleKind.lifeChannel.text, for: .normal)
+            cell.button.addTarget(self, action: #selector(lifeChannel), for: .touchDown)
         }
         return cell
     }
+    
 }

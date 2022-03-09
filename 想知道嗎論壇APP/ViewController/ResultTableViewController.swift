@@ -8,7 +8,6 @@
 import UIKit
 
 class ResultTableViewController:UITableViewController {
-    
     //MARK:-Properties
 
     var category:String = ""
@@ -18,7 +17,6 @@ class ResultTableViewController:UITableViewController {
     let detailController = WannaKnowDetailViewController()
 
     //MARK:-LifeCycle
-    
     override func loadView() {
         super.loadView()
         view.backgroundColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
@@ -28,7 +26,7 @@ class ResultTableViewController:UITableViewController {
         super.viewDidLoad()
         setTag()
         setTableView()
-        print("resultViewController Loaded!")
+        print(category)
     }
     
     //MARK:-Methods

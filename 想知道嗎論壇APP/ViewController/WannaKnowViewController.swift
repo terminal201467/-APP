@@ -16,16 +16,15 @@ class WannaKnowViewController: UIViewController {
     
     private let wannaKnowView = WannaKnowView()
     
-    private let resultController = ResultTableViewController()
+    let resultController = ResultTableViewController()
     
     private var searchViewController:UISearchController!
     
-    private var segmentedControllers:[UIViewController] = {
-        let contentViewController = ContentViewController()
-        contentViewController.categoryButton.delegate = self
-        let calendarViewController = CalenderViewController()
-        return [contentViewController,calendarViewController]
-    }()
+    let contentViewController = ContentViewController()
+    
+    let calendarViewController = CalenderViewController()
+    
+    private lazy var segmentedControllers:[UIViewController] = [contentViewController,calendarViewController]
     
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
@@ -45,11 +44,11 @@ class WannaKnowViewController: UIViewController {
         setSideMenu()
         setSegmented()
         setPageViewController()
+        setCategoryValue()
     }
     
-    func setCategory(){
-        resultController.category = segmentedControllers[0].
-        
+    private func setCategoryValue(){
+        resultController.category = contentViewController.categoryButton.category
     }
     
     private func setPageViewController(){
@@ -146,12 +145,4 @@ extension WannaKnowViewController:UIPageViewControllerDelegate,UIPageViewControl
         }
         return segmentedControllers[pageIndex]
     }
-}
-
-extension WannaKnowViewController:CategoryValueDelegate{
-    func categoryValue(pass by: String) {
-        <#code#>
-    }
-    
-    
 }

@@ -10,7 +10,6 @@ import Parchment
 import SnapKit
 
 class ContentViewController: UIViewController {
-    
     //MARK:-Properties
     
     private let pagingViewController = PagingViewController()

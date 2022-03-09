@@ -44,7 +44,7 @@ class SearchDataBase{
     }
     
     public func loadTagData(){
-        WannaKnowAPI.shared.getWannaKnowData(callBy: .tags(category)) { result in
+        WannaKnowAPI.shared.getWannaKnowData(callBy: .category(category)) { result in
             switch result{
             case .success(let data):  self.data = data.data
             case .failure(let error): print(error.localizedDescription)

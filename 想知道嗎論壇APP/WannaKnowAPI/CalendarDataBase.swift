@@ -9,6 +9,10 @@ import Foundation
 
 class CalendarDataBase {
     
+    //Need to do something,to let the calendar save the data to this CalendarDataBase
+    //Need to allow the datePicker pass the date to this object
+    //Need to 
+    
     //MARK:-Intialization
     public init(parameter byYear:String){ self.year = byYear }
     
