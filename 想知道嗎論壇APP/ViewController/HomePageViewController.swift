@@ -19,9 +19,9 @@ class HomePageViewController: UIViewController{
     
     private let pagingViewController = PagingViewController()
     
-    var resultController:ResultTableViewController!
+    private var resultController = ResultTableViewController()
     
-    var searchViewController:UISearchController?
+    private var searchViewController:UISearchController?
     
     private let viewControllers:[UIViewController] = { () -> [UIViewController] in
         let bulletinViewController = BulletinViewController()
@@ -33,7 +33,6 @@ class HomePageViewController: UIViewController{
         return [bulletinViewController,xiangZhiDaoMaViewController,chiaoWanViewController]
     }()
     
-//    let calendarDataBase = CalendarDataBase.init(parameter: "2018")
     
     //MARK:-LifeCyCle
     override func loadView() {
@@ -47,7 +46,6 @@ class HomePageViewController: UIViewController{
         setSearchViewController()
         setSideMenu()
         setPageViewController()
-        calendarDataBase.loadData()
     }
     
     //MARK:-setSideMenu
@@ -92,6 +90,7 @@ class HomePageViewController: UIViewController{
         searchViewController?.searchBar.isTranslucent = false
         searchViewController?.showsSearchResultsController = true
         searchViewController?.searchResultsUpdater = resultController
+        searchViewController?.automaticallyShowsSearchResultsController = true
 //        searchViewController?.searchBar.delegate = self
     }
     

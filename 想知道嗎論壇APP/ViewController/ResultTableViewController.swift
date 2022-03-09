@@ -7,26 +7,32 @@
 
 import UIKit
 
-class ResultTableViewController: UITableViewController {
-    //MARK:-Properties
+class ResultTableViewController:UITableViewController {
     
-    var tag:String?
+    //MARK:-Properties
+
+    var tag:String = ""
     
     var searchDataBase:SearchDataBase!
-    
+
     //MARK:-LifeCycle
+    
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTableView()
+        setNavigationBar()
         setTag()
+        setTableView()
         print("resultViewController Loaded!")
     }
+    
     //MARK:-Methods
     private func setTableView(){
         self.tableView.allowsSelection = true
-        self.tableView.tableHeaderView = SearchResultHeader()
-        self.tableView.register(SearchResultHeader.self, forHeaderFooterViewReuseIdentifier: SearchResultHeader.header)
         self.tableView.register(ContentCell.self, forCellReuseIdentifier: ContentCell.reuseIdentifier)
     }
     
@@ -59,12 +65,16 @@ class ResultTableViewController: UITableViewController {
         cell.configuration(data: searchDataBase.getData(at: indexPath))
         return cell
     }
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        return SearchResultHeader()
+//    }
 }
 
 extension ResultTableViewController:UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text{
             searchDataBase.filterContent(for: searchText)
+            tableView.reloadData()
         }
     }
 }
