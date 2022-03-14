@@ -27,8 +27,7 @@ class WannaKnowViewController: UIViewController {
     private lazy var segmentedControllers:[UIViewController] = [contentViewController,calendarViewController]
     
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-    
-    private var selectIndex:Int = 0
+
 
     //MARK:-LifeCycle
     override func loadView() {
@@ -57,7 +56,9 @@ class WannaKnowViewController: UIViewController {
             make.right.left.top.bottom.equalTo(wannaKnowView.contentCalenderContainerView)
         }
         
-        pageViewController.setViewControllers([segmentedControllers[0]], direction: .forward, animated: true, completion: nil)
+        guard let vc = setPageViewController(page: wannaKnowView.segmentedControl.selectedSegmentIndex) else { return }
+        
+        pageViewController.setViewControllers([vc], direction: .forward, animated: true, completion: nil)
         pageViewController.delegate = self
         pageViewController.dataSource = self
     }
@@ -107,7 +108,7 @@ class WannaKnowViewController: UIViewController {
         pageViewController.setViewControllers([segmentedControllers[wannaKnowView.segmentedControl.selectedSegmentIndex]], direction: .forward, animated: true, completion: nil)
     }
     
-    func setSearchViewController(){
+    private func setSearchViewController(){
         searchViewController = UISearchController(searchResultsController: resultController)
         wannaKnowView.searchBarContainer.addSubview(searchViewController.searchBar)
         searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -122,27 +123,29 @@ class WannaKnowViewController: UIViewController {
         searchViewController.automaticallyShowsSearchResultsController = true
         searchViewController.obscuresBackgroundDuringPresentation = true
     }
+    
+    //MARK:-setPageViewController's page
+    private func setPageViewController(page:Int)->UIViewController?{
+        return page < 0 || page > 1 ? nil : segmentedControllers[page]
+    }
 }
 
 extension WannaKnowViewController:UIPageViewControllerDelegate,UIPageViewControllerDataSource{
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        selectIndex = viewController.view.tag
-        wannaKnowView.segmentedControl.selectedSegmentIndex = selectIndex
-        let pageIndex = viewController.view.tag - 1
-        print("頁面：\(pageIndex)")
-        if pageIndex < 0 {
-            return nil
-        }
-        return segmentedControllers[pageIndex]
+        let beforePage = wannaKnowView.segmentedControl.selectedSegmentIndex - 1
+        return setPageViewController(page: beforePage)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        selectIndex = viewController.view.tag
-        wannaKnowView.segmentedControl.selectedSegmentIndex = selectIndex
-        let pageIndex = viewController.view.tag + 1
-        if pageIndex > 1 {
-            return nil
-        }
-        return segmentedControllers[pageIndex]
+        let afterPage = wannaKnowView.segmentedControl.selectedSegmentIndex + 1
+        return setPageViewController(page: afterPage)
+    }
+
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard completed,
+               let currentVC = pageViewController.viewControllers?.first,
+               let index = segmentedControllers.firstIndex(of: currentVC) else { return }
+        wannaKnowView.segmentedControl.selectedSegmentIndex = index
     }
 }
+

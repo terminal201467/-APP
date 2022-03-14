@@ -45,11 +45,23 @@ class CalenderView: UIView {
         return button
     }()
     
+    private let dateChooseButton:UIButton = {
+       let button = UIButton()
+        button.setTitle("選擇日期", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        button.layer.backgroundColor = #colorLiteral(red: 0.5876620412, green: 0.9183974862, blue: 0.7402922511, alpha: 1)
+        button.layer.cornerRadius = 10
+        button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        button.titleEdgeInsets = .init(top: 0, left: 2, bottom: 0, right: 2)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(calendar)
         addSubview(tableView)
         addSubview(signInButton)
+        addSubview(dateChooseButton)
         autoLayout()
     }
     
@@ -74,6 +86,12 @@ class CalenderView: UIView {
             make.bottom.equalTo(-10)
             make.height.equalTo(60)
             make.width.equalTo(60)
+        }
+        
+        dateChooseButton.snp.makeConstraints { make in
+            make.top.equalTo(calendar.snp.top).offset(15)
+            make.right.equalTo(calendar.snp.right).offset(-15)
+            make.width.equalTo(80)
         }
     }
 }

@@ -24,6 +24,31 @@ class WannaKnowAPI{
         return URLRequest(url: components!.url!, timeoutInterval: 10)
     }
     
+    private func baseURLRequest()->URLRequest{
+        let components = URLComponents(string: baseURL)
+        return URLRequest(url: components!.url!, timeoutInterval: 10)
+    }
+
+    public func getBaseURL(completion:@escaping(Result<[YearData],Error>)->Void){
+        print(baseURLRequest())
+        URLSession.shared.dataTask(with: baseURLRequest()){ data, _, error in
+            if let error = error{
+                completion(.failure(error))
+            }
+            if let data = data{
+                do{
+                    let decode = try JSONDecoder().decode([YearData].self, from: data)
+                    print(decode)
+                    completion(.success(decode))
+                }catch{
+                    completion(.failure(error))
+                }
+            }else{
+                completion(.failure(InternetError.requestFailed))
+            }
+        }.resume()
+    }
+    
     public func getWannaKnowData(callBy:WannaKnowCallMethod...,completion: @escaping(Result<WannaKnowData,Error>)->Void){
         let request = buildReqeust(callBy:callBy)
         print(request)

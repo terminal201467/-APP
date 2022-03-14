@@ -9,12 +9,14 @@ import Foundation
 
 class CalendarDataBase {
     
-    //Need to do something,to let the calendar save the data to this CalendarDataBase
-    //Need to allow the datePicker pass the date to this object
-    //Need to 
+    //1.先把所有的API資料都get進來
+    //得到想知道演講資料的方式：1.點按日期 2.從DatePicker調日期
     
-    //MARK:-Intialization
-    public init(parameter byYear:String){ self.year = byYear }
+    //2.點按單一日期，就會從日期(filter)去要title
+    //3.取消單一日期，tableView就會清空所有事件,remove全部日期
+    
+    //1.DatePicker去調日期，然後傳給日曆套件，然後tableView.reloadData()就會跑新的值出來
+    //2.一DatePicker去調日期，然後傳給日曆套件，然後calendar會更動所有的資料
     
     //MARK:-ClosurePassData
     
@@ -24,29 +26,44 @@ class CalendarDataBase {
     
     //MARK:-Properties
     
-    private var year:String
+    var chooseDate:String?
     
-    var detailData:[YearData] = []{
+    private var yearsEvent:[YearData] = []{
         didSet{
             valueChange?()
         }
     }
     
+    private var filterEvents:[YearData] = []
+    
     //MARK:-Method
     public func loadData(){
-        WannaKnowAPI.shared.getYearData(callBy: .year(year)) { result in
+        WannaKnowAPI.shared.getBaseURL { result in
             switch result{
-            case .success(let data):  self.detailData = data
+            case .success(let data): self.yearsEvent = data
             case .failure(let error): print(error.localizedDescription)
             }
         }
     }
     
-    public func numberOfRowsInSection(_ section:Int)->Int{
-        return detailData.count
+    public func filterDate(for chooseDate:String){
+        filterEvents = yearsEvent.filter({ (dateArray)->Bool in
+            let date = dateArray
+            let isMach = date.date.localizedCaseInsensitiveContains(chooseDate)
+            return isMach
+        })
     }
     
-    public func getData(_ indexPath:IndexPath)->YearData{
-        return detailData[indexPath.row]
+    //MARK:-the Method for calendar
+    
+    
+    //MARK:-the Method for table
+    func numberOfRowInSection(_ section:Int)->Int{
+        return filterEvents.count
     }
+    
+    func getData(at indexPath:IndexPath)->YearData{
+        return filterEvents[indexPath.row]
+    }
+    
 }

@@ -24,7 +24,7 @@ class ResultTableViewController:UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTag()
+//        setTag()
         setTableView()
         print(category)
     }

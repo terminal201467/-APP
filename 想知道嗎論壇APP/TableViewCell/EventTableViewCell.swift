@@ -76,10 +76,9 @@ class EventTableViewCell: UITableViewCell {
             
         }
     }
-    
-    public func configuration(calenderData:CalenderData){
-        dateInfo.text = calenderData.dateInfo
-        speakerName.text = calenderData.speakerName
-        speechTitle.text = calenderData.speechTitle
+    public func configuration(data:YearData){
+        dateInfo.text = data.date
+        speakerName.text = data.speaker
+        speechTitle.text = data.title
     }
 }
