@@ -27,6 +27,7 @@ class CalenderViewController: UIViewController {
         super.viewDidLoad()
         setCalender()
         setTableView()
+        setDateChoose()
         
     }
     //MARK:-setCalender
@@ -38,6 +39,18 @@ class CalenderViewController: UIViewController {
     private func setTableView(){
         calendarView.tableView.delegate = self
         calendarView.tableView.dataSource = self
+    }
+    
+    //MARK:-setDateChooseButton
+    private func setDateChoose(){
+        calendarView.dateChooseButton.addTarget(self, action: #selector(chooseDate), for: .touchDown)
+    }
+    
+    @objc func chooseDate(){
+        let datePickerViewController = DatePickerModalViewController()
+        datePickerViewController.modalPresentationStyle = .overCurrentContext
+        datePickerViewController.modalTransitionStyle = .coverVertical
+        self.present(datePickerViewController, animated: true)
     }
 
     //MARK:-點按日期被選擇後的事件
@@ -98,11 +111,6 @@ extension CalenderViewController:JTACMonthViewDelegate,JTACMonthViewDataSource{
         }else{
             cell.dateLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
-//        if transTimeToString(cellState.date){
-//
-//        }else{
-//
-//        }
         return cell
     }
     

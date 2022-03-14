@@ -45,7 +45,7 @@ class CalenderView: UIView {
         return button
     }()
     
-    private let dateChooseButton:UIButton = {
+    let dateChooseButton:UIButton = {
        let button = UIButton()
         button.setTitle("選擇日期", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)

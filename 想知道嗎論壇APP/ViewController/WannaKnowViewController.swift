@@ -27,6 +27,8 @@ class WannaKnowViewController: UIViewController {
     private lazy var segmentedControllers:[UIViewController] = [contentViewController,calendarViewController]
     
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    
+    
 
 
     //MARK:-LifeCycle
@@ -55,10 +57,9 @@ class WannaKnowViewController: UIViewController {
         pageViewController.view.snp.makeConstraints { make in
             make.right.left.top.bottom.equalTo(wannaKnowView.contentCalenderContainerView)
         }
-        
         guard let vc = setPageViewController(page: wannaKnowView.segmentedControl.selectedSegmentIndex) else { return }
         
-        pageViewController.setViewControllers([vc], direction: .forward, animated: true, completion: nil)
+        pageViewController.setViewControllers([vc], direction: .forward, animated: false, completion: nil)
         pageViewController.delegate = self
         pageViewController.dataSource = self
     }
