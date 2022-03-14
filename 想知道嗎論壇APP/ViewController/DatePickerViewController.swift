@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol DateDelegate:AnyObject {
+    func dateDataReceive(date:Date)
+}
+
 class DatePickerViewController: UIViewController {
     //MARK:-Properties
     let datePickerView = DatePickerView()
+    
+    weak var delegate:DateDelegate!
     
     override func loadView() {
         super.loadView()
@@ -21,7 +27,7 @@ class DatePickerViewController: UIViewController {
         setNavigationBar()
     }
     
-    func setNavigationBar(){
+    private func setNavigationBar(){
         title = "選擇日期"
         let choose = UIBarButtonItem(title: "選擇", style: .plain, target: self, action: #selector(choose))
         let cancel = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(cancel))
@@ -31,6 +37,7 @@ class DatePickerViewController: UIViewController {
     }
     
     @objc func choose(){
+        delegate.dateDataReceive(date: datePickerView.datePicker.date)
         dismiss(animated: true, completion: nil)
     }
     

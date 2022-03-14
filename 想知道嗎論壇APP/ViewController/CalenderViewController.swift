@@ -8,7 +8,7 @@
 import UIKit
 import JTAppleCalendar
 
-class CalenderViewController: UIViewController {
+class CalenderViewController: UIViewController{
     //MARK:-Properties
     private let calendarView = CalenderView()
     
@@ -36,10 +36,12 @@ class CalenderViewController: UIViewController {
         calendarView.calendar.calendarDataSource = self
     }
     
+    //MARK:-setTableView
     private func setTableView(){
         calendarView.tableView.delegate = self
         calendarView.tableView.dataSource = self
     }
+    
     
     //MARK:-setDateChooseButton
     private func setDateChoose(){
@@ -47,11 +49,13 @@ class CalenderViewController: UIViewController {
     }
     
     @objc func chooseDate(){
-        let datePickerViewController = ModalPresentViewController()
-        datePickerViewController.modalPresentationStyle = .overCurrentContext
-        datePickerViewController.modalTransitionStyle = .coverVertical
-        self.present(datePickerViewController, animated: true)
+        let modalPresentController = ModalPresentViewController()
+        modalPresentController.datePickerController.delegate = self
+        modalPresentController.modalPresentationStyle = .overCurrentContext
+        modalPresentController.modalTransitionStyle = .coverVertical
+        self.present(modalPresentController, animated: true)
     }
+
 
     //MARK:-點按日期被選擇後的事件
     private func handleCellSelection(cell:JTACDayCell,cellState: CellState){
@@ -140,5 +144,11 @@ extension CalenderViewController:UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: EventTableViewCell.reusebleIdentifier, for: indexPath) as! EventTableViewCell
         cell.configuration(data: calendarDataBase.getData(at: indexPath))
         return cell
+    }
+}
+
+extension CalenderViewController:DateDelegate{
+    func dateDataReceive(date: Date) {
+        print(date)
     }
 }

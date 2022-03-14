@@ -30,7 +30,9 @@ class ModalPresentViewController: UIViewController {
     
     //MARK:-Controller
     
-    private let datePickerController = UINavigationController(rootViewController: DatePickerViewController())
+    let datePickerController = DatePickerViewController()
+    
+    lazy var navDatePickerController = UINavigationController(rootViewController: datePickerController)
     
     //MARK:-Container and dimmedView
     
@@ -59,8 +61,8 @@ class ModalPresentViewController: UIViewController {
     }
     
     private func addChild(){
-        add(datePickerController)
-        datePickerController.view.snp.makeConstraints { make in
+        add(navDatePickerController)
+        navDatePickerController.view.snp.makeConstraints { make in
             make.edges.equalTo(containerView)
         }
     }
