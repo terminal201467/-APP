@@ -47,7 +47,7 @@ class CalenderViewController: UIViewController {
     }
     
     @objc func chooseDate(){
-        let datePickerViewController = DatePickerModalViewController()
+        let datePickerViewController = ModalPresentViewController()
         datePickerViewController.modalPresentationStyle = .overCurrentContext
         datePickerViewController.modalTransitionStyle = .coverVertical
         self.present(datePickerViewController, animated: true)

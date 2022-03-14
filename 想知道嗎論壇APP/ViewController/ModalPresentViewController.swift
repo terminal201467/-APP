@@ -6,8 +6,33 @@
 //
 
 import UIKit
+import SnapKit
 
-class DatePickerModalViewController: UIViewController {
+class ModalPresentViewController: UIViewController {
+    
+    //MARK:-Properties
+    
+    let maxDimmedAlpha:CGFloat = 0.6
+    
+    let defaultHeight:CGFloat = 300
+    
+    let dismissibleHeight:CGFloat = 200
+    
+    let maximumContainerHeight:CGFloat = UIScreen.main.bounds.height - 64
+    
+    var currentContainerHeight:CGFloat = 300
+    
+    //MARK:-Constraints
+    
+    var containerViewHeightConstraint:NSLayoutConstraint?
+    
+    var containerViewBottomConstraint:NSLayoutConstraint?
+    
+    //MARK:-Controller
+    
+    private let datePickerController = UINavigationController(rootViewController: DatePickerViewController())
+    
+    //MARK:-Container and dimmedView
     
     lazy var containerView:UIView = {
        let view = UIView()
@@ -24,33 +49,28 @@ class DatePickerModalViewController: UIViewController {
         return view
     }()
     
-    let maxDimmedAlpha:CGFloat = 0.6
-    
-    let defaultHeight:CGFloat = 300
-    
-    let dismissibleHeight:CGFloat = 200
-    
-    let maximumContainerHeight:CGFloat = UIScreen.main.bounds.height - 64
-    
-    var currentContainerHeight:CGFloat = 300
-    
-    var containerViewHeightConstraint:NSLayoutConstraint?
-    
-    var containerViewBottomConstraint:NSLayoutConstraint?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupConstraints()
         setPanGesture()
+        addChild()
         
     }
     
-    func setupView(){
+    private func addChild(){
+        add(datePickerController)
+        datePickerController.view.snp.makeConstraints { make in
+            make.edges.equalTo(containerView)
+        }
+    }
+    
+    
+    private func setupView(){
         view.backgroundColor = .clear
     }
     
-    func setupConstraints(){
+    private func setupConstraints(){
         view.addSubview(dimmedView)
         view.addSubview(containerView)
         dimmedView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +85,6 @@ class DatePickerModalViewController: UIViewController {
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-        
         containerViewHeightConstraint = containerView.heightAnchor.constraint(equalToConstant: defaultHeight)
         containerViewBottomConstraint = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: 0)
         
@@ -75,21 +94,21 @@ class DatePickerModalViewController: UIViewController {
         containerViewBottomConstraint = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: defaultHeight)
     }
     
-    func animatePresentContainer(){
+    private func animatePresentContainer(){
         UIView.animate(withDuration: 0.3) {
             self.containerViewBottomConstraint?.constant = 0
             self.view.layoutIfNeeded()
         }
     }
     
-    func animateShowDimmedView(){
+    private func animateShowDimmedView(){
         dimmedView.alpha = 0
         UIView.animate(withDuration: 0.4) {
             self.dimmedView.alpha = self.maxDimmedAlpha
         }
     }
     
-    func animateDissmissView(){
+    private func animateDissmissView(){
         UIView.animate(withDuration: 0.3) {
             self.containerViewBottomConstraint?.constant = self.defaultHeight
             self.view.layoutIfNeeded()
@@ -102,7 +121,7 @@ class DatePickerModalViewController: UIViewController {
         }
     }
     
-    func animateContainerHeight(_ height:CGFloat){
+    private func animateContainerHeight(_ height:CGFloat){
         UIView.animate(withDuration: 0.4) {
             self.containerViewHeightConstraint?.constant = height
             self.view.layoutIfNeeded()
@@ -110,13 +129,11 @@ class DatePickerModalViewController: UIViewController {
         currentContainerHeight = height
     }
     
-    func setPanGesture(){
+    private func setPanGesture(){
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGesture))
-        
         panGesture.delaysTouchesBegan = false
         panGesture.delaysTouchesEnded = false
         view.addGestureRecognizer(panGesture)
-        
     }
     
     @objc func panGesture(gesture:UIPanGestureRecognizer){
