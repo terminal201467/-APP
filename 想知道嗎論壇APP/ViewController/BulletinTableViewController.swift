@@ -25,19 +25,32 @@ class BulletinViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
- 
+        setSignInButton()
     }
     
     private func setTableView(){
         bulletinView.tableView.delegate = self
         bulletinView.tableView.dataSource = self
     }
+    
+    private func setSignInButton(){
+        bulletinView.signInButton.addTarget(self, action: #selector(touch), for: .touchDown)
+    }
+    
+    @objc func touch(){
+        UIView.animate(withDuration: 0.4) {
+            self.bulletinView.signInButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }completion: { finished in
+            UIView.animate(withDuration: 0.4) {
+                self.bulletinView.signInButton.transform = CGAffineTransform.identity
+            }
+        }
+    }
 }
 
 // MARK: - Table view data source
 extension BulletinViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return data.count
     }
 

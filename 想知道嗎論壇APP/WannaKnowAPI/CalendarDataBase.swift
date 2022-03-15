@@ -20,7 +20,7 @@ class CalendarDataBase {
     
     //MARK:-ClosurePassData
     
-    var valueChange:(()->Void)?
+    var valueChanged:(()->Void)?
 
     var onError:((Error)->Void)?
     
@@ -30,7 +30,7 @@ class CalendarDataBase {
     
     private var yearsEvent:[YearData] = []{
         didSet{
-            valueChange?()
+            valueChanged?()
         }
     }
     
@@ -55,15 +55,22 @@ class CalendarDataBase {
     }
     
     //MARK:-the Method for calendar
-    
+    public func showAllEvent()->[Date]{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return yearsEvent.map{formatter.date(from:$0.date)!}
+    }
     
     //MARK:-the Method for table
-    func numberOfRowInSection(_ section:Int)->Int{
+    public func numberOfRowInSection(_ section:Int)->Int{
         return filterEvents.count
     }
     
-    func getData(at indexPath:IndexPath)->YearData{
+    public func getData(at indexPath:IndexPath)->YearData{
         return filterEvents[indexPath.row]
     }
     
+    public func removeAllData(){
+        filterEvents.removeAll()
+    }
 }

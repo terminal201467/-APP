@@ -68,7 +68,14 @@ struct YearData:Decodable{
     var attachment: String
     var update_time: String
     var comment_amount: String
+//    var dateTransition:String{
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy-MM-dd"
+//        let dateString = formatter.date(from: date)!
+//        return formatter.string(from: dateString)
+//    }
 }
+
 
 struct CommentsData:Decodable{
     var wanna_know_id:String

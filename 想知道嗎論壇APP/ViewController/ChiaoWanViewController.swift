@@ -29,6 +29,7 @@ class ChiaoWanViewController: UIViewController{
         setTextField()
         notifiTheKeyboardWillShow()
         notifiTheKeyboardWillHide()
+        setSignInButton()
     }
     
     //MARK:-Method
@@ -45,6 +46,31 @@ class ChiaoWanViewController: UIViewController{
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue{
             if view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    private func setSignInButton(){
+        chiaoWanView.signInButton.addTarget(self, action: #selector(signInButtonTouch), for: .touchDown)
+        chiaoWanView.sendButton.addTarget(self, action: #selector(sendButtonTouch), for: .touchDown)
+    }
+    
+    @objc func signInButtonTouch(){
+        UIView.animate(withDuration: 0.4) {
+            self.chiaoWanView.signInButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }completion: { finished in
+            UIView.animate(withDuration: 0.4) {
+                self.chiaoWanView.signInButton.transform = CGAffineTransform.identity
+            }
+        }
+    }
+    
+    @objc func sendButtonTouch(){
+        UIView.animate(withDuration: 0.4) {
+            self.chiaoWanView.sendButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }completion: { finished in
+            UIView.animate(withDuration: 0.4) {
+                self.chiaoWanView.sendButton.transform = CGAffineTransform.identity
             }
         }
     }

@@ -37,24 +37,25 @@ class CategoryButtons: UICollectionViewController{
         collectionView.showsHorizontalScrollIndicator = false
     }
     
-    @objc func learnMore(){
+    @objc func learnMemo(){
         category = ArticleKind.learnMemo.text
         //getAPIByParameter學習小心得
-        
     }
-    
+
     @objc func lifeChannel(){
         category = ArticleKind.lifeChannel.text
+        
     }
-    
+
     @objc func projectExperience(){
         category = ArticleKind.projectExperiance.text
+        
     }
-    
+
     @objc func skillResearch(){
         category = ArticleKind.skillResearch.text
     }
-    
+
     @objc func workLife(){
         category = ArticleKind.workLife.text
     }
@@ -73,7 +74,7 @@ class CategoryButtons: UICollectionViewController{
             cell.button.addTarget(self, action: #selector(projectExperience), for: .touchDown)
         case .learnMemo:
             cell.button.setTitle(ArticleKind.learnMemo.text, for: .normal)
-            cell.button.addTarget(self, action: #selector(learnMore), for: .touchDown)
+            cell.button.addTarget(self, action: #selector(learnMemo), for: .touchDown)
         case .skillResearch:
             cell.button.setTitle(ArticleKind.skillResearch.text, for: .normal)
             cell.button.addTarget(self, action: #selector(skillResearch), for: .touchDown)
@@ -86,5 +87,4 @@ class CategoryButtons: UICollectionViewController{
         }
         return cell
     }
-    
 }

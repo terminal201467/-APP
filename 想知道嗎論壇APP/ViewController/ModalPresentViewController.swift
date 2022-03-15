@@ -32,11 +32,11 @@ class ModalPresentViewController: UIViewController {
     
     let datePickerController = DatePickerViewController()
     
-    lazy var navDatePickerController = UINavigationController(rootViewController: datePickerController)
+    private lazy var navDatePickerController = UINavigationController(rootViewController: datePickerController)
     
     //MARK:-Container and dimmedView
     
-    lazy var containerView:UIView = {
+    private lazy var containerView:UIView = {
        let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 16
@@ -44,7 +44,7 @@ class ModalPresentViewController: UIViewController {
         return view
     }()
 
-    lazy var dimmedView:UIView = {
+    private lazy var dimmedView:UIView = {
        let view = UIView()
         view.backgroundColor = .black
         view.alpha = maxDimmedAlpha

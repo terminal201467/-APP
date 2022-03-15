@@ -20,7 +20,7 @@ class ChiaoWanView: UIView {
         return tableView
     }()
     
-    private let signInButton:UIButton = {
+    let signInButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named:"signInButton"), for: .normal)
         button.layer.shadowOffset = CGSize(width: button.bounds.width / 10, height: button.bounds.width / 10)
@@ -45,7 +45,7 @@ class ChiaoWanView: UIView {
         return textField
     }()
 
-    private let sendButton:UIButton = {
+    let sendButton:UIButton = {
        let sendButton = UIButton()
         sendButton.layer.cornerRadius = 22
         sendButton.layer.backgroundColor = #colorLiteral(red: 0.4743221402, green: 0.7362652421, blue: 0.5361232162, alpha: 1)

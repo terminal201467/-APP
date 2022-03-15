@@ -9,7 +9,7 @@ import UIKit
 
 class BulletinView: UIView {
     
-    private let signInButton:UIButton = {
+    let signInButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "signInButton"), for: .normal)
         button.layer.shadowOffset = CGSize(width: button.bounds.width / 10, height: button.bounds.width / 10)
