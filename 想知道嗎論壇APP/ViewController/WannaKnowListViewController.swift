@@ -37,7 +37,7 @@ class WannaKnowListViewController: UIViewController{
             print(error.localizedDescription)
         }
         
-//        wannaAPIDataBase.loadDataByUpdateTime()
+        wannaAPIDataBase.loadDataByUpdateTime()
     }
     
     //MARK:-Method

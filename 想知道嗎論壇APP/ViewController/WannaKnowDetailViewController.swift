@@ -20,7 +20,11 @@ class WannaKnowDetailViewController: UIViewController {
         }
     }
     
-    var comments:[CommentsData] = [CommentsData(wanna_know_id: "222", messenger: "333", comment_id: "333", content: "333", like: "333", content_time: "333")]
+    var comments:[CommentsData] = [CommentsData(wanna_know_id: "222", messenger: "333", comment_id: "333", content: "333", like: "333", content_time: "333")]{
+        didSet{
+            wannaKnowDetailView.tableView.reloadData()
+        }
+    }
     
     //MARK:-LifeCycle
     override func loadView() {
@@ -34,6 +38,7 @@ class WannaKnowDetailViewController: UIViewController {
         setTextField()
         notifiTheKeyboardWillShow()
         notifiTheKeyboardWillHide()
+        setSendButton()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -52,6 +57,26 @@ class WannaKnowDetailViewController: UIViewController {
     
     private func setTextField(){
         wannaKnowDetailView.textField.delegate = self
+    }
+    
+    
+    private func setSendButton(){
+        wannaKnowDetailView.sendButton.addTarget(self, action: #selector(send), for: .touchDown)
+    }
+    
+    @objc func send(){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let now = formatter.string(from: Date())
+        comments.append(CommentsData(wanna_know_id: "", messenger:"", comment_id: "", content: "\(wannaKnowDetailView.textField.text!)", like: "3", content_time: now))
+        UIView.animate(withDuration: 0.1) {
+            self.wannaKnowDetailView.sendButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        } completion: { finished in
+            self.wannaKnowDetailView.sendButton.transform = CGAffineTransform.identity
+        }
+        view.endEditing(true)
+        view.frame.origin.y = 0
+        wannaKnowDetailView.textField.text = ""
     }
     
     //MARK:-KeyBoardShow

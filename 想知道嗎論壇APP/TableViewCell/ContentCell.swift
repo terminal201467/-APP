@@ -93,6 +93,7 @@ class ContentCell: UITableViewCell {
         collectionView.register(TagCell.self, forCellWithReuseIdentifier: TagCell.reuseIdentifier)
         collectionView.allowsSelection = true
         collectionView.backgroundColor = nil
+        collectionView.semanticContentAttribute = UISemanticContentAttribute.forceLeftToRight
         return collectionView
     }()
     
