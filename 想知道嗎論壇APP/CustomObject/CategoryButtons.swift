@@ -18,8 +18,8 @@ class CategoryButtons: UICollectionViewController{
     //MARK:-LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCollectionView()
         setCollectionViewFlow()
+        setCollectionView()
     }
     
     //MARK:-setCollectionView
@@ -35,6 +35,19 @@ class CategoryButtons: UICollectionViewController{
         collectionView.allowsSelection = true
         collectionView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isExclusiveTouch = true
+    }
+    
+    private func animateCollectionView() {
+            let cells = collectionView.visibleCells
+            let collectionViewHeight: CGFloat = collectionView.bounds.size.height
+            for (index, cell) in cells.enumerated() {
+                cell.transform = CGAffineTransform(translationX: 0, y: collectionViewHeight)
+                UIView.animate(withDuration: 1.0, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+                    cell.transform = CGAffineTransform(translationX: 0, y: 0);
+                }, completion: nil)
+            }
+
     }
     
     @objc func learnMemo(){
@@ -67,6 +80,8 @@ class CategoryButtons: UICollectionViewController{
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThemeCell.reuseIdentifier, for: indexPath) as! ThemeCell
+        print("Cell:",collectionView.visibleCells)
+        
         let articleKinds = ariticles[indexPath.row]
         switch articleKinds.self {
         case .projectExperiance:
@@ -86,5 +101,19 @@ class CategoryButtons: UICollectionViewController{
             cell.button.addTarget(self, action: #selector(lifeChannel), for: .touchDown)
         }
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.2) {
+                cell?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.2) {
+            cell?.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }
     }
 }

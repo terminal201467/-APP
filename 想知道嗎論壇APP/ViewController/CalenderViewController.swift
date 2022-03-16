@@ -52,10 +52,10 @@ class CalenderViewController: UIViewController{
     }
     
     @objc func choose(){
-        UIView.animate(withDuration: 0.4) {
-            self.calendarView.signInButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        UIView.animate(withDuration: 0.1) {
+            self.calendarView.signInButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }completion: { finished in
-            UIView.animate(withDuration: 0.4) {
+            UIView.animate(withDuration: 0.1) {
                 self.calendarView.signInButton.transform = CGAffineTransform.identity
             }
         }
@@ -74,6 +74,13 @@ class CalenderViewController: UIViewController{
     }
     
     @objc func chooseDate(){
+        UIView.animate(withDuration: 0.1) {
+            self.calendarView.dateChooseButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }completion: { finished in
+            UIView.animate(withDuration: 0.1) {
+                self.calendarView.dateChooseButton.transform = CGAffineTransform.identity
+            }
+        }
         let modalPresentController = ModalPresentViewController()
         modalPresentController.datePickerController.delegate = self
         modalPresentController.modalPresentationStyle = .overCurrentContext

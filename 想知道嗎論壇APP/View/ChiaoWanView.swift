@@ -12,7 +12,7 @@ class ChiaoWanView: UIView {
     let tableView:UITableView = {
         let tableView = UITableView()
         tableView.register(PageViewControllerCell.self, forCellReuseIdentifier:PageViewControllerCell.reuseIdentifier)
-        tableView.allowsSelection = true
+        tableView.allowsSelection = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = 60
         tableView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -37,6 +37,8 @@ class ChiaoWanView: UIView {
         textField.placeholder = "想知道..."
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         textField.leftViewMode = .always
+        textField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        textField.rightViewMode = .always
         textField.tintColor = .gray
         textField.keyboardAppearance = .light
         textField.layer.cornerRadius = 22

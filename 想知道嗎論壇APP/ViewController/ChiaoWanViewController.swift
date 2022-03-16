@@ -11,11 +11,13 @@ import SnapKit
 class ChiaoWanViewController: UIViewController{
     
     //MARK:-Properties
-    var chiaoWanArray:[HomePageData] = [
-        HomePageData(title: "三小嘟三小", count: 3, date: "2021-02-13")
-    ]
+    var chiaoWanData:[HomePageData] = [HomePageData(title: "三小嘟三小", count: 3, date: "2021-02-13")]{
+        didSet{
+            chiaoWanView.tableView.reloadData()
+        }
+    }
     
-    let chiaoWanView = ChiaoWanView()
+    private let chiaoWanView = ChiaoWanView()
     
     //MARK:-LifeCycle
     override func loadView() {
@@ -56,23 +58,33 @@ class ChiaoWanViewController: UIViewController{
     }
     
     @objc func signInButtonTouch(){
-        UIView.animate(withDuration: 0.4) {
-            self.chiaoWanView.signInButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        UIView.animate(withDuration: 0.1) {
+            self.chiaoWanView.signInButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }completion: { finished in
-            UIView.animate(withDuration: 0.4) {
+            UIView.animate(withDuration: 0.1) {
                 self.chiaoWanView.signInButton.transform = CGAffineTransform.identity
             }
         }
     }
     
     @objc func sendButtonTouch(){
-        UIView.animate(withDuration: 0.4) {
-            self.chiaoWanView.sendButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let now = formatter.string(from: Date())
+        
+        chiaoWanData.append(HomePageData(title: "\(chiaoWanView.textField.text!)", count: 4, date: now))
+        
+        UIView.animate(withDuration: 0.1) {
+            self.chiaoWanView.sendButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }completion: { finished in
-            UIView.animate(withDuration: 0.4) {
+            UIView.animate(withDuration: 0.1) {
                 self.chiaoWanView.sendButton.transform = CGAffineTransform.identity
             }
         }
+        
+        chiaoWanView.textField.text = ""
+        view.endEditing(true)
+        view.frame.origin.y = 0
     }
     
     //MARK:-KeyBoardHide
@@ -98,12 +110,12 @@ class ChiaoWanViewController: UIViewController{
 
 extension ChiaoWanViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chiaoWanArray.count
+        return chiaoWanData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:PageViewControllerCell.reuseIdentifier, for: indexPath) as! PageViewControllerCell
-        cell.configuration(data: chiaoWanArray[indexPath.row])
+        cell.configuration(data: chiaoWanData[indexPath.row])
         return cell
     }
 }
