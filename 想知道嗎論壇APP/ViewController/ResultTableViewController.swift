@@ -27,7 +27,6 @@ class ResultTableViewController:UITableViewController {
         setTag()
         setTableView()
         setNavigationBar()
-//        print(category)
     }
     
     func setNavigationBar(){

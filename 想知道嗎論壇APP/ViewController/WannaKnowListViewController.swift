@@ -77,7 +77,11 @@ extension WannaKnowListViewController:UICollectionViewDelegate,UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.reuseIdentifier, for: indexPath) as! TagCell
         let names = wannaAPIDataBase.getCollectionTagData(at: indexPath)
-        cell.button.setTitle(names.map{$0}.description, for: .normal)
+        if names.count == 0{
+            cell.tagLabel.text = ""
+        }else{
+            cell.tagLabel.text = names[indexPath.row]
+        }
         return cell
     }
 }

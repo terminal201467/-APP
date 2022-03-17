@@ -15,7 +15,7 @@ class TagButtons: UICollectionViewController {
     
     let flowLayout = UICollectionViewFlowLayout()
     
-    var buttonNames:[String] = ["前端","CSS","JS","Coding","樂布朗粒子砲"]
+    var tags:[String] = ["前端","CSS","JS","Coding","樂布朗粒子砲"]
     
     //MARK:-LifeCycle
     override func viewDidLoad() {
@@ -42,13 +42,12 @@ class TagButtons: UICollectionViewController {
 
     //MARK:-UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return buttonNames.count
+        return tags.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.reuseIdentifier, for: indexPath) as! TagCell
-        let buttons = buttonNames[indexPath.row]
-        cell.button.setTitle(buttons, for: .normal)
+        cell.tagLabel.text = tags[indexPath.row]
         return cell
     }
 

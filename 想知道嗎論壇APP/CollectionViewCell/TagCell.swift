@@ -7,24 +7,21 @@
 
 import UIKit
 
-class TagCell: UICollectionViewCell {
+class TagCell:UICollectionViewCell{
     
-    static let reuseIdentifier = "ButtonCell"
-    
-    let button:UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 15
-        button.layer.backgroundColor = #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15)
-        button.titleEdgeInsets = .init(top: 0, left: 5, bottom: 0, right: 5)
-        return button
+    static let reuseIdentifier = "tag"
+
+    let tagLabel:UILabel = {
+       let label = UILabel()
+        label.layer.cornerRadius = 15
+        label.layer.backgroundColor = #colorLiteral(red: 0.4875313044, green: 0.8161220551, blue: 0.6423928142, alpha: 1)
+        label.textAlignment = .center
+        return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(button)
+        contentView.addSubview(tagLabel)
         autoLayout()
     }
     
@@ -33,7 +30,7 @@ class TagCell: UICollectionViewCell {
     }
     
     private func autoLayout(){
-        button.snp.makeConstraints { make in
+        tagLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview().offset(-15)
             make.right.equalToSuperview()

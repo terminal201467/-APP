@@ -66,6 +66,7 @@ class WannaKnowDataBase{
     }
     
     public func getCollectionTagData(at indexPath:IndexPath)->Array<String?>{
+        print(wannaKnowData[indexPath.section].data[indexPath.row].tags)
         return wannaKnowData[indexPath.section].data[indexPath.row].tags
     }
     
