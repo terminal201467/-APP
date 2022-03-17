@@ -50,5 +50,23 @@ class TagButtons: UICollectionViewController {
         cell.tagLabel.text = tags[indexPath.row]
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("select")
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! TagCell
+        UIView.animate(withDuration: 0.2) {
+            cell.tagLabel.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! TagCell
+        UIView.animate(withDuration: 0.2) {
+            cell.tagLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }
+    }
 
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryButtons: UICollectionViewController{
+class ThemeButtons: UICollectionViewController{
     //MARK:-Properties
     private let flowLayout = UICollectionViewFlowLayout()
     
@@ -20,6 +20,7 @@ class CategoryButtons: UICollectionViewController{
         super.viewDidLoad()
         setCollectionViewFlow()
         setCollectionView()
+        print(category)
     }
     
     //MARK:-setCollectionView
@@ -50,29 +51,6 @@ class CategoryButtons: UICollectionViewController{
 
     }
     
-    @objc func learnMemo(){
-        category = ArticleKind.learnMemo.text
-        //getAPIByParameter學習小心得
-    }
-
-    @objc func lifeChannel(){
-        category = ArticleKind.lifeChannel.text
-        
-    }
-
-    @objc func projectExperience(){
-        category = ArticleKind.projectExperiance.text
-        
-    }
-
-    @objc func skillResearch(){
-        category = ArticleKind.skillResearch.text
-    }
-
-    @objc func workLife(){
-        category = ArticleKind.workLife.text
-    }
-
     // MARK:-UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ariticles.count
@@ -87,23 +65,18 @@ class CategoryButtons: UICollectionViewController{
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let categoryKind = ariticles[indexPath.row]
         switch categoryKind {
-        case .learnMemo:
-            category = categoryKind.text
-        case .lifeChannel:
-            category = categoryKind.text
-        case .projectExperiance:
-            category = categoryKind.text
-        case .skillResearch:
-            category = categoryKind.text
-        case .workLife:
-            category = categoryKind.text
+        case .learnMemo:         category = categoryKind.text
+        case .lifeChannel:       category = categoryKind.text
+        case .projectExperiance: category = categoryKind.text
+        case .skillResearch:     category = categoryKind.text
+        case .workLife:          category = categoryKind.text
         }
     }
-    
     override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! ThemeCell
         UIView.animate(withDuration: 0.2) {
             cell.category.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            cell.category.layer.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         }
     }
     
@@ -111,6 +84,7 @@ class CategoryButtons: UICollectionViewController{
         let cell = collectionView.cellForItem(at: indexPath) as! ThemeCell
         UIView.animate(withDuration: 0.2) {
             cell.category.transform = CGAffineTransform(scaleX: 1, y: 1)
+            cell.category.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
     }
 }

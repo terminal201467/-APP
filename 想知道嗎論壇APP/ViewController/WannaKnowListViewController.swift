@@ -73,7 +73,6 @@ extension WannaKnowListViewController:UICollectionViewDelegate,UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return wannaAPIDataBase.numberOfRowsInCollectionViewSection(section)
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.reuseIdentifier, for: indexPath) as! TagCell
         let names = wannaAPIDataBase.getCollectionTagData(at: indexPath)

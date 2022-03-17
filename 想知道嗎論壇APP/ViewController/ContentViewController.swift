@@ -23,7 +23,7 @@ class ContentViewController: UIViewController {
     
     private let contentView = ContentView()
     
-    public let categoryButton = CategoryButtons(collectionViewLayout: UICollectionViewFlowLayout())
+    public let categoryButton = ThemeButtons(collectionViewLayout: UICollectionViewFlowLayout())
     
     //MARK:-LifeCycle
     override func loadView() {
