@@ -78,7 +78,7 @@ class HomePageViewController: UIViewController{
     }
     
     func setSearchViewController(){
-        searchViewController = UISearchController(searchResultsController: resultController)
+        searchViewController = UISearchController(searchResultsController: UINavigationController(rootViewController:resultController))
         homePageView.searchBarContainer.addSubview(searchViewController!.searchBar)
         searchViewController?.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         searchViewController?.hidesNavigationBarDuringPresentation = false

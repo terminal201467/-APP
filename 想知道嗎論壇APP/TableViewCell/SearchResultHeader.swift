@@ -80,8 +80,8 @@ class SearchResultHeader: UITableViewHeaderFooterView {
             make.top.equalTo(20)
             make.left.equalTo(20)
             make.right.equalTo(-20)
-            make.height.equalTo(20)
-            make.width.equalTo(20)
+            make.height.equalTo(50)
+            make.width.equalTo(80)
         }
         
         searchInfo.snp.makeConstraints { make in

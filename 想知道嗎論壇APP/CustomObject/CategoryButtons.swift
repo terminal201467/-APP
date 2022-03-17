@@ -80,40 +80,37 @@ class CategoryButtons: UICollectionViewController{
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThemeCell.reuseIdentifier, for: indexPath) as! ThemeCell
-        print("Cell:",collectionView.visibleCells)
-        
-        let articleKinds = ariticles[indexPath.row]
-        switch articleKinds.self {
-        case .projectExperiance:
-            cell.button.setTitle(ArticleKind.projectExperiance.text, for: .normal)
-            cell.button.addTarget(self, action: #selector(projectExperience), for: .touchDown)
-        case .learnMemo:
-            cell.button.setTitle(ArticleKind.learnMemo.text, for: .normal)
-            cell.button.addTarget(self, action: #selector(learnMemo), for: .touchDown)
-        case .skillResearch:
-            cell.button.setTitle(ArticleKind.skillResearch.text, for: .normal)
-            cell.button.addTarget(self, action: #selector(skillResearch), for: .touchDown)
-        case .workLife:
-            cell.button.setTitle(ArticleKind.workLife.text, for: .normal)
-            cell.button.addTarget(self, action: #selector(workLife), for: .touchDown)
-        case .lifeChannel:
-            cell.button.setTitle(ArticleKind.lifeChannel.text, for: .normal)
-            cell.button.addTarget(self, action: #selector(lifeChannel), for: .touchDown)
-        }
+        cell.category.text = ariticles[indexPath.row].text
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let categoryKind = ariticles[indexPath.row]
+        switch categoryKind {
+        case .learnMemo:
+            category = categoryKind.text
+        case .lifeChannel:
+            category = categoryKind.text
+        case .projectExperiance:
+            category = categoryKind.text
+        case .skillResearch:
+            category = categoryKind.text
+        case .workLife:
+            category = categoryKind.text
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
+        let cell = collectionView.cellForItem(at: indexPath) as! ThemeCell
         UIView.animate(withDuration: 0.2) {
-                cell?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            cell.category.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
+        let cell = collectionView.cellForItem(at: indexPath) as! ThemeCell
         UIView.animate(withDuration: 0.2) {
-            cell?.transform = CGAffineTransform(scaleX: 1, y: 1)
+            cell.category.transform = CGAffineTransform(scaleX: 1, y: 1)
         }
     }
 }

@@ -51,6 +51,12 @@ struct WannaKnowData:Decodable{
         var attachment: String
         var update_time: String
         var comment_amount: String
+        var dateString:String{
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            let time = formatter.date(from:date)
+            return String(describing: time)
+        }
     }
 }
 
@@ -68,12 +74,12 @@ struct YearData:Decodable{
     var attachment: String
     var update_time: String
     var comment_amount: String
-//    var dateTransition:String{
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy-MM-dd"
-//        let dateString = formatter.date(from: date)!
-//        return formatter.string(from: dateString)
-//    }
+    var dateString:String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let time = formatter.date(from:date)
+        return String(describing: time)
+    }
 }
 
 
@@ -84,6 +90,12 @@ struct CommentsData:Decodable{
     var content:String
     var like:String
     var content_time:String
+    var time:String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy MM dd"
+        let time = formatter.date(from:content_time)
+        return String(describing: time)
+    }
 }
 
 

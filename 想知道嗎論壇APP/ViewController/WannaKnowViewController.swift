@@ -71,20 +71,26 @@ class WannaKnowViewController: UIViewController {
     
     //MARK:-setNavigationBar
     private func setNavigationBar(){
-        self.navigationItem.titleView = NavigationBarTitle()
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+        
+        navigationItem.titleView = NavigationBarTitle()
         navigationItem.titleView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backToHomePage)))
+        navigationItem.searchController?.searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+        navigationItem.searchController?.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        navigationItem.searchController?.isActive = true
         
         let leftSideMenuButton = UIBarButtonItem(image: UIImage(named: "line.3.horizontal"),
                                                  style: .plain,
                                                  target:self,
                                                  action: #selector(sideMenuButtonMethod))
-        let rightSideMenuButton = UIBarButtonItem(image:UIImage(named: "magnifyingglass"), style: .plain, target: self, action: #selector(search))
         
-        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
-        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationItem.leftBarButtonItem = leftSideMenuButton
-        self.navigationItem.rightBarButtonItem = rightSideMenuButton
+        let rightButton = UIBarButtonItem(image: UIImage(named: "magnifyingglass"), style: .plain, target: self, action: #selector(search))
+        navigationItem.leftBarButtonItem = leftSideMenuButton
+        navigationItem.rightBarButtonItem = rightButton
+        navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
     }
     
     @objc func sideMenuButtonMethod(){
@@ -108,7 +114,7 @@ class WannaKnowViewController: UIViewController {
     }
     
     private func setSearchViewController(){
-        searchViewController = UISearchController(searchResultsController: resultController)
+        searchViewController = UISearchController(searchResultsController:UINavigationController(rootViewController: resultController))
         wannaKnowView.searchBarContainer.addSubview(searchViewController.searchBar)
         searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         searchViewController.hidesNavigationBarDuringPresentation = false

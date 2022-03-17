@@ -11,20 +11,19 @@ class ThemeCell: UICollectionViewCell {
     
     static let reuseIdentifier = "ButtonCell"
     
-    let button:UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 15
-        button.layer.borderColor = #colorLiteral(red: 0.4743221402, green: 0.7362652421, blue: 0.5361232162, alpha: 1)
-        button.layer.borderWidth = 2
-        button.layer.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        button.titleEdgeInsets = .init(top: 0, left: 5, bottom: 0, right: 5)
-        return button
+    var category:UILabel = {
+       let label = UILabel()
+        label.layer.cornerRadius = 15
+        label.layer.borderColor = #colorLiteral(red: 0.4743221402, green: 0.7362652421, blue: 0.5361232162, alpha: 1)
+        label.layer.borderWidth = 2
+        label.layer.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        label.textAlignment = .center
+        return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(button)
+        contentView.addSubview(category)
         autoLayout()
     }
     
@@ -33,7 +32,7 @@ class ThemeCell: UICollectionViewCell {
     }
     
     private func autoLayout(){
-        button.snp.makeConstraints { make in
+       category.snp.makeConstraints { make in
             make.top.bottom.right.left.equalToSuperview()
         }
     }
