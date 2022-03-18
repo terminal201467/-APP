@@ -15,6 +15,10 @@ class SearchDataBase{
         self.category = category
     }
     
+    init(searchByTag tag:String){
+        self.tag = tag
+    }
+    
     //MARK:-Closures
     
     var valueChanged:(()->Void)?
@@ -23,7 +27,9 @@ class SearchDataBase{
     
     //MARK:-Properties
     
-    var category:String
+    var category:String = ""
+    
+    var tag:String = ""
     
     private var data:[WannaKnowData.Data] = []{
         didSet{
@@ -43,8 +49,17 @@ class SearchDataBase{
         }
     }
     
-    public func loadTagData(){
+    public func loadThemeData(){
         WannaKnowAPI.shared.getWannaKnowData(callBy: .category(category)) { result in
+            switch result{
+            case .success(let data):  self.data = data.data
+            case .failure(let error): print(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func loadTagData(){
+        WannaKnowAPI.shared.getWannaKnowData(callBy: .tags(tag)) { result in
             switch result{
             case .success(let data):  self.data = data.data
             case .failure(let error): print(error.localizedDescription)

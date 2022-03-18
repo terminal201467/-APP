@@ -67,7 +67,7 @@ class ThemeButtons: UICollectionViewController{
         switch categoryKind {
         case .learnMemo:         category = categoryKind.text
         case .lifeChannel:       category = categoryKind.text
-        case .projectExperiance: category = categoryKind.text
+        case .projectExp:        category = categoryKind.text
         case .skillResearch:     category = categoryKind.text
         case .workLife:          category = categoryKind.text
         }

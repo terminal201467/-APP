@@ -17,6 +17,8 @@ class TagButtons: UICollectionViewController {
     
     var tags:[String] = ["前端","CSS","JS","Coding","樂布朗粒子砲"]
     
+    var tag:String = ""
+    
     //MARK:-LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +54,7 @@ class TagButtons: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("select")
+        tag = tags[indexPath.row]
     }
     
     override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {

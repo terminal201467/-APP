@@ -68,14 +68,14 @@ enum ArticlePages:Int,CaseIterable{
 }
 
 enum ArticleKind:Int,CaseIterable{
-    case projectExperiance = 0,learnMemo,skillResearch,workLife,lifeChannel
+    case projectExp = 0,learnMemo,skillResearch,workLife,lifeChannel
     var text:String{
         switch self {
-        case .projectExperiance: return "專案經驗"
-        case .learnMemo:         return "學習小心得"
-        case .skillResearch:     return "技術剖析"
-        case .workLife:          return "職場工作"
-        case .lifeChannel:       return "生活頻道"
+        case .projectExp:    return "專案經驗"
+        case .learnMemo:     return "學習小心得"
+        case .skillResearch: return "技術剖析"
+        case .workLife:      return "職場工作"
+        case .lifeChannel:   return "生活頻道"
         }
     }
 }

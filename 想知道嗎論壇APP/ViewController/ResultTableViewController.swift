@@ -12,6 +12,8 @@ class ResultTableViewController:UITableViewController {
 
     var category:String = ""
     
+    var tag:String = ""
+    
     var searchDataBase:SearchDataBase!
     
     let detailController = WannaKnowDetailViewController()
@@ -24,7 +26,7 @@ class ResultTableViewController:UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTag()
+        setSearchMethod()
         setTableView()
         setNavigationBar()
     }
@@ -69,7 +71,7 @@ class ResultTableViewController:UITableViewController {
         self.tableView.register(ContentCell.self, forCellReuseIdentifier: ContentCell.reuseIdentifier)
     }
     
-    private func setTag(){
+    private func setSearchMethod(){
         searchDataBase = SearchDataBase.init(searchBy: category)
         searchDataBase.valueChanged = {
             DispatchQueue.main.async {
@@ -79,9 +81,11 @@ class ResultTableViewController:UITableViewController {
         searchDataBase.onError = { error in
             print(error.localizedDescription)
         }
-        if category == ""{
+        if category == "" && tag == ""{
             searchDataBase.loadAllData()
-        }else{
+        }else if category != ""{
+            searchDataBase.loadThemeData()
+        }else if tag != ""{
             searchDataBase.loadTagData()
         }
     }

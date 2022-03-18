@@ -37,16 +37,7 @@ class WannaKnowDataBase{
             }
         }
     }
-    
-    public func loadDataByCategory(by category:String){
-        WannaKnowAPI.shared.getWannaKnowData(callBy: .category(category)) { result in
-            switch result{
-            case .success(let data):  self.wannaKnowData.append(data)
-            case .failure(let error): print(error.localizedDescription)
-            }
-        }
-    }
-    
+
     //MARK:-TableView
     public var numberOfSection:Int{
         return wannaKnowData.count

@@ -14,6 +14,7 @@ class WannaKnowDetailView: UIView {
         tableView.register(WannaKnowDetailCell.self, forCellReuseIdentifier: WannaKnowDetailCell.reuseIdentifier)
         tableView.register(WannaKnowDetailHeader.self, forHeaderFooterViewReuseIdentifier: WannaKnowDetailHeader.reuseIdentifier)
         tableView.separatorStyle = .singleLine
+        tableView.allowsSelection = false
         tableView.sectionHeaderHeight = 300
         tableView.rowHeight = 135
         tableView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
