@@ -7,7 +7,9 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+protocol TagDelegate:AnyObject{
+    func receiveTagDelegate(tag paramter:String)
+}
 
 class TagButtons: UICollectionViewController {
     
@@ -17,7 +19,7 @@ class TagButtons: UICollectionViewController {
     
     var tags:[String] = ["前端","CSS","JS","Coding","樂布朗粒子砲"]
     
-    var tag:String = ""
+    public weak var delegate:TagDelegate!
     
     //MARK:-LifeCycle
     override func viewDidLoad() {
@@ -54,7 +56,7 @@ class TagButtons: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        tag = tags[indexPath.row]
+        delegate.receiveTagDelegate(tag: tags[indexPath.row])
     }
     
     override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {

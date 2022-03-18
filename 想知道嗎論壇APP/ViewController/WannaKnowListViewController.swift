@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class WannaKnowListViewController: UIViewController{
     //MARK:-Properties
     
@@ -64,7 +65,6 @@ extension WannaKnowListViewController:UITableViewDelegate,UITableViewDataSource{
         wannaKnowDetailViewController.modalPresentationStyle = .formSheet
         present(wannaKnowDetailViewController, animated: true, completion: nil)
         wannaKnowDetailViewController.detail = wannaAPIDataBase.getData(at: indexPath)
-        
     }
 }
 

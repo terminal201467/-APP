@@ -42,11 +42,14 @@ class WannaKnowViewController: UIViewController {
         setSideMenu()
         setSegmented()
         setPageViewController()
-        setCategoryValue()
+        setResultControllerDelegate()
     }
     
-    private func setCategoryValue(){
-        resultController.category = contentViewController.categoryButton.category
+    private func setResultControllerDelegate(){
+        contentViewController.categoryButton.delegate = resultController
+        contentViewController.contentViewController.tagButtons.delegate = resultController
+        contentViewController.followViewController.tagButtons.delegate = resultController
+        contentViewController.hotViewController.tagButtons.delegate = resultController
     }
     
     private func setPageViewController(){

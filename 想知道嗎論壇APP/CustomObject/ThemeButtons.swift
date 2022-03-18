@@ -7,20 +7,25 @@
 
 import UIKit
 
+protocol ThemeDelegate:AnyObject{
+    func receiveThemeParameter(theme paramter:String)
+}
+
 class ThemeButtons: UICollectionViewController{
     //MARK:-Properties
     private let flowLayout = UICollectionViewFlowLayout()
     
     private let ariticles = ArticleKind.allCases
     
-    var category = ""
+    public var category = ""
+    
+    public weak var delegate:ThemeDelegate!
     
     //MARK:-LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionViewFlow()
         setCollectionView()
-        print(category)
     }
     
     //MARK:-setCollectionView
@@ -71,6 +76,7 @@ class ThemeButtons: UICollectionViewController{
         case .skillResearch:     category = categoryKind.text
         case .workLife:          category = categoryKind.text
         }
+        delegate.receiveThemeParameter(theme: category)
     }
     override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! ThemeCell

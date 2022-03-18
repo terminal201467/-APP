@@ -10,7 +10,7 @@ import UIKit
 class ResultTableViewController:UITableViewController {
     //MARK:-Properties
 
-    var category:String = ""
+    var theme:String = ""
     
     var tag:String = ""
     
@@ -72,7 +72,7 @@ class ResultTableViewController:UITableViewController {
     }
     
     private func setSearchMethod(){
-        searchDataBase = SearchDataBase.init(searchBy: category)
+        searchDataBase = SearchDataBase.init(searchBy: theme)
         searchDataBase.valueChanged = {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -81,9 +81,9 @@ class ResultTableViewController:UITableViewController {
         searchDataBase.onError = { error in
             print(error.localizedDescription)
         }
-        if category == "" && tag == ""{
+        if theme == "" && tag == ""{
             searchDataBase.loadAllData()
-        }else if category != ""{
+        }else if theme != ""{
             searchDataBase.loadThemeData()
         }else if tag != ""{
             searchDataBase.loadTagData()
@@ -113,5 +113,19 @@ extension ResultTableViewController:UISearchResultsUpdating{
             searchDataBase.filterContent(for: searchText)
             tableView.reloadData()
         }
+    }
+}
+
+//MARK:-ThemeDelegate
+extension ResultTableViewController:ThemeDelegate{
+    func receiveThemeParameter(theme paramter: String) {
+        theme = paramter
+    }
+}
+
+//MARK:-TagDelegate
+extension ResultTableViewController:TagDelegate{
+    func receiveTagDelegate(tag paramter: String) {
+        tag = paramter
     }
 }
