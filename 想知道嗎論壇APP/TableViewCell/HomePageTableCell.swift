@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PageViewControllerCell: UITableViewCell {
+class HomePageTableCell: UITableViewCell {
     
     static let reuseIdentifier:String = "PagesCell"
     

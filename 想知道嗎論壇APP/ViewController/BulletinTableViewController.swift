@@ -55,7 +55,7 @@ extension BulletinViewController: UITableViewDelegate,UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:PageViewControllerCell.reuseIdentifier, for: indexPath) as! PageViewControllerCell
+        let cell = tableView.dequeueReusableCell(withIdentifier:HomePageTableCell.reuseIdentifier, for: indexPath) as! HomePageTableCell
         cell.configuration(data: data[indexPath.row])
         return cell
     }

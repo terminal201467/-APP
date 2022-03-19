@@ -27,7 +27,22 @@ class WannaKnowViewController: UIViewController {
     private lazy var segmentedControllers:[UIViewController] = [contentViewController,calendarViewController]
     
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-
+    
+    private var searchDateBase:SearchDataBase!
+    
+    //MARK:-store properties
+    private var theme:String = ""{
+        didSet{
+            resultController.theme = self.theme
+        }
+    }
+    
+    private var tag:String = ""{
+        didSet{
+            resultController.tag = self.tag
+        }
+    }
+    
     //MARK:-LifeCycle
     override func loadView() {
         super.loadView()
@@ -43,13 +58,14 @@ class WannaKnowViewController: UIViewController {
         setSegmented()
         setPageViewController()
         setResultControllerDelegate()
+        
     }
     
     private func setResultControllerDelegate(){
-        contentViewController.categoryButton.delegate = resultController
-        contentViewController.contentViewController.tagButtons.delegate = resultController
-        contentViewController.followViewController.tagButtons.delegate = resultController
-        contentViewController.hotViewController.tagButtons.delegate = resultController
+        contentViewController.categoryButton.delegate = self
+        contentViewController.contentViewController.tagButtons.delegate = self
+        contentViewController.followViewController.tagButtons.delegate = self
+        contentViewController.hotViewController.tagButtons.delegate = self
     }
     
     private func setPageViewController(){
@@ -138,6 +154,8 @@ class WannaKnowViewController: UIViewController {
     }
 }
 
+
+
 extension WannaKnowViewController:UIPageViewControllerDelegate,UIPageViewControllerDataSource{
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         let beforePage = wannaKnowView.segmentedControl.selectedSegmentIndex - 1
@@ -157,3 +175,18 @@ extension WannaKnowViewController:UIPageViewControllerDelegate,UIPageViewControl
     }
 }
 
+//MARK:-ThemeDelegate
+extension WannaKnowViewController:ThemeDelegate{
+    func receiveThemeParameter(theme paramter: String) {
+        theme = paramter
+        searchViewController.searchBar.becomeFirstResponder()
+    }
+}
+
+//MARK:-TagDelegate
+extension WannaKnowViewController:TagDelegate{
+    func receiveTagDelegate(tag paramter: String) {
+        tag = paramter
+        searchViewController.searchBar.becomeFirstResponder()
+    }
+}

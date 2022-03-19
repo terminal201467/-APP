@@ -11,7 +11,7 @@ class ChiaoWanView: UIView {
 
     let tableView:UITableView = {
         let tableView = UITableView()
-        tableView.register(PageViewControllerCell.self, forCellReuseIdentifier:PageViewControllerCell.reuseIdentifier)
+        tableView.register(HomePageTableCell.self, forCellReuseIdentifier:HomePageTableCell.reuseIdentifier)
         tableView.allowsSelection = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = 60

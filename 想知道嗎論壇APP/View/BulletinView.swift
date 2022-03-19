@@ -22,7 +22,7 @@ class BulletinView: UIView {
     
     let tableView:UITableView = {
         let tableView = UITableView()
-        tableView.register(PageViewControllerCell.self, forCellReuseIdentifier: PageViewControllerCell.reuseIdentifier)
+        tableView.register(HomePageTableCell.self, forCellReuseIdentifier: HomePageTableCell.reuseIdentifier)
         tableView.backgroundColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
         tableView.register(Footer.self, forHeaderFooterViewReuseIdentifier: Footer.reuseIdentifier)
         tableView.rowHeight = 60

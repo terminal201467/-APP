@@ -14,7 +14,7 @@ class ResultTableViewController:UITableViewController {
     
     var tag:String = ""
     
-    var searchDataBase:SearchDataBase!
+    private var searchDataBase:SearchDataBase!
     
     let detailController = WannaKnowDetailViewController()
 
@@ -29,6 +29,8 @@ class ResultTableViewController:UITableViewController {
         setSearchMethod()
         setTableView()
         setNavigationBar()
+        print("result標籤：",theme)
+        print("tag標籤：",tag)
     }
     
     func setNavigationBar(){
@@ -73,6 +75,8 @@ class ResultTableViewController:UITableViewController {
     
     private func setSearchMethod(){
         searchDataBase = SearchDataBase.init(searchBy: theme)
+//        searchDataBase = SearchDataBase.init(searchByTag: tag)
+        
         searchDataBase.valueChanged = {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -81,12 +85,16 @@ class ResultTableViewController:UITableViewController {
         searchDataBase.onError = { error in
             print(error.localizedDescription)
         }
+        
         if theme == "" && tag == ""{
             searchDataBase.loadAllData()
+            print("loadEveryThing")
         }else if theme != ""{
             searchDataBase.loadThemeData()
+            print("loadTheme")
         }else if tag != ""{
             searchDataBase.loadTagData()
+            print("loadTag")
         }
     }
     
@@ -116,16 +124,3 @@ extension ResultTableViewController:UISearchResultsUpdating{
     }
 }
 
-//MARK:-ThemeDelegate
-extension ResultTableViewController:ThemeDelegate{
-    func receiveThemeParameter(theme paramter: String) {
-        theme = paramter
-    }
-}
-
-//MARK:-TagDelegate
-extension ResultTableViewController:TagDelegate{
-    func receiveTagDelegate(tag paramter: String) {
-        tag = paramter
-    }
-}
