@@ -14,7 +14,7 @@ class ResultTableViewController:UITableViewController {
     
     var tag:String = ""
     
-    private var searchDataBase:SearchDataBase!
+    var searchDataBase:SearchDataBase!
     
     let detailController = WannaKnowDetailViewController()
 

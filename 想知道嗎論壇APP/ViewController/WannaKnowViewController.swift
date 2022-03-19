@@ -28,8 +28,6 @@ class WannaKnowViewController: UIViewController {
     
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
-    private var searchDateBase:SearchDataBase!
-    
     //MARK:-store properties
     private var theme:String = ""{
         didSet{
@@ -139,10 +137,12 @@ class WannaKnowViewController: UIViewController {
         searchViewController.hidesNavigationBarDuringPresentation = false
         searchViewController.obscuresBackgroundDuringPresentation = false
         searchViewController.searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
+        searchViewController.searchBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         searchViewController.searchBar.searchTextField.layer.cornerRadius = 50
         searchViewController.searchBar.searchTextField.keyboardAppearance = .light
         searchViewController.searchBar.isTranslucent = false
+        searchViewController.searchBar.delegate = self
         searchViewController.searchResultsUpdater = resultController
         searchViewController.automaticallyShowsSearchResultsController = true
         searchViewController.obscuresBackgroundDuringPresentation = true
@@ -172,6 +172,14 @@ extension WannaKnowViewController:UIPageViewControllerDelegate,UIPageViewControl
                let currentVC = pageViewController.viewControllers?.first,
                let index = segmentedControllers.firstIndex(of: currentVC) else { return }
         wannaKnowView.segmentedControl.selectedSegmentIndex = index
+    }
+}
+
+//MARK:-searchBarDelegate
+extension WannaKnowViewController:UISearchBarDelegate{
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("cancel")
+        resultController.searchDataBase.removeAll()
     }
 }
 

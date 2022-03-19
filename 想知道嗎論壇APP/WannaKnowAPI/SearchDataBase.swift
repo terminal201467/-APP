@@ -83,4 +83,9 @@ class SearchDataBase{
     func getData(at index:IndexPath)->WannaKnowData.Data{
         return filterData.isEmpty ? data[index.row]:filterData[index.row]
     }
+    
+    func removeAll(){
+        data.removeAll()
+        filterData.removeAll()
+    }
 }
