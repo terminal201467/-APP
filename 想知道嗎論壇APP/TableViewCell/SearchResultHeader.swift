@@ -79,7 +79,7 @@ class SearchResultHeader: UIView{
     private func autoLayout(){
         magnifier.snp.makeConstraints { make in
             make.top.equalTo(30)
-            make.centerX.equalToSuperview().offset(-100)
+            make.centerX.equalToSuperview().offset(-90)
             make.height.equalTo(50)
         }
         

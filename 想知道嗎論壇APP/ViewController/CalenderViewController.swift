@@ -32,14 +32,22 @@ class CalenderViewController: UIViewController{
         setDateChoose()
         setSignInButton()
         calendarDataBase.valueChanged = {
-            
+            DispatchQueue.main.async {
+                self.calendarView.calendar.reloadData()
+            }
         }
         
         calendarDataBase.onError = { error in
             print(error)
         }
         calendarDataBase.loadData()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        calendarView.calendar.scrollToDate(Date())
+        print(calendarDataBase.showAllEvent())
+        calendarView.calendar.deselect(dates: calendarDataBase.showAllEvent(), triggerSelectionDelegate: false, keepDeselectionIfMultiSelectionAllowed: true)
     }
     //MARK:-setCalender
     private func setCalender(){
@@ -160,7 +168,6 @@ extension CalenderViewController:JTACMonthViewDelegate,JTACMonthViewDataSource{
     func calendar(_ calendar: JTACMonthView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
         let cell = calendar.dequeueReusableCell(withReuseIdentifier: CalenderCell.reuseIdentifier, for: indexPath) as! CalenderCell
         cell.dateLabel.text = cellState.text
-//        print("這個月：",cellState.text)
         if cellState.dateBelongsTo == .thisMonth{
             cell.dateLabel.textColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
         }else{
@@ -213,6 +220,7 @@ extension CalenderViewController:UITableViewDelegate,UITableViewDataSource{
 extension CalenderViewController:DateDelegate{
     func dateDataReceive(date: Date) {
         choosenDate = date
+        calendarView.calendar.scrollToDate(date)
         calendarView.calendar.reloadData()
     }
 }
