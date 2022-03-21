@@ -31,6 +31,8 @@ class SearchDataBase{
     
     var tag:String = ""
     
+    private var completeData:WannaKnowData?
+    
     private var data:[WannaKnowData.Data] = []{
         didSet{
             valueChanged?()
@@ -43,8 +45,11 @@ class SearchDataBase{
     public func loadAllData(){
         WannaKnowAPI.shared.getWannaKnowData(callBy: .per_page("10")) { result in
             switch result{
-            case .success(let data):  self.data = data.data
-            case .failure(let error): print(error.localizedDescription)
+            case .success(let data):
+                self.data = data.data
+                self.completeData = data
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
@@ -52,8 +57,11 @@ class SearchDataBase{
     public func loadThemeData(){
         WannaKnowAPI.shared.getWannaKnowData(callBy: .category(category)) { result in
             switch result{
-            case .success(let data):  self.data = data.data
-            case .failure(let error): print(error.localizedDescription)
+            case .success(let data):
+                self.data = data.data
+                self.completeData = data
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
@@ -61,8 +69,11 @@ class SearchDataBase{
     public func loadTagData(){
         WannaKnowAPI.shared.getWannaKnowData(callBy: .tags(tag)) { result in
             switch result{
-            case .success(let data):  self.data = data.data
-            case .failure(let error): print(error.localizedDescription)
+            case .success(let data):
+                self.data = data.data
+                self.completeData = data
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
@@ -87,5 +98,9 @@ class SearchDataBase{
     func removeAll(){
         data.removeAll()
         filterData.removeAll()
+    }
+    
+    func headerData()->WannaKnowData{
+        return completeData!
     }
 }

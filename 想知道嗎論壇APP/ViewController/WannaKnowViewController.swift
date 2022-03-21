@@ -133,11 +133,13 @@ class WannaKnowViewController: UIViewController {
     private func setSearchViewController(){
         searchViewController = UISearchController(searchResultsController:UINavigationController(rootViewController: resultController))
         wannaKnowView.searchBarContainer.addSubview(searchViewController.searchBar)
+        searchViewController.delegate = self
         searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         searchViewController.hidesNavigationBarDuringPresentation = false
         searchViewController.obscuresBackgroundDuringPresentation = false
         searchViewController.searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         searchViewController.searchBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        searchViewController.searchBar.placeholder = "想搜尋..."
         searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         searchViewController.searchBar.searchTextField.layer.cornerRadius = 50
         searchViewController.searchBar.searchTextField.keyboardAppearance = .light
@@ -175,11 +177,24 @@ extension WannaKnowViewController:UIPageViewControllerDelegate,UIPageViewControl
     }
 }
 
+//MARK:-searchViewControllerDelegate
+extension WannaKnowViewController:UISearchControllerDelegate{
+    func didDismissSearchController(_ searchController: UISearchController) {     
+        wannaKnowView.searchBarContainer.isHidden = true
+        resultController.searchDataBase.removeAll()
+        theme = ""
+        tag = ""
+        resultController.searchDataBase.loadAllData()
+    }
+}
+
 //MARK:-searchBarDelegate
 extension WannaKnowViewController:UISearchBarDelegate{
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("cancel")
         resultController.searchDataBase.removeAll()
+        theme = ""
+        tag = ""
+        resultController.searchDataBase.loadAllData()
     }
 }
 

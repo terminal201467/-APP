@@ -30,7 +30,6 @@ class WannaKnowAPI{
     }
 
     public func getBaseURL(completion:@escaping(Result<[YearData],Error>)->Void){
-        print(baseURLRequest())
         URLSession.shared.dataTask(with: baseURLRequest()){ data, _, error in
             if let error = error{
                 completion(.failure(error))
@@ -38,7 +37,6 @@ class WannaKnowAPI{
             if let data = data{
                 do{
                     let decode = try JSONDecoder().decode([YearData].self, from: data)
-                    print(decode)
                     completion(.success(decode))
                 }catch{
                     completion(.failure(error))
@@ -51,7 +49,6 @@ class WannaKnowAPI{
     
     public func getWannaKnowData(callBy:WannaKnowCallMethod...,completion: @escaping(Result<WannaKnowData,Error>)->Void){
         let request = buildReqeust(callBy:callBy)
-        print(request)
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error{
                 completion(.failure(error))
@@ -59,7 +56,6 @@ class WannaKnowAPI{
             if let data = data{
                 do{
                     let decode = try JSONDecoder().decode(WannaKnowData.self, from: data)
-                    print(decode)
                     completion(.success(decode))
                 }catch{
                     completion(.failure(error))
@@ -72,7 +68,6 @@ class WannaKnowAPI{
     
     public func getYearData(callBy:WannaKnowCallMethod...,completion:@escaping(Result<[YearData],Error>)->Void){
         let request = buildReqeust(callBy: callBy)
-        print(request)
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error{
                 completion(.failure(error))
@@ -80,7 +75,6 @@ class WannaKnowAPI{
             if let data = data{
                 do{
                     let decode = try JSONDecoder().decode([YearData].self, from: data)
-                    print(decode)
                     completion(.success(decode))
                 }catch{
                     completion(.failure(error))

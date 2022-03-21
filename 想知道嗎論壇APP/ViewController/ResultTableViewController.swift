@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ResultTableViewController:UITableViewController {
+class ResultTableViewController:UIViewController {
     //MARK:-Properties
 
     var theme:String = ""
@@ -17,10 +17,13 @@ class ResultTableViewController:UITableViewController {
     var searchDataBase:SearchDataBase!
     
     let detailController = WannaKnowDetailViewController()
+    
+    let resultTableView = ResultTableView()
 
     //MARK:-LifeCycle
     override func loadView() {
         super.loadView()
+        view = resultTableView
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
 
@@ -69,17 +72,16 @@ class ResultTableViewController:UITableViewController {
 
     //MARK:-Methods
     private func setTableView(){
-        self.tableView.allowsSelection = true
-        self.tableView.register(ContentCell.self, forCellReuseIdentifier: ContentCell.reuseIdentifier)
+        resultTableView.tableView.delegate = self
+        resultTableView.tableView.dataSource = self
     }
     
     private func setSearchMethod(){
         searchDataBase = SearchDataBase.init(searchBy: theme)
-//        searchDataBase = SearchDataBase.init(searchByTag: tag)
-        
+        searchDataBase = SearchDataBase.init(searchByTag: tag)
         searchDataBase.valueChanged = {
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self.resultTableView.tableView.reloadData()
             }
         }
         searchDataBase.onError = { error in
@@ -98,28 +100,42 @@ class ResultTableViewController:UITableViewController {
         }
     }
     
+    func setHeader(){
+        if theme == "" && tag == ""{
+            resultTableView.resultHeader.searchAllConfigure(result: searchDataBase.headerData())
+        }else if theme != ""{
+            resultTableView.resultHeader.searchTagOrThemeConfigure(result: searchDataBase.headerData(), tagOrTheme: theme)
+        }else if tag != ""{
+            resultTableView.resultHeader.searchTagOrThemeConfigure(result: searchDataBase.headerData(), tagOrTheme: tag)
+        }
+    }
+}
+    
     // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension ResultTableViewController:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchDataBase.numberOfRowInSection(at: section)
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ContentCell.reuseIdentifier, for: indexPath) as! ContentCell
         cell.configuration(data: searchDataBase.getData(at: indexPath))
+        setHeader()
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         detailController.detail = searchDataBase.getData(at: indexPath)
         present(detailController, animated: true)
     }
 }
 
+
 extension ResultTableViewController:UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text{
             searchDataBase.filterContent(for: searchText)
-            tableView.reloadData()
+            resultTableView.tableView.reloadData()
         }
     }
 }

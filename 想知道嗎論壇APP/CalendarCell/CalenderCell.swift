@@ -22,6 +22,11 @@ class CalenderCell: JTACDayCell{
         return view
     }()
     
+    let todayView:UIView = {
+       let view = UIView()
+        return view
+    }()
+    
     let eventBar:UIView = {
         let view = UIView()
         return view
@@ -30,6 +35,7 @@ class CalenderCell: JTACDayCell{
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(selectedView)
+        contentView.addSubview(todayView)
         contentView.addSubview(eventBar)
         contentView.addSubview(dateLabel)
         autoLayout()
@@ -42,6 +48,11 @@ class CalenderCell: JTACDayCell{
     func autoLayout(){
         dateLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
+        }
+        
+        selectedView.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+            make.height.width.equalTo(30)
         }
         
         selectedView.snp.makeConstraints { make in
