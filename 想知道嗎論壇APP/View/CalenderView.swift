@@ -20,8 +20,8 @@ class CalenderView: UIView {
         calendarView.rangeSelectionMode = .continuous
         calendarView.allowsRangedSelection = true
         calendarView.scrollDirection = .horizontal
-        calendarView.scrollingMode = .stopAtEachCalendarFrame
         calendarView.allowsRangedSelection = true
+        calendarView.scrollingMode = .stopAtEachSection
         return calendarView
     }()
     

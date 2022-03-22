@@ -46,8 +46,6 @@ class CalenderViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         calendarView.calendar.scrollToDate(Date())
-        print(calendarDataBase.showAllEvent())
-        calendarView.calendar.deselect(dates: calendarDataBase.showAllEvent(), triggerSelectionDelegate: false, keepDeselectionIfMultiSelectionAllowed: true)
     }
     //MARK:-setCalender
     private func setCalender(){
@@ -75,7 +73,6 @@ class CalenderViewController: UIViewController{
         calendarView.tableView.dataSource = self
     }
     
-    
     //MARK:-setDateChooseButton
     private func setDateChoose(){
         calendarView.dateChooseButton.addTarget(self, action: #selector(chooseDate), for: .touchDown)
@@ -99,10 +96,8 @@ class CalenderViewController: UIViewController{
     //MARK:-點按日期被選擇後的事件
     private func handleCellSelection(cell:JTACDayCell,cellState: CellState){
         guard let customCell = cell as? CalenderCell else { return }
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
         if cellState.isSelected{
-            let selectDateString = formatter.string(from: cellState.date)
+            let selectDateString = calendarDataBase.dateTranslate.string(from: cellState.date)
             customCell.selectedView.layer.cornerRadius = 15
             customCell.selectedView.layer.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
             customCell.selectedView.isHidden = false
@@ -112,23 +107,23 @@ class CalenderViewController: UIViewController{
             calendarDataBase.removeAllData()
         }
         calendarView.tableView.reloadData()
+//        calendarView.calendar.reloadData()
     }
     
     //MARK:-showTheEvent
     private func showTheEventCell(cell:JTACDayCell,cellState:CellState){
         guard let customCell = cell as? CalenderCell else { return }
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        if choosenDate != Date(){
-            customCell.selectedView.isHidden = false
-            customCell.selectedView.layer.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
-            customCell.selectedView.layer.cornerRadius = 15
+        let date = calendarDataBase.dateTranslate.string(from: cellState.date)
+        let events = calendarDataBase.showAllEvent().map{calendarDataBase.dateTranslate.string(from: $0)}
+        print("現在時間：",date)
+        print("事件時間：",events)
+        if events.contains(date){
+            customCell.eventBar.layer.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+            customCell.eventBar.isHidden = false
         }else{
-            customCell.selectedView.isHidden = true
+            customCell.eventBar.isHidden = true
         }
     }
-    
-    //MARK:-searchEvent
     
     //MARK:-TimeTranslator
     func transCalendarYearHeader(_ year:Date)->String{
@@ -180,7 +175,6 @@ extension CalenderViewController:JTACMonthViewDelegate,JTACMonthViewDataSource{
     //MARK:-選擇一個日期時
     func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         handleCellSelection(cell: cell!, cellState: cellState)
-        showTheEventCell(cell: cell!, cellState: cellState)
     }
     //MARK:-點掉一個日期時
     func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
@@ -188,18 +182,7 @@ extension CalenderViewController:JTACMonthViewDelegate,JTACMonthViewDataSource{
     }
 
     func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        let customCell = cell as! CalenderCell
-        customCell.dateLabel.text = cellState.text
-        if cellState.dateBelongsTo == .thisMonth{
-            
-        }
-        
-        customCell.eventBar.layer.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-        customCell.eventBar.layer.cornerRadius = 10
-        
-        handleCellSelection(cell: cell, cellState:cellState)
-        calendarDataBase.showAllEvent()
-        //走訪這個月所有的日期資料，如果這個月的月曆有符合的，就標上底線
+        showTheEventCell(cell: cell, cellState: cellState)
     }
 }
 
