@@ -34,9 +34,9 @@ class CalenderCell: JTACDayCell{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(selectedView)
         contentView.addSubview(todayView)
         contentView.addSubview(eventBar)
+        contentView.addSubview(selectedView)
         contentView.addSubview(dateLabel)
         autoLayout()
     }
@@ -62,7 +62,14 @@ class CalenderCell: JTACDayCell{
         
         eventBar.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalTo(-1)
+            make.centerY.equalTo(40)
+            make.height.equalTo(3)
+            make.width.equalTo(20)
+        }
+        todayView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.height.width.equalTo(35)
         }
     }
     

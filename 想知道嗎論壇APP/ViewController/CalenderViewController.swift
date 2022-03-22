@@ -107,7 +107,6 @@ class CalenderViewController: UIViewController{
             calendarDataBase.removeAllData()
         }
         calendarView.tableView.reloadData()
-//        calendarView.calendar.reloadData()
     }
     
     //MARK:-showTheEvent
@@ -115,24 +114,38 @@ class CalenderViewController: UIViewController{
         guard let customCell = cell as? CalenderCell else { return }
         let date = calendarDataBase.dateTranslate.string(from: cellState.date)
         let events = calendarDataBase.showAllEvent().map{calendarDataBase.dateTranslate.string(from: $0)}
-        print("現在時間：",date)
-        print("事件時間：",events)
         if events.contains(date){
-            customCell.eventBar.layer.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
             customCell.eventBar.isHidden = false
+            customCell.eventBar.layer.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
         }else{
             customCell.eventBar.isHidden = true
         }
     }
     
+    private func showToDayCell(cell:JTACDayCell,cellState:CellState){
+        guard let customCell = cell as? CalenderCell else { return }
+        let calendarDate = calendarDataBase.dateTranslate.string(from: cellState.date)
+        let toDay = calendarDataBase.dateTranslate.string(from: Date())
+        if calendarDate.contains(toDay){
+            customCell.todayView.isHidden = false
+            customCell.todayView.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            customCell.todayView.layer.borderColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
+            customCell.todayView.layer.borderWidth = 3
+            customCell.todayView.layer.cornerRadius = 18
+            
+        }else{
+            customCell.todayView.isHidden = true
+        }
+    }
+    
     //MARK:-TimeTranslator
-    func transCalendarYearHeader(_ year:Date)->String{
+    private func transCalendarYearHeader(_ year:Date)->String{
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM yyyy"
         return formatter.string(from: year)
     }
     
-    func transCalendarCellTimeToString(_ Date:Date)->String{
+    private func transCalendarCellTimeToString(_ Date:Date)->String{
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy HH:mm:ss Z"
         return formatter.string(from: Date)
@@ -168,6 +181,8 @@ extension CalenderViewController:JTACMonthViewDelegate,JTACMonthViewDataSource{
         }else{
             cell.dateLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
+        showToDayCell(cell: cell, cellState: cellState)
+        showTheEventCell(cell: cell, cellState: cellState)
         return cell
     }
     
@@ -182,7 +197,6 @@ extension CalenderViewController:JTACMonthViewDelegate,JTACMonthViewDataSource{
     }
 
     func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        showTheEventCell(cell: cell, cellState: cellState)
     }
 }
 
