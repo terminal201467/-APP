@@ -15,6 +15,8 @@ class BulletinViewController: UIViewController {
     
     let bulletinView = BulletinView()
     
+    private let signUpViewController = SignUpViewController()
+    
     //MARK:-LifeCycle
     
     override func loadView() {
@@ -38,6 +40,7 @@ class BulletinViewController: UIViewController {
     }
     
     @objc func touch(){
+        present(signUpViewController, animated: true, completion: nil)
         UIView.animate(withDuration: 0.1) {
             self.bulletinView.signInButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }completion: { finished in

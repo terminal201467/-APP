@@ -20,6 +20,8 @@ class CalenderViewController: UIViewController{
     
     private var choosenDate = Date()
     
+    private let signUpViewController = SignUpViewController()
+    
     //MARK:-LifeCycle
     override func loadView() {
         view = calendarView
@@ -58,6 +60,7 @@ class CalenderViewController: UIViewController{
     }
     
     @objc func choose(){
+        present(signUpViewController, animated: true, completion: nil)
         UIView.animate(withDuration: 0.1) {
             self.calendarView.signInButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }completion: { finished in

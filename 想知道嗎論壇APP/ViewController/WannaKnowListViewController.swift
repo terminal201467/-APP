@@ -19,6 +19,8 @@ class WannaKnowListViewController: UIViewController{
     
     let tagButtons = TagButtons(collectionViewLayout: UICollectionViewFlowLayout())
     
+    let signUpViewController = SignUpViewController()
+    
     //MARK:-LifeCycle
     override func loadView() {
         super.loadView()
@@ -29,6 +31,7 @@ class WannaKnowListViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+        setSignInButton()
         wannaAPIDataBase.valueChanged = {
             DispatchQueue.main.async {
                 self.wannaKnowListView.tableView.reloadData()
@@ -47,6 +50,20 @@ class WannaKnowListViewController: UIViewController{
         wannaKnowListView.tableView.dataSource = self
     }
     
+    private func setSignInButton(){
+        wannaKnowListView.signInButton.addTarget(self, action: #selector(choose), for:.touchDown)
+    }
+    
+    @objc func choose(){
+        present(signUpViewController, animated: true, completion: nil)
+        UIView.animate(withDuration: 0.1) {
+            self.wannaKnowListView.signInButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }completion: { finished in
+            UIView.animate(withDuration: 0.1) {
+                self.wannaKnowListView.signInButton.transform = CGAffineTransform.identity
+            }
+        }
+    }
 }
 extension WannaKnowListViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

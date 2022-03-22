@@ -19,6 +19,8 @@ class ChiaoWanViewController: UIViewController{
     
     private let chiaoWanView = ChiaoWanView()
     
+    private let signUpViewController = SignUpViewController()
+    
     //MARK:-LifeCycle
     override func loadView() {
         super.loadView()
@@ -58,6 +60,7 @@ class ChiaoWanViewController: UIViewController{
     }
     
     @objc func signInButtonTouch(){
+        present(signUpViewController, animated: true, completion: nil)
         UIView.animate(withDuration: 0.1) {
             self.chiaoWanView.signInButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }completion: { finished in
