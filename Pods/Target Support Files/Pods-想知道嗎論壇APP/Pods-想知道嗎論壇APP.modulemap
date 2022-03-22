@@ -1,0 +1,6 @@
+framework module Pods_______APP {
+  umbrella header "Pods-想知道嗎論壇APP-umbrella.h"
+
+  export *
+  module * { export * }
+}

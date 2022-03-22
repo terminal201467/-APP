@@ -29,7 +29,6 @@
 		973246162797C6A800CE549D /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246152797C6A800CE549D /* CalenderView.swift */; };
 		973246192797C76F00CE549D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 973246182797C76F00CE549D /* SnapKit */; };
 		9732461C2797C79000CE549D /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 9732461B2797C79000CE549D /* SideMenu */; };
-		9732461F2797C82600CE549D /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = 9732461E2797C82600CE549D /* Parchment */; };
 		973246222797C83E00CE549D /* JTAppleCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 973246212797C83E00CE549D /* JTAppleCalendar */; };
 		973246242797F3CB00CE549D /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246232797F3CA00CE549D /* MenuTableViewController.swift */; };
 		973246262798EA3F00CE549D /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246252798EA3F00CE549D /* SideMenuCell.swift */; };
@@ -73,6 +72,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36749998BFC292E068DB7EB9 /* Pods-想知道嗎論壇APP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-想知道嗎論壇APP.debug.xcconfig"; path = "Target Support Files/Pods-想知道嗎論壇APP/Pods-想知道嗎論壇APP.debug.xcconfig"; sourceTree = "<group>"; };
+		7121852CC9CC752E58AD01D5 /* Pods-想知道嗎論壇APP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-想知道嗎論壇APP.release.xcconfig"; path = "Target Support Files/Pods-想知道嗎論壇APP/Pods-想知道嗎論壇APP.release.xcconfig"; sourceTree = "<group>"; };
 		9722E3EA27E8076500D0F604 /* ResultTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableView.swift; sourceTree = "<group>"; };
 		972DBFA427DEDED2006F464B /* ModalPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresentViewController.swift; sourceTree = "<group>"; };
 		972DBFA627DF1EB7006F464B /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
@@ -141,7 +142,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9732461F2797C82600CE549D /* Parchment in Frameworks */,
 				973246222797C83E00CE549D /* JTAppleCalendar in Frameworks */,
 				9732461C2797C79000CE549D /* SideMenu in Frameworks */,
 				973246192797C76F00CE549D /* SnapKit in Frameworks */,
@@ -151,11 +151,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8FD5C0E16C26C8AF39007933 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		973245D72797BAD800CE549D = {
 			isa = PBXGroup;
 			children = (
 				973245E22797BAD800CE549D /* 想知道嗎論壇APP */,
 				973245E12797BAD800CE549D /* Products */,
+				B3B9A0B9A1286F1A739B7AF9 /* Pods */,
+				8FD5C0E16C26C8AF39007933 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -298,6 +307,15 @@
 			path = CalendarCell;
 			sourceTree = "<group>";
 		};
+		B3B9A0B9A1286F1A739B7AF9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				36749998BFC292E068DB7EB9 /* Pods-想知道嗎論壇APP.debug.xcconfig */,
+				7121852CC9CC752E58AD01D5 /* Pods-想知道嗎論壇APP.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -305,9 +323,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 973245F42797BADA00CE549D /* Build configuration list for PBXNativeTarget "想知道嗎論壇APP" */;
 			buildPhases = (
+				20CED4EB78CD8EB4DF2D3D7F /* [CP] Check Pods Manifest.lock */,
 				973245DC2797BAD800CE549D /* Sources */,
 				973245DD2797BAD800CE549D /* Frameworks */,
 				973245DE2797BAD800CE549D /* Resources */,
+				B33BD328B10909E217764847 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -317,7 +337,6 @@
 			packageProductDependencies = (
 				973246182797C76F00CE549D /* SnapKit */,
 				9732461B2797C79000CE549D /* SideMenu */,
-				9732461E2797C82600CE549D /* Parchment */,
 				973246212797C83E00CE549D /* JTAppleCalendar */,
 			);
 			productName = "想知道嗎論壇APP";
@@ -350,7 +369,6 @@
 			packageReferences = (
 				973246172797C76F00CE549D /* XCRemoteSwiftPackageReference "SnapKit" */,
 				9732461A2797C79000CE549D /* XCRemoteSwiftPackageReference "SideMenu" */,
-				9732461D2797C82600CE549D /* XCRemoteSwiftPackageReference "Parchment" */,
 				973246202797C83E00CE549D /* XCRemoteSwiftPackageReference "JTAppleCalendar" */,
 			);
 			productRefGroup = 973245E12797BAD800CE549D /* Products */;
@@ -374,6 +392,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20CED4EB78CD8EB4DF2D3D7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-想知道嗎論壇APP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B33BD328B10909E217764847 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-想知道嗎論壇APP/Pods-想知道嗎論壇APP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-想知道嗎論壇APP/Pods-想知道嗎論壇APP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-想知道嗎論壇APP/Pods-想知道嗎論壇APP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		973245DC2797BAD800CE549D /* Sources */ = {
@@ -571,6 +631,7 @@
 		};
 		973245F52797BADA00CE549D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36749998BFC292E068DB7EB9 /* Pods-想知道嗎論壇APP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -590,6 +651,7 @@
 		};
 		973245F62797BADA00CE549D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7121852CC9CC752E58AD01D5 /* Pods-想知道嗎論壇APP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -647,14 +709,6 @@
 				minimumVersion = 6.5.0;
 			};
 		};
-		9732461D2797C82600CE549D /* XCRemoteSwiftPackageReference "Parchment" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rechsteiner/Parchment";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.0;
-			};
-		};
 		973246202797C83E00CE549D /* XCRemoteSwiftPackageReference "JTAppleCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/patchthecode/JTAppleCalendar";
@@ -675,11 +729,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9732461A2797C79000CE549D /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
-		};
-		9732461E2797C82600CE549D /* Parchment */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9732461D2797C82600CE549D /* XCRemoteSwiftPackageReference "Parchment" */;
-			productName = Parchment;
 		};
 		973246212797C83E00CE549D /* JTAppleCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
