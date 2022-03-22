@@ -224,7 +224,7 @@ class WannaKnowDetailHeader: UITableViewHeaderFooterView {
     public func configuration(data:WannaKnowData.Data){
         title.text = data.title
         speaker.text = data.speaker
-        date.text = data.date
+        date.text = data.dateString
         descriptionLabel.text = data.description
         like.text = data.like
         commentAmount.text = data.comment_amount

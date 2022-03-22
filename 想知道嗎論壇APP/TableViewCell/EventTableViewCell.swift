@@ -77,7 +77,7 @@ class EventTableViewCell: UITableViewCell {
         }
     }
     public func configuration(data:YearData){
-        dateInfo.text = data.date
+        dateInfo.text = "今天・" + data.dateString
         speakerName.text = data.speaker
         speechTitle.text = data.title
     }

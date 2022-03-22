@@ -128,9 +128,8 @@ class CalenderViewController: UIViewController{
         let toDay = calendarDataBase.dateTranslate.string(from: Date())
         if calendarDate.contains(toDay){
             customCell.todayView.isHidden = false
-            customCell.todayView.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            customCell.todayView.layer.borderColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
-            customCell.todayView.layer.borderWidth = 3
+            customCell.todayView.layer.backgroundColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
+            customCell.dateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             customCell.todayView.layer.cornerRadius = 18
             
         }else{

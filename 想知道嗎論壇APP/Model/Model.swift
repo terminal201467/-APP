@@ -53,9 +53,13 @@ struct WannaKnowData:Decodable{
         var comment_amount: String
         var dateString:String{
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
             let time = formatter.date(from:date)
-            return String(describing: time)
+            
+            let newFormatter = DateFormatter()
+            newFormatter.dateFormat = "yyyy-MM-dd"
+            let date = newFormatter.string(from: time!)
+            return date
         }
     }
 }
@@ -76,9 +80,13 @@ struct YearData:Decodable{
     var comment_amount: String
     var dateString:String{
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let time = formatter.date(from:date)
-        return String(describing: time)
+        
+        let newFormatter = DateFormatter()
+        newFormatter.dateFormat = "E, MMM d"
+        let date = newFormatter.string(from: time!)
+        return date
     }
 }
 
@@ -92,9 +100,13 @@ struct CommentsData:Decodable{
     var content_time:String
     var time:String{
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy MM dd"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         let time = formatter.date(from:content_time)
-        return String(describing: time)
+        
+        let newFormatter = DateFormatter()
+        newFormatter.dateFormat = "yyyy-MM-dd"
+        let date = newFormatter.string(from: time!)
+        return date
     }
 }
 

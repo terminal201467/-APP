@@ -208,7 +208,7 @@ class ContentCell: UITableViewCell {
     public func configuration(data:WannaKnowData.Data){
         title.text = data.title
         speaker.text = data.speaker
-        date.text = data.date
+        date.text = data.dateString
         descriptionLabel.text = data.description
         likeCount.text = data.like
         comment_amount.text = data.comment_amount
