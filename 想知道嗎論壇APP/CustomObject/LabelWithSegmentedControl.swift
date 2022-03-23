@@ -7,9 +7,9 @@
 
 import UIKit
 
-class InsideTitleAndSegmentedPicker: UIView {
+class LabelWithSegmentedControl: UIView {
     
-    let titleLabel: UILabel = {
+    let title: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 18)
         titleLabel.tintColor = .white
@@ -18,37 +18,40 @@ class InsideTitleAndSegmentedPicker: UIView {
         return titleLabel
     }()
     
-    let segmentedPicker: UISegmentedControl = {
+    let formPicker:UISegmentedControl = {
         let segmentedPicker = UISegmentedControl(items: ["現場","遠端"])
         segmentedPicker.selectedSegmentIndex = 0
         segmentedPicker.selectedSegmentTintColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
-        
         return segmentedPicker
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [title, formPicker])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillProportionally
+        stackView.alignment = .fill
+        stackView.spacing = 10
+        return stackView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setView()
+        addSubview(stackView)
+        autoLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setView() {
-        let labelAndSegmentedPickerStackView: UIStackView = {
-            let labelAndSegmentedPickerStackView = UIStackView(arrangedSubviews: [titleLabel, segmentedPicker])
-            labelAndSegmentedPickerStackView.axis = .horizontal
-            labelAndSegmentedPickerStackView.distribution = .fillEqually
-            labelAndSegmentedPickerStackView.spacing = 10
-            return labelAndSegmentedPickerStackView
-        }()
-        addSubview(labelAndSegmentedPickerStackView)
-        labelAndSegmentedPickerStackView.snp.makeConstraints { make in
-            make.center.equalTo(self)
+    private func autoLayout() {
+        formPicker.snp.makeConstraints { make in
+            make.height.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.55)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
-    
-    
-    
 }

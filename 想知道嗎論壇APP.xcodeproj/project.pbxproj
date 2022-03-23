@@ -40,11 +40,11 @@
 		976E406D27D1BE250036F4D7 /* CalendarDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976E406C27D1BE250036F4D7 /* CalendarDataBase.swift */; };
 		976E406F27D342180036F4D7 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976E406E27D342180036F4D7 /* ResultTableViewController.swift */; };
 		976E407127D3635E0036F4D7 /* SearchResultHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976E407027D3635E0036F4D7 /* SearchResultHeader.swift */; };
-		9778C40927E9C0FA000C2C69 /* InsideTitleAndTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9778C40827E9C0FA000C2C69 /* InsideTitleAndTextField.swift */; };
-		9778C40B27E9C12C000C2C69 /* InsideTitleAndSegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9778C40A27E9C12C000C2C69 /* InsideTitleAndSegmentedPicker.swift */; };
-		9778C40D27E9C14B000C2C69 /* InsideTItleAndDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9778C40C27E9C14B000C2C69 /* InsideTItleAndDatePicker.swift */; };
-		9778C40F27E9C16A000C2C69 /* ImageAndTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9778C40E27E9C16A000C2C69 /* ImageAndTextField.swift */; };
-		9778C41127E9C198000C2C69 /* InsideTitleAndDorpDownList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9778C41027E9C198000C2C69 /* InsideTitleAndDorpDownList.swift */; };
+		9778C40927E9C0FA000C2C69 /* LabelWithTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9778C40827E9C0FA000C2C69 /* LabelWithTextField.swift */; };
+		9778C40B27E9C12C000C2C69 /* LabelWithSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9778C40A27E9C12C000C2C69 /* LabelWithSegmentedControl.swift */; };
+		9778C40D27E9C14B000C2C69 /* LabelWithDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9778C40C27E9C14B000C2C69 /* LabelWithDatePicker.swift */; };
+		9778C40F27E9C16A000C2C69 /* LinkWithTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9778C40E27E9C16A000C2C69 /* LinkWithTextField.swift */; };
+		9778C41127E9C198000C2C69 /* LabelWithDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9778C41027E9C198000C2C69 /* LabelWithDropDown.swift */; };
 		9792944F27A9091F00EA60B4 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9792944E27A9091F00EA60B4 /* Colors.xcassets */; };
 		9792945127A9463200EA60B4 /* NavigationBarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945027A9463200EA60B4 /* NavigationBarTitle.swift */; };
 		9792945327A9532700EA60B4 /* HomePageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945227A9532700EA60B4 /* HomePageTableCell.swift */; };
@@ -106,11 +106,11 @@
 		976E406C27D1BE250036F4D7 /* CalendarDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataBase.swift; sourceTree = "<group>"; };
 		976E406E27D342180036F4D7 /* ResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		976E407027D3635E0036F4D7 /* SearchResultHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultHeader.swift; sourceTree = "<group>"; };
-		9778C40827E9C0FA000C2C69 /* InsideTitleAndTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTitleAndTextField.swift; sourceTree = "<group>"; };
-		9778C40A27E9C12C000C2C69 /* InsideTitleAndSegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTitleAndSegmentedPicker.swift; sourceTree = "<group>"; };
-		9778C40C27E9C14B000C2C69 /* InsideTItleAndDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTItleAndDatePicker.swift; sourceTree = "<group>"; };
-		9778C40E27E9C16A000C2C69 /* ImageAndTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAndTextField.swift; sourceTree = "<group>"; };
-		9778C41027E9C198000C2C69 /* InsideTitleAndDorpDownList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTitleAndDorpDownList.swift; sourceTree = "<group>"; };
+		9778C40827E9C0FA000C2C69 /* LabelWithTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithTextField.swift; sourceTree = "<group>"; };
+		9778C40A27E9C12C000C2C69 /* LabelWithSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithSegmentedControl.swift; sourceTree = "<group>"; };
+		9778C40C27E9C14B000C2C69 /* LabelWithDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithDatePicker.swift; sourceTree = "<group>"; };
+		9778C40E27E9C16A000C2C69 /* LinkWithTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWithTextField.swift; sourceTree = "<group>"; };
+		9778C41027E9C198000C2C69 /* LabelWithDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithDropDown.swift; sourceTree = "<group>"; };
 		9792944E27A9091F00EA60B4 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		9792945027A9463200EA60B4 /* NavigationBarTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTitle.swift; sourceTree = "<group>"; };
 		9792945227A9532700EA60B4 /* HomePageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTableCell.swift; sourceTree = "<group>"; };
@@ -266,11 +266,11 @@
 				9792945027A9463200EA60B4 /* NavigationBarTitle.swift */,
 				97A251AF27BBA20B002D5B5E /* ThemeButtons.swift */,
 				97A251B827BE1EFA002D5B5E /* TagButtons.swift */,
-				9778C40E27E9C16A000C2C69 /* ImageAndTextField.swift */,
-				9778C40827E9C0FA000C2C69 /* InsideTitleAndTextField.swift */,
-				9778C40A27E9C12C000C2C69 /* InsideTitleAndSegmentedPicker.swift */,
-				9778C40C27E9C14B000C2C69 /* InsideTItleAndDatePicker.swift */,
-				9778C41027E9C198000C2C69 /* InsideTitleAndDorpDownList.swift */,
+				9778C40E27E9C16A000C2C69 /* LinkWithTextField.swift */,
+				9778C40827E9C0FA000C2C69 /* LabelWithTextField.swift */,
+				9778C40A27E9C12C000C2C69 /* LabelWithSegmentedControl.swift */,
+				9778C40C27E9C14B000C2C69 /* LabelWithDatePicker.swift */,
+				9778C41027E9C198000C2C69 /* LabelWithDropDown.swift */,
 			);
 			path = CustomObject;
 			sourceTree = "<group>";
@@ -440,11 +440,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9778C40F27E9C16A000C2C69 /* ImageAndTextField.swift in Sources */,
+				9778C40F27E9C16A000C2C69 /* LinkWithTextField.swift in Sources */,
 				973246082797C60C00CE549D /* ContentViewController.swift in Sources */,
-				9778C41127E9C198000C2C69 /* InsideTitleAndDorpDownList.swift in Sources */,
+				9778C41127E9C198000C2C69 /* LabelWithDropDown.swift in Sources */,
 				97A251C827C5E60A002D5B5E /* CalenderCell.swift in Sources */,
-				9778C40927E9C0FA000C2C69 /* InsideTitleAndTextField.swift in Sources */,
+				9778C40927E9C0FA000C2C69 /* LabelWithTextField.swift in Sources */,
 				97A251B327BC94FF002D5B5E /* WannaKnowAPI.swift in Sources */,
 				97A2521327C87340002D5B5E /* CommentsAPI.swift in Sources */,
 				973246102797C68200CE549D /* WannaKnowListView.swift in Sources */,
@@ -490,12 +490,12 @@
 				97A251C127BF3EBE002D5B5E /* TagCell.swift in Sources */,
 				973246142797C69E00CE549D /* SignUpView.swift in Sources */,
 				9732462A279A3FDA00CE549D /* BulletinTableViewController.swift in Sources */,
-				9778C40D27E9C14B000C2C69 /* InsideTItleAndDatePicker.swift in Sources */,
+				9778C40D27E9C14B000C2C69 /* LabelWithDatePicker.swift in Sources */,
 				97A2518627AFFFAF002D5B5E /* WannaKnowListViewController.swift in Sources */,
 				9722E3EB27E8076500D0F604 /* ResultTableView.swift in Sources */,
 				9732460E2797C67300CE549D /* WannaKnowView.swift in Sources */,
 				9732460A2797C65100CE549D /* HomePageView.swift in Sources */,
-				9778C40B27E9C12C000C2C69 /* InsideTitleAndSegmentedPicker.swift in Sources */,
+				9778C40B27E9C12C000C2C69 /* LabelWithSegmentedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -61,9 +61,9 @@ import UIKit
         /// paging item that was scrolled to.
         /// - Returns: An instance of self
         public func didScroll(_ action: @escaping (PagingItem) -> Void) -> Self {
-            var view = self
-            view.onDidScroll = action
-            return view
+            var kindPicker = self
+            kindPicker.onDidScroll = action
+            return kindPicker
         }
 
         /// Called when the user is about to start scrolling to a new view.
@@ -72,9 +72,9 @@ import UIKit
         /// paging item that is being scrolled to.
         /// - Returns: An instance of self
         public func willScroll(_ action: @escaping (PagingItem) -> Void) -> Self {
-            var view = self
-            view.onWillScroll = action
-            return view
+            var kindPicker = self
+            kindPicker.onWillScroll = action
+            return kindPicker
         }
 
         /// Called when an item was selected in the menu.
@@ -83,9 +83,9 @@ import UIKit
         /// selected paging item.
         /// - Returns: An instance of self
         public func didSelect(_ action: @escaping (PagingItem) -> Void) -> Self {
-            var view = self
-            view.onDidSelect = action
-            return view
+            var kindPicker = self
+            kindPicker.onDidSelect = action
+            return kindPicker
         }
 
         /// Create a custom paging view controller subclass that we
