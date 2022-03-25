@@ -77,8 +77,8 @@ class ResultTableViewController:UIViewController {
     }
     
     private func setSearchMethod(){
-        searchDataBase = SearchDataBase.init(searchBy: theme)
-        searchDataBase = SearchDataBase.init(searchByTag: tag)
+        searchDataBase = SearchDataBase.init(searchByCategory: theme)
+        searchDataBase = SearchDataBase.init(searchBy: tag)
         searchDataBase.valueChanged = {
             DispatchQueue.main.async {
                 self.resultTableView.tableView.reloadData()

@@ -11,12 +11,16 @@ import Foundation
 class SearchDataBase{
     
     //MARK:-Intializer
-    init(searchBy category:String){
+    init(searchByCategory category:String){
         self.category = category
     }
     
     init(searchByTag tag:String){
         self.tag = tag
+    }
+    
+    init(searchByKeyword keyword:String){
+        self.keyword = keyword
     }
     
     //MARK:-Closures
@@ -30,6 +34,8 @@ class SearchDataBase{
     var category:String = ""
     
     var tag:String = ""
+    
+    var keyword:String = ""
     
     private var completeData:WannaKnowData?
     
@@ -74,6 +80,15 @@ class SearchDataBase{
                 self.completeData = data
             case .failure(let error):
                 print(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func loadKeywordData(){
+        WannaKnowAPI.shared.getWannaKnowData(callBy: .keyword(keyword)) { result in
+            switch result{
+            case .success(let data):  self.completeData = data
+            case .failure(let error): print(error.localizedDescription)
             }
         }
     }

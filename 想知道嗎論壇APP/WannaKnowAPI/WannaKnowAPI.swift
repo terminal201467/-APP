@@ -94,6 +94,7 @@ extension WannaKnowAPI{
         case per_page(String)
         case year(String)
         case orderby(String)
+        case keyword(String)
         var parameter:[String:Any]{
             switch self {
             case .tags(let tags):
@@ -108,6 +109,8 @@ extension WannaKnowAPI{
                 return ["year":year]
             case .orderby(let orderby):
                 return ["orderby":orderby]
+            case .keyword(let keyword):
+                return ["keyword":keyword]
             }
         }
     }
