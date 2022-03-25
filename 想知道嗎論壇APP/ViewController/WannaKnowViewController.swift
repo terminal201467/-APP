@@ -16,7 +16,7 @@ class WannaKnowViewController: UIViewController {
     
     private let wannaKnowView = WannaKnowView()
     
-    private let resultController = ResultTableViewController()
+    private let resultController = WannaKnowResultTableController()
     
     private let contentViewController = ContentViewController()
     
@@ -29,17 +29,9 @@ class WannaKnowViewController: UIViewController {
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
     //MARK:-store properties
-    private var theme:String = ""{
-        didSet{
-            resultController.theme = self.theme
-        }
-    }
-    
-    private var tag:String = ""{
-        didSet{
-            resultController.tag = self.tag
-        }
-    }
+    private var theme:String = ""
+
+    private var tag:String = ""
     
     //MARK:-LifeCycle
     override func loadView() {
@@ -181,20 +173,20 @@ extension WannaKnowViewController:UIPageViewControllerDelegate,UIPageViewControl
 extension WannaKnowViewController:UISearchControllerDelegate{
     func didDismissSearchController(_ searchController: UISearchController) {     
         wannaKnowView.searchBarContainer.isHidden = true
-        resultController.searchDataBase.removeAll()
+        resultController.dataBase.removeAll()
         theme = ""
         tag = ""
-        resultController.searchDataBase.loadAllData()
+        resultController.dataBase.loadAllData()
     }
 }
 
 //MARK:-searchBarDelegate
 extension WannaKnowViewController:UISearchBarDelegate{
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        resultController.searchDataBase.removeAll()
+        resultController.dataBase.removeAll()
         theme = ""
         tag = ""
-        resultController.searchDataBase.loadAllData()
+        resultController.dataBase.loadAllData()
     }
 }
 

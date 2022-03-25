@@ -15,22 +15,25 @@ class WannaKnowAPI{
     //MARK:-Properties
     private let baseURL = "https://script.google.com/macros/s/AKfycbyL_N-SK7iwC5Cwydj8gL1zQJxtK9Qf5wsc3HnjZFC-yo1wFKcHO9vyh_dQSh1H7s2I/exec"
     
-    //MARK:-Methods
-    private func buildReqeust(callBy:[WannaKnowCallMethod])->URLRequest{
-        var components = URLComponents(string: baseURL)
+    private let keywordSearchBaseURL = "https://script.google.com/macros/s/AKfycbxwebi5tXY6PW4_eL7xDSixnvFjxaO-Or1sOa0UFyhYwrPMxgUvmgbH-eYbQ5Ye7aDNBg/exec"
+    
+    //MARK:-BuildRequest
+    private func wannaKnowBuildReqeust(callBy:[WannaKnowCallMethod],by url:String?)->URLRequest{
+        var components = URLComponents(string: url!)
         var query:[String:Any] = [:]
         callBy.map{$0.parameter.map{query[$0.key] = $0.value}}
         components?.queryItems = query.map({URLQueryItem(name: $0.key, value: "\($0.value)")})
-        return URLRequest(url: components!.url!, timeoutInterval: 10)
+        return URLRequest(url: components!.url!, timeoutInterval: 5)
     }
     
-    private func baseURLRequest()->URLRequest{
-        let components = URLComponents(string: baseURL)
-        return URLRequest(url: components!.url!, timeoutInterval: 10)
+    private func buildRequest(by url:String)->URLRequest{
+        let components = URLComponents(string: url)
+        return URLRequest(url: components!.url!, timeoutInterval: 5)
     }
-
-    public func getBaseURL(completion:@escaping(Result<[YearData],Error>)->Void){
-        URLSession.shared.dataTask(with: baseURLRequest()){ data, _, error in
+    
+    //MARK:-GetDataMethod
+    public func getCalendarData(completion:@escaping(Result<[YearData],Error>)->Void){
+        URLSession.shared.dataTask(with: buildRequest(by:baseURL)){ data, _, error in
             if let error = error{
                 completion(.failure(error))
             }
@@ -48,7 +51,8 @@ class WannaKnowAPI{
     }
     
     public func getWannaKnowData(callBy:WannaKnowCallMethod...,completion: @escaping(Result<WannaKnowData,Error>)->Void){
-        let request = buildReqeust(callBy:callBy)
+        let request = wannaKnowBuildReqeust(callBy:callBy, by: baseURL)
+        print("api:",request)
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error{
                 completion(.failure(error))
@@ -66,15 +70,16 @@ class WannaKnowAPI{
         }.resume()
     }
     
-    public func getYearData(callBy:WannaKnowCallMethod...,completion:@escaping(Result<[YearData],Error>)->Void){
-        let request = buildReqeust(callBy: callBy)
+    public func getKeywordSearchData(callBy:WannaKnowCallMethod...,completion:@escaping(Result<WannaKnowData,Error>)->Void){
+        let request = wannaKnowBuildReqeust(callBy: callBy, by: keywordSearchBaseURL)
+        print(request)
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error{
                 completion(.failure(error))
             }
             if let data = data{
                 do{
-                    let decode = try JSONDecoder().decode([YearData].self, from: data)
+                    let decode = try JSONDecoder().decode(WannaKnowData.self, from: data)
                     completion(.success(decode))
                 }catch{
                     completion(.failure(error))

@@ -11,11 +11,11 @@ import UIKit
 class WannaKnowListViewController: UIViewController{
     //MARK:-Properties
     
-    let wannaAPIDataBase = WannaKnowDataBase()
+    private let dataBase = WannaKnowDataBase()
     
-    let wannaKnowDetailViewController = WannaKnowDetailViewController()
+    private let wannaKnowDetailViewController = WannaKnowDetailViewController()
     
-    let wannaKnowListView = WannaKnowListView()
+    private let wannaKnowListView = WannaKnowListView()
     
     let tagButtons = TagButtons(collectionViewLayout: UICollectionViewFlowLayout())
     
@@ -32,16 +32,16 @@ class WannaKnowListViewController: UIViewController{
         super.viewDidLoad()
         setTableView()
         setSignInButton()
-        wannaAPIDataBase.valueChanged = {
+        dataBase.valueChanged = {
             DispatchQueue.main.async {
                 self.wannaKnowListView.tableView.reloadData()
             }
         }
-        wannaAPIDataBase.onError = { error in
+        dataBase.onError = { error in
             print(error.localizedDescription)
         }
         
-        wannaAPIDataBase.loadDataByUpdateTime()
+        dataBase.loadData()
     }
     
     //MARK:-Method
@@ -67,12 +67,12 @@ class WannaKnowListViewController: UIViewController{
 }
 extension WannaKnowListViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return wannaAPIDataBase.numberOfRowsInSection(section)
+        return dataBase.numberOfRowsInSection(section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:ContentCell.reuseIdentifier, for: indexPath) as! ContentCell
-        cell.configuration(data: wannaAPIDataBase.getData(at: indexPath))
+        cell.configuration(data: dataBase.getData(at: indexPath))
         cell.tagCollectionButtons.delegate = self
         cell.tagCollectionButtons.dataSource = self
         return cell
@@ -81,18 +81,18 @@ extension WannaKnowListViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         wannaKnowDetailViewController.modalPresentationStyle = .formSheet
         present(wannaKnowDetailViewController, animated: true, completion: nil)
-        wannaKnowDetailViewController.detail = wannaAPIDataBase.getData(at: indexPath)
+        wannaKnowDetailViewController.detail = dataBase.getData(at: indexPath)
     }
 }
 
 //MARK:-CollectionView set the delegate
 extension WannaKnowListViewController:UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return wannaAPIDataBase.numberOfRowsInCollectionViewSection(section)
+        return dataBase.numberOfRowsInCollectionViewSection(section)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.reuseIdentifier, for: indexPath) as! TagCell
-        let names = wannaAPIDataBase.getCollectionTagData(at: indexPath)
+        let names = dataBase.getCollectionTagData(at: indexPath)
         if names.count == 0{
             cell.tagLabel.text = ""
         }else{

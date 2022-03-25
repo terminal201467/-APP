@@ -10,34 +10,18 @@ import Foundation
 
 class SearchDataBase{
     
-    //MARK:-Intializer
-    init(searchByCategory category:String){
-        self.category = category
-    }
-    
-    init(searchByTag tag:String){
-        self.tag = tag
-    }
-    
-    init(searchByKeyword keyword:String){
-        self.keyword = keyword
-    }
-    
     //MARK:-Closures
     
     var valueChanged:(()->Void)?
     
     var onError:((Error)->Void)?
     
-    //MARK:-Properties
     
-    var category:String = ""
-    
-    var tag:String = ""
-    
-    var keyword:String = ""
-    
-    private var completeData:WannaKnowData?
+    private var completeData:[WannaKnowData] = []{
+        didSet{
+            valueChanged?()
+        }
+    }
     
     private var data:[WannaKnowData.Data] = []{
         didSet{
@@ -51,48 +35,22 @@ class SearchDataBase{
     public func loadAllData(){
         WannaKnowAPI.shared.getWannaKnowData(callBy: .per_page("10")) { result in
             switch result{
-            case .success(let data):
-                self.data = data.data
-                self.completeData = data
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    public func loadThemeData(){
-        WannaKnowAPI.shared.getWannaKnowData(callBy: .category(category)) { result in
-            switch result{
-            case .success(let data):
-                self.data = data.data
-                self.completeData = data
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    public func loadTagData(){
-        WannaKnowAPI.shared.getWannaKnowData(callBy: .tags(tag)) { result in
-            switch result{
-            case .success(let data):
-                self.data = data.data
-                self.completeData = data
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    public func loadKeywordData(){
-        WannaKnowAPI.shared.getWannaKnowData(callBy: .keyword(keyword)) { result in
-            switch result{
-            case .success(let data):  self.completeData = data
+            case .success(let data):  self.data = data.data
             case .failure(let error): print(error.localizedDescription)
             }
         }
     }
     
+    public func loadKeywordData(by keyword:String){
+        WannaKnowAPI.shared.getKeywordSearchData(callBy: .keyword(keyword)){ result in
+            switch result{
+            case .success(let data):  self.data = data.data
+            case .failure(let error): print(error.localizedDescription)
+            }
+        }
+    }
+    
+    //MARK:-WannaKnowPageMethod
     public func filterContent(for searchText:String){
         filterData = data.filter({ (filterArray)->Bool in
             let words = filterArray
@@ -100,8 +58,7 @@ class SearchDataBase{
             return isMach
         })
     }
-    
-    //MARK:-tableViewFilterData
+
     func numberOfRowInSection(at section:Int)->Int{
         return filterData.isEmpty ? data.count:filterData.count
     }
@@ -115,7 +72,7 @@ class SearchDataBase{
         filterData.removeAll()
     }
     
-    func headerData()->WannaKnowData{
-        return completeData!
-    }
+//    func headerData()->WannaKnowData{
+//        return completeData.map{$0}
+//    }
 }

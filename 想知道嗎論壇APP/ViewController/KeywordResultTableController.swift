@@ -7,18 +7,21 @@
 
 import UIKit
 
-class ResultTableViewController:UIViewController {
+class KeywordResultTableController:UIViewController {
+    
+    let dataBase = SearchDataBase()
     //MARK:-Properties
-
-    var theme:String = ""
-    
-    var tag:String = ""
-    
-    var searchDataBase:SearchDataBase!
+    var keyword:String = ""{
+        didSet{
+            self.resultTableView.tableView.reloadData()
+            dataBase.loadKeywordData(by: keyword)
+            print("關鍵字",keyword)
+        }
+    }
     
     let detailController = WannaKnowDetailViewController()
     
-    let resultTableView = ResultTableView()
+    private let resultTableView = ResultTableView()
 
     //MARK:-LifeCycle
     override func loadView() {
@@ -29,14 +32,17 @@ class ResultTableViewController:UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
         setSearchMethod()
         setTableView()
-        setNavigationBar()
-        print("result標籤：",theme)
-        print("tag標籤：",tag)
     }
     
-    func setNavigationBar(){
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+    }
+    
+    private func setNavigationBar(){
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -77,64 +83,40 @@ class ResultTableViewController:UIViewController {
     }
     
     private func setSearchMethod(){
-        searchDataBase = SearchDataBase.init(searchByCategory: theme)
-        searchDataBase = SearchDataBase.init(searchBy: tag)
-        searchDataBase.valueChanged = {
+        dataBase.valueChanged = {
             DispatchQueue.main.async {
                 self.resultTableView.tableView.reloadData()
             }
         }
-        searchDataBase.onError = { error in
+        dataBase.onError = { error in
             print(error.localizedDescription)
         }
-        
-        if theme == "" && tag == ""{
-            searchDataBase.loadAllData()
-            print("loadEveryThing")
-        }else if theme != ""{
-            searchDataBase.loadThemeData()
-            print("loadTheme")
-        }else if tag != ""{
-            searchDataBase.loadTagData()
-            print("loadTag")
-        }
-    }
-    
-    func setHeader(){
-        if theme == "" && tag == ""{
-            resultTableView.resultHeader.searchAllConfigure(result: searchDataBase.headerData())
-        }else if theme != ""{
-            resultTableView.resultHeader.searchTagOrThemeConfigure(result: searchDataBase.headerData(), tagOrTheme: theme)
-        }else if tag != ""{
-            resultTableView.resultHeader.searchTagOrThemeConfigure(result: searchDataBase.headerData(), tagOrTheme: tag)
-        }
+//        resultTableView.resultHeader.searchKeywordConfigure(result: dataBase.headerData(), keyword: keyword)
     }
 }
     
-    // MARK: - Table view data source
-extension ResultTableViewController:UITableViewDelegate,UITableViewDataSource{
+// MARK: - Table view data source
+extension KeywordResultTableController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchDataBase.numberOfRowInSection(at: section)
+        return dataBase.numberOfRowInSection(at: section)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ContentCell.reuseIdentifier, for: indexPath) as! ContentCell
-        cell.configuration(data: searchDataBase.getData(at: indexPath))
-        setHeader()
+        cell.configuration(data: dataBase.getData(at: indexPath))
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        detailController.detail = searchDataBase.getData(at: indexPath)
+        detailController.detail = dataBase.getData(at: indexPath)
         present(detailController, animated: true)
     }
 }
 
-
-extension ResultTableViewController:UISearchResultsUpdating{
+extension KeywordResultTableController:UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text{
-            searchDataBase.filterContent(for: searchText)
+            dataBase.filterContent(for: searchText)
             resultTableView.tableView.reloadData()
         }
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9722E3EB27E8076500D0F604 /* ResultTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9722E3EA27E8076500D0F604 /* ResultTableView.swift */; };
+		97247E0527ED5F2F00D49C3B /* WannaKnowResultTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97247E0427ED5F2F00D49C3B /* WannaKnowResultTableController.swift */; };
 		972DBFA527DEDED2006F464B /* ModalPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972DBFA427DEDED2006F464B /* ModalPresentViewController.swift */; };
 		972DBFA727DF1EB7006F464B /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972DBFA627DF1EB7006F464B /* DatePickerViewController.swift */; };
 		972DBFA927DF1EEF006F464B /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972DBFA827DF1EEF006F464B /* DatePickerView.swift */; };
@@ -38,7 +39,7 @@
 		97324630279A509500CE549D /* ChiaoWanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9732462F279A509500CE549D /* ChiaoWanView.swift */; };
 		976E406B27D1BDCF0036F4D7 /* CommentsDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976E406A27D1BDCF0036F4D7 /* CommentsDataBase.swift */; };
 		976E406D27D1BE250036F4D7 /* CalendarDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976E406C27D1BE250036F4D7 /* CalendarDataBase.swift */; };
-		976E406F27D342180036F4D7 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976E406E27D342180036F4D7 /* ResultTableViewController.swift */; };
+		976E406F27D342180036F4D7 /* KeywordResultTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976E406E27D342180036F4D7 /* KeywordResultTableController.swift */; };
 		976E407127D3635E0036F4D7 /* SearchResultHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976E407027D3635E0036F4D7 /* SearchResultHeader.swift */; };
 		9778C40927E9C0FA000C2C69 /* LabelWithTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9778C40827E9C0FA000C2C69 /* LabelWithTextField.swift */; };
 		9778C40B27E9C12C000C2C69 /* LabelWithSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9778C40A27E9C12C000C2C69 /* LabelWithSegmentedControl.swift */; };
@@ -75,6 +76,7 @@
 		36749998BFC292E068DB7EB9 /* Pods-想知道嗎論壇APP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-想知道嗎論壇APP.debug.xcconfig"; path = "Target Support Files/Pods-想知道嗎論壇APP/Pods-想知道嗎論壇APP.debug.xcconfig"; sourceTree = "<group>"; };
 		7121852CC9CC752E58AD01D5 /* Pods-想知道嗎論壇APP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-想知道嗎論壇APP.release.xcconfig"; path = "Target Support Files/Pods-想知道嗎論壇APP/Pods-想知道嗎論壇APP.release.xcconfig"; sourceTree = "<group>"; };
 		9722E3EA27E8076500D0F604 /* ResultTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableView.swift; sourceTree = "<group>"; };
+		97247E0427ED5F2F00D49C3B /* WannaKnowResultTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowResultTableController.swift; sourceTree = "<group>"; };
 		972DBFA427DEDED2006F464B /* ModalPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresentViewController.swift; sourceTree = "<group>"; };
 		972DBFA627DF1EB7006F464B /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		972DBFA827DF1EEF006F464B /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -104,7 +106,7 @@
 		9732462F279A509500CE549D /* ChiaoWanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiaoWanView.swift; sourceTree = "<group>"; };
 		976E406A27D1BDCF0036F4D7 /* CommentsDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDataBase.swift; sourceTree = "<group>"; };
 		976E406C27D1BE250036F4D7 /* CalendarDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataBase.swift; sourceTree = "<group>"; };
-		976E406E27D342180036F4D7 /* ResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
+		976E406E27D342180036F4D7 /* KeywordResultTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordResultTableController.swift; sourceTree = "<group>"; };
 		976E407027D3635E0036F4D7 /* SearchResultHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultHeader.swift; sourceTree = "<group>"; };
 		9778C40827E9C0FA000C2C69 /* LabelWithTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithTextField.swift; sourceTree = "<group>"; };
 		9778C40A27E9C12C000C2C69 /* LabelWithSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithSegmentedControl.swift; sourceTree = "<group>"; };
@@ -210,7 +212,8 @@
 				973246072797C60C00CE549D /* ContentViewController.swift */,
 				973246052797C5F200CE549D /* CalenderViewController.swift */,
 				97A2519127B4DBBA002D5B5E /* WannaKnowDetailViewController.swift */,
-				976E406E27D342180036F4D7 /* ResultTableViewController.swift */,
+				976E406E27D342180036F4D7 /* KeywordResultTableController.swift */,
+				97247E0427ED5F2F00D49C3B /* WannaKnowResultTableController.swift */,
 				972DBFA427DEDED2006F464B /* ModalPresentViewController.swift */,
 				972DBFA627DF1EB7006F464B /* DatePickerViewController.swift */,
 			);
@@ -444,6 +447,7 @@
 				973246082797C60C00CE549D /* ContentViewController.swift in Sources */,
 				9778C41127E9C198000C2C69 /* LabelWithDropDown.swift in Sources */,
 				97A251C827C5E60A002D5B5E /* CalenderCell.swift in Sources */,
+				97247E0527ED5F2F00D49C3B /* WannaKnowResultTableController.swift in Sources */,
 				9778C40927E9C0FA000C2C69 /* LabelWithTextField.swift in Sources */,
 				97A251B327BC94FF002D5B5E /* WannaKnowAPI.swift in Sources */,
 				97A2521327C87340002D5B5E /* CommentsAPI.swift in Sources */,
@@ -478,7 +482,7 @@
 				9792945527A9665F00EA60B4 /* Model.swift in Sources */,
 				973245FA2797BC1F00CE549D /* Enums.swift in Sources */,
 				97A251B527BC99FD002D5B5E /* WannaKnowDataBase.swift in Sources */,
-				976E406F27D342180036F4D7 /* ResultTableViewController.swift in Sources */,
+				976E406F27D342180036F4D7 /* KeywordResultTableController.swift in Sources */,
 				97A251B027BBA20B002D5B5E /* ThemeButtons.swift in Sources */,
 				976E406B27D1BDCF0036F4D7 /* CommentsDataBase.swift in Sources */,
 				972DBFA727DF1EB7006F464B /* DatePickerViewController.swift in Sources */,

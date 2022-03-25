@@ -9,6 +9,7 @@ import UIKit
 import SideMenu
 import SnapKit
 import Parchment
+import SwiftUI
 
 class HomePageViewController: UIViewController{
 
@@ -19,20 +20,16 @@ class HomePageViewController: UIViewController{
     
     private let pagingViewController = PagingViewController()
     
-    private var resultController = ResultTableViewController()
+    private let resultController = KeywordResultTableController()
     
     private var searchViewController:UISearchController?
     
     private let viewControllers:[UIViewController] = { () -> [UIViewController] in
         let bulletinViewController = BulletinViewController()
-        
         let xiangZhiDaoMaViewController = BulletinViewController()
-        
         let chiaoWanViewController = ChiaoWanViewController()
-        
         return [bulletinViewController,xiangZhiDaoMaViewController,chiaoWanViewController]
     }()
-    
     
     //MARK:-LifeCyCle
     override func loadView() {
@@ -60,7 +57,6 @@ class HomePageViewController: UIViewController{
         navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
-        
         navigationItem.titleView = NavigationBarTitle()
         navigationItem.searchController?.searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         navigationItem.searchController?.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -85,12 +81,15 @@ class HomePageViewController: UIViewController{
         searchViewController?.obscuresBackgroundDuringPresentation = false
         searchViewController?.searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         searchViewController?.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        searchViewController?.searchBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         searchViewController?.searchBar.searchTextField.layer.cornerRadius = 50
         searchViewController?.searchBar.searchTextField.keyboardAppearance = .light
         searchViewController?.searchBar.isTranslucent = false
-        searchViewController?.showsSearchResultsController = true
+        searchViewController?.searchBar.delegate = self
+        searchViewController?.showsSearchResultsController = false
         searchViewController?.searchResultsUpdater = resultController
-        searchViewController?.automaticallyShowsSearchResultsController = true
+        searchViewController?.searchBar.searchTextField.delegate = self
+        searchViewController?.automaticallyShowsSearchResultsController = false
         searchViewController?.obscuresBackgroundDuringPresentation = true
     }
     
@@ -142,5 +141,28 @@ extension HomePageViewController:PagingViewControllerDelegate,PagingViewControll
     
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
         return viewControllers[index]
+    }
+}
+
+extension HomePageViewController:UISearchBarDelegate{
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+        resultController.dataBase.removeAll()
+        searchViewController?.showsSearchResultsController = false
+        homePageView.searchBarContainer.isHidden = true
+    }
+}
+
+extension HomePageViewController:UISearchTextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        searchViewController?.showsSearchResultsController = true
+        resultController.keyword = textField.text!
+        return true
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        resultController.dataBase.removeAll()
+        return true
     }
 }

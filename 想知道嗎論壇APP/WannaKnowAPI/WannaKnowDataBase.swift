@@ -10,16 +10,19 @@ import Foundation
 
 class WannaKnowDataBase{
     
+    //MARK:-Closer
     var onError:((Error)->Void)?
     
     var valueChanged:(()->Void)?
     
+    //MARK:-Data
     private var wannaKnowData:[WannaKnowData] = []{
         didSet{
             valueChanged?()
         }
     }
     
+    //MARK:Method
     public func loadData(){
         WannaKnowAPI.shared.getWannaKnowData(callBy: .per_page("10")) { result in
             switch result{
@@ -29,16 +32,27 @@ class WannaKnowDataBase{
         }
     }
     
-    public func loadDataByUpdateTime(){
-        WannaKnowAPI.shared.getWannaKnowData(callBy: .orderby("update_time")) { result in
+    public func loadCategoryData(by category:String){
+        WannaKnowAPI.shared.getWannaKnowData(callBy: .category(category)) { result in
             switch result{
-            case .success(let data):  self.wannaKnowData.append(data)
-            case .failure(let error): print(error.localizedDescription)
+            case .success(let data):self.wannaKnowData.append(data)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func loadTagData(by tags:String){
+        WannaKnowAPI.shared.getWannaKnowData(callBy: .tags(tags)) { result in
+            switch result{
+            case .success(let data): self.wannaKnowData.append(data)
+            case .failure(let error):print(error.localizedDescription)
             }
         }
     }
 
-    //MARK:-TableView
+
+    //MARK:-TableViewMethods
     public var numberOfSection:Int{
         return wannaKnowData.count
     }

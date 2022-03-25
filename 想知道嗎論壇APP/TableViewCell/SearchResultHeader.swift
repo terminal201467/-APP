@@ -95,7 +95,7 @@ class SearchResultHeader: UIView{
         totalText.text = "共有\(data.total_item)篇文章"
     }
     
-    func searchTagOrThemeConfigure(result data:WannaKnowData,tagOrTheme parameter:String){
+    func searchKeywordConfigure(result data:WannaKnowData,keyword parameter:String){
         tagLabel.text = parameter
         relateText.text = "相關文章"
         totalText.text = "共有\(data.total_item)篇文章"
