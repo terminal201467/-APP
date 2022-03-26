@@ -16,12 +16,7 @@ class SearchDataBase{
     
     var onError:((Error)->Void)?
     
-    
-    private var completeData:[WannaKnowData] = []{
-        didSet{
-            valueChanged?()
-        }
-    }
+    private var completeData:[WannaKnowData] = []
     
     private var data:[WannaKnowData.Data] = []{
         didSet{
@@ -35,7 +30,9 @@ class SearchDataBase{
     public func loadAllData(){
         WannaKnowAPI.shared.getWannaKnowData(callBy: .per_page("10")) { result in
             switch result{
-            case .success(let data):  self.data = data.data
+            case .success(let data):
+                self.data = data.data
+                self.completeData.append(data)
             case .failure(let error): print(error.localizedDescription)
             }
         }
@@ -44,7 +41,9 @@ class SearchDataBase{
     public func loadKeywordData(by keyword:String){
         WannaKnowAPI.shared.getKeywordSearchData(callBy: .keyword(keyword)){ result in
             switch result{
-            case .success(let data):  self.data = data.data
+            case .success(let data):
+                self.data = data.data
+                self.completeData.append(data)
             case .failure(let error): print(error.localizedDescription)
             }
         }
@@ -72,7 +71,7 @@ class SearchDataBase{
         filterData.removeAll()
     }
     
-//    func headerData()->WannaKnowData{
-//        return completeData.map{$0}
-//    }
+    func headerData()->[WannaKnowData]{
+        return completeData
+    }
 }

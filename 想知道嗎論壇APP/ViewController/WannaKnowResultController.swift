@@ -8,64 +8,85 @@
 import UIKit
 
 
-class WannaKnowListViewController: UIViewController{
+class WannaKnowResultController: UIViewController{
     //MARK:-Properties
     
     private let dataBase = WannaKnowDataBase()
     
     private let wannaKnowDetailViewController = WannaKnowDetailViewController()
     
-    private let wannaKnowListView = WannaKnowListView()
+    private let wannaKnowResultView = WannaKnowResultView()
     
     let tagButtons = TagButtons(collectionViewLayout: UICollectionViewFlowLayout())
     
     let signUpViewController = SignUpViewController()
     
+    var theme:String = ""{
+        didSet{
+            print("主題：",theme)
+            dataBase.removeAll()
+            dataBase.loadCategoryData(by: theme)
+            wannaKnowResultView.tableView.reloadData()
+        }
+    }
+    
+    var tag:String = ""{
+        didSet{
+            print("標籤：",tag)
+            dataBase.removeAll()
+//            dataBase.loadTagData(by: tag)
+            wannaKnowResultView.tableView.reloadData()
+        }
+    }
+    
     //MARK:-LifeCycle
     override func loadView() {
         super.loadView()
-        view = wannaKnowListView
+        view = wannaKnowResultView
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setDataBase()
         setTableView()
         setSignInButton()
+    }
+    
+    //MARK:-Method
+    func setDataBase(){
         dataBase.valueChanged = {
             DispatchQueue.main.async {
-                self.wannaKnowListView.tableView.reloadData()
+                self.wannaKnowResultView.tableView.reloadData()
             }
         }
         dataBase.onError = { error in
             print(error.localizedDescription)
         }
-        
-        dataBase.loadData()
-    }
-    
-    //MARK:-Method
-    private func setTableView(){
-        wannaKnowListView.tableView.delegate = self
-        wannaKnowListView.tableView.dataSource = self
+        dataBase.loadAllData()
     }
     
     private func setSignInButton(){
-        wannaKnowListView.signInButton.addTarget(self, action: #selector(choose), for:.touchDown)
+        wannaKnowResultView.signInButton.addTarget(self, action: #selector(choose), for:.touchDown)
+    }
+    
+    private func setTableView(){
+        wannaKnowResultView.tableView.delegate = self
+        wannaKnowResultView.tableView.dataSource = self
     }
     
     @objc func choose(){
         present(signUpViewController, animated: true, completion: nil)
         UIView.animate(withDuration: 0.1) {
-            self.wannaKnowListView.signInButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            self.wannaKnowResultView.signInButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }completion: { finished in
             UIView.animate(withDuration: 0.1) {
-                self.wannaKnowListView.signInButton.transform = CGAffineTransform.identity
+                self.wannaKnowResultView.signInButton.transform = CGAffineTransform.identity
             }
         }
     }
 }
-extension WannaKnowListViewController:UITableViewDelegate,UITableViewDataSource{
+extension WannaKnowResultController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataBase.numberOfRowsInSection(section)
     }
@@ -86,7 +107,7 @@ extension WannaKnowListViewController:UITableViewDelegate,UITableViewDataSource{
 }
 
 //MARK:-CollectionView set the delegate
-extension WannaKnowListViewController:UICollectionViewDelegate,UICollectionViewDataSource{
+extension WannaKnowResultController:UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataBase.numberOfRowsInCollectionViewSection(section)
     }
@@ -100,4 +121,30 @@ extension WannaKnowListViewController:UICollectionViewDelegate,UICollectionViewD
         }
         return cell
     }
+}
+
+extension WannaKnowResultController:UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        print("輸入框更新資料：",searchController.searchBar.searchTextField.text!)
+        dataBase.filterContent(for: searchController.searchBar.searchTextField.text!)
+        wannaKnowResultView.tableView.reloadData()
+    }
+}
+
+extension WannaKnowResultController:ThemeDelegate{
+    func receiveIndexParameter(index parameter: IndexPath) {
+        print("")
+    }
+    
+    func receiveThemeParameter(theme paramter: String) {
+        if paramter == "全部"{
+            self.theme = ""
+        }else{
+            self.theme = paramter
+        }
+    }
+}
+
+extension WannaKnowResultController:TagDelegate{
+    func receiveTagDelegate(tag paramter: String) { tag = paramter }
 }

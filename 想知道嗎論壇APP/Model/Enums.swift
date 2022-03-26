@@ -68,9 +68,10 @@ enum ArticlePages:Int,CaseIterable{
 }
 
 enum ArticleKind:Int,CaseIterable{
-    case projectExp = 0,learnMemo,skillResearch,workLife,lifeChannel
+    case all = 0,projectExp,learnMemo,skillResearch,workLife,lifeChannel
     var text:String{
         switch self {
+        case .all:           return "全部"
         case .projectExp:    return "專案經驗"
         case .learnMemo:     return "學習小心得"
         case .skillResearch: return "技術剖析"
@@ -78,10 +79,17 @@ enum ArticleKind:Int,CaseIterable{
         case .lifeChannel:   return "生活頻道"
         }
     }
+    var parameter:String{
+        switch self{
+        case .all:           return "全部"
+        case .projectExp:    return "project"
+        case .learnMemo:     return "learning"
+        case .skillResearch: return "technic"
+        case .workLife:      return "career"
+        case .lifeChannel:   return "life"
+        }
+    }
 }
-
-
-
 
 enum InternetError:Error{
     case invalidURL

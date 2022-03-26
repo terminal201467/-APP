@@ -34,7 +34,7 @@ class ResultTableView: UIView {
     
     private func autoLayout(){
         resultHeader.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(50)
+            make.top.equalTo(safeAreaLayoutGuide).offset(50)
             make.right.left.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.15)
         }

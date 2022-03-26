@@ -16,8 +16,6 @@ class WannaKnowViewController: UIViewController {
     
     private let wannaKnowView = WannaKnowView()
     
-    private let resultController = WannaKnowResultTableController()
-    
     private let contentViewController = ContentViewController()
     
     private let calendarViewController = CalenderViewController()
@@ -28,10 +26,24 @@ class WannaKnowViewController: UIViewController {
     
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
+    var categoryIndex = IndexPath()
+    
     //MARK:-store properties
-    private var theme:String = ""
-
-    private var tag:String = ""
+    private var theme:String = ""{
+        didSet{
+            //要取消前一個button
+//            contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didUnhighlightItemAt: categoryIndex)
+            contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didHighlightItemAt: categoryIndex)
+        }
+    }
+//
+    private var tag:String = ""{
+        didSet{
+//            contentViewController.categoryButton.collectionView(self.contentViewController.categoryButton, didHighlightItemAt: <#T##IndexPath#>)
+        }
+    }
+    
+    let aricles = ArticlePages.allCases
     
     //MARK:-LifeCycle
     override func loadView() {
@@ -47,15 +59,26 @@ class WannaKnowViewController: UIViewController {
         setSideMenu()
         setSegmented()
         setPageViewController()
-        setResultControllerDelegate()
-        
+        setCategoryDelegate()
+        setSelfCategoryDelegate()
+        setTagDelegate()
+        setResultUpdaterDelegate()
     }
     
-    private func setResultControllerDelegate(){
+    private func setCategoryDelegate(){
+        contentViewController.categoryButton.delegate = contentViewController.newViewController
+        contentViewController.categoryButton.delegate = contentViewController.hotViewController
+        contentViewController.categoryButton.delegate = contentViewController.followViewController
+    }
+    
+    private func setSelfCategoryDelegate(){
         contentViewController.categoryButton.delegate = self
-        contentViewController.contentViewController.tagButtons.delegate = self
-        contentViewController.followViewController.tagButtons.delegate = self
-        contentViewController.hotViewController.tagButtons.delegate = self
+    }
+    
+    private func setTagDelegate(){
+        contentViewController.newViewController.tagButtons.delegate = contentViewController.newViewController
+        contentViewController.followViewController.tagButtons.delegate = contentViewController.hotViewController
+        contentViewController.hotViewController.tagButtons.delegate = contentViewController.followViewController
     }
     
     private func setPageViewController(){
@@ -123,28 +146,40 @@ class WannaKnowViewController: UIViewController {
     }
     
     private func setSearchViewController(){
-        searchViewController = UISearchController(searchResultsController:UINavigationController(rootViewController: resultController))
+        searchViewController = UISearchController(searchResultsController:nil)
         wannaKnowView.searchBarContainer.addSubview(searchViewController.searchBar)
         searchViewController.delegate = self
         searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         searchViewController.hidesNavigationBarDuringPresentation = false
-        searchViewController.obscuresBackgroundDuringPresentation = false
         searchViewController.searchBar.barTintColor = #colorLiteral(red: 0.3568245173, green: 0.3568896055, blue: 0.3568158746, alpha: 1)
         searchViewController.searchBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         searchViewController.searchBar.placeholder = "想搜尋..."
         searchViewController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         searchViewController.searchBar.searchTextField.layer.cornerRadius = 50
         searchViewController.searchBar.searchTextField.keyboardAppearance = .light
+        searchViewController.searchBar.searchTextField.delegate = self
         searchViewController.searchBar.isTranslucent = false
         searchViewController.searchBar.delegate = self
-        searchViewController.searchResultsUpdater = resultController
         searchViewController.automaticallyShowsSearchResultsController = true
-        searchViewController.obscuresBackgroundDuringPresentation = true
+        searchViewController.obscuresBackgroundDuringPresentation = false
     }
     
     //MARK:-setPageViewController's page
     private func setPageViewController(page:Int)->UIViewController?{
         return page < 0 || page > 1 ? nil : segmentedControllers[page]
+    }
+    
+    private func setResultUpdaterDelegate(){
+        searchViewController.searchResultsUpdater = contentViewController.newViewController
+        //如何判讀在哪個頁面？0,1,2
+//        switch ArticlePages{
+//        case .news:
+//        }
+        //只要在最新頁面，就代理給最新頁面
+        
+        //在最熱門頁面，代理給熱門頁面
+//        searchViewController.searchBar.
+        //在追蹤頁面，代理給追蹤頁面
     }
 }
 
@@ -173,28 +208,32 @@ extension WannaKnowViewController:UIPageViewControllerDelegate,UIPageViewControl
 extension WannaKnowViewController:UISearchControllerDelegate{
     func didDismissSearchController(_ searchController: UISearchController) {     
         wannaKnowView.searchBarContainer.isHidden = true
-        resultController.dataBase.removeAll()
-        theme = ""
-        tag = ""
-        resultController.dataBase.loadAllData()
     }
 }
 
 //MARK:-searchBarDelegate
 extension WannaKnowViewController:UISearchBarDelegate{
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        resultController.dataBase.removeAll()
-        theme = ""
-        tag = ""
-        resultController.dataBase.loadAllData()
+    }
+}
+
+extension WannaKnowViewController:UISearchTextFieldDelegate{
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
 }
 
 //MARK:-ThemeDelegate
 extension WannaKnowViewController:ThemeDelegate{
+    func receiveIndexParameter(index parameter: IndexPath) {
+        categoryIndex = parameter
+    }
+    
     func receiveThemeParameter(theme paramter: String) {
         theme = paramter
-        searchViewController.searchBar.becomeFirstResponder()
+        print("主題：",paramter)
+//        searchViewController.searchBar.becomeFirstResponder()
     }
 }
 
@@ -202,6 +241,6 @@ extension WannaKnowViewController:ThemeDelegate{
 extension WannaKnowViewController:TagDelegate{
     func receiveTagDelegate(tag paramter: String) {
         tag = paramter
-        searchViewController.searchBar.becomeFirstResponder()
+//        searchViewController.searchBar.becomeFirstResponder()
     }
 }

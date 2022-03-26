@@ -15,7 +15,7 @@ class KeywordResultTableController:UIViewController {
         didSet{
             self.resultTableView.tableView.reloadData()
             dataBase.loadKeywordData(by: keyword)
-            print("關鍵字",keyword)
+            resultTableView.resultHeader.searchKeywordConfigure(result: dataBase.headerData(), keyword: keyword)
         }
     }
     
@@ -91,7 +91,6 @@ class KeywordResultTableController:UIViewController {
         dataBase.onError = { error in
             print(error.localizedDescription)
         }
-//        resultTableView.resultHeader.searchKeywordConfigure(result: dataBase.headerData(), keyword: keyword)
     }
 }
     

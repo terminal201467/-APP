@@ -62,7 +62,7 @@ class CalenderCell: JTACDayCell{
         
         eventBar.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalTo(40)
+            make.centerY.equalTo(30)
             make.height.equalTo(3)
             make.width.equalTo(20)
         }

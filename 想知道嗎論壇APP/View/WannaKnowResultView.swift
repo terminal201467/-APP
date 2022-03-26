@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WannaKnowListView: UIView {
+class WannaKnowResultView: UIView {
     
     let signInButton:UIButton = {
         let button = UIButton()

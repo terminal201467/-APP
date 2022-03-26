@@ -67,6 +67,7 @@ class SearchResultHeader: UIView{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
         addSubview(magnifier)
         addSubview(searchInfo)
         autoLayout()
@@ -89,15 +90,15 @@ class SearchResultHeader: UIView{
         }
     }
     
-    func searchAllConfigure(result data:WannaKnowData){
+    func searchAllConfigure(result data:[WannaKnowData]){
         tagLabel.text = "想知道嗎？"
         relateText.text = "全部文章"
-        totalText.text = "共有\(data.total_item)篇文章"
+        totalText.text = "共有\(data.map{$0.total_item})篇文章"
     }
     
-    func searchKeywordConfigure(result data:WannaKnowData,keyword parameter:String){
+    func searchKeywordConfigure(result data:[WannaKnowData],keyword parameter:String){
         tagLabel.text = parameter
         relateText.text = "相關文章"
-        totalText.text = "共有\(data.total_item)篇文章"
+        totalText.text = "共有\(data.map{$0.data}.count)篇文章"
     }
 }

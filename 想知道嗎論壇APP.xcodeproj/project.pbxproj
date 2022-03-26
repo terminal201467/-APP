@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9722E3EB27E8076500D0F604 /* ResultTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9722E3EA27E8076500D0F604 /* ResultTableView.swift */; };
-		97247E0527ED5F2F00D49C3B /* WannaKnowResultTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97247E0427ED5F2F00D49C3B /* WannaKnowResultTableController.swift */; };
 		972DBFA527DEDED2006F464B /* ModalPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972DBFA427DEDED2006F464B /* ModalPresentViewController.swift */; };
 		972DBFA727DF1EB7006F464B /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972DBFA627DF1EB7006F464B /* DatePickerViewController.swift */; };
 		972DBFA927DF1EEF006F464B /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972DBFA827DF1EEF006F464B /* DatePickerView.swift */; };
@@ -24,7 +23,7 @@
 		973246082797C60C00CE549D /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246072797C60C00CE549D /* ContentViewController.swift */; };
 		9732460A2797C65100CE549D /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246092797C65100CE549D /* HomePageView.swift */; };
 		9732460E2797C67300CE549D /* WannaKnowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9732460D2797C67300CE549D /* WannaKnowView.swift */; };
-		973246102797C68200CE549D /* WannaKnowListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9732460F2797C68200CE549D /* WannaKnowListView.swift */; };
+		973246102797C68200CE549D /* WannaKnowResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9732460F2797C68200CE549D /* WannaKnowResultView.swift */; };
 		973246122797C69000CE549D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246112797C69000CE549D /* ContentView.swift */; };
 		973246142797C69E00CE549D /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246132797C69E00CE549D /* SignUpView.swift */; };
 		973246162797C6A800CE549D /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973246152797C6A800CE549D /* CalenderView.swift */; };
@@ -53,7 +52,7 @@
 		9792945727A969F800EA60B4 /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792945627A969F800EA60B4 /* Footer.swift */; };
 		97A2518227AD445F002D5B5E /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518127AD445F002D5B5E /* ContentCell.swift */; };
 		97A2518427AD4479002D5B5E /* WannaKnowDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518327AD4479002D5B5E /* WannaKnowDetailCell.swift */; };
-		97A2518627AFFFAF002D5B5E /* WannaKnowListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518527AFFFAF002D5B5E /* WannaKnowListViewController.swift */; };
+		97A2518627AFFFAF002D5B5E /* WannaKnowResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518527AFFFAF002D5B5E /* WannaKnowResultController.swift */; };
 		97A2519027B4B4FB002D5B5E /* WannaKnowDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2518F27B4B4FB002D5B5E /* WannaKnowDetailHeader.swift */; };
 		97A2519227B4DBBA002D5B5E /* WannaKnowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2519127B4DBBA002D5B5E /* WannaKnowDetailViewController.swift */; };
 		97A2519427B4DEF7002D5B5E /* WannaKnowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2519327B4DEF7002D5B5E /* WannaKnowDetailView.swift */; };
@@ -76,7 +75,6 @@
 		36749998BFC292E068DB7EB9 /* Pods-想知道嗎論壇APP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-想知道嗎論壇APP.debug.xcconfig"; path = "Target Support Files/Pods-想知道嗎論壇APP/Pods-想知道嗎論壇APP.debug.xcconfig"; sourceTree = "<group>"; };
 		7121852CC9CC752E58AD01D5 /* Pods-想知道嗎論壇APP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-想知道嗎論壇APP.release.xcconfig"; path = "Target Support Files/Pods-想知道嗎論壇APP/Pods-想知道嗎論壇APP.release.xcconfig"; sourceTree = "<group>"; };
 		9722E3EA27E8076500D0F604 /* ResultTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableView.swift; sourceTree = "<group>"; };
-		97247E0427ED5F2F00D49C3B /* WannaKnowResultTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowResultTableController.swift; sourceTree = "<group>"; };
 		972DBFA427DEDED2006F464B /* ModalPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresentViewController.swift; sourceTree = "<group>"; };
 		972DBFA627DF1EB7006F464B /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		972DBFA827DF1EEF006F464B /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -94,7 +92,7 @@
 		973246072797C60C00CE549D /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		973246092797C65100CE549D /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		9732460D2797C67300CE549D /* WannaKnowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowView.swift; sourceTree = "<group>"; };
-		9732460F2797C68200CE549D /* WannaKnowListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowListView.swift; sourceTree = "<group>"; };
+		9732460F2797C68200CE549D /* WannaKnowResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowResultView.swift; sourceTree = "<group>"; };
 		973246112797C69000CE549D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		973246132797C69E00CE549D /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		973246152797C6A800CE549D /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
@@ -120,7 +118,7 @@
 		9792945627A969F800EA60B4 /* Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
 		97A2518127AD445F002D5B5E /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		97A2518327AD4479002D5B5E /* WannaKnowDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailCell.swift; sourceTree = "<group>"; };
-		97A2518527AFFFAF002D5B5E /* WannaKnowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowListViewController.swift; sourceTree = "<group>"; };
+		97A2518527AFFFAF002D5B5E /* WannaKnowResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowResultController.swift; sourceTree = "<group>"; };
 		97A2518F27B4B4FB002D5B5E /* WannaKnowDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailHeader.swift; sourceTree = "<group>"; };
 		97A2519127B4DBBA002D5B5E /* WannaKnowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailViewController.swift; sourceTree = "<group>"; };
 		97A2519327B4DEF7002D5B5E /* WannaKnowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaKnowDetailView.swift; sourceTree = "<group>"; };
@@ -207,13 +205,12 @@
 				97324629279A3FDA00CE549D /* BulletinTableViewController.swift */,
 				9732462D279A506200CE549D /* ChiaoWanViewController.swift */,
 				973245FD2797BC7B00CE549D /* WannaKnowViewController.swift */,
-				97A2518527AFFFAF002D5B5E /* WannaKnowListViewController.swift */,
+				97A2518527AFFFAF002D5B5E /* WannaKnowResultController.swift */,
 				973245FF2797BCBF00CE549D /* SignUpViewController.swift */,
 				973246072797C60C00CE549D /* ContentViewController.swift */,
 				973246052797C5F200CE549D /* CalenderViewController.swift */,
 				97A2519127B4DBBA002D5B5E /* WannaKnowDetailViewController.swift */,
 				976E406E27D342180036F4D7 /* KeywordResultTableController.swift */,
-				97247E0427ED5F2F00D49C3B /* WannaKnowResultTableController.swift */,
 				972DBFA427DEDED2006F464B /* ModalPresentViewController.swift */,
 				972DBFA627DF1EB7006F464B /* DatePickerViewController.swift */,
 			);
@@ -227,7 +224,7 @@
 				9732462F279A509500CE549D /* ChiaoWanView.swift */,
 				97A251CB27C72219002D5B5E /* BulletinView.swift */,
 				9732460D2797C67300CE549D /* WannaKnowView.swift */,
-				9732460F2797C68200CE549D /* WannaKnowListView.swift */,
+				9732460F2797C68200CE549D /* WannaKnowResultView.swift */,
 				973246112797C69000CE549D /* ContentView.swift */,
 				973246132797C69E00CE549D /* SignUpView.swift */,
 				973246152797C6A800CE549D /* CalenderView.swift */,
@@ -447,11 +444,10 @@
 				973246082797C60C00CE549D /* ContentViewController.swift in Sources */,
 				9778C41127E9C198000C2C69 /* LabelWithDropDown.swift in Sources */,
 				97A251C827C5E60A002D5B5E /* CalenderCell.swift in Sources */,
-				97247E0527ED5F2F00D49C3B /* WannaKnowResultTableController.swift in Sources */,
 				9778C40927E9C0FA000C2C69 /* LabelWithTextField.swift in Sources */,
 				97A251B327BC94FF002D5B5E /* WannaKnowAPI.swift in Sources */,
 				97A2521327C87340002D5B5E /* CommentsAPI.swift in Sources */,
-				973246102797C68200CE549D /* WannaKnowListView.swift in Sources */,
+				973246102797C68200CE549D /* WannaKnowResultView.swift in Sources */,
 				97A251CC27C72219002D5B5E /* BulletinView.swift in Sources */,
 				973246002797BCBF00CE549D /* SignUpViewController.swift in Sources */,
 				973246162797C6A800CE549D /* CalenderView.swift in Sources */,
@@ -495,7 +491,7 @@
 				973246142797C69E00CE549D /* SignUpView.swift in Sources */,
 				9732462A279A3FDA00CE549D /* BulletinTableViewController.swift in Sources */,
 				9778C40D27E9C14B000C2C69 /* LabelWithDatePicker.swift in Sources */,
-				97A2518627AFFFAF002D5B5E /* WannaKnowListViewController.swift in Sources */,
+				97A2518627AFFFAF002D5B5E /* WannaKnowResultController.swift in Sources */,
 				9722E3EB27E8076500D0F604 /* ResultTableView.swift in Sources */,
 				9732460E2797C67300CE549D /* WannaKnowView.swift in Sources */,
 				9732460A2797C65100CE549D /* HomePageView.swift in Sources */,

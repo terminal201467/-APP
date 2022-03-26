@@ -13,6 +13,10 @@ class WannaKnowResultTableController: UIViewController{
     
     let resultView = ResultTableView()
     
+    let resultHeader = SearchResultHeader()
+    
+    let detailViewController = WannaKnowDetailViewController()
+    
     override func loadView() {
         super.loadView()
         view = resultView
@@ -22,6 +26,7 @@ class WannaKnowResultTableController: UIViewController{
         super.viewDidLoad()
         setSearchData()
         setTableView()
+        resultHeader.searchAllConfigure(result: dataBase.headerData())
     }
     
     private func setSearchData(){
@@ -36,6 +41,7 @@ class WannaKnowResultTableController: UIViewController{
         }
         
         dataBase.loadAllData()
+        
     }
     
     private func setTableView(){
@@ -56,12 +62,16 @@ extension WannaKnowResultTableController:UITableViewDelegate,UITableViewDataSour
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        present(detailViewController, animated: true, completion: nil)
+        detailViewController.detail = dataBase.getData(at: indexPath)
+    }
+    
 }
 
 extension WannaKnowResultTableController:UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
+        print("搜尋：",searchController.searchBar.text!)
         dataBase.filterContent(for: searchController.searchBar.text!)
     }
-    
-    
 }

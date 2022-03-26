@@ -14,13 +14,13 @@ class ContentViewController: UIViewController {
     
     private let pagingViewController = PagingViewController()
     
-    let contentViewController = WannaKnowListViewController()
+    let newViewController = WannaKnowResultController()
     
-    let hotViewController = WannaKnowListViewController()
+    let hotViewController = WannaKnowResultController()
     
-    let followViewController = WannaKnowListViewController()
+    let followViewController = WannaKnowResultController()
     
-    private lazy var viewControllers:[UIViewController] = [contentViewController,hotViewController,followViewController]
+    private lazy var viewControllers:[UIViewController] = [newViewController,hotViewController,followViewController]
     
     private let contentView = ContentView()
     
