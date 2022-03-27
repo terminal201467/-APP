@@ -26,22 +26,29 @@ class WannaKnowViewController: UIViewController {
     
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
-    var categoryIndex = IndexPath()
+    private var categoryIndex = IndexPath(){
+        didSet{
+            exSelectIndex.append(categoryIndex)
+        }
+    }
+    
+    private var exSelectIndex:[IndexPath] = []{
+        didSet{
+            print("exSelectIndex:",exSelectIndex)
+            contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didUnhighlightItemAt: exSelectIndex[0])
+            if exSelectIndex.count > 1{ exSelectIndex.remove(at: 0) }
+            print("exSelectIndex:",exSelectIndex)
+        }
+    }
     
     //MARK:-store properties
     private var theme:String = ""{
         didSet{
-            //要取消前一個button
-//            contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didUnhighlightItemAt: categoryIndex)
             contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didHighlightItemAt: categoryIndex)
         }
     }
-//
-    private var tag:String = ""{
-        didSet{
-//            contentViewController.categoryButton.collectionView(self.contentViewController.categoryButton, didHighlightItemAt: <#T##IndexPath#>)
-        }
-    }
+    
+    private var tag:String = ""
     
     let aricles = ArticlePages.allCases
     
@@ -64,6 +71,16 @@ class WannaKnowViewController: UIViewController {
         setTagDelegate()
         setResultUpdaterDelegate()
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        setDefaultCategoryButton()
+//    }
+    
+//    private func setDefaultCategoryButton(){
+//        categoryIndex = [0,0]
+//        contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didHighlightItemAt: categoryIndex)
+//    }
     
     private func setCategoryDelegate(){
         contentViewController.categoryButton.delegate = contentViewController.newViewController
@@ -130,7 +147,10 @@ class WannaKnowViewController: UIViewController {
     }
     
     @objc func search(){
-        wannaKnowView.searchBarContainer.isHidden.toggle()
+        wannaKnowView.searchBarContainer.isHidden = false
+        searchViewController.searchBar.becomeFirstResponder()
+        categoryIndex = [0,0]
+        contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didHighlightItemAt: categoryIndex)
     }
     
     @objc func backToHomePage(){
@@ -161,7 +181,7 @@ class WannaKnowViewController: UIViewController {
         searchViewController.searchBar.isTranslucent = false
         searchViewController.searchBar.delegate = self
         searchViewController.automaticallyShowsSearchResultsController = true
-        searchViewController.obscuresBackgroundDuringPresentation = false
+        searchViewController.obscuresBackgroundDuringPresentation = true
     }
     
     //MARK:-setPageViewController's page
@@ -214,11 +234,19 @@ extension WannaKnowViewController:UISearchControllerDelegate{
 //MARK:-searchBarDelegate
 extension WannaKnowViewController:UISearchBarDelegate{
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        categoryIndex = [0,0]
+        contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didUnhighlightItemAt: categoryIndex)
     }
 }
 
 extension WannaKnowViewController:UISearchTextFieldDelegate{
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        wannaKnowView.searchBarContainer.isHidden = true
         self.view.endEditing(true)
         return true
     }
