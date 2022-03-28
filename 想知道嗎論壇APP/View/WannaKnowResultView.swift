@@ -30,11 +30,20 @@ class WannaKnowResultView: UIView {
         return tableView
     }()
     
+    let loadingMark:UIActivityIndicatorView = {
+       let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.center = .zero
+        activityIndicator.style = .large
+        activityIndicator.color = UIColor.darkGray
+        return activityIndicator
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         addSubview(tableView)
         addSubview(signInButton)
+        addSubview(loadingMark)
         autoLayout()
     }
     
@@ -48,6 +57,11 @@ class WannaKnowResultView: UIView {
             make.bottom.equalTo(-10)
             make.height.equalTo(60)
             make.width.equalTo(60)
+        }
+        
+        loadingMark.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
         }
         
         tableView.snp.makeConstraints { make in

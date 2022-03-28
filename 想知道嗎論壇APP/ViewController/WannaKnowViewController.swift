@@ -34,23 +34,27 @@ class WannaKnowViewController: UIViewController {
     
     private var exSelectIndex:[IndexPath] = []{
         didSet{
-            print("exSelectIndex:",exSelectIndex)
             contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didUnhighlightItemAt: exSelectIndex[0])
             if exSelectIndex.count > 1{ exSelectIndex.remove(at: 0) }
-            print("exSelectIndex:",exSelectIndex)
         }
     }
     
     //MARK:-store properties
     private var theme:String = ""{
         didSet{
+            print("回傳主題")
             contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didHighlightItemAt: categoryIndex)
+            //postNotification
+            postTheme()
+            //I can sure that trigger , but why can't work?
+            self.view.endEditing(true)
+            wannaKnowView.searchBarContainer.isHidden = true
         }
     }
     
     private var tag:String = ""
     
-    let aricles = ArticlePages.allCases
+    private let aricles = ArticlePages.allCases
     
     //MARK:-LifeCycle
     override func loadView() {
@@ -72,15 +76,10 @@ class WannaKnowViewController: UIViewController {
         setResultUpdaterDelegate()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(true)
-//        setDefaultCategoryButton()
-//    }
+    private func postTheme(){
+        NotificationCenter.default.post(name: .deliverTheCategory, object: nil, userInfo: [NotificationInfo.theme:self.theme])
+    }
     
-//    private func setDefaultCategoryButton(){
-//        categoryIndex = [0,0]
-//        contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didHighlightItemAt: categoryIndex)
-//    }
     
     private func setCategoryDelegate(){
         contentViewController.categoryButton.delegate = contentViewController.newViewController
@@ -151,6 +150,7 @@ class WannaKnowViewController: UIViewController {
         searchViewController.searchBar.becomeFirstResponder()
         categoryIndex = [0,0]
         contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didHighlightItemAt: categoryIndex)
+        contentViewController.categoryButton.collectionView.scrollToItem(at: categoryIndex, at: .centeredHorizontally, animated: true)
     }
     
     @objc func backToHomePage(){
@@ -181,7 +181,7 @@ class WannaKnowViewController: UIViewController {
         searchViewController.searchBar.isTranslucent = false
         searchViewController.searchBar.delegate = self
         searchViewController.automaticallyShowsSearchResultsController = true
-        searchViewController.obscuresBackgroundDuringPresentation = true
+        searchViewController.obscuresBackgroundDuringPresentation = false
     }
     
     //MARK:-setPageViewController's page
@@ -260,8 +260,6 @@ extension WannaKnowViewController:ThemeDelegate{
     
     func receiveThemeParameter(theme paramter: String) {
         theme = paramter
-        print("主題：",paramter)
-//        searchViewController.searchBar.becomeFirstResponder()
     }
 }
 
@@ -269,6 +267,5 @@ extension WannaKnowViewController:ThemeDelegate{
 extension WannaKnowViewController:TagDelegate{
     func receiveTagDelegate(tag paramter: String) {
         tag = paramter
-//        searchViewController.searchBar.becomeFirstResponder()
     }
 }

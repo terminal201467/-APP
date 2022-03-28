@@ -7,6 +7,14 @@
 
 import UIKit
 
+struct NotificationInfo{
+    static let theme = ""
+}
+
+extension Notification.Name{
+    static let deliverTheCategory = Notification.Name("Theme")
+}
+
 
 class WannaKnowResultController: UIViewController{
     //MARK:-Properties
@@ -23,10 +31,12 @@ class WannaKnowResultController: UIViewController{
     
     var theme:String = ""{
         didSet{
-            print("主題：",theme)
-            dataBase.removeAll()
-            dataBase.loadCategoryData(by: theme)
-            wannaKnowResultView.tableView.reloadData()
+            if theme == ""{
+                dataBase.loadAllData()
+            }else{
+                dataBase.removeAll()
+                dataBase.loadCategoryData(by: theme)
+            }
         }
     }
     
@@ -48,9 +58,28 @@ class WannaKnowResultController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        wannaKnowResultView.loadingMark.startAnimating()
         setDataBase()
         setTableView()
         setSignInButton()
+        receveThemeNotification()
+        dataBase.loadAllData()
+        wannaKnowResultView.loadingMark.stopAnimating()
+    }
+    
+    private func receveThemeNotification(){
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(receiveTheme(theme:)),
+                                               name: .deliverTheCategory,
+                                               object: nil)
+    }
+    
+    @objc func receiveTheme(theme:Notification){
+        if let userInfo = theme.userInfo,
+           let message = userInfo[NotificationInfo.theme]{
+            self.theme = message as! String
+        }
+        
     }
     
     //MARK:-Method
@@ -63,7 +92,7 @@ class WannaKnowResultController: UIViewController{
         dataBase.onError = { error in
             print(error.localizedDescription)
         }
-        dataBase.loadAllData()
+        wannaKnowResultView.tableView.reloadData()
     }
     
     private func setSignInButton(){

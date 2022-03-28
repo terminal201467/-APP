@@ -82,9 +82,6 @@ class ThemeButtons: UICollectionViewController{
         }
         delegate.receiveThemeParameter(theme: category)
         delegate.receiveIndexParameter(index: indexPath)
-        //如果collectionCell是highlight的狀態，就unhighlight
-        print("主題：",category)
-        print("目錄：",indexPath)
         self.collectionView(self.collectionView, didHighlightItemAt: indexPath)
     }
     override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
