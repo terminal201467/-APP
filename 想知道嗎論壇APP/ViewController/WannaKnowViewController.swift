@@ -47,8 +47,11 @@ class WannaKnowViewController: UIViewController {
             //postNotification
             postTheme()
             //I can sure that trigger , but why can't work?
+            
+            /*
             self.view.endEditing(true)
             wannaKnowView.searchBarContainer.isHidden = true
+            */
         }
     }
     
@@ -73,14 +76,17 @@ class WannaKnowViewController: UIViewController {
         setCategoryDelegate()
         setSelfCategoryDelegate()
         setTagDelegate()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setResultUpdaterDelegate()
     }
     
     private func postTheme(){
         NotificationCenter.default.post(name: .deliverTheCategory, object: nil, userInfo: [NotificationInfo.theme:self.theme])
     }
-    
-    
+
     private func setCategoryDelegate(){
         contentViewController.categoryButton.delegate = contentViewController.newViewController
         contentViewController.categoryButton.delegate = contentViewController.hotViewController
@@ -190,16 +196,15 @@ class WannaKnowViewController: UIViewController {
     }
     
     private func setResultUpdaterDelegate(){
-        searchViewController.searchResultsUpdater = contentViewController.newViewController
-        //如何判讀在哪個頁面？0,1,2
-//        switch ArticlePages{
-//        case .news:
-//        }
-        //只要在最新頁面，就代理給最新頁面
-        
-        //在最熱門頁面，代理給熱門頁面
-//        searchViewController.searchBar.
-        //在追蹤頁面，代理給追蹤頁面
+        switch contentViewController.currentIndex{
+        case 0: searchViewController.searchResultsUpdater = contentViewController.newViewController
+            print("resulteUpdater:new")
+        case 1: searchViewController.searchResultsUpdater = contentViewController.hotViewController
+            print("resulteUpdater:hot")
+        case 2: searchViewController.searchResultsUpdater = contentViewController.followViewController
+            print("resulteUpdater:follow")
+        default: print("Default")
+        }
     }
 }
 

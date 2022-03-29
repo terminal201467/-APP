@@ -65,6 +65,13 @@ enum ArticlePages:Int,CaseIterable{
         case .follow: return "追蹤"
         }
     }
+    var parameter:String{
+        switch self {
+        case .news:   return "new"
+        case .hot:    return "hot"
+        case .follow: return "follow"
+        }
+    }
 }
 
 enum ArticleKind:Int,CaseIterable{
@@ -81,7 +88,7 @@ enum ArticleKind:Int,CaseIterable{
     }
     var parameter:String{
         switch self{
-        case .all:           return "全部"
+        case .all:           return ""
         case .projectExp:    return "project"
         case .learnMemo:     return "learning"
         case .skillResearch: return "technic"

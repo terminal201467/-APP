@@ -73,7 +73,7 @@ class HomePageViewController: UIViewController{
         navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
     }
     
-    func setSearchViewController(){
+    private func setSearchViewController(){
         searchViewController = UISearchController(searchResultsController: UINavigationController(rootViewController:resultController))
         homePageView.searchBarContainer.addSubview(searchViewController!.searchBar)
         searchViewController?.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)

@@ -62,7 +62,6 @@
 		97A251B927BE1EFA002D5B5E /* TagButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251B827BE1EFA002D5B5E /* TagButtons.swift */; };
 		97A251BF27BE286B002D5B5E /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251BE27BE286B002D5B5E /* ThemeCell.swift */; };
 		97A251C127BF3EBE002D5B5E /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251C027BF3EBE002D5B5E /* TagCell.swift */; };
-		97A251C527BF9134002D5B5E /* LineUpButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251C427BF9134002D5B5E /* LineUpButtonsCell.swift */; };
 		97A251C827C5E60A002D5B5E /* CalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251C727C5E60A002D5B5E /* CalenderCell.swift */; };
 		97A251CC27C72219002D5B5E /* BulletinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A251CB27C72219002D5B5E /* BulletinView.swift */; };
 		97A2521327C87340002D5B5E /* CommentsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2521227C87340002D5B5E /* CommentsAPI.swift */; };
@@ -128,7 +127,6 @@
 		97A251B827BE1EFA002D5B5E /* TagButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButtons.swift; sourceTree = "<group>"; };
 		97A251BE27BE286B002D5B5E /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 		97A251C027BF3EBE002D5B5E /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
-		97A251C427BF9134002D5B5E /* LineUpButtonsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineUpButtonsCell.swift; sourceTree = "<group>"; };
 		97A251C727C5E60A002D5B5E /* CalenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCell.swift; sourceTree = "<group>"; };
 		97A251CB27C72219002D5B5E /* BulletinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinView.swift; sourceTree = "<group>"; };
 		97A2521227C87340002D5B5E /* CommentsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsAPI.swift; sourceTree = "<group>"; };
@@ -293,7 +291,6 @@
 			children = (
 				97A251BE27BE286B002D5B5E /* ThemeCell.swift */,
 				97A251C027BF3EBE002D5B5E /* TagCell.swift */,
-				97A251C427BF9134002D5B5E /* LineUpButtonsCell.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -471,7 +468,6 @@
 				9732462E279A506200CE549D /* ChiaoWanViewController.swift in Sources */,
 				972DBFA927DF1EEF006F464B /* DatePickerView.swift in Sources */,
 				973246262798EA3F00CE549D /* SideMenuCell.swift in Sources */,
-				97A251C527BF9134002D5B5E /* LineUpButtonsCell.swift in Sources */,
 				9792945327A9532700EA60B4 /* HomePageTableCell.swift in Sources */,
 				973245E62797BAD800CE549D /* SceneDelegate.swift in Sources */,
 				973246062797C5F200CE549D /* CalenderViewController.swift in Sources */,

@@ -15,7 +15,6 @@ extension Notification.Name{
     static let deliverTheCategory = Notification.Name("Theme")
 }
 
-
 class WannaKnowResultController: UIViewController{
     //MARK:-Properties
     
@@ -30,14 +29,7 @@ class WannaKnowResultController: UIViewController{
     let signUpViewController = SignUpViewController()
     
     var theme:String = ""{
-        didSet{
-            if theme == ""{
-                dataBase.loadAllData()
-            }else{
-                dataBase.removeAll()
-                dataBase.loadCategoryData(by: theme)
-            }
-        }
+        didSet{ setDataBase() }
     }
     
     var tag:String = ""{
@@ -46,6 +38,13 @@ class WannaKnowResultController: UIViewController{
             dataBase.removeAll()
 //            dataBase.loadTagData(by: tag)
             wannaKnowResultView.tableView.reloadData()
+        }
+    }
+    
+    var order:String = ""{
+        didSet{
+            setDataBase()
+            print("排序：",order)
         }
     }
     
@@ -58,13 +57,12 @@ class WannaKnowResultController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        wannaKnowResultView.loadingMark.startAnimating()
         setDataBase()
         setTableView()
         setSignInButton()
         receveThemeNotification()
+        wannaKnowResultView.loadingMark.startAnimating()
         dataBase.loadAllData()
-        wannaKnowResultView.loadingMark.stopAnimating()
     }
     
     private func receveThemeNotification(){
@@ -79,7 +77,6 @@ class WannaKnowResultController: UIViewController{
            let message = userInfo[NotificationInfo.theme]{
             self.theme = message as! String
         }
-        
     }
     
     //MARK:-Method
@@ -87,12 +84,21 @@ class WannaKnowResultController: UIViewController{
         dataBase.valueChanged = {
             DispatchQueue.main.async {
                 self.wannaKnowResultView.tableView.reloadData()
+                self.wannaKnowResultView.loadingMark.stopAnimating()
             }
         }
         dataBase.onError = { error in
             print(error.localizedDescription)
         }
-        wannaKnowResultView.tableView.reloadData()
+        
+        if theme == ""{
+            dataBase.loadAllData()
+            wannaKnowResultView.tableView.reloadData()
+        }else{
+            dataBase.removeAll()
+            dataBase.loadCategoryData(by: theme, order: order)
+            wannaKnowResultView.tableView.reloadData()
+        }
     }
     
     private func setSignInButton(){
@@ -143,11 +149,13 @@ extension WannaKnowResultController:UICollectionViewDelegate,UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.reuseIdentifier, for: indexPath) as! TagCell
         let names = dataBase.getCollectionTagData(at: indexPath)
-        if names.count == 0{
+        if names == nil{
             cell.tagLabel.text = ""
         }else{
-            cell.tagLabel.text = names[indexPath.row]
+            cell.tagLabel.text = names
         }
+        
+        
         return cell
     }
 }
@@ -166,7 +174,7 @@ extension WannaKnowResultController:ThemeDelegate{
     }
     
     func receiveThemeParameter(theme paramter: String) {
-        if paramter == "全部"{
+        if paramter == ""{
             self.theme = ""
         }else{
             self.theme = paramter

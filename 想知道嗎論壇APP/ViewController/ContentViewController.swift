@@ -26,6 +26,22 @@ class ContentViewController: UIViewController {
     
     public let categoryButton = ThemeButtons(collectionViewLayout: UICollectionViewFlowLayout())
     
+    var currentIndex:Int = 0{
+        didSet{
+            print("當前頁面:",currentIndex)
+            switch currentIndex{
+            case 0: newViewController.order = ArticlePages.news.parameter
+            case 1: hotViewController.order = ArticlePages.hot.parameter
+            case 2: followViewController.order = ArticlePages.follow.parameter
+            default:
+                print("Default")
+            }
+            //回傳給WannnaKnowViewController的setResultUpdaterDelegate()這個方法
+            //讓它去判斷現在哪個WannaKnowResultController是被容許更新資料的
+            //然後要傳進去WannaKnowResultController裡面的properties去判斷function可否loadData
+        }
+    }
+    
     //MARK:-LifeCycle
     override func loadView() {
         view = contentView
@@ -64,10 +80,12 @@ extension ContentViewController:PagingViewControllerDelegate,PagingViewControlle
     }
 
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
+        currentIndex = index
         return viewControllers[index]
     }
 
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
         return PagingIndexItem(index: index, title: ArticlePages.allCases[index].text)
     }
+    
 }
