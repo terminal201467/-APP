@@ -10,7 +10,7 @@ import SideMenu
 import Parchment
 
 class WannaKnowViewController: UIViewController {
-
+    
     //MARK:-Properties
     private let sideMenu = SideMenuNavigationController(rootViewController: MenuTableViewController())
     
@@ -57,6 +57,12 @@ class WannaKnowViewController: UIViewController {
     
     private var tag:String = ""
     
+    private var page:Int = 0{
+        didSet{
+            print("page:",page)
+        }
+    }
+    
     private let aricles = ArticlePages.allCases
     
     //MARK:-LifeCycle
@@ -76,6 +82,8 @@ class WannaKnowViewController: UIViewController {
         setCategoryDelegate()
         setSelfCategoryDelegate()
         setTagDelegate()
+        setContentViewControllerOberserver()
+//        setResultUpdaterDelegate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,7 +94,19 @@ class WannaKnowViewController: UIViewController {
     private func postTheme(){
         NotificationCenter.default.post(name: .deliverTheCategory, object: nil, userInfo: [NotificationInfo.theme:self.theme])
     }
-
+    
+    private func setContentViewControllerOberserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(receiveTheContentPage(page:)), name: .deliverTheContentPage, object: nil)
+    }
+    
+    @objc func receiveTheContentPage(page:Notification){
+        if let userInfo = page.userInfo,
+           let page = userInfo[NotificationInfo.page] {
+            self.page = page as! Int
+            print("page:",self.page)
+        }
+    }
+    
     private func setCategoryDelegate(){
         contentViewController.categoryButton.delegate = contentViewController.newViewController
         contentViewController.categoryButton.delegate = contentViewController.hotViewController
@@ -196,7 +216,8 @@ class WannaKnowViewController: UIViewController {
     }
     
     private func setResultUpdaterDelegate(){
-        switch contentViewController.currentIndex{
+        print("index:",self.page)
+        switch self.page{
         case 0: searchViewController.searchResultsUpdater = contentViewController.newViewController
             print("resulteUpdater:new")
         case 1: searchViewController.searchResultsUpdater = contentViewController.hotViewController

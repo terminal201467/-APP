@@ -9,10 +9,12 @@ import UIKit
 
 struct NotificationInfo{
     static let theme = ""
+    static let page = 0
 }
 
 extension Notification.Name{
     static let deliverTheCategory = Notification.Name("Theme")
+    static let deliverTheContentPage = Notification.Name("ContentPage")
 }
 
 class WannaKnowResultController: UIViewController{

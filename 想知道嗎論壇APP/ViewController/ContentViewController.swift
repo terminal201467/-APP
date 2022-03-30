@@ -28,13 +28,12 @@ class ContentViewController: UIViewController {
     
     var currentIndex:Int = 0{
         didSet{
-            print("當前頁面:",currentIndex)
+            postTheCurrentPage()
             switch currentIndex{
             case 0: newViewController.order = ArticlePages.news.parameter
             case 1: hotViewController.order = ArticlePages.hot.parameter
             case 2: followViewController.order = ArticlePages.follow.parameter
-            default:
-                print("Default")
+            default: print("Default")
             }
             //回傳給WannnaKnowViewController的setResultUpdaterDelegate()這個方法
             //讓它去判斷現在哪個WannaKnowResultController是被容許更新資料的
@@ -51,6 +50,11 @@ class ContentViewController: UIViewController {
         super.viewDidLoad()
         setPagingViewController()
         setCollectionButtons()
+    }
+    
+    private func postTheCurrentPage(){
+        print("post")
+        NotificationCenter.default.post(name: .deliverTheContentPage, object: self, userInfo: [NotificationInfo.page:currentIndex])
     }
     
     private func setCollectionButtons(){

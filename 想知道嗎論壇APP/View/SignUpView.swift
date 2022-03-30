@@ -66,13 +66,17 @@ class SignUpView: UIView{
         return infoInputColumn
     }()
     
-    let  tagCollectionButton: UIView = {
-        let tagView = UIView()
-        tagView.layer.cornerRadius = 10
-        tagView.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        tagView.layer.borderColor = #colorLiteral(red: 0.4011802375, green: 0.6375043988, blue: 0.4550539255, alpha: 1)
-        tagView.layer.borderWidth = 3
-        return tagView
+    let  tagButtons: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        flowLayout.estimatedItemSize = .zero
+        flowLayout.minimumLineSpacing = 3
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.register(TagCell.self, forCellWithReuseIdentifier: TagCell.reuseIdentifier)
+        collectionView.allowsSelection = true
+        collectionView.contentMode = .scaleAspectFit
+        return collectionView
     }()
 
     let textView: UITextView = {
@@ -109,7 +113,7 @@ class SignUpView: UIView{
     
     //Warning:need to adjusted
     private lazy var stackView:UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [speechPersonColumn, speechDatePicker, kindChooser, themeColumn, linkInfo, speechFormChooser, tags, tagCollectionButton])
+        let stackView = UIStackView(arrangedSubviews: [speechPersonColumn, speechDatePicker, kindChooser, themeColumn, linkInfo, speechFormChooser, tags, tagButtons])
         stackView.axis = .vertical
         stackView.spacing = 10
         stackView.distribution = .fillProportionally
@@ -132,7 +136,7 @@ class SignUpView: UIView{
 
     private func autoLayout() {
         titleStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(15)
+            make.top.equalTo(safeAreaLayoutGuide).offset(15)
             make.centerX.equalToSuperview()
         }
         greenLine.snp.makeConstraints { make in
@@ -146,7 +150,7 @@ class SignUpView: UIView{
             make.trailing.equalTo(-60)
         }
         
-        tagCollectionButton.snp.makeConstraints { make in
+        tagButtons.snp.makeConstraints { make in
             make.left.equalTo(50)
             make.height.equalTo(40)
         }

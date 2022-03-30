@@ -17,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: setWindow)
         let homePage = UINavigationController(rootViewController: HomePageViewController())
         let wannaKnowPage = UINavigationController(rootViewController: WannaKnowViewController())
-        self.window?.rootViewController = homePage
+        let signUpPage = SignUpViewController()
+        self.window?.rootViewController = signUpPage
         self.window?.makeKeyAndVisible()
     }
 
