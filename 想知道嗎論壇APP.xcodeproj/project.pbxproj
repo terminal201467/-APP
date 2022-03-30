@@ -67,6 +67,7 @@
 		97A2521327C87340002D5B5E /* CommentsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2521227C87340002D5B5E /* CommentsAPI.swift */; };
 		97A2523C27CDD142002D5B5E /* CalenderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2523B27CDD142002D5B5E /* CalenderHeader.swift */; };
 		97A2523E27CDF4B6002D5B5E /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2523D27CDF4B6002D5B5E /* EventTableViewCell.swift */; };
+		97CE649727F485C1003C9DA2 /* SignUpDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE649627F485C1003C9DA2 /* SignUpDataBase.swift */; };
 		97DB515427D73E8D00960AA2 /* SearchDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DB515327D73E8D00960AA2 /* SearchDataBase.swift */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +133,7 @@
 		97A2521227C87340002D5B5E /* CommentsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsAPI.swift; sourceTree = "<group>"; };
 		97A2523B27CDD142002D5B5E /* CalenderHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderHeader.swift; sourceTree = "<group>"; };
 		97A2523D27CDF4B6002D5B5E /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		97CE649627F485C1003C9DA2 /* SignUpDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDataBase.swift; sourceTree = "<group>"; };
 		97DB515327D73E8D00960AA2 /* SearchDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataBase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -282,6 +284,7 @@
 				976E406A27D1BDCF0036F4D7 /* CommentsDataBase.swift */,
 				976E406C27D1BE250036F4D7 /* CalendarDataBase.swift */,
 				97DB515327D73E8D00960AA2 /* SearchDataBase.swift */,
+				97CE649627F485C1003C9DA2 /* SignUpDataBase.swift */,
 			);
 			path = WannaKnowAPI;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 			files = (
 				9778C40F27E9C16A000C2C69 /* LinkWithTextField.swift in Sources */,
 				973246082797C60C00CE549D /* ContentViewController.swift in Sources */,
+				97CE649727F485C1003C9DA2 /* SignUpDataBase.swift in Sources */,
 				9778C41127E9C198000C2C69 /* LabelWithDropDown.swift in Sources */,
 				97A251C827C5E60A002D5B5E /* CalenderCell.swift in Sources */,
 				9778C40927E9C0FA000C2C69 /* LabelWithTextField.swift in Sources */,

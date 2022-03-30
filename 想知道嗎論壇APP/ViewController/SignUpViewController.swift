@@ -11,6 +11,8 @@ class SignUpViewController: UIViewController{
     
     let signUpView = SignUpView()
     
+    let dataBase = SignUpDataBase()
+    
     override func loadView() {
         super.loadView()
         view = signUpView
@@ -22,7 +24,7 @@ class SignUpViewController: UIViewController{
         setDropDownListAction()
         setTextFieldDelegate()
         setTextFieldTags()
-
+        setTagButtons()
     }
     
     private func setTextFieldDelegate(){
@@ -31,6 +33,11 @@ class SignUpViewController: UIViewController{
         signUpView.linkInfo.textField.delegate = self
         signUpView.tags.textField.delegate = self
         signUpView.textView.delegate = self
+    }
+    
+    private func setTagButtons(){
+        signUpView.tagButtons.delegate = self
+        signUpView.tagButtons.dataSource = self
     }
     
     private func setTextFieldTags(){
@@ -73,6 +80,26 @@ class SignUpViewController: UIViewController{
             guard let _ = self else { return }
             sender.setTitle(item, for: .normal)
         }
+    }
+}
+
+
+extension SignUpViewController:UICollectionViewDelegate,UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        dataBase.numberOfRowInSection(section)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let tagCell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.reuseIdentifier, for: indexPath) as! TagCell
+        tagCell.tagLabel.text = dataBase.cellForItemAt(index: indexPath)
+        return tagCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //1.remove the indexPath item
+        dataBase.removeAt(indexPath)
+        //2.reloadData
+        collectionView.reloadData()
     }
 }
 
