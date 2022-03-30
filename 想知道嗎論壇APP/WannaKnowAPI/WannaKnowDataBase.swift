@@ -15,13 +15,6 @@ class WannaKnowDataBase{
     
     var valueChanged:(()->Void)?
     
-    //MARK:-Data
-//    private var wannaKnowData:[WannaKnowData] = []{
-//        didSet{
-//            valueChanged?()
-//        }
-//    }
-    
     private var data:[WannaKnowData.Data] = []{
         didSet{
             valueChanged?()
@@ -39,7 +32,6 @@ class WannaKnowDataBase{
         WannaKnowAPI.shared.getWannaKnowData(callBy: .per_page("10")) { result in
             switch result{
             case .success(let data):
-//                self.wannaKnowData.append(data)
                 self.data = data.data
             case .failure(let error): print(error.localizedDescription)
             }
@@ -50,7 +42,6 @@ class WannaKnowDataBase{
         WannaKnowAPI.shared.getWannaKnowData(callBy: .category(category),.orderby(orderBy)) { result in
             switch result{
             case .success(let data):
-//                self.wannaKnowData.append(data)
                 self.data = data.data
                 print("categoryData:",data)
             case .failure(let error): print(error.localizedDescription)
@@ -62,7 +53,6 @@ class WannaKnowDataBase{
         WannaKnowAPI.shared.getWannaKnowData(callBy: .tags(tags)) { result in
             switch result{
             case .success(let data):
-//                self.wannaKnowData.append(data)
                 self.data = data.data
             case .failure(let error):print(error.localizedDescription)
             }
@@ -90,17 +80,14 @@ class WannaKnowDataBase{
     public func removeAll(){
         data.removeAll()
         filterData.removeAll()
-//        wannaKnowData.removeAll()
     }
     
     //MARK:-CollectionViewTag
     public func numberOfRowsInCollectionViewSection(_ section:Int)->Int{
-//        print("tagNumber:",wannaKnowData.map{$0.data.map{$0.tags}}.count)
-        return filterData.isEmpty ? data.map{$0.tags}.count : filterData.map{$0.tags}.count
+        return filterData.isEmpty ? data[section].tags.count :filterData[section].tags.count
     }
     
-    public func getCollectionTagData(at indexPath:IndexPath)->String?{
-//        print("tagsName:",wannaKnowData[indexPath.section].data[indexPath.row].tags)
-        return filterData.isEmpty ? data[indexPath.section].tags[indexPath.row]: filterData[indexPath.row].tags[indexPath.row]
+    public func getCollectionTagData(at indexPath:IndexPath)->String{
+        return filterData.isEmpty ? data[indexPath.section].tags[indexPath.row]! :filterData[indexPath.section].tags[indexPath.row]!
     }
 }

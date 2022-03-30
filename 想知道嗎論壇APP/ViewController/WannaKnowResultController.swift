@@ -154,8 +154,6 @@ extension WannaKnowResultController:UICollectionViewDelegate,UICollectionViewDat
         }else{
             cell.tagLabel.text = names
         }
-        
-        
         return cell
     }
 }
