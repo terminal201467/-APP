@@ -48,6 +48,10 @@ class SignUpViewController: UIViewController{
 //        signUpView.textView.tag = 4
     }
     
+    private func appendTextToTags(){
+        dataBase.appendToStore(text: signUpView.tags.textField.text!)
+    }
+    
 //    private func swichBaseedNextFieldTextField(_ textField:UITextField){
 //        switch textField{
 //        case signUpView.speechPersonColumn:  self.signUpView.themeColumn.becomeFirstResponder()
@@ -96,9 +100,7 @@ extension SignUpViewController:UICollectionViewDelegate,UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //1.remove the indexPath item
         dataBase.removeAt(indexPath)
-        //2.reloadData
         collectionView.reloadData()
     }
 }
@@ -106,6 +108,9 @@ extension SignUpViewController:UICollectionViewDelegate,UICollectionViewDataSour
 extension SignUpViewController:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         tagBasedTextField(textField)
+        if textField.tag == 3{
+            appendTextToTags()
+        }
         return true
     }
 }

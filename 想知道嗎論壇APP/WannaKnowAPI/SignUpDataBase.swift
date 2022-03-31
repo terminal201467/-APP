@@ -35,7 +35,12 @@ class SignUpDataBase{
         return store[index.row] + "x"
     }
     
-    //MARK:-Remove all Data function
+    //MARK:-AppendData
+    func appendToStore(text:String){
+        store.append(text)
+    }
+    
+    //MARK:-RemoveData
     func removeAll(){
         store.removeAll()
     }
