@@ -11,15 +11,23 @@ import Foundation
 class SignUpDataBase{
     
     //MARK:-closures
-    var valueChange:(()->Void)?
+    var valueChanged:(()->Void)?
     
     var onError:((Error)->())?
     
     
-    private var wannaKnowData:[WannaKnowData] = []
+    private var wannaKnowData:[WannaKnowData] = []{
+        didSet{
+            valueChanged?()
+        }
+    }
     
     //MARK:-tagsStore
-    private var store:[String] = []
+    private var store:[String] = []{
+        didSet{
+            valueChanged?()
+        }
+    }
     
     //MARK:-Post Method
     func post(){
@@ -35,7 +43,11 @@ class SignUpDataBase{
         return store[index.row] + "x"
     }
     
-    //MARK:-AppendData
+    //MARK:-Append
+    func appendToWannaKnowData(_ data:WannaKnowData){
+        wannaKnowData.append(data)
+    }
+    
     func appendToStore(text:String){
         store.append(text)
     }

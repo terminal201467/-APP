@@ -70,12 +70,19 @@ class SignUpView: UIView{
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         flowLayout.estimatedItemSize = .zero
-        flowLayout.minimumLineSpacing = 3
+        flowLayout.estimatedItemSize = .init(width: 60, height: 30)
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.register(TagCell.self, forCellWithReuseIdentifier: TagCell.reuseIdentifier)
         collectionView.allowsSelection = true
+        collectionView.isScrollEnabled = false
         collectionView.contentMode = .scaleAspectFit
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.contentSize = .init(width: 200, height: 100)
+        collectionView.contentOffset = .init(x: 10, y: 10)
+        
         return collectionView
     }()
 
@@ -92,7 +99,7 @@ class SignUpView: UIView{
         return textView
     }()
 
-    private let sendButton: UIButton = {
+    let sendButton: UIButton = {
         let sendButton = UIButton()
         sendButton.setTitle("送出", for: .normal)
         sendButton.tintColor = .white

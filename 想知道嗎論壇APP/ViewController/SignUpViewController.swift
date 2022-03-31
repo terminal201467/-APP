@@ -13,6 +13,8 @@ class SignUpViewController: UIViewController{
     
     let dataBase = SignUpDataBase()
     
+    var store:WannaKnowData = WannaKnowData(current_page: "", total_page: "", per_page: "", total_item: "", data: [WannaKnowData.Data]())
+    
     override func loadView() {
         super.loadView()
         view = signUpView
@@ -50,6 +52,17 @@ class SignUpViewController: UIViewController{
     
     private func appendTextToTags(){
         dataBase.appendToStore(text: signUpView.tags.textField.text!)
+    }
+    
+    private func setSendButton(){
+        signUpView.sendButton.addTarget(self, action: #selector(send), for: .touchDown)
+    }
+    
+    @objc func send(){
+        //append the data to dataBase Array
+        
+        //then post the data to Back-End
+        
     }
     
 //    private func swichBaseedNextFieldTextField(_ textField:UITextField){
@@ -110,6 +123,7 @@ extension SignUpViewController:UITextFieldDelegate{
         tagBasedTextField(textField)
         if textField.tag == 3{
             appendTextToTags()
+            signUpView.tagButtons.reloadData()
         }
         return true
     }
