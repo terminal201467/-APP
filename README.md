@@ -12,7 +12,7 @@ WannaKnowAPP is developed by a team WeBios that learned develope skill in HaoXia
 
 1. Based on UIKit
 2. Third Party Kit in the Repo:SnapKit,ParchMent,SideMenu,JTAppleCalendar
-3. Both cocoapods and snp in the Repo 
+3. Both cocoapods and SPM in the Repo to install the Kit
 4. API Get by UISession
 5. Back-end API based on AppScript and GoogleSheet
 6. MVC strusture
