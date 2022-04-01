@@ -23,7 +23,7 @@ class SignUpDataBase{
     }
     
     //MARK:-tagsStore
-    private var store:[String] = []{
+    var store:[String] = []{
         didSet{
             valueChanged?()
         }
@@ -40,7 +40,7 @@ class SignUpDataBase{
     }
     
     func cellForItemAt(index:IndexPath)->String{
-        return store[index.row] + "x"
+        return store[index.row]
     }
     
     //MARK:-Append

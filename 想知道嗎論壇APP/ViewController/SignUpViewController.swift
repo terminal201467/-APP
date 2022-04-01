@@ -13,7 +13,7 @@ class SignUpViewController: UIViewController{
     
     let dataBase = SignUpDataBase()
     
-    var store:WannaKnowData = WannaKnowData(current_page: "", total_page: "", per_page: "", total_item: "", data: [WannaKnowData.Data]())
+    var store:WannaKnowData.Data = WannaKnowData.Data(wanna_know_id: "", category: "", title: "", description: "", speaker: "", date: "", year: "", live: "", tags: [String](), like: "", attachment: "", update_time: "", comment_amount: "")
     
     override func loadView() {
         super.loadView()
@@ -25,7 +25,7 @@ class SignUpViewController: UIViewController{
         super.viewDidLoad()
         setDropDownListAction()
         setTextFieldDelegate()
-        setTextFieldTags()
+        setTextFieldAndTextViewTags()
         setTagButtons()
     }
     
@@ -42,16 +42,17 @@ class SignUpViewController: UIViewController{
         signUpView.tagButtons.dataSource = self
     }
     
-    private func setTextFieldTags(){
+    private func setTextFieldAndTextViewTags(){
         signUpView.speechPersonColumn.textField.tag = 0
         signUpView.themeColumn.textField.tag = 1
         signUpView.linkInfo.textField.tag = 2
         signUpView.tags.textField.tag = 3
-//        signUpView.textView.tag = 4
+        signUpView.textView.tag = 0
     }
     
     private func appendTextToTags(){
         dataBase.appendToStore(text: signUpView.tags.textField.text!)
+        signUpView.tags.textField.text = ""
     }
     
     private func setSendButton(){
@@ -60,27 +61,32 @@ class SignUpViewController: UIViewController{
     
     @objc func send(){
         //append the data to dataBase Array
-        
+//        store = WannaKnowData.Data(wanna_know_id: <#T##String#>,
+//                                   category: <#T##String#>,
+//                                   title: signUpView.themeColumn.textField.text,
+//                                   description: signUpView.textView.text,
+//                                   speaker: signUpView.speechPersonColumn.textField.text,
+//                                   date: <#T##String#>,
+//                                   year: <#T##String#>,
+//                                   live: <#T##String#>,
+//                                   tags: dataBase.store,
+//                                   like: <#T##String#>,
+//                                   attachment: <#T##String#>,
+//                                   update_time: <#T##String#>,
+//                                   comment_amount: <#T##String#>)
+//
         //then post the data to Back-End
         
     }
     
-//    private func swichBaseedNextFieldTextField(_ textField:UITextField){
-//        switch textField{
-//        case signUpView.speechPersonColumn:  self.signUpView.themeColumn.becomeFirstResponder()
-//        case signUpView.themeColumn:         self.signUpView.linkInfo.becomeFirstResponder()
-//        case signUpView.linkInfo:            self.signUpView.tags.becomeFirstResponder()
-//        case signUpView.tags:                self.signUpView.textView.becomeFirstResponder()
-//        default:                             self.signUpView.textView.becomeFirstResponder()
-//        }
-//    }
-    
     private func tagBasedTextField(_ textField:UITextField){
         let newTextFieldTag = textField.tag + 1
-        if let nextTextField = textField.superview?.viewWithTag(newTextFieldTag) as? UITextField{
+        if let nextTextField = textField.superview?.viewWithTag(newTextFieldTag){
             nextTextField.becomeFirstResponder()
+            print("become")
         }else{
             textField.resignFirstResponder()
+            print("resign")
         }
     }
     
@@ -120,17 +126,22 @@ extension SignUpViewController:UICollectionViewDelegate,UICollectionViewDataSour
 
 extension SignUpViewController:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        tagBasedTextField(textField)
         if textField.tag == 3{
             appendTextToTags()
             signUpView.tagButtons.reloadData()
         }
+        self.tagBasedTextField(textField)
         return true
     }
+    
 }
 
 extension SignUpViewController:UITextViewDelegate{
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        textView.invalidateIntrinsicContentSize()
     }
 }

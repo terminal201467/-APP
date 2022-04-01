@@ -59,6 +59,19 @@ class WannaKnowDataBase{
         }
     }
     
+    //function search by the category and keyword
+    public func loadCategorySearch(callBy category:String,searchby keyword:String){
+        WannaKnowAPI.shared.getWannaKnowData(callBy: .category(category) ,.keyword(keyword)) { result in
+            switch result{
+            case .success(let data):
+                self.data = data.data
+            case .failure(let error): print(error.localizedDescription)
+            }
+        }
+        
+    }
+    
+    
     public func filterContent(for searchText:String){
         filterData = data.filter({ (filterArray)->Bool in
             let words = filterArray

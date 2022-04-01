@@ -71,7 +71,7 @@ class SignUpView: UIView{
         flowLayout.scrollDirection = .vertical
         flowLayout.estimatedItemSize = .zero
         flowLayout.estimatedItemSize = .init(width: 60, height: 30)
-        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumLineSpacing = 5
         flowLayout.minimumInteritemSpacing = 0
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -82,7 +82,6 @@ class SignUpView: UIView{
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.contentSize = .init(width: 200, height: 100)
         collectionView.contentOffset = .init(x: 10, y: 10)
-        
         return collectionView
     }()
 
@@ -159,7 +158,7 @@ class SignUpView: UIView{
         
         tagButtons.snp.makeConstraints { make in
             make.left.equalTo(50)
-            make.height.equalTo(40)
+            make.height.equalTo(50)
         }
         
         textView.snp.makeConstraints { make in
