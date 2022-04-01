@@ -19,8 +19,19 @@ WannaKnowAPP is developed by a team WeBios that learned develope skill in HaoXia
 
 ## HomePage
 
+![image](https://github.com/terminal201467/WannaKnowAPP/blob/main/GIF/HomePage.GIF)
+![image](https://github.com/terminal201467/WannaKnowAPP/blob/main/GIF/HomePageKeywordSearching.GIF)
 
 ## WannaKnowPage
 
+![image](https://github.com/terminal201467/WannaKnowAPP/blob/main/GIF/WannaKnowPage.GIF)
+![image](https://github.com/terminal201467/WannaKnowAPP/blob/main/GIF/WannaKnowPageSearching.GIF)
+![image](https://github.com/terminal201467/WannaKnowAPP/blob/main/GIF/WannaKnowPageSearchingChanging.GIF)
+
+## CalendarPage
+
+![image](https://github.com/terminal201467/WannaKnowAPP/blob/main/GIF/CalendarPageEventSelect.GIF)
+![image](https://github.com/terminal201467/WannaKnowAPP/blob/main/GIF/CalendarPickDate.GIF)
 
 ## SignUpPage
+![image](https://github.com/terminal201467/WannaKnowAPP/blob/main/GIF/SignInTheInfo.GIF)
