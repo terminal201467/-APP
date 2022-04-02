@@ -41,7 +41,7 @@ class ContentCell: UITableViewCell {
     private let descriptionLabel:UILabel = {
        let label = UILabel()
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        label.backgroundColor = nil
+        label.backgroundColor = .clear
         label.font = UIFont.systemFont(ofSize: 20)
         label.numberOfLines = 3
         return label

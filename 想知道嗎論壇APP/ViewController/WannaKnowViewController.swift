@@ -81,7 +81,8 @@ class WannaKnowViewController: UIViewController {
         setSelfCategoryDelegate()
         setTagDelegate()
         setContentViewControllerOberserver()
-//        setResultUpdaterDelegate()
+        categoryIndex = [0,0]
+        contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didHighlightItemAt: categoryIndex)
     }
     
     override func viewWillAppear(_ animated: Bool) {

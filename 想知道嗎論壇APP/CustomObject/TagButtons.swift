@@ -33,7 +33,7 @@ class TagButtons: UICollectionViewController {
     private func setCollectionViewFlow(){
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 3
-        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumInteritemSpacing = 3
         flowLayout.estimatedItemSize = .zero
     }
     

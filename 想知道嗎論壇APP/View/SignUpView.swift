@@ -158,7 +158,7 @@ class SignUpView: UIView{
         
         tagButtons.snp.makeConstraints { make in
             make.left.equalTo(50)
-            make.height.equalTo(50)
+            make.height.equalTo(80)
         }
         
         textView.snp.makeConstraints { make in

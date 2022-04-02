@@ -25,7 +25,7 @@ class CommentsDataBase{
     
     var onError:((Error)->Void)?
     
-    //MARK:-Methods
+    //MARK:-LoadDate and Post
     public func loadData(){
         CommentsAPI.shared.getCommentsAPI(callBy: id) { result in
             switch result{
@@ -33,6 +33,11 @@ class CommentsDataBase{
             case .failure(let error): print(error.localizedDescription)
             }
         }
+    }
+    
+    public func postData(){
+        
+        
     }
     
     public func numberOfRowsInSection(_ section:Int)->Int{
