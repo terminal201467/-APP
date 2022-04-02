@@ -47,7 +47,7 @@ class SignUpViewController: UIViewController{
         signUpView.themeColumn.textField.tag = 1
         signUpView.linkInfo.textField.tag = 2
         signUpView.tags.textField.tag = 3
-        signUpView.textView.tag = 0
+//        signUpView.textView.tag = 0
     }
     
     private func appendTextToTags(){
@@ -81,7 +81,7 @@ class SignUpViewController: UIViewController{
     
     private func tagBasedTextField(_ textField:UITextField){
         let newTextFieldTag = textField.tag + 1
-        if let nextTextField = textField.superview?.viewWithTag(newTextFieldTag){
+        if let nextTextField = textField.superview?.viewWithTag(newTextFieldTag) as? UITextField{
             nextTextField.becomeFirstResponder()
             print("become")
         }else{
@@ -126,14 +126,16 @@ extension SignUpViewController:UICollectionViewDelegate,UICollectionViewDataSour
 
 extension SignUpViewController:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.tagBasedTextField(textField)
+        print("現在的tag:",textField.tag)
+
         if textField.tag == 3{
             appendTextToTags()
             signUpView.tagButtons.reloadData()
         }
-        self.tagBasedTextField(textField)
+        
         return true
     }
-    
 }
 
 extension SignUpViewController:UITextViewDelegate{
@@ -142,6 +144,5 @@ extension SignUpViewController:UITextViewDelegate{
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        textView.invalidateIntrinsicContentSize()
     }
 }

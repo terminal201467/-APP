@@ -48,10 +48,8 @@ class WannaKnowViewController: UIViewController {
             postTheme()
             //I can sure that trigger , but why can't work?
             
-            /*
-            self.view.endEditing(true)
-            wannaKnowView.searchBarContainer.isHidden = true
-            */
+            searchViewController.searchBar.searchTextField.resignFirstResponder()
+            searchViewController.searchBar.isHidden = true
         }
     }
     
@@ -173,6 +171,7 @@ class WannaKnowViewController: UIViewController {
     
     @objc func search(){
         wannaKnowView.searchBarContainer.isHidden = false
+        searchViewController.searchBar.isHidden = false
         searchViewController.searchBar.becomeFirstResponder()
         categoryIndex = [0,0]
         contentViewController.categoryButton.collectionView(contentViewController.categoryButton.collectionView, didHighlightItemAt: categoryIndex)
