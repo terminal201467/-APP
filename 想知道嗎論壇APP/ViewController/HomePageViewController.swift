@@ -114,20 +114,11 @@ class HomePageViewController: UIViewController{
             make.top.right.left.bottom.equalTo(homePageView.menuPageContainer)
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
-
-//    private func setKeyboardDissmiss(){
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
-//        self.homePageView.banner.addGestureRecognizer(tap)
-//    }
-//
-//    @objc func dismissKeyBoard() {
-//        viewControllers[2].view.endEditing(true)
-//        if viewControllers[2].view.frame.origin.y != 0{
-//            viewControllers[2].view.frame.origin.y = 0
-//        }
-//    }
-//}
 
 //MARK:PagingViewControllerDelegate
 extension HomePageViewController:PagingViewControllerDelegate,PagingViewControllerDataSource{

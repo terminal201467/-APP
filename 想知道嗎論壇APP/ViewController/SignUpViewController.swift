@@ -13,6 +13,8 @@ class SignUpViewController: UIViewController{
     
     let dataBase = SignUpDataBase()
     
+    let scrollView = UIScrollView()
+    
     var store:WannaKnowData.Data = WannaKnowData.Data(wanna_know_id: "", category: "", title: "", description: "", speaker: "", date: "", year: "", live: "", tags: [String](), like: "", attachment: "", update_time: "", comment_amount: "")
     
     override func loadView() {
@@ -47,12 +49,14 @@ class SignUpViewController: UIViewController{
         signUpView.themeColumn.textField.tag = 1
         signUpView.linkInfo.textField.tag = 2
         signUpView.tags.textField.tag = 3
-//        signUpView.textView.tag = 0
+
     }
     
     private func appendTextToTags(){
         dataBase.appendToStore(text: signUpView.tags.textField.text!)
+        signUpView.tagButtons.reloadData()
         signUpView.tags.textField.text = ""
+
     }
     
     private func setSendButton(){
@@ -75,7 +79,8 @@ class SignUpViewController: UIViewController{
 //                                   update_time: <#T##String#>,
 //                                   comment_amount: <#T##String#>)
 //
-        //then post the data to Back-End
+        //1.如果資料缺少一個欄位，就不能post
+        //
         
     }
     
@@ -87,6 +92,13 @@ class SignUpViewController: UIViewController{
         }else{
             textField.resignFirstResponder()
             print("resign")
+        }
+    }
+    
+    ///選到textView的時候，就變成會推整塊View起來
+    private func editTextViewHeight(_ textView:UITextView){
+        if view.frame.origin.y == 0{
+            view.frame.origin.y -= textView.frame.height + 50
         }
     }
     
@@ -104,8 +116,14 @@ class SignUpViewController: UIViewController{
             sender.setTitle(item, for: .normal)
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        if view.frame.origin.y != 0{
+            view.frame.origin.y = 0
+        }
+    }
 }
-
 
 extension SignUpViewController:UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -127,22 +145,30 @@ extension SignUpViewController:UICollectionViewDelegate,UICollectionViewDataSour
 extension SignUpViewController:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.tagBasedTextField(textField)
-        print("現在的tag:",textField.tag)
-
         if textField.tag == 3{
-            appendTextToTags()
-            signUpView.tagButtons.reloadData()
+            if textField.text != ""{
+                appendTextToTags()
+            }else{
+                self.view.endEditing(true)
+            }
         }
-        
         return true
     }
 }
 
 extension SignUpViewController:UITextViewDelegate{
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"{
+            self.view.endEditing(true)
+            if view.frame.origin.y != 0{
+                view.frame.origin.y = 0
+            }
+        }
         return true
     }
     
-    func textViewDidChange(_ textView: UITextView) {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        editTextViewHeight(textView)
+        return true
     }
 }

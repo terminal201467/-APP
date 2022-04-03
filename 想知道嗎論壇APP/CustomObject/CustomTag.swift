@@ -16,11 +16,9 @@ class CustomTag:UILabel{
     var leftInset:CGFloat = 5
     var bottomInset:CGFloat = 3
 
-    
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
         super.drawText(in: rect.inset(by: insets))
-        
     }
     
     override var intrinsicContentSize: CGSize{
