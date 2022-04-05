@@ -8,14 +8,15 @@
 import Foundation
 
 class CommentsDataBase{
-    
-    //MARK:-Intializer
-    init(parameter byId:String){ self.id = byId }
-    
     //MARK:-Properties
-    private var id:String
     
     private var commentData:[CommentsData] = []{
+        didSet{
+            valueChange?()
+        }
+    }
+    
+    private var postData:[PostCommentsData] = []{
         didSet{
             valueChange?()
         }
@@ -26,18 +27,33 @@ class CommentsDataBase{
     var onError:((Error)->Void)?
     
     //MARK:-LoadDate and Post
-    public func loadData(){
-        CommentsAPI.shared.getCommentsAPI(callBy: id) { result in
+    public func loadData(byID id:String){
+        CommentsAPI.shared.getCommentsAPI(callBy: .wanna_Know_id(id)) { result in
             switch result{
-            case .success(let data):  self.commentData.append(data)
+            case .success(let data):  self.commentData = data
             case .failure(let error): print(error.localizedDescription)
             }
         }
     }
     
-    public func postData(){
-        
-        
+    public func postComments(byID id:String, comments content:String){
+        let data = PostComments(wanna_Know_id: id, content: content)
+        CommentsAPI.shared.postCommentAPI(encodeData: .postComments(data)) { result in
+            switch result{
+            case .success(let data):  print("資料傳送狀態：",data.message)
+            case .failure(let error): print(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func postLike(byID id:String, like:Bool){
+        let data = PostLike(comment_id: id, like: like)
+        CommentsAPI.shared.postCommentAPI(encodeData: .postLike(data)) { result in
+            switch result{
+            case .success(let data):  print("資料傳送狀態：",data.message)
+            case .failure(let error): print(error.localizedDescription)
+            }
+        }
     }
     
     public func numberOfRowsInSection(_ section:Int)->Int{

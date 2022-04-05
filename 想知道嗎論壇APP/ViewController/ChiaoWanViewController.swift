@@ -42,7 +42,7 @@ class ChiaoWanViewController: UIViewController{
     }
     
     //MARK:-KeyBoardShow
-    func notifiTheKeyboardWillShow(){
+    private func notifiTheKeyboardWillShow(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     

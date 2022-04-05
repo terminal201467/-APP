@@ -58,8 +58,7 @@ class WannaKnowDetailViewController: UIViewController {
     private func setTextField(){
         wannaKnowDetailView.textField.delegate = self
     }
-    
-    
+
     private func setSendButton(){
         wannaKnowDetailView.sendButton.addTarget(self, action: #selector(send), for: .touchDown)
     }

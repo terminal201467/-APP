@@ -116,3 +116,8 @@ enum ItemRanges:Int,CaseIterable{
         }
     }
 }
+
+enum PostEncodeBody:Encodable{
+    case postComments(PostComments)
+    case postLike(PostLike)
+}

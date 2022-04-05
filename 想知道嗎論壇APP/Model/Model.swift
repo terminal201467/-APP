@@ -90,7 +90,6 @@ struct YearData:Decodable{
     }
 }
 
-
 struct CommentsData:Decodable{
     var wanna_know_id:String
     var messenger:String
@@ -108,6 +107,29 @@ struct CommentsData:Decodable{
         let date = newFormatter.string(from: time!)
         return date
     }
+}
+
+struct PostComments:Encodable{
+    var wanna_Know_id:String
+    var content:String
+}
+
+struct PostLike:Encodable{
+    var comment_id:String
+    var like:Bool
+}
+
+struct PostCommentsData:Codable{
+    var data:Details
+    struct Details:Codable{
+        var wanna_Know_id:String
+        var messager:String
+        var comment_id:String
+        var content:String
+        var like:Int
+        var contentTime:String
+    }
+    var message:String
 }
 
 
