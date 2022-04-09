@@ -75,7 +75,13 @@ class ChiaoWanViewController: UIViewController{
         formatter.dateFormat = "yyyy-MM-dd"
         let now = formatter.string(from: Date())
         
-        chiaoWanData.append(HomePageData(title: "\(chiaoWanView.textField.text!)", count: 4, date: now))
+        if chiaoWanView.textField.text == ""{
+            print("Nothing in the textField to send")
+        }else{
+            chiaoWanData.append(HomePageData(title: "\(chiaoWanView.textField.text!)", count: 4, date: now))
+            chiaoWanView.textField.text = ""
+            //Post the chiaoWan Message here
+        }
         
         UIView.animate(withDuration: 0.1) {
             self.chiaoWanView.sendButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
@@ -84,8 +90,6 @@ class ChiaoWanViewController: UIViewController{
                 self.chiaoWanView.sendButton.transform = CGAffineTransform.identity
             }
         }
-        
-        chiaoWanView.textField.text = ""
         view.endEditing(true)
         view.frame.origin.y = 0
     }
