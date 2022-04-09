@@ -15,7 +15,6 @@ class SignUpDataBase{
     
     var onError:((Error)->())?
     
-    
     private var wannaKnowData:[WannaKnowData] = []{
         didSet{
             valueChanged?()
@@ -23,7 +22,7 @@ class SignUpDataBase{
     }
     
     //MARK:-tagsStore
-    var store:[String] = []{
+    var tagStore:[String] = []{
         didSet{
             valueChanged?()
         }
@@ -36,29 +35,29 @@ class SignUpDataBase{
     
     //MARK:-CollectionView Delegate function
     func numberOfRowInSection(_ section:Int)->Int{
-        return store.count
+        return tagStore.count
     }
     
     func cellForItemAt(index:IndexPath)->String{
-        return store[index.row]
+        return tagStore[index.row]
     }
     
-    //MARK:-Append
+    //MARK:-AppendData
     func appendToWannaKnowData(_ data:WannaKnowData){
         wannaKnowData.append(data)
     }
     
     func appendToStore(text:String){
-        store.append(text)
+        tagStore.append(text)
     }
     
     //MARK:-RemoveData
     func removeAll(){
-        store.removeAll()
+        tagStore.removeAll()
     }
     
     func removeAt(_ indexPath:IndexPath)->String{
-        return store.remove(at: indexPath.row)
+        return tagStore.remove(at: indexPath.row)
     }
     
 }

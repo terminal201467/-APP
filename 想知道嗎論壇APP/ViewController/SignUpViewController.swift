@@ -194,10 +194,11 @@ extension SignUpViewController:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.tagBasedTextField(textField)
         if textField.tag == 3{
-            if textField.text != ""{
+            if textField.text != "" && dataBase.tagStore.count < 5{
                 appendTextToTags()
             }else{
                 self.view.endEditing(true)
+                textField.text = ""
             }
         }
         return true
