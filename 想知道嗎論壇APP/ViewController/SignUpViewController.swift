@@ -15,7 +15,23 @@ class SignUpViewController: UIViewController{
     
     let scrollView = UIScrollView()
     
-    var store:WannaKnowData.Data = WannaKnowData.Data(wanna_know_id: "", category: "", title: "", description: "", speaker: "", date: "", year: "", live: "", tags: [String](), like: "", attachment: "", update_time: "", comment_amount: "")
+    var store:WannaKnowData.Data = WannaKnowData.Data(wanna_know_id: "",
+                                                      category: "",
+                                                      title: "",
+                                                      description: "",
+                                                      speaker: "",
+                                                      date: "",
+                                                      year: "",
+                                                      live: "",
+                                                      tags: [String](),
+                                                      like: "",
+                                                      attachment: "",
+                                                      update_time: "",
+                                                      comment_amount: "")
+    
+    private var category = String()
+    
+    private var mode = String()
     
     override func loadView() {
         super.loadView()
@@ -29,6 +45,7 @@ class SignUpViewController: UIViewController{
         setTextFieldDelegate()
         setTextFieldAndTextViewTags()
         setTagButtons()
+        setSegmentAction()
     }
     
     private func setTextFieldDelegate(){
@@ -65,11 +82,13 @@ class SignUpViewController: UIViewController{
     
     @objc func send(){
         //append the data to dataBase Array
-//        store = WannaKnowData.Data(wanna_know_id: <#T##String#>,
-//                                   category: <#T##String#>,
-//                                   title: signUpView.themeColumn.textField.text,
-//                                   description: signUpView.textView.text,
-//                                   speaker: signUpView.speechPersonColumn.textField.text,
+        
+        
+//        store = WannaKnowData.Data(wanna_know_id: "",
+//                                   category: category,
+//                                   title: signUpView.themeColumn.textField.text!,
+//                                   description: signUpView.textView.text!,
+//                                   speaker: signUpView.speechPersonColumn.textField.text!,
 //                                   date: <#T##String#>,
 //                                   year: <#T##String#>,
 //                                   live: <#T##String#>,
@@ -78,9 +97,6 @@ class SignUpViewController: UIViewController{
 //                                   attachment: <#T##String#>,
 //                                   update_time: <#T##String#>,
 //                                   comment_amount: <#T##String#>)
-//
-        //1.如果資料缺少一個欄位，就不能post
-        //
         
     }
     
@@ -102,6 +118,7 @@ class SignUpViewController: UIViewController{
         }
     }
     
+    //MARK:-DropDownAction
     private func setDropDownListAction(){
         signUpView.kindChooser.kindPicker.addTarget(self, action: #selector(drop), for: .touchUpInside)
     }
@@ -114,8 +131,27 @@ class SignUpViewController: UIViewController{
         signUpView.kindChooser.dropDownList.selectionAction = { [weak self] (index: Int, item: String) in
             guard let _ = self else { return }
             sender.setTitle(item, for: .normal)
+            //如果選擇“請選擇分類”，就不回傳東西
+            //反之，就回傳選擇的String
+            if item == "請選擇分類"{
+                print("Nothing to choose")
+            }else{
+                print("Choose:",item)
+                self!.category = item
+            }
         }
     }
+    
+    //MARK:-SegmentAction
+    func setSegmentAction(){
+        signUpView.speechFormChooser.formPicker.addTarget(self, action: #selector(pickMode), for: .valueChanged)
+    }
+    
+    @objc func pickMode(sender:UISegmentedControl){
+        mode = signUpView.speechFormChooser.formPicker.titleForSegment(at: sender.selectedSegmentIndex)!
+        print("選擇主題：",mode)
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

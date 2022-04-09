@@ -70,6 +70,7 @@
 		97BB32CF27F83678003DFF3D /* CustomTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BB32CE27F83678003DFF3D /* CustomTag.swift */; };
 		97CE649727F485C1003C9DA2 /* SignUpDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE649627F485C1003C9DA2 /* SignUpDataBase.swift */; };
 		97DB515427D73E8D00960AA2 /* SearchDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DB515327D73E8D00960AA2 /* SearchDataBase.swift */; };
+		97FFF4F627FEDAA40089FBD8 /* CommentAPIPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FFF4F527FEDAA40089FBD8 /* CommentAPIPost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +138,7 @@
 		97BB32CE27F83678003DFF3D /* CustomTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTag.swift; sourceTree = "<group>"; };
 		97CE649627F485C1003C9DA2 /* SignUpDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDataBase.swift; sourceTree = "<group>"; };
 		97DB515327D73E8D00960AA2 /* SearchDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataBase.swift; sourceTree = "<group>"; };
+		97FFF4F527FEDAA40089FBD8 /* CommentAPIPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAPIPost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				97A251B227BC94FF002D5B5E /* WannaKnowAPI.swift */,
+				97FFF4F527FEDAA40089FBD8 /* CommentAPIPost.swift */,
 				97A2521227C87340002D5B5E /* CommentsAPI.swift */,
 				97A251B427BC99FD002D5B5E /* WannaKnowDataBase.swift */,
 				976E406A27D1BDCF0036F4D7 /* CommentsDataBase.swift */,
@@ -458,6 +461,7 @@
 				973246162797C6A800CE549D /* CalenderView.swift in Sources */,
 				97A2519227B4DBBA002D5B5E /* WannaKnowDetailViewController.swift in Sources */,
 				97A2518427AD4479002D5B5E /* WannaKnowDetailCell.swift in Sources */,
+				97FFF4F627FEDAA40089FBD8 /* CommentAPIPost.swift in Sources */,
 				97A2518227AD445F002D5B5E /* ContentCell.swift in Sources */,
 				97A2523C27CDD142002D5B5E /* CalenderHeader.swift in Sources */,
 				976E406D27D1BE250036F4D7 /* CalendarDataBase.swift in Sources */,

@@ -10,19 +10,17 @@ import UIKit
 class WannaKnowDetailViewController: UIViewController {
     
     //MARK:-Properties
-    let wannaKnowDetailView = WannaKnowDetailView()
+    private let wannaKnowDetailView = WannaKnowDetailView()
     
-    let wannaKnowHeader = WannaKnowDetailHeader()
+    private let wannaKnowHeader = WannaKnowDetailHeader()
+     
+    private let commentsDataBase = CommentsDataBase()
     
-    var detail:WannaKnowData.Data?{
+    public var detail:WannaKnowData.Data?{
         didSet{
             wannaKnowDetailView.tableView.reloadData()
-        }
-    }
-    
-    var comments:[CommentsData] = [CommentsData(wanna_know_id: "222", messenger: "333", comment_id: "333", content: "333", like: "333", content_time: "333")]{
-        didSet{
-            wannaKnowDetailView.tableView.reloadData()
+            setDataBase()
+//            print("細節：",detail!.wanna_know_id)
         }
     }
     
@@ -43,11 +41,24 @@ class WannaKnowDetailViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        detail = nil
+//        detail = nil
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    private func setDataBase(){
+        commentsDataBase.valueChange = {
+            DispatchQueue.main.async {
+                self.wannaKnowDetailView.tableView.reloadData()
+            }
+        }
+        
+        commentsDataBase.onError = { error in
+            print(error.localizedDescription)
+        }
+        commentsDataBase.loadData(byID:detail!.wanna_know_id)
     }
     
     private func setTableView(){
@@ -67,7 +78,16 @@ class WannaKnowDetailViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let now = formatter.string(from: Date())
-        comments.append(CommentsData(wanna_know_id: "", messenger:"", comment_id: "", content: "\(wannaKnowDetailView.textField.text!)", like: "3", content_time: now))
+        //Post the Data
+        
+        commentsDataBase.postComments(byID: detail!.wanna_know_id, comments: wannaKnowDetailView.textField.text!)
+        
+        commentsDataBase.removeAll()
+        
+        commentsDataBase.loadData(byID: detail!.wanna_know_id)
+        
+        wannaKnowDetailView.tableView.reloadData()
+        
         UIView.animate(withDuration: 0.1) {
             self.wannaKnowDetailView.sendButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         } completion: { finished in
@@ -105,12 +125,12 @@ class WannaKnowDetailViewController: UIViewController {
 
 extension WannaKnowDetailViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        comments.count
+        commentsDataBase.numberOfRowsInSection(section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: WannaKnowDetailCell.reuseIdentifier, for: indexPath) as! WannaKnowDetailCell
-        cell.configuration(data: comments[indexPath.row])
+        cell.configuration(data: commentsDataBase.getData(indexPath))
         return cell
     }
     

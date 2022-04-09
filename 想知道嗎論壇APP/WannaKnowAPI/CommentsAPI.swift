@@ -24,15 +24,16 @@ class CommentsAPI{
     
     private func buildPost(body:PostEncodeBody)->URLRequest{
         var request = URLRequest(url:URL(string: baseURL)!)
-        request.httpMethod = "POST"
-        request.setValue("application/form-data", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(body)
+        request.httpMethod = "POST"
+        request.addValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
         return request
     }
     
     //MARK:-Comments Get
     func getCommentsAPI(callBy:CommentCallMethod...,completion:@escaping(Result<[CommentsData],Error>)->Void){
         let request = buildRequest(callBy: callBy)
+        print("get request:",request)
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error{
                 completion(.failure(error))
@@ -41,10 +42,10 @@ class CommentsAPI{
                 do{
                     let decode = try JSONDecoder().decode([CommentsData].self, from: data)
                     completion(.success(decode))
+                    print("Get Success!:",decode)
                 }catch{
                     completion(.failure(InternetError.invalidResponse))
                 }
-                
             }else{
                 completion(.failure(InternetError.invalidData))
             }
@@ -56,11 +57,13 @@ class CommentsAPI{
         let request = buildPost(body: data)
         print("request:",request)
         URLSession.shared.dataTask(with: request) { data,_, error in
-            if let error = error { completion(.failure(error)) }
+            if let error = error {
+                completion(.failure(error))
+            }
             if let data = data {
                 do{
-                    let prettyJsonData = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
-                    print("解析資料：",prettyJsonData)
+                    let prettyJsonData = try JSONDecoder().decode(PostCommentsData.self, from: data)
+                    print("Post Success!：",prettyJsonData)
                 }catch{
                     print("Error: Trying to convert JSON data to string")
                 }
@@ -71,13 +74,13 @@ class CommentsAPI{
 
 extension CommentsAPI{
     enum CommentCallMethod{
-        case wanna_Know_id(String)
+        case wanna_know_id(String)
         case content(String)
         case comment_id(String)
         case like(Bool)
         var parameter:[String:Any]{
             switch self{
-            case .wanna_Know_id(let wanna_Know_id): return ["wanna_Know_id":wanna_Know_id]
+            case .wanna_know_id(let wanna_Know_id): return ["wanna_know_id":wanna_Know_id]
             case .comment_id(let comment_id):       return ["comment_id":comment_id]
             case .content(let content):             return ["content":content]
             case .like(let like):                   return ["like":like]

@@ -110,7 +110,7 @@ struct CommentsData:Decodable{
 }
 
 struct PostComments:Encodable{
-    var wanna_Know_id:String
+    var wanna_know_id:String
     var content:String
 }
 
@@ -120,16 +120,16 @@ struct PostLike:Encodable{
 }
 
 struct PostCommentsData:Codable{
-    var data:Details
-    struct Details:Codable{
-        var wanna_Know_id:String
-        var messager:String
-        var comment_id:String
-        var content:String
-        var like:Int
-        var contentTime:String
+    var data:Data?
+    struct Data:Codable{
+        var wanna_know_id:String?
+        var messager:String?
+        var comment_id :String?
+        var content:String?
+        var like:String?
+        var content_time:String?
     }
-    var message:String
+    var message:String?
 }
 
 
