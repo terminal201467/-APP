@@ -9,13 +9,15 @@ import UIKit
 
 class SignUpViewController: UIViewController{
     
+    //MARK:-Properties
+    
     let signUpView = SignUpView()
     
     let dataBase = SignUpDataBase()
     
     let scrollView = UIScrollView()
     
-    var store:WannaKnowData.Data = WannaKnowData.Data(wanna_know_id: "",
+    private var store:WannaKnowData.Data = WannaKnowData.Data(wanna_know_id: "",
                                                       category: "",
                                                       title: "",
                                                       description: "",
@@ -66,7 +68,6 @@ class SignUpViewController: UIViewController{
         signUpView.themeColumn.textField.tag = 1
         signUpView.linkInfo.textField.tag = 2
         signUpView.tags.textField.tag = 3
-
     }
     
     private func appendTextToTags(){
@@ -82,6 +83,9 @@ class SignUpViewController: UIViewController{
     
     @objc func send(){
         //append the data to dataBase Array
+        //Check:if one of the colum did't sign up the column,so do not send out the infomation
+        //
+        
         
         
 //        store = WannaKnowData.Data(wanna_know_id: "",
@@ -102,12 +106,10 @@ class SignUpViewController: UIViewController{
     
     private func tagBasedTextField(_ textField:UITextField){
         let newTextFieldTag = textField.tag + 1
-        if let nextTextField = textField.superview?.viewWithTag(newTextFieldTag) as? UITextField{
+        if let nextTextField = signUpView.superview!.viewWithTag(newTextFieldTag) as? UITextField{
             nextTextField.becomeFirstResponder()
-            print("become")
         }else{
             textField.resignFirstResponder()
-            print("resign")
         }
     }
     
