@@ -35,6 +35,8 @@ class SignUpViewController: UIViewController{
     
     private var mode = String()
     
+    private var date = String()
+    
     override func loadView() {
         super.loadView()
         view = signUpView
@@ -48,6 +50,7 @@ class SignUpViewController: UIViewController{
         setTextFieldAndTextViewTags()
         setTagButtons()
         setSegmentAction()
+        setDatePicker()
     }
     
     private func setTextFieldDelegate(){
@@ -112,8 +115,8 @@ class SignUpViewController: UIViewController{
             textField.resignFirstResponder()
         }
     }
-    
-    ///選到textView的時候，就變成會推整塊View起來
+
+
     private func editTextViewHeight(_ textView:UITextView){
         if view.frame.origin.y == 0{
             view.frame.origin.y -= textView.frame.height + 50
@@ -144,8 +147,15 @@ class SignUpViewController: UIViewController{
         }
     }
     
+    private func setDatePicker(){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        date = formatter.string(from: signUpView.speechDatePicker.datePicker.date)
+        print("時間：",date)
+    }
+    
     //MARK:-SegmentAction
-    func setSegmentAction(){
+    private func setSegmentAction(){
         signUpView.speechFormChooser.formPicker.addTarget(self, action: #selector(pickMode), for: .valueChanged)
     }
     
